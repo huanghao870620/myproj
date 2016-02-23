@@ -1,0 +1,10 @@
+﻿Build started 2016/1/8 16:22:34.
+     1>Project "D:\cppwork\cpp_pro\src2\a0\abc.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\cppwork\cpp_pro\src2\a0\Debug\abc.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib fsdfd.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/cppwork/cpp_pro/src2/a0/Debug/abc.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/cppwork/cpp_pro/src2/a0/Debug/abc.lib" /MACHINE:X86 /SAFESEH  /machine:X86 /debug abc.dir\Debug\Crawler.obj
+     1>LINK : fatal error LNK1104: cannot open file 'fsdfd.lib'
+     1>Done Building Project "D:\cppwork\cpp_pro\src2\a0\abc.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.12

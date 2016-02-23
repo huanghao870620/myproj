@@ -1,0 +1,81 @@
+﻿Build started 2016/2/23 12:04:18.
+     1>Project "D:\cppwork\cpp_pro\src2\a0\hello.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\soft\boost_1_60_0 /I"C:\Users\hp\Downloads\mysql-5.6.24-win32.1432006610\mysql-5.6.24-win32\include" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"hello.dir\Debug\\" /Fd"hello.dir\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt D:\cppwork\cpp_pro\src2\a0\ChangeIcon.cpp D:\cppwork\cpp_pro\src2\a0\Client.cpp D:\cppwork\cpp_pro\src2\a0\CMyWinApp.cpp D:\cppwork\cpp_pro\src2\a0\Coding.cpp D:\cppwork\cpp_pro\src2\a0\ConnMysql.cpp D:\cppwork\cpp_pro\src2\a0\ConnSocket.cpp D:\cppwork\cpp_pro\src2\a0\Crawler.cpp D:\cppwork\cpp_pro\src2\a0\DataCollection.cpp D:\cppwork\cpp_pro\src2\a0\DataOperator.cpp D:\cppwork\cpp_pro\src2\a0\DrawFlag.cpp D:\cppwork\cpp_pro\src2\a0\InteObj.cpp D:\cppwork\cpp_pro\src2\a0\MfcMulti.cpp D:\cppwork\cpp_pro\src2\a0\parser_json.cpp D:\cppwork\cpp_pro\src2\a0\ReadIniFile.cpp D:\cppwork\cpp_pro\src2\a0\RecvThread.cpp D:\cppwork\cpp_pro\src2\a0\test.cpp
+         ChangeIcon.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : see declaration of 'MBCS_Support_Deprecated_In_MFC'
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+     1>d:\cppwork\cpp_pro\src2\a0\changeicon.cpp(43): warning C4244: 'initializing' : conversion from 'DWORD' to 'BYTE', possible loss of data
+     1>d:\cppwork\cpp_pro\src2\a0\changeicon.cpp(62): warning C4244: 'initializing' : conversion from 'DWORD' to 'BYTE', possible loss of data
+         Client.cpp
+     1>d:\soft\boost_1_60_0\boost\format\alt_sstream_impl.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+     1>d:\cppwork\cpp_pro\src2\a0\client.cpp(26): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+                 c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850) : see declaration of 'inet_addr'
+         CMyWinApp.cpp
+         Coding.cpp
+         ConnMysql.cpp
+     1>d:\cppwork\cpp_pro\src2\a0\connmysql.cpp(45): warning C4101: 'row' : unreferenced local variable
+         ConnSocket.cpp
+         Crawler.cpp
+     1>d:\cppwork\cpp_pro\src2\a0\crawler.cpp(41): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(118) : see declaration of 'strcat'
+     1>d:\cppwork\cpp_pro\src2\a0\crawler.cpp(43): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(118) : see declaration of 'strcat'
+     1>d:\cppwork\cpp_pro\src2\a0\crawler.cpp(49): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+                 c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238) : see declaration of 'gethostbyname'
+     1>d:\cppwork\cpp_pro\src2\a0\crawler.cpp(66): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+                 c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850) : see declaration of 'inet_addr'
+     1>d:\cppwork\cpp_pro\src2\a0\crawler.cpp(66): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+                 c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+     1>d:\cppwork\cpp_pro\src2\a0\crawler.cpp(33): warning C4101: 'finish' : unreferenced local variable
+     1>d:\cppwork\cpp_pro\src2\a0\crawler.cpp(34): warning C4101: 'duration' : unreferenced local variable
+         DataCollection.cpp
+         DataOperator.cpp
+         DrawFlag.cpp
+         InteObj.cpp
+         MfcMulti.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : see declaration of 'MBCS_Support_Deprecated_In_MFC'
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         parser_json.cpp
+     1>d:\soft\boost_1_60_0\boost\format\alt_sstream_impl.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+     1>d:\cppwork\cpp_pro\src2\a0\parser_json.cpp(29): warning C4101: 'e' : unreferenced local variable
+     1>d:\cppwork\cpp_pro\src2\a0\parser_json.cpp(142): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(195) : see declaration of 'strncpy'
+     1>d:\cppwork\cpp_pro\src2\a0\parser_json.cpp(147): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(195) : see declaration of 'strncpy'
+         ReadIniFile.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : see declaration of 'MBCS_Support_Deprecated_In_MFC'
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         RecvThread.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : see declaration of 'MBCS_Support_Deprecated_In_MFC'
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         test.cpp
+         Generating Code...
+     1>d:\soft\boost_1_60_0\boost\property_tree\detail\json_parser\standard_callbacks.hpp(132): warning C4715: 'boost::property_tree::json_parser::detail::standard_callbacks<boost::property_tree::basic_ptree<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > > >::new_tree' : not all control paths return a value
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"D:\cppwork\cpp_pro\src2\a0\Debug\hello.lib" /NOLOGO  /machine:X86 hello.dir\Debug\ChangeIcon.obj
+         hello.dir\Debug\Client.obj
+         hello.dir\Debug\CMyWinApp.obj
+         hello.dir\Debug\Coding.obj
+         hello.dir\Debug\ConnMysql.obj
+         hello.dir\Debug\ConnSocket.obj
+         hello.dir\Debug\Crawler.obj
+         hello.dir\Debug\DataCollection.obj
+         hello.dir\Debug\DataOperator.obj
+         hello.dir\Debug\DrawFlag.obj
+         hello.dir\Debug\InteObj.obj
+         hello.dir\Debug\MfcMulti.obj
+         hello.dir\Debug\parser_json.obj
+         hello.dir\Debug\ReadIniFile.obj
+         hello.dir\Debug\RecvThread.obj
+         hello.dir\Debug\test.obj
+         hello.vcxproj -> D:\cppwork\cpp_pro\src2\a0\Debug\hello.lib
+     1>Done Building Project "D:\cppwork\cpp_pro\src2\a0\hello.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:13.96

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\cppwork\cpp_pro\CMakeFiles\1cb29bfd214260b6d4243099e740a04f\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{96ABB218-BB64-35DD-BE50-E0586610D9F6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
