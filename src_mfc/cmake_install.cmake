@@ -1,4 +1,4 @@
-# Install script for directory: D:/cppwork/cpp_pro/src_mfc
+# Install script for directory: D:/gitup/myproj/src_mfc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,7 +29,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/cppwork/cpp_pro/src_mfc/src/cmake_install.cmake")
+  include("D:/gitup/myproj/src_mfc/src/cmake_install.cmake")
 
 endif()
 

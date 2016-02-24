@@ -1,4 +1,4 @@
-# Install script for directory: D:/cppwork/cpp_pro/test
+# Install script for directory: D:/gitup/myproj/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

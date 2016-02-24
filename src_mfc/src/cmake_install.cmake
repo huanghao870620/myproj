@@ -1,4 +1,4 @@
-# Install script for directory: D:/cppwork/cpp_pro/src_mfc/src
+# Install script for directory: D:/gitup/myproj/src_mfc/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

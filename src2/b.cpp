@@ -14,12 +14,13 @@
 //#include <DataCollection.h>
 //#include <ReadIniFile.h>
 //#include <InteObj.h>
+#include <LoDiffeGlobal.h>
 #include "vld.h"
 
 
 //using namespace std;
 
-//#pragma comment(lib, "hello.lib")
+#pragma comment(lib, "hello.lib")
 #pragma comment(lib,"libmysql.lib")
 
 
@@ -262,15 +263,19 @@ BOOST_AUTO_TEST_CASE(test24){
 	rif->read();
 	delete rif;
 }
-*/
 
 BOOST_AUTO_TEST_CASE(test25){
 	//InteObj * io = new InteObj;
 	//CString exe = "notepad.exe";
 	//io->KillProcessFromName(exe);
 	//delete io;
+}
+*/
 
-	
+BOOST_AUTO_TEST_CASE(test26){
+	LoDiffeGlobal * ldg = new LoDiffeGlobal;
+	ldg->count();
+	delete ldg;
 }
 
 BOOST_AUTO_TEST_SUITE_END()

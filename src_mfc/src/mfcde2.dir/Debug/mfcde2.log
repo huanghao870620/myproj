@@ -1,14 +1,13 @@
-﻿Build started 2016/2/23 12:04:34.
-     1>Project "D:\cppwork\cpp_pro\src_mfc\src\mfcde2.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2016/2/24 19:46:08.
+     1>Project "D:\gitup\myproj\src_mfc\src\mfcde2.vcxproj" on node 3 (Build target(s)).
      1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\cppwork\cpp_pro\src_mfc\src\Debug\mfcde2.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:/cppwork/cpp_pro/src2/a0/Debug /LIBPATH:D:/cppwork/cpp_pro/src2/a0/Debug/Debug /LIBPATH:"C:/Users/hp/Downloads/mysql-5.6.24-win32.1432006610/mysql-5.6.24-win32/lib" /LIBPATH:"C:/Users/hp/Downloads/mysql-5.6.24-win32.1432006610/mysql-5.6.24-win32/lib/Debug" /LIBPATH:"D:/soft/boost_1_60_0/bin.v2/libs/locale/build/msvc-12.0/debug/link-static/threading-multi" /LIBPATH:"D:/soft/boost_1_60_0/bin.v2/libs/locale/build/msvc-12.0/debug/link-static/threading-multi/Debug" /LIBPATH:"C:/Program Files (x86)/Visual Leak Detector/lib/Win32" /LIBPATH:"C:/Program Files (x86)/Visual Leak Detector/lib/Win32/Debug" /LIBPATH:D:/cppwork/cpp_pro/src2/a0/Release /LIBPATH:D:/cppwork/cpp_pro/src2/a0/Release/Debug /LIBPATH:"C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/atlmfc/lib" /LIBPATH:"C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/atlmfc/lib/Debug" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"D:/cppwork/cpp_pro/src_mfc/src/Debug/mfcde2.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/cppwork/cpp_pro/src_mfc/src/Debug/mfcde2.lib" /MACHINE:X86 /SAFESEH  /machine:X86 /debug mfcde2.dir\Debug\mfcde2.res
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\gitup\myproj\src_mfc\src\Debug\mfcde2.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:/gitup/myproj/src2/a0/Debug /LIBPATH:D:/gitup/myproj/src2/a0/Debug/Debug /LIBPATH:"C:/Users/hp/Downloads/mysql-5.6.24-win32.1432006610/mysql-5.6.24-win32/lib" /LIBPATH:"C:/Users/hp/Downloads/mysql-5.6.24-win32.1432006610/mysql-5.6.24-win32/lib/Debug" /LIBPATH:"D:/soft/boost_1_60_0/bin.v2/libs/locale/build/msvc-12.0/debug/link-static/threading-multi" /LIBPATH:"D:/soft/boost_1_60_0/bin.v2/libs/locale/build/msvc-12.0/debug/link-static/threading-multi/Debug" /LIBPATH:"C:/Program Files (x86)/Visual Leak Detector/lib/Win32" /LIBPATH:"C:/Program Files (x86)/Visual Leak Detector/lib/Win32/Debug" /LIBPATH:D:/gitup/myproj/src2/a0/Release /LIBPATH:D:/gitup/myproj/src2/a0/Release/Debug /LIBPATH:"C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/atlmfc/lib" /LIBPATH:"C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/atlmfc/lib/Debug" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"D:/gitup/myproj/src_mfc/src/Debug/mfcde2.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/gitup/myproj/src_mfc/src/Debug/mfcde2.lib" /MACHINE:X86 /SAFESEH  /machine:X86 /debug mfcde2.dir\Debug\mfcde2.res
          mfcde2.dir\Debug\CMyFrameWnd.obj
          mfcde2.dir\Debug\CMyWinApp.obj
          mfcde2.dir\Debug\MyDialog.obj
-     1>CMyFrameWnd.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-         mfcde2.vcxproj -> D:\cppwork\cpp_pro\src_mfc\src\Debug\mfcde2.exe
-     1>Done Building Project "D:\cppwork\cpp_pro\src_mfc\src\mfcde2.vcxproj" (Build target(s)).
+         mfcde2.vcxproj -> D:\gitup\myproj\src_mfc\src\Debug\mfcde2.exe
+     1>Done Building Project "D:\gitup\myproj\src_mfc\src\mfcde2.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.40
+Time Elapsed 00:00:01.07

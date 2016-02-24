@@ -1,4 +1,3 @@
-//#define _AFXDLL
 #include <iostream>
 #include <afxwin.h>
 #include "RecvThread.h"

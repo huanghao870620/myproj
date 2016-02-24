@@ -8,13 +8,13 @@ include_directories(
  .
  "C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\include"
  "C:\\Program Files (x86)\\Visual Leak Detector\\include"
- "D:\\cppwork\\cpp_pro\\src2\\a0"
+ "D:\\gitup\\myproj\\src2\\a0"
 )
 
 
 link_directories(
 	#"D:\\cppwork\\cpp_pro\\src2\\a0\\Debug"
-	"D:\\cppwork\\cpp_pro\\src2\\a0\\Release"
+	"D:\\gitup\\myproj\\src2\\a0\\Release"
 	"C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\lib"
 	"C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\atlmfc\\lib"
 	"C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32"

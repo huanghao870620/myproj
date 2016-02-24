@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: D:/cppwork/cpp_pro/test
-# Build directory: D:/cppwork/cpp_pro/test_bin
+# Source directory: D:/gitup/myproj/test
+# Build directory: D:/gitup/myproj/test_bin
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

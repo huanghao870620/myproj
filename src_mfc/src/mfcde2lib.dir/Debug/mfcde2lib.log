@@ -1,20 +1,9 @@
-﻿Build started 2016/2/23 11:16:21.
-     1>Project "D:\cppwork\cpp_pro\src_mfc\src\mfcde2lib.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\soft\boost_1_60_0 /I"C:\Users\hp\Downloads\mysql-5.6.24-win32.1432006610\mysql-5.6.24-win32\include" /I"C:\Program Files (x86)\Visual Leak Detector\include" /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\atlmfc\include" /ID:\cppwork\cpp_pro\src_mfc\src\. /ID:\cppwork\cpp_pro\src2\a0 /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"mfcde2lib.dir\Debug\\" /Fd"mfcde2lib.dir\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt D:\cppwork\cpp_pro\src_mfc\src\MyDialog.cpp
-         MyDialog.cpp
-     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\atlmfc\include\afx.h(33) : see declaration of 'MBCS_Support_Deprecated_In_MFC'
-         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
-     1>D:\cppwork\cpp_pro\src_mfc\src\MyDialog.cpp(102): warning C4099: 'rr_report' : type name first seen using 'class' now seen using 'struct'
-                 D:\cppwork\cpp_pro\src2\a0\rr_report.h(6) : see declaration of 'rr_report'
-       Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"D:\cppwork\cpp_pro\src_mfc\src\Debug\mfcde2lib.lib" /NOLOGO  /machine:X86 mfcde2lib.dir\Debug\CMyFrameWnd.obj
-         mfcde2lib.dir\Debug\CMyWinApp.obj
-         mfcde2lib.dir\Debug\MyDialog.obj
-         mfcde2lib.vcxproj -> D:\cppwork\cpp_pro\src_mfc\src\Debug\mfcde2lib.lib
-     1>Done Building Project "D:\cppwork\cpp_pro\src_mfc\src\mfcde2lib.vcxproj" (Build target(s)).
+﻿Build started 2016/2/24 15:12:01.
+     1>Project "D:\gitup\myproj\src_mfc\src\mfcde2lib.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         mfcde2lib.vcxproj -> D:\gitup\myproj\src_mfc\src\Debug\mfcde2lib.lib
+     1>Done Building Project "D:\gitup\myproj\src_mfc\src\mfcde2lib.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.47
+Time Elapsed 00:00:00.27

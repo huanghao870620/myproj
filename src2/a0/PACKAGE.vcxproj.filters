@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="D:\cppwork\cpp_pro\CMakeFiles\01579b4bfbc55e663b8fbd6d90f6a1f2\PACKAGE_force.rule">
+    <CustomBuild Include="D:\gitup\myproj\CMakeFiles\2f708747b38cbcaf360e0882862a764b\PACKAGE_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{96ABB218-BB64-35DD-BE50-E0586610D9F6}</UniqueIdentifier>
+      <UniqueIdentifier>{6483ABC5-3A27-3EA3-96AC-C362C60F54F5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGUID>{7BEF65F2-6190-3F7D-8475-C1BC5D54E358}</ProjectGUID>
+    <ProjectGUID>{63CFF86E-0349-3431-9846-7B44586D664F}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>hello</ProjectName>
@@ -56,25 +56,25 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\cppwork\cpp_pro\src2\a0\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hello.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hello</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\cppwork\cpp_pro\src2\a0\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hello.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hello</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\cppwork\cpp_pro\src2\a0\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">hello.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">hello</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\cppwork\cpp_pro\src2\a0\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">hello.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">hello</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
-  </PropertyGroup>
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\gitup\myproj\src2\a0\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hello.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hello</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\gitup\myproj\src2\a0\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hello.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hello</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\gitup\myproj\src2\a0\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">hello.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">hello</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\gitup\myproj\src2\a0\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">hello.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">hello</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+    </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\soft\boost_1_60_0;C:\Users\hp\Downloads\mysql-5.6.24-win32.1432006610\mysql-5.6.24-win32\include;C:\Program Files (x86)\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -87,8 +87,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -113,13 +112,12 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -151,8 +149,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -203,10 +200,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt</Message>
+    <CustomBuild Include="D:\gitup\myproj\src2\a0\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/gitup/myproj/src2/a0/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/cppwork/cpp_pro -BD:/cppwork/cpp_pro --check-stamp-file D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/gitup/myproj -BD:/gitup/myproj --check-stamp-file D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -214,12 +211,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/gitup/myproj/src2/a0/CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/gitup/myproj/src2/a0/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/cppwork/cpp_pro -BD:/cppwork/cpp_pro --check-stamp-file D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/gitup/myproj -BD:/gitup/myproj --check-stamp-file D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -227,12 +224,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/gitup/myproj/src2/a0/CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/gitup/myproj/src2/a0/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/cppwork/cpp_pro -BD:/cppwork/cpp_pro --check-stamp-file D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/gitup/myproj -BD:/gitup/myproj --check-stamp-file D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -240,12 +237,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/gitup/myproj/src2/a0/CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/gitup/myproj/src2/a0/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/cppwork/cpp_pro -BD:/cppwork/cpp_pro --check-stamp-file D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HD:/gitup/myproj -BD:/gitup/myproj --check-stamp-file D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -253,32 +250,35 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/cppwork/cpp_pro/src2/a0/CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;D:\cppwork\cpp_pro\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\cppwork\cpp_pro\src2\a0\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/gitup/myproj/src2/a0/CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;D:\gitup\myproj\src2\a0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\gitup\myproj\src2\a0\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\ChangeIcon.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\Client.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\CMyWinApp.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\Coding.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\ConnMysql.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\ConnSocket.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\Crawler.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\DataCollection.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\DataOperator.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\DrawFlag.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\InteObj.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\MfcMulti.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\parser_json.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\ReadIniFile.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\RecvThread.cpp" />
-    <ClCompile Include="D:\cppwork\cpp_pro\src2\a0\test.cpp" />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\ChangeIcon.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\Client.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\CMyWinApp.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\Coding.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\ConnMysql.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\ConnSocket.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\Crawler.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\DataCollection.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\DataOperator.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\DrawFlag.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\GeneRandom.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\Global.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\InteObj.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\LoDiffeGlobal.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\MfcMulti.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\parser_json.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\ReadIniFile.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\RecvThread.cpp"  />
+    <ClCompile Include="D:\gitup\myproj\src2\a0\test.cpp"  />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:/cppwork/cpp_pro/ZERO_CHECK.vcxproj">
-      <Project>88CEB1AB-ADFD-37C1-BA17-03A48B660471</Project>
+    <ProjectReference Include="D:/gitup/myproj/ZERO_CHECK.vcxproj">
+      <Project>C0FEC673-BE86-3473-9D08-CA4A48B98BD8</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
