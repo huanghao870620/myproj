@@ -1,14 +1,15 @@
 #ifndef STRUINTE_H
 #define STRUINTE_H
 
-struct StruInte
+class StruInte
 {
-         char num[100];  // 总条数
-         char pageNum[100]; //页数
-		 char rowNum[100]; //行数
-		 char threadState[100]; // 线程状态
-		 char type[100]; // 研报类型
-		 char distBet[100]; // true 全量  false  增量
+public:
+         std::string num;  // 总条数
+         std::string pageNum; //页数
+		 std::string rowNum; //行数
+		 std::string threadState; // 线程状态
+		 std::string type; // 研报类型
+		 std::string distBet; // true 全量  false  增量
 };  //end struct StruInte
 
 

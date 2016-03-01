@@ -11,9 +11,9 @@ using namespace std;
 
 UINT ThreadFun(LPVOID);
 
-MfcMulti::MfcMulti(DrawFlag * df) 
+MfcMulti::MfcMulti() 
 {
-	this->client = new Client(df);
+	this->client = new Client();
 	this->recvThread = new RecvThread(this->client);
 
 	pThread = AfxBeginThread(ThreadFun, (LPVOID)this->client, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);
@@ -31,12 +31,11 @@ UINT ThreadFun(LPVOID pParam){
 	Client * client = (Client *)pParam;
 	while (true)
 	{
-		std::list<struct  StruInte *> * list =  client->get_st();
-
+		RECT rect;
+		std::list<StruInte *> * list =  client->get_st();
 		CWnd *pMainWnd = AfxGetMainWnd();
 		pMainWnd->m_hWnd;
 		LPARAM time = GetCurrentTime();
-		RECT rect;
 		pMainWnd->GetClientRect(&rect);
 		::PostMessageA(pMainWnd->m_hWnd, WM_PAINT, 0, (LPARAM)list);
 		::InvalidateRect(pMainWnd->m_hWnd, &rect, FALSE);
@@ -51,7 +50,7 @@ void MfcMulti::Start() {
 }
 
 /*获取消息*/
-std::list<struct  StruInte *> *  MfcMulti::get_st(){
+std::list<StruInte *> *  MfcMulti::get_st(){
 	return &this->st;
 }
 

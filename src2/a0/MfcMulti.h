@@ -4,7 +4,7 @@
 class Client;
 class CWinThread;
 class RecvThread;
-struct StruInte;
+class StruInte;
 class DrawFlag;
 
 
@@ -14,24 +14,22 @@ class MfcMulti
 
     public:
 
-        MfcMulti(DrawFlag * df); 
+        MfcMulti(); 
 		 
         ~MfcMulti(); 
 
 		void Start();
 
-		std::list<struct  StruInte *> * get_st();
+		std::list<StruInte *> * get_st();
 
 		Client & getClientRef();
 	private:
-
-		Client *client;
+		Client * client;
 		RecvThread *recvThread = nullptr;
-		std::list<struct  StruInte *> st;
+		std::list<StruInte *> st;
 		CWinThread *pThread = nullptr;
-		//DrawFlag * df = nullptr;
 
-};  //end class MfcMulti
+};  
 
 
 
