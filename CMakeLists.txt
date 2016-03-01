@@ -2,15 +2,6 @@ cmake_minimum_required(VERSION 3.4)
 
 project(proj0)
 
-aux_source_directory(src dir_srcs)
-
-add_executable(a0 ${dir_srcs})
-
-aux_source_directory(src1 dir_src1)
-
-add_executable(a1 ${dir_src1})
-
-
 include_directories(
  "D:\\soft\\boost_1_60_0"
  "C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\include"
@@ -28,7 +19,6 @@ link_directories(
 
 aux_source_directory(src2 dir_src2)
 
-
 set(
  src_mfc
 )
@@ -38,13 +28,31 @@ add_subdirectory(src2/a0)
 add_subdirectory(src_mfc)
 
 
-#aux_source_directory(/src2/a0 b0)
 include_directories(./src2/a0)
-add_executable(a2 ${dir_src2})
+set(CMAKE_CXX_FLAGS_RELEASE "/MT")
+set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
 
-add_executable(mfc_exa ${src_mfc})
 
-#target_link_libraries(a2 )
 
+set(
+ libname
+ libmysql 
+)
+find_library(DSFDS 
+ NAMES ${libname}
+ HINTS ${fdsg32s}
+ )
+ find_library(b0
+  NAMES my_library
+  PATHS ${fdsg32s}
+ )
+
+
+
+
+add_executable(test_proj ${dir_src2})
 add_subdirectory(test test_bin)
+
+target_link_libraries(test_proj ${DSFDS})
+target_link_libraries(test_proj ${b0})
 
