@@ -7,7 +7,6 @@
 #include "CMyFrameWnd.h"
 #include "resource.h"
 
-#pragma comment(lib, "hello.lib")
 
 BEGIN_MESSAGE_MAP(CMyFrameWnd, CFrameWnd)	
 	ON_COMMAND(2, OnAbout)
@@ -39,14 +38,12 @@ CMyFrameWnd::~CMyFrameWnd()
 		cs_iter++;
 	}
 
-	delete this->df;
 }
 
 
 CMyFrameWnd::CMyFrameWnd()
 {
 	
-	this->df = new DrawFlag;
 	this->Create(NULL, _T("研报状态监控器"), WS_OVERLAPPEDWINDOW, this->rectDefault, NULL, NULL);
 	HICON ico = AfxGetApp()->LoadIconA(IDR_DD1);
 	SetIcon(ico, true);
@@ -147,27 +144,28 @@ void CMyFrameWnd::OnPaint()
 	CPaintDC dc(this);
 	CRect rect;
 	GetClientRect(&rect);
+	DrawFlag * df = DrawFlag::GetInstance();
 	static const MSG *msg = this->GetCurrentMessage();
 	if (msg->lParam == NULL){
 		return;
 	}
 
 	std::list<StruInte *> * list_stru = (std::list<StruInte *> *) msg->lParam;
-	this->df->setFlag(true);
+	df->setFlag(true);
 	if (list_stru != nullptr && list_stru->size() > 0){
 		std::list<StruInte *>::iterator iter = list_stru->begin();
 		std::list<CStatic * >::iterator content_iter = this->content_list.begin();
 		while (iter != list_stru->end()){
 			struct  StruInte *si = *iter;
-			(*content_iter++)->SetWindowTextA(si->num); // 总条数
-			(*content_iter++)->SetWindowTextA(si->pageNum); //页数
-			(*content_iter++)->SetWindowTextA(si->rowNum); //行数
-			(*content_iter++)->SetWindowTextA(si->threadState); // 线程状态
-			(*content_iter++)->SetWindowTextA(si->type); //研报类型
-			(*content_iter++)->SetWindowTextA(si->distBet); //全量/增量tt
+			(*content_iter++)->SetWindowTextA(si->num.c_str()); // 总条数
+			(*content_iter++)->SetWindowTextA(si->pageNum.c_str()); //页数
+			(*content_iter++)->SetWindowTextA(si->rowNum.c_str()); //行数
+			(*content_iter++)->SetWindowTextA(si->threadState.c_str()); // 线程状态
+			(*content_iter++)->SetWindowTextA(si->type.c_str()); //研报类型
+			(*content_iter++)->SetWindowTextA(si->distBet.c_str()); //全量/增量tt
 			iter++;
 		}
-		this->df->setFlag(false);
+		df->setFlag(false);
 	}
 
 }
@@ -181,7 +179,7 @@ void CMyFrameWnd::OnAbout()
 
 
 void CMyFrameWnd::OnClicked(){
-	mm = new MfcMulti(this->df);
+	mm = new MfcMulti();
 	mm->Start();
 }
 

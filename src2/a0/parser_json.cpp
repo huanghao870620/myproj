@@ -5,9 +5,8 @@
 
 using namespace boost::property_tree;
 
-parser_json::parser_json(DrawFlag * df) 
+parser_json::parser_json() 
 {
-	this->df = df;
 }
 
 parser_json::~parser_json() 
@@ -16,7 +15,8 @@ parser_json::~parser_json()
 
 /*收集消息*/
 void parser_json::colle_msg(char *ptr) {
-	while (this->df->getFlag()){
+	DrawFlag * df =  DrawFlag::GetInstance();
+	while (df->getFlag()){
 		;
 	}
 
@@ -65,7 +65,7 @@ void parser_json::colle_msg(char *ptr) {
 	}
 }
 
-std::list<struct  StruInte *> * parser_json::get_msg_list(){
+std::list<StruInte *> * parser_json::get_msg_list(){
 	return &this->msg_list;
 }
 
@@ -88,39 +88,40 @@ void parser_json::loading(ptree * tree){
 
 		if (strcmp("indust", type) == 0){ //行业研报
 			type = "行业研报";
-			strcpy_s(si->type, strlen(type)+1 , type);
+			si->type = type;
 		}
 		else if (strcmp("stocks", type) == 0){ // 个股研报
 			type = "个股研报";
-			strcpy_s(si->type, strlen(type) + 1, type);
+			si->type = type;
 		}
 		else if (strcmp("macro", type) == 0){ // 宏观研报
 			type = "宏观研报";
-			strcpy_s(si->type, strlen(type)  + 1, type);
+			si->type = type;
 		}
 		else if (strcmp("new", type) == 0){ // 新股研报
 			type = "新股研报";
-			strcpy_s(si->type, strlen(type)  + 1, type);
+			si->type = type;
 		}
 		else if (strcmp("strategy", type) == 0){ // 策略研报
 			type = "策略研报";
-			strcpy_s(si->type, strlen(type)  + 1, type);
+			si->type = type;
 		}
 		else if (strcmp("broker", type) == 0){ //券商晨会
 			type = "券商晨会";
-			strcpy_s(si->type, strlen(type)  + 1, type);
+			si->type = type;
 		}
 
-		strcpy_s(si->num, strlen(num) + 1, num);
-		strcpy_s(si->pageNum, strlen(pageNum) + 1, pageNum);
-		strcpy_s(si->rowNum, strlen(rowNum) + 1, rowNum);
+		si->num = num;
+		si->pageNum = pageNum;
+		si->rowNum = rowNum;
+
 		if (strcmp("false", threadState) == 0){
 			threadState = "运行中";
 		}
 		else{
 			threadState = "已停止";
 		}
-		strcpy_s(si->threadState, strlen(threadState) + 1, threadState);
+		si->threadState = threadState;
 
 		if (strcmp("false", distBet) == 0){
 			distBet = "每日";
@@ -128,7 +129,7 @@ void parser_json::loading(ptree * tree){
 		else{
 			distBet = "全量";
 		}
-		strcpy_s(si->distBet, strlen(distBet) + 1, distBet);
+		si->distBet = distBet;
 
 		this->msg_list.push_back(si);
 	}
