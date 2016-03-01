@@ -18,21 +18,14 @@ link_directories(
 )
 
 aux_source_directory(src2 dir_src2)
-
-set(
- src_mfc
-)
-
-aux_source_directory(src_mfc src_mfc)
+aux_source_directory(src_mfc monitor)
 add_subdirectory(src2/a0)
-add_subdirectory(src_mfc)
+add_subdirectory(monitor)
 
 
 include_directories(./src2/a0)
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
-
-
 
 set(
  libname
