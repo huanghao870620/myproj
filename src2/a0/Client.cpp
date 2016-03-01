@@ -4,14 +4,14 @@
 
 #include "ReadIniFile.h"
 #include "DrawFlag.h"
+#include "StruInte.h"
 #include "Client.h"
 
 #pragma comment(lib,"ws2_32.lib")  
 
 
-Client::Client(DrawFlag * df)
+Client::Client()
 {
-	this->df = df;
 	this->rif = new ReadIniFile;
 	WSAStartup(MAKEWORD(1, 1), &wsa); //initial Ws2_32.dll by a process  
 
@@ -31,7 +31,7 @@ Client::Client(DrawFlag * df)
 		return;
 	}
 
-	this->pj = new parser_json(this->df);
+	this->pj = new parser_json();
 	
 }
 
@@ -48,7 +48,7 @@ void Client::Close() {
 }
 
 void Client::Recv() {
-	int r = recv(soc, recv_buf, 10000, 0);
+	int r = recv(soc, this->recv_buf, 10000, 0);
 	if (r == SOCKET_ERROR){
 
 	}
@@ -72,6 +72,6 @@ int Client::Send(const char *msg) {
 }
 
 
-std::list<struct  StruInte *> * Client::get_st(){
+std::list<StruInte *> * Client::get_st(){
 	return this->st;
 }

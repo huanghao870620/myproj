@@ -4,40 +4,31 @@
 
 class parser_json;
 class ReadIniFile;
-class DrawFlag;
+class StruInte;
 
 class Client
 {
 
-    public:
+public:
+	Client();
+	~Client();
 
-		Client(DrawFlag * df);
-
-		~Client(); 
-
- void Close();
- void Recv();
- int Send(const char *msg);
-
-
- std::list<struct  StruInte *> * get_st();
-
-
+	void Close();
+	void Recv();
+	int Send(const char *msg);
+	std::list<StruInte *> * get_st();
 
 private:
 	SOCKET soc;
 	SOCKADDR_IN serveraddr;
 	SOCKADDR_IN clientaddr;
-	char buf[1024];
+	std::string buf;
 	char recv_buf[10000];
 	WSADATA wsa;
 	parser_json *pj = nullptr;
-
-	std::list<struct  StruInte *> *st = nullptr;
-
+	std::list<StruInte *> *st = nullptr;
 	ReadIniFile * rif = nullptr;
-	DrawFlag * df = nullptr;
-};  //end class Client
+};
 
 
 

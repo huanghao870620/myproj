@@ -1,7 +1,7 @@
 #include <Windows.h>
 #include <stdio.h>
 #include <mysql.h>
-#include <iostream>
+
 #include "ReadIniFile.h"
 #include "ConnMysql.h"
 
@@ -11,19 +11,26 @@ ConnMysql::ConnMysql()
 {
 	this->rif = new ReadIniFile;
 
-	strcpy_s(this->dbuser,  this->rif->get_dbuser());
-	strcpy_s(this->dbpasswd, this->rif->get_dbpass());
-	strcpy_s(this->dbip,  this->rif->get_dbip());
-	strcpy_s(this->dbname,  this->rif->get_dbname());
-	strcpy_s(this->tablename, "rr_report");
+	this->dbuser = this->rif->get_dbuser();
+	this->dbpasswd = this->rif->get_dbpass();
+	this->dbip = this->rif->get_dbip();
+	this->dbname = this->rif->get_dbname();
+	this->tablename = "rr_report";
 
 	fflush(stdin);
 	con = mysql_init((MYSQL*)0);
-	mysql_real_connect(con, dbip, dbuser, dbpasswd, dbname, 3306, NULL, 0);
-	mysql_select_db(con, dbname);
+	mysql_real_connect(con, 
+		 this->dbip.c_str(),
+		 this->dbuser.c_str(), 
+		 this->dbpasswd.c_str(), 
+		 this->dbname.c_str(), 
+		 3306,
+		 NULL, 
+		 0);
+	mysql_select_db(con, this->dbname.c_str());
 	con->reconnect = 1;
 	query = "set names \'GBK\'";
-	rt = mysql_real_query(con, query, strlen(query));
+    mysql_real_query(con, query, strlen(query));
 }
 
 ConnMysql::~ConnMysql()
@@ -44,7 +51,7 @@ void ConnMysql::insert(){
 MYSQL_RES * ConnMysql::select(const char * sql){
 	MYSQL_ROW row;
 	MYSQL_FIELD *field = nullptr;
-	rt = mysql_real_query(con, sql, strlen(sql));
+    mysql_real_query(con, sql, strlen(sql));
 	res = mysql_store_result(con);
 	return res;
 }
