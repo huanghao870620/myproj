@@ -1,3 +1,0 @@
-D:/cppwork/cpp_pro/src_mfc/src/CMakeFiles/mfcde2.dir
-D:/cppwork/cpp_pro/src_mfc/src/CMakeFiles/ALL_BUILD.dir
-D:/cppwork/cpp_pro/src_mfc/src/CMakeFiles/ZERO_CHECK.dir
