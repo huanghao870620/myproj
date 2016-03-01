@@ -23,15 +23,15 @@ class MyDialog : public CDialog
 		virtual BOOL OnInitDialog();
 
 private:
+	DataCollection *dc = nullptr;
 	CStatic text;
 	CListCtrl m_UserList;
-	DataCollection * dc = nullptr;
 	CButton cButton; // 清除按钮
 	CButton flushButton; // 刷新按钮
 
 private:
 	DECLARE_MESSAGE_MAP()
-};  //end class MyDialog
+};  
 
 
 
