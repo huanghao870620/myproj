@@ -51,7 +51,6 @@ find_library(DSFDS
 
 
 add_executable(test_proj ${dir_src2})
-add_subdirectory(test test_bin)
 
 target_link_libraries(test_proj ${DSFDS})
 target_link_libraries(test_proj ${b0})
