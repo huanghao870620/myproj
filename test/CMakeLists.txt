@@ -1,8 +1,0 @@
-include(CheckFunctionExists)
-include(CheckCXXSourceCompiles)
-include(CheckLibraryExists)
-include(CPack)
-enable_testing()
-
-add_test(name your_test command your_test)
-message("--- test---")
