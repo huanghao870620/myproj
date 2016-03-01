@@ -1,18 +1,9 @@
-//#define _AFXDLL
-//#define _UNICODE
 #include <iostream>
 #include <afxwin.h>
 #include <afxdisp.h>
 #include "CMyFrameWnd.h"
 #include "CMyWinApp.h"
 #include "vld.h"
-
-
-
-//#pragma comment(lib, "*.lb")
-
-#pragma comment(lib, "hello.lib")
-#pragma comment(lib,"libmysql.lib")
 
 using namespace std;
 
@@ -37,7 +28,6 @@ BOOL CMyWinApp::InitInstance() {
 	return TRUE;
 }
 
-// init
 void CMyWinApp::init() {
 	AllocConsole();
 	freopen("CONOUT$", "w+t", stdout);

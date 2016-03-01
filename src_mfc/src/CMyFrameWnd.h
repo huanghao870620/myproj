@@ -6,7 +6,6 @@
 
 class MfcMulti;
 class MyDialog;
-class DrawFlag;
 
 class CMyFrameWnd : public CFrameWnd
 {
@@ -28,10 +27,10 @@ private:
 	std::list<std::string *> str_list; // 字符串
 	CButton m_button; // 监控按钮
 	CButton aofdup_data; // 管理重复数据
+	CButton json_error_but; // json error button
 
 	MfcMulti *mm = nullptr; // 线程
-	MyDialog *mDialog = nullptr;
-	DrawFlag * df = nullptr;
+	MyDialog *mDialog = nullptr; // 对话框
 
 private:
 	void init_crect(CRect & ct); // 初始化
