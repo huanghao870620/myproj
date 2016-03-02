@@ -9,12 +9,11 @@
 
 ConnMysql::ConnMysql()
 {
-	this->rif = new ReadIniFile;
 
-	this->dbuser = this->rif->get_dbuser();
-	this->dbpasswd = this->rif->get_dbpass();
-	this->dbip = this->rif->get_dbip();
-	this->dbname = this->rif->get_dbname();
+	this->dbuser = ReadIniFile::get_dbuser();
+	this->dbpasswd = ReadIniFile::get_dbpass();
+	this->dbip = ReadIniFile::get_dbip();
+	this->dbname = ReadIniFile::get_dbname();
 	this->tablename = "rr_report";
 
 	fflush(stdin);

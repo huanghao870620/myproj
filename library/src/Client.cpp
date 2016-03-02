@@ -12,7 +12,6 @@
 
 Client::Client()
 {
-	this->rif = new ReadIniFile;
 	WSAStartup(MAKEWORD(1, 1), &wsa); //initial Ws2_32.dll by a process  
 
 	if ((soc = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) <= 0)   //create a tcp socket  
@@ -23,7 +22,7 @@ Client::Client()
 
 	serveraddr.sin_family = AF_INET;
 	serveraddr.sin_port = htons(4000);
-	serveraddr.sin_addr.S_un.S_addr = inet_addr(this->rif->get_server_ip());
+	serveraddr.sin_addr.S_un.S_addr = inet_addr(ReadIniFile::get_server_ip().c_str());
 
 	if (connect(soc, (SOCKADDR *)&serveraddr, sizeof(serveraddr)) != 0)
 	{
@@ -32,13 +31,11 @@ Client::Client()
 	}
 
 	this->pj = new parser_json();
-	
 }
 
 Client::~Client() 
 {
 	delete this->pj;
-	delete this->rif;
 }
 
 

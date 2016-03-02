@@ -5,7 +5,6 @@
 #include <winsock.h>
 #include <mysql.h>
 
-class ReadIniFile;
 class ConnMysql
 {
 
@@ -31,7 +30,6 @@ private:
 
 		char *query = nullptr;
 
-		ReadIniFile * rif = nullptr;
 };  
 
 

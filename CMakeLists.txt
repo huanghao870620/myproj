@@ -20,7 +20,7 @@ add_subdirectory(monitor)
 
 include_directories(./library/src)
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 set(
  libname
  libmysql 

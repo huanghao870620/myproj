@@ -3,7 +3,6 @@
 #include <list>
 
 class parser_json;
-class ReadIniFile;
 class StruInte;
 
 class Client
@@ -27,7 +26,6 @@ private:
 	WSADATA wsa;
 	parser_json *pj = nullptr;
 	std::list<StruInte *> *st = nullptr;
-	ReadIniFile * rif = nullptr;
 };
 
 
