@@ -6,10 +6,8 @@
 #include "ConnMysql.h"
 
 
-
 ConnMysql::ConnMysql()
 {
-
 	this->dbuser = ReadIniFile::get_dbuser();
 	this->dbpasswd = ReadIniFile::get_dbpass();
 	this->dbip = ReadIniFile::get_dbip();
@@ -30,6 +28,13 @@ ConnMysql::ConnMysql()
 	con->reconnect = 1;
 	query = "set names \'GBK\'";
     mysql_real_query(con, query, strlen(query));
+}
+
+ConnMysql * ConnMysql::getInstance(){
+	if (conn == nullptr){
+		conn = new ConnMysql;
+	}
+	return conn;
 }
 
 ConnMysql::~ConnMysql()
