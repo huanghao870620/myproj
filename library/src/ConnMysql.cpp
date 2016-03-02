@@ -34,7 +34,6 @@ ConnMysql::ConnMysql()
 
 ConnMysql::~ConnMysql()
 {
-	delete this->rif;
 }
 
 void ConnMysql::init() {

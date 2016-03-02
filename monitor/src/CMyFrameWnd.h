@@ -19,6 +19,7 @@ class CMyFrameWnd : public CFrameWnd
 		afx_msg void OnCreate();
 		afx_msg void OnClicked(); // 监控状态
 		afx_msg void OnClickedDupData(); // 重复数据
+		afx_msg void OnClicked4ErrorLog(); //错误日志
 		afx_msg void OnClose(); //关闭窗口
 
 private:

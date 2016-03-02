@@ -12,6 +12,7 @@ BEGIN_MESSAGE_MAP(CMyFrameWnd, CFrameWnd)
 	ON_COMMAND(2, OnAbout)
 	ON_BN_CLICKED(IDC_DYNAMICBUTTON, OnClicked)
 	ON_BN_CLICKED(IDC_MANADUPDATA, OnClickedDupData)
+	ON_BN_CLICKED(88, OnClicked4ErrorLog)
 	ON_WM_PAINT()
 	ON_WM_CLOSE(OnClose)
 END_MESSAGE_MAP()
@@ -58,6 +59,10 @@ CMyFrameWnd::CMyFrameWnd()
 	this->aofdup_data.Create(_T("管理重复数据"),
 		WS_CHILD | WS_VISIBLE | WS_BORDER, 
 		CRect(220, 10, 320, 40), this, IDC_MANADUPDATA);
+
+	this->json_error_but.Create(_T("错误日志"), 
+		WS_CHILD | WS_VISIBLE | WS_BORDER, 
+		CRect(340, 10, 440, 40), this, 88);
 
 	std::string * num = new std::string("总条数");
 	std::string * page_num = new std::string("页数");
@@ -125,6 +130,10 @@ void CMyFrameWnd::add_crect_hori(CRect & ct, int & x){
 void CMyFrameWnd::add_crect_vertical(CRect & ct, int & y){
 	ct.top = ct.top + y;
 	ct.bottom = ct.bottom + y;
+}
+
+void CMyFrameWnd::OnClicked4ErrorLog(){
+	this->MessageBox(_T("222"));
 }
 
 void CMyFrameWnd::init_crect(CRect & ct){
