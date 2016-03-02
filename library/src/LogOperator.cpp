@@ -10,7 +10,8 @@
 	}
 
 	void LogOperator::select(){
-		MYSQL_RES * res =  this->conn->select("select * from rr_report_daily_log limit 2");
+		ConnMysql * conn = ConnMysql::getInstance();
+		MYSQL_RES * res =  conn->select("select * from rr_report_daily_log limit 2");
 		std::size_t sum = mysql_num_fields(res);
 		MYSQL_ROW row;
 		while (row = mysql_fetch_row(res)){

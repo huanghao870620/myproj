@@ -19,7 +19,6 @@ class DataCollection
 private:
         std::list<char *> fields;
 		std::list<rr_report * >   report_list;
-		ConnMysql * cm;
 };  //end class DataCollection
 
 

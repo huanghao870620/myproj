@@ -4,20 +4,15 @@
 
 #include <winsock.h>
 #include <mysql.h>
-
+class ConnMysql;
+static ConnMysql * conn;
 class ConnMysql
 {
 
-    public:
-
+	private:
         ConnMysql(); 
-        ~ConnMysql(); 
-		void init();
-		void insert();
-		MYSQL_RES * select( const char * sql);
-		int Delete(const char * sql);
 
-private:
+	private:
 		MYSQL *con;
 		MYSQL_RES *res;
 		MYSQL_ROW row;
@@ -27,8 +22,19 @@ private:
 		std::string dbip;
 		std::string dbname;
 		std::string tablename;
-
 		char *query = nullptr;
+		
+
+	public:
+		static ConnMysql* getInstance();
+
+        ~ConnMysql(); 
+		void init();
+		void insert();
+		MYSQL_RES * select( const char * sql);
+		int Delete(const char * sql);
+
+	
 
 };  
 

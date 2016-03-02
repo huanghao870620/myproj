@@ -6,7 +6,6 @@
 
 DataCollection::DataCollection() 
 {
-	this->cm = new ConnMysql;
 }
 
 DataCollection::~DataCollection() 
@@ -18,7 +17,8 @@ DataCollection::~DataCollection()
 }
 
 int DataCollection::Delete(){
-	return this->cm->Delete(" delete from rr_report  where id in( \
+	ConnMysql * conn =  ConnMysql::getInstance();
+	return conn->Delete(" delete from rr_report  where id in( \
 		select t4.id from(\
 		select id from rr_report  where id not in(select t.id from( \
 		select pdf_url, id from rr_report where pdf_url is not null) as t \
@@ -34,7 +34,8 @@ int DataCollection::Delete(){
 }
 
 void DataCollection::colle(){
-	MYSQL_RES * res = this->cm->select(" select id  from rr_report  where id not in (select t.id from ( \
+	ConnMysql * conn = ConnMysql::getInstance();
+	MYSQL_RES * res = conn->select(" select id  from rr_report  where id not in (select t.id from ( \
 		select pdf_url, id from rr_report where pdf_url is not null) as t  \
 		group by t.pdf_url having count(1) = 1)  \
 		and id not in(select t.id from(  \
@@ -62,7 +63,8 @@ std::list<char * > * DataCollection::get_fields(){
 }
 
 void DataCollection::colle_all(){
-	MYSQL_RES * res = this->cm->select(" select * from rr_report  where id not in (select t.id from ( \
+	ConnMysql * conn = ConnMysql::getInstance();
+	MYSQL_RES * res = conn->select(" select * from rr_report  where id not in (select t.id from ( \
 				select pdf_url, id from rr_report where pdf_url is not null) as t  \
 				group by t.pdf_url having count(1) = 1)  \
 				and id not in(select t.id from(  \
