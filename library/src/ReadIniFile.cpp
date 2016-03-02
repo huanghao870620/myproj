@@ -49,10 +49,9 @@ std::string & ReadIniFile::get_dbname(){
 }
 
 
-std::string & ReadIniFile::get_server_ip(){
-	char server_ip[100];
+void ReadIniFile::get_server_ip(char * server_ip){
 	GetPrivateProfileString(_T("SOCKET_CLIENT"), _T("server_ip"), _T(""), server_ip, 256, get_path());
-	return std::string(server_ip);
 }
+
 
 

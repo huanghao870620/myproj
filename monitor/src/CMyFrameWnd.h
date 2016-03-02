@@ -6,7 +6,7 @@
 
 class MfcMulti;
 class MyDialog;
-
+class LogDialog;
 class CMyFrameWnd : public CFrameWnd
 {
     public:
@@ -32,12 +32,12 @@ private:
 
 	MfcMulti *mm = nullptr; // 线程
 	MyDialog *mDialog = nullptr; // 对话框
+	LogDialog * logDialog = nullptr; // 日志对话框
 
 private:
 	void init_crect(CRect & ct); // 初始化
 	void add_crect_hori(CRect & ct, int & x); //横轴增长
 	void add_crect_vertical(CRect &ct, int & y); //纵轴增长
-	
 
 private:
 		DECLARE_MESSAGE_MAP()

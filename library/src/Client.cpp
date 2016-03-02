@@ -12,21 +12,24 @@
 
 Client::Client()
 {
+	char  server_ip[100];
 	WSAStartup(MAKEWORD(1, 1), &wsa); //initial Ws2_32.dll by a process  
 
 	if ((soc = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) <= 0)   //create a tcp socket  
 	{
-		printf("Create socket fail!\n");
+		::MessageBox(NULL, "Connect socket fail!", "Connect socket fail!", MB_OK);
 		return;
 	}
 
 	serveraddr.sin_family = AF_INET;
 	serveraddr.sin_port = htons(4000);
-	serveraddr.sin_addr.S_un.S_addr = inet_addr(ReadIniFile::get_server_ip().c_str());
+	
+	ReadIniFile::get_server_ip(server_ip);
+	serveraddr.sin_addr.S_un.S_addr = inet_addr(server_ip);
 
 	if (connect(soc, (SOCKADDR *)&serveraddr, sizeof(serveraddr)) != 0)
 	{
-		printf("Connect fail!\n");
+		::MessageBox(NULL, "Connect fail!", "Connect fail!", MB_OK);
 		return;
 	}
 

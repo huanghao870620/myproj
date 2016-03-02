@@ -15,7 +15,7 @@ class ReadIniFile
 		static std::string & get_dbpass();
 		static std::string & get_dbip();
 		static std::string & get_dbname();
-		static std::string & get_server_ip();
+		static void get_server_ip(char * server_ip);
 }; 
 
 

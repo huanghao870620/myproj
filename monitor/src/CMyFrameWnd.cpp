@@ -4,6 +4,7 @@
 #include "StruInte.h"
 #include "MyDialog.h"
 #include "DrawFlag.h"
+#include "LogDialog.h"
 #include "CMyFrameWnd.h"
 #include "resource.h"
 
@@ -132,8 +133,11 @@ void CMyFrameWnd::add_crect_vertical(CRect & ct, int & y){
 	ct.bottom = ct.bottom + y;
 }
 
+// ´íÎóÈÕÖ¾
 void CMyFrameWnd::OnClicked4ErrorLog(){
-	this->MessageBox(_T("222"));
+	this->logDialog = new LogDialog;
+	this->logDialog->Create(IDD_DIALOG2, this);
+	this->logDialog->ShowWindow(SW_SHOWNORMAL);
 }
 
 void CMyFrameWnd::init_crect(CRect & ct){

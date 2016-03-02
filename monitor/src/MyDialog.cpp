@@ -99,7 +99,7 @@ void MyDialog::ReDraw(){
 	std::list<rr_report * > * report_list = this->dc->get_report_list();
 	std::list<rr_report * >::iterator iter = report_list->begin();
 	for (int i = 0; iter != report_list->end(); iter++, i++){
-		struct rr_report * report = *iter;
+		rr_report * report = *iter;
 		this->m_UserList.InsertItem(i, report->id.c_str());
 		this->m_UserList.SetItemText(i, 1, report->tick.c_str());
 		this->m_UserList.SetItemText(i, 2, report->name.c_str());
