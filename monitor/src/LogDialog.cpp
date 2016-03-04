@@ -1,4 +1,5 @@
 #include "LogOperator.h"
+#include "rr_report_dialy_log.h"
 #include "LogDialog.h"
 
 
@@ -14,6 +15,7 @@ END_MESSAGE_MAP()
 
 LogDialog::LogDialog()
 {
+	this->logOperator = new LogOperator;
 }
 
 
@@ -23,15 +25,10 @@ LogDialog::~LogDialog()
 
 
 BOOL LogDialog::OnInitDialog(){
-	this->MessageBox(_T("abc"));
 	this->logOperator->select();
 	std::list<rr_report_dialy_log * > *log_list = this->logOperator->get_fields();
 	std::list<rr_report_dialy_log *>::iterator iter = log_list->begin();
-	while (iter != log_list->end())
-	{
-		rr_report_dialy_log * log = *iter;
-
-	}
+	
 
 
 	this->listCtrl.Create(WS_BORDER | WS_VISIBLE | WS_CHILD | LVS_REPORT, CRect(10, 10, 1040, 280), this, 2);
@@ -46,6 +43,14 @@ BOOL LogDialog::OnInitDialog(){
 	this->listCtrl.InsertColumn(1, _T("tick"), 0, 50);
 	this->listCtrl.InsertColumn(2, _T("name"), 0, 50);
 	this->listCtrl.InsertColumn(3, _T("dateft"), 0, 50);
-	this->listCtrl.InsertColumn(4, _T("orgid"), 0, 50);
+	this->listCtrl.InsertColumn(4, _T("orgid"), 0, 50); 
+
+	for (int i = 0; iter != log_list->end(); iter++, i++){
+		rr_report_dialy_log * log = *iter;
+		
+		this->listCtrl.InsertItem(i, log->get_id().c_str());
+
+		const char * arr[] = {0};
+	}
 	return FALSE;
 }

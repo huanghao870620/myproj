@@ -1,8 +1,11 @@
 #include "ConnMysql.h"
 #include "rr_report_dialy_log.h"
+
 #include "LogOperator.h"
 
 	LogOperator::LogOperator() {
+
+
 
 	}
 
@@ -15,15 +18,46 @@
 		std::size_t sum = mysql_num_fields(res);
 		MYSQL_ROW row;
 		while (row = mysql_fetch_row(res)){
-			std::string id = row[0];
-			std::string dateft = row[1];
-			std::string org = row[2];
-			std::string title = row[3];
-			std::string type = row[4];
-			std::string flag = row[5];
-			std::string num = row[6];
-			std::string exc_info = row[7];
-			std::string create_time = row[8];
+			std::string id;
+			std::string dateft;
+			std::string org;
+			std::string title;
+			std::string type;
+			std::string flag;
+			std::string num;
+			std::string exc_info;
+			std::string create_time;
+
+			if (row[0] != nullptr){
+				id=row[0];
+			}
+			if (row[1] != nullptr){
+				dateft = row[1];
+			}
+			if (row[2] != nullptr){
+				org = row[2];
+			}
+			if (row[3] != nullptr){
+				title = row[3];
+			}
+			if (row[4] != nullptr){
+				type = row[4];
+			}
+
+
+			if (row[5] != nullptr){
+				flag = row[5];
+			}
+			if (row[6] != nullptr){
+				num = row[6];
+			}
+			if (row[7] != nullptr){
+				exc_info = row[7];
+			}
+
+			if (row[8] != nullptr){
+				create_time = row[8];
+			}
 
 			rr_report_dialy_log * log = new rr_report_dialy_log;
 			log->set_id(id);

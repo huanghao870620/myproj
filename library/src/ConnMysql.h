@@ -17,9 +17,6 @@ class ConnMysql
 		MYSQL_RES *res;
 		MYSQL_ROW row;
 		std::string tmp;
-		std::string dbuser;
-		std::string dbpasswd;
-		std::string dbip;
 		std::string dbname;
 		std::string tablename;
 		char *query = nullptr;
@@ -33,8 +30,6 @@ class ConnMysql
 		void insert();
 		MYSQL_RES * select( const char * sql);
 		int Delete(const char * sql);
-
-	
 
 };  
 

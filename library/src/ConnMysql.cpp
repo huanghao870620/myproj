@@ -8,19 +8,21 @@
 
 ConnMysql::ConnMysql()
 {
-	this->dbuser = ReadIniFile::get_dbuser();
-	this->dbpasswd = ReadIniFile::get_dbpass();
-	this->dbip = ReadIniFile::get_dbip();
-	this->dbname = ReadIniFile::get_dbname();
+	char dbuser[100], dbpass[100], dbip[100], dbname[100];
+
+	ReadIniFile::get_dbuser(dbuser);
+	ReadIniFile::get_dbpass(dbpass);
+	ReadIniFile::get_dbip(dbip);
+	ReadIniFile::get_dbname(dbname);
 	this->tablename = "rr_report";
 
 	fflush(stdin);
 	con = mysql_init((MYSQL*)0);
 	mysql_real_connect(con, 
-		 this->dbip.c_str(),
-		 this->dbuser.c_str(), 
-		 this->dbpasswd.c_str(), 
-		 this->dbname.c_str(), 
+		 dbip,
+		 dbuser, 
+		 dbpass, 
+		 dbname, 
 		 3306,
 		 NULL, 
 		 0);

@@ -10,6 +10,7 @@ public:
 	LogDialog();
 	~LogDialog();
 
+	//afx_msg void OnFlush();
 	virtual BOOL OnInitDialog();
 
 private:
