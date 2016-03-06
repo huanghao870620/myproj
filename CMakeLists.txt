@@ -6,11 +6,25 @@ include_directories(
  "C:\\Program Files (x86)\\Visual Leak Detector\\include"
 )
 
-link_directories(
-	"library\\src\\Debug"
-	"C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\lib"
+#set(
+#fdsg32s
+#"library\\src\\Debug"
+#	"C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\lib"
+#	"D:\\soft\\boost_1_60_0\\bin.v2\\libs\\locale\\build\\msvc-12.0\\debug\\link-static\\threading-multi"
+#	"C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32"
+#)
+
+set(
+fdsg32s
+"library\\src\\Debug"
+"C:\\Program Files\\MySQL\\Connector C 6.0.2\\lib\\debug"
 	"D:\\soft\\boost_1_60_0\\bin.v2\\libs\\locale\\build\\msvc-12.0\\debug\\link-static\\threading-multi"
 	"C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32"
+)
+
+
+link_directories(
+	${fdsg32s}
 )
 
 aux_source_directory(library dir_src2)
@@ -25,14 +39,17 @@ set(
  libname
  libmysql 
 )
+
 find_library(DSFDS 
  NAMES ${libname}
  HINTS ${fdsg32s}
  )
+ 
  find_library(b0
   NAMES my_library
   PATHS ${fdsg32s}
  )
+ 
 add_executable(test_proj ${dir_src2})
 target_link_libraries(test_proj ${DSFDS})
 target_link_libraries(test_proj ${b0})
