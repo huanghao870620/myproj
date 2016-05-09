@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.5)
 aux_source_directory(. source_files)
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")

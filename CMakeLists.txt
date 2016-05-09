@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.4)
 project(proj0)
+
+aux_source_directory("D:/cppwork/myproj/library/src"  bbcd)
+
 include_directories(
  "D:\\soft\\boost_1_60_0"
  "C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\include"
@@ -40,17 +43,20 @@ set(
  libmysql 
 )
 
-find_library(DSFDS 
- NAMES ${libname}
- HINTS ${fdsg32s}
- )
+
+#add_library(library ${dir_src2})
+#find_library(DSFDS 
+# NAMES ${libname}
+# HINTS ${fdsg32s}
+# )
  
- find_library(b0
-  NAMES my_library
-  PATHS ${fdsg32s}
- )
+# find_library(b0
+#  NAMES my_library
+#  PATHS ${fdsg32s}
+# )
  
-add_executable(test_proj ${dir_src2})
-target_link_libraries(test_proj ${DSFDS})
-target_link_libraries(test_proj ${b0})
+#message("${dir_src2}")
+#add_executable(test_proj ${dir_src2})
+#target_link_libraries(test_proj ${DSFDS})
+#target_link_libraries(test_proj ${b0})
 

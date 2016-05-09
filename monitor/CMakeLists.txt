@@ -1,5 +1,5 @@
 #cmake_minimum_required(VERSION 3.4)
-message("22222222222222")
+
 #aux_source_directory(. source_files)
 
 include_directories(
