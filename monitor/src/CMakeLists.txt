@@ -6,7 +6,7 @@ include_directories(
  .
  "C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\include"
  "C:\\Program Files (x86)\\Visual Leak Detector\\include"
- "D:\\gitup\\myproj\\library\\src"
+ "D:/cppwork/myproj/library/src"
 )
 
 
@@ -38,10 +38,9 @@ find_library(DSFDS
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 set(CMAKE_MFC_FLAG 1)
-message("bbbbbcc")
 add_executable(monitor WIN32 ${source_files}  mfcde2.rc)
 add_library(mfcde2lib ${source_files})
-
+target_link_libraries(mfcde2lib ${slib})
 
 #message(${slib})
 #add_library(bcd ${slib})
