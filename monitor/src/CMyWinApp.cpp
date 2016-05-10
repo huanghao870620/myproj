@@ -3,7 +3,7 @@
 #include <afxdisp.h>
 #include "CMyFrameWnd.h"
 #include "CMyWinApp.h"
-#include "vld.h"
+//#include "vld.h"
 
 using namespace std;
 
