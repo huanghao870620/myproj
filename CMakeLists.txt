@@ -5,10 +5,19 @@ aux_source_directory("D:/cppwork/myproj/library/src"  bbcd)
 
 include_directories(
  "D:\\soft\\boost_1_60_0"
- "C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\include"
+ "D:/soft/mysql-connector-c-6.1.6-winx64/include"
  "C:\\Program Files (x86)\\Visual Leak Detector\\include"
 )
 
+#file(READ 1.txt aa0 2 1 2)
+file(STRINGS 1.txt bb0)
+message("==sss==")
+message(${bb0})
+message("==sss==")
+list(GET bb0 [0 2] c0)
+message(${c0})
+message("==uu==")
+#http://www.cnblogs.com/coderfenghc/archive/2012/07/08/2581734.html
 #set(
 #fdsg32s
 #"library\\src\\Debug"
