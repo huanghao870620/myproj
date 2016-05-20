@@ -18,13 +18,9 @@ include_directories(
 
 #file(READ 1.txt aa0 2 1 2)
 #file(STRINGS 1.txt bb0)
-#message("==sss==")
-#message(${bb0})
-#message("==sss==")
 #list(GET bb0 [0 2] c0)
-#message(${c0})
-#message("==uu==")
 #http://www.cnblogs.com/coderfenghc/archive/2012/07/08/2581734.html
+
 #set(
 #fdsg32s
 #"library\\src\\Debug"
