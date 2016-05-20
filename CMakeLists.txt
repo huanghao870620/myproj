@@ -1,22 +1,29 @@
 cmake_minimum_required(VERSION 3.4)
 project(proj0)
 
-aux_source_directory("D:/cppwork/myproj/library/src"  bbcd)
+aux_source_directory("library/src"  bbcd)
+
+
+file(STRINGS 1.txt variables)
+#list(GET bb0 [0 2] c0)
+list(GET variables 0 boost_home)
+list(GET variables 1 mysql_sdk_home)
+list(GET variables 2 vld_home)
 
 include_directories(
- "D:\\soft\\boost_1_60_0"
- "D:/soft/mysql-connector-c-6.1.6-winx64/include"
- "C:\\Program Files (x86)\\Visual Leak Detector\\include"
+ ${boost_home}
+ "${mysql_sdk_home}/include"
+ "${vld_home}/include"
 )
 
 #file(READ 1.txt aa0 2 1 2)
-file(STRINGS 1.txt bb0)
-message("==sss==")
-message(${bb0})
-message("==sss==")
-list(GET bb0 [0 2] c0)
-message(${c0})
-message("==uu==")
+#file(STRINGS 1.txt bb0)
+#message("==sss==")
+#message(${bb0})
+#message("==sss==")
+#list(GET bb0 [0 2] c0)
+#message(${c0})
+#message("==uu==")
 #http://www.cnblogs.com/coderfenghc/archive/2012/07/08/2581734.html
 #set(
 #fdsg32s
