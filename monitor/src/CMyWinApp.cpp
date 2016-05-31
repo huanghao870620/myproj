@@ -3,23 +3,19 @@
 #include <afxdisp.h>
 #include "CMyFrameWnd.h"
 #include "CMyWinApp.h"
-//#include "vld.h"
 
 using namespace std;
 
 CMyWinApp::CMyWinApp() 
 {
-	//this->init();
 }
 
 CMyWinApp::~CMyWinApp() 
 {
-	//FreeConsole();
 }
 
 CMyWinApp theApp;
 BOOL CMyWinApp::InitInstance() {
-	//AfxOleInitModule();
 	AfxOleInit();
 	
 	this->m_pMainWnd = new CMyFrameWnd;

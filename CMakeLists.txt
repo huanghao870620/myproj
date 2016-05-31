@@ -3,7 +3,6 @@ project(proj0)
 
 aux_source_directory("library/src"  bbcd)
 
-
 file(STRINGS path_company.txt variables)
 #list(GET bb0 [0 2] c0)
 list(GET variables 0 boost_home)
@@ -11,7 +10,7 @@ list(GET variables 1 mysql_sdk_home)
 list(GET variables 2 vld_home)
 
 include_directories(
- ${boost_home}
+ "${boost_home}"
  "${mysql_sdk_home}/include"
  "${vld_home}/include"
 )
@@ -24,9 +23,9 @@ include_directories(
 #set(
 #fdsg32s
 #"library\\src\\Debug"
-#	"C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\lib"
-#	"D:\\soft\\boost_1_60_0\\bin.v2\\libs\\locale\\build\\msvc-12.0\\debug\\link-static\\threading-multi"
-#	"C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32"
+#"C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\lib"
+#"D:\\soft\\boost_1_60_0\\bin.v2\\libs\\locale\\build\\msvc-12.0\\debug\\link-static\\threading-multi"
+#"C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32"
 #)
 
 set(
