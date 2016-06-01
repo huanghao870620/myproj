@@ -20,25 +20,16 @@ include_directories(
 #list(GET bb0 [0 2] c0)
 #http://www.cnblogs.com/coderfenghc/archive/2012/07/08/2581734.html
 
-#set(
-#fdsg32s
-#"library\\src\\Debug"
-#"C:\\Users\\hp\\Downloads\\mysql-5.6.24-win32.1432006610\\mysql-5.6.24-win32\\lib"
-#"D:\\soft\\boost_1_60_0\\bin.v2\\libs\\locale\\build\\msvc-12.0\\debug\\link-static\\threading-multi"
-#"C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32"
-#)
-
 set(
-fdsg32s
-"library\\src\\Debug"
-"C:\\Program Files\\MySQL\\Connector C 6.0.2\\lib\\debug"
-	"D:\\soft\\boost_1_60_0\\bin.v2\\libs\\locale\\build\\msvc-12.0\\debug\\link-static\\threading-multi"
-	"C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32"
+	link_lib
+	"library/src/Debug"
+	"${mysql_sdk_home}/lib"
+	"${boost_home}/lib"
+	"${vld_home}/lib"
 )
 
-
 link_directories(
-	${fdsg32s}
+	${link_lib}
 )
 
 aux_source_directory(library dir_src2)
@@ -51,16 +42,89 @@ set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 set(
  libname
- libmysql 
+ libmysql
+ my_library 
 )
 
 
 #add_library(library ${dir_src2})
-#find_library(DSFDS 
+
+#message("==${libname}==")
+#message("==${link_lib}==")
+set(mylist)
+#find_library(
+# lib 
 # NAMES ${libname}
-# HINTS ${fdsg32s}
-# )
+# HINTS ${link_lib}
+#)
+#message(${lib})
+#foreach(_var ${libname})
+  #message(${_var})
+   #message(${lib})
+#  find_library(
+#   lib
+#   NAMES ${_var}
+#   HINTS ${link_lib}
+#  )
+#  list(APPEND mylist ${lib})
+#endforeach()
+
+set(result 0)
+list(LENGTH libname libname_length)
+
+math(EXPR libname_length "${libname_length}-1")
+message("===${libname_length}==")
+foreach(_var RANGE 0 ${libname_length})
+  #message(${_var})
+endforeach()
+
+list(GET libname 0 temp)
+message(${temp})
+
+#message(${mylist})
+#message("==${dddd}==")
+
+set(a 1)
+math(EXPR b "${a}+10")
+message(${b})
+
+
+#set(
+#mylist
+#a
+#b
+#c
+#d
+#)
+
+
+function(test0 arg)
+ message("===function test0====")
+ message(${arg})
  
+endfunction()
+
+set(bb)
+test0("a")
+
+
+#foreach(_var ${mylist})
+# message("当前变量是: " ${_var})
+#endforeach()
+
+#set(result 0)	
+#foreach(_var RANGE 0 100)
+#    message(${_var})
+#	math(EXPR result "${result}+${_var}")
+#endforeach()
+#message("from 0 plus to 100 is:${result}")
+
+#list(LENGTH mylist ab)
+#message(==${ab}==)
+
+#list(APPEND mylist e)
+#message(==${mylist}==)
+
 # find_library(b0
 #  NAMES my_library
 #  PATHS ${fdsg32s}
@@ -68,6 +132,6 @@ set(
  
 #message("${dir_src2}")
 #add_executable(test_proj ${dir_src2})
-#target_link_libraries(test_proj ${DSFDS})
+#target_link_libraries(test_proj ${dddd})
 #target_link_libraries(test_proj ${b0})
 

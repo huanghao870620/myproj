@@ -44,6 +44,7 @@ target_link_libraries(mfcde2lib ${slib})
 
 #message(${slib})
 #add_library(bcd ${slib})
+target_link_libraries(monitor ${libmysql})
 #target_link_libraries(monitor ${bcd})
 
 #message("${DSFDS}")
