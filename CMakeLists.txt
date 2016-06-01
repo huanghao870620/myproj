@@ -101,11 +101,13 @@ message(${b})
 function(test0 arg)
  message("===function test0====")
  message(${arg})
- 
+  return(1)
 endfunction()
 
-set(bb)
-test0("a")
+set(bb 2)
+ test0("a")
+message(${bb})
+
 
 
 #foreach(_var ${mylist})
