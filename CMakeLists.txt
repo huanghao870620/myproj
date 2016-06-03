@@ -34,8 +34,7 @@ link_directories(
 
 aux_source_directory(library dir_src2)
 aux_source_directory(src_mfc monitor)
-add_subdirectory(library/src)
-add_subdirectory(monitor)
+
 
 include_directories(./library/src)
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
@@ -137,3 +136,7 @@ message(${bb})
 #target_link_libraries(test_proj ${dddd})
 #target_link_libraries(test_proj ${b0})
 
+set(abc libmysql my_library)
+
+add_subdirectory(library/src)
+add_subdirectory(monitor)

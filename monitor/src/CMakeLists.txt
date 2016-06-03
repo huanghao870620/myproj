@@ -24,15 +24,15 @@ set(
  libmysql 
 )
 
-find_library(DSFDS 
- NAMES ${libname}
- HINTS ${fdsg32s}
- )
+#find_library(DSFDS 
+# NAMES ${libname}
+# HINTS ${fdsg32s}
+# )
  
- find_library(b0
-  NAMES my_library
-  PATHS ${fdsg32s}
- )
+ #find_library(b0
+ # NAMES my_library
+ # PATHS ${fdsg32s}
+ #)
 
 #add_definitions(-D_AFXDLL)
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
@@ -44,7 +44,16 @@ target_link_libraries(mfcde2lib ${slib})
 
 #message(${slib})
 #add_library(bcd ${slib})
-target_link_libraries(monitor ${libmysql})
+
+
+find_library(cc0 
+  NAMES libmysql
+  PATHS ${link_lib}
+ )
+ message(${link_lib})
+ message("cc0 : " ${cc0})
+target_link_libraries(monitor ${abc})
+#target_link_libraries(monitor ${cc0})
 #target_link_libraries(monitor ${bcd})
 
 #message("${DSFDS}")
