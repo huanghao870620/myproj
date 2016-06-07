@@ -22,8 +22,8 @@ include_directories(
 
 set(
 	link_lib
-	"library/src/Debug"
 	"${mysql_sdk_home}/lib"
+	"library/src/Debug"
 	"${boost_home}/lib"
 	"${vld_home}/lib"
 )
@@ -42,7 +42,8 @@ set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 set(
  libname
  libmysql
- my_library 
+ my_library
+ libboost_locale-vc120-mt-sgd-1_60 
 )
 
 
