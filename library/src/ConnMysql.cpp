@@ -1,7 +1,6 @@
 #include <Windows.h>
 #include <stdio.h>
 #include <mysql.h>
-
 #include "ReadIniFile.h"
 #include "ConnMysql.h"
 

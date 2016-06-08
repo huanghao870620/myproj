@@ -1,4 +1,4 @@
 D:/soft/boost_1_60_0
 D:/soft/boost_1_60_0/lib/vc12_x64
-D:/soft/mysql-connector-c-6.1.6-winx64
+D:/soft/mysql-connector-c-6.1.6-win32
 C:/Program Files (x86)/Visual Leak Detector
