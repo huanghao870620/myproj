@@ -1,5 +1,5 @@
 #include <iostream>
-#include <resource.h>
+#include "resource.h"
 #include "DataCollection.h"
 #include "rr_report.h"
 #include "MyDialog.h"

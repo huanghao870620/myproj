@@ -11,7 +11,7 @@ ReadIniFile::~ReadIniFile()
 }
 
 char * ReadIniFile::get_path(){
-	char * path = "c:/test/test.ini";
+	char * path = "test.ini";
 	return  path;
 }
 

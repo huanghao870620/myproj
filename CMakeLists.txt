@@ -9,6 +9,8 @@ list(GET variables 0 boost_home)
 list(GET variables 1 mysql_sdk_home)
 list(GET variables 2 vld_home)
 
+
+
 include_directories(
  "${boost_home}"
  "${mysql_sdk_home}/include"
@@ -25,6 +27,10 @@ set(
 	"${mysql_sdk_home}/lib"
 	"library/src/Debug"
 	"${boost_home}/lib"
+	"${boost_home}/stage/lib"
+	"${boost_home}/lib/vc12_x64/lib"
+#	"${boost_home}/bin.v2/libs/locale/build/msvc-12.0/debug/address-model-64/link-static/runtime-link-static/threading-multi"
+#	"${boost_home}/bin.v2/libs/test/build/msvc-12.0/debug/address-model-64/link-static/runtime-link-static/threading-multi"
 	"${vld_home}/lib"
 )
 
@@ -44,23 +50,20 @@ set(
  libmysql
  my_library
  libboost_locale-vc120-mt-sgd-1_60 
+ libboost_unit_test_framework-vc120-mt-s-1_60
+ #libboost_unit_test_framework-vc120-mt-sgd-1_60
+ #libboost_unit_test_framework-vc120-mt-1_60
 )
 
 
-#add_library(library ${dir_src2})
 
-#message("==${libname}==")
-#message("==${link_lib}==")
 set(mylist)
 #find_library(
 # lib 
 # NAMES ${libname}
 # HINTS ${link_lib}
 #)
-#message(${lib})
 #foreach(_var ${libname})
-  #message(${_var})
-   #message(${lib})
 #  find_library(
 #   lib
 #   NAMES ${_var}
@@ -71,23 +74,14 @@ set(mylist)
 
 set(result 0)
 list(LENGTH libname libname_length)
-
 math(EXPR libname_length "${libname_length}-1")
-message("===${libname_length}==")
 foreach(_var RANGE 0 ${libname_length})
   #message(${_var})
 endforeach()
 
 list(GET libname 0 temp)
-message(${temp})
-
-#message(${mylist})
-#message("==${dddd}==")
-
 set(a 1)
 math(EXPR b "${a}+10")
-message(${b})
-
 
 #set(
 #mylist
@@ -99,14 +93,11 @@ message(${b})
 
 
 function(test0 arg)
- message("===function test0====")
- message(${arg})
   return(1)
 endfunction()
 
 set(bb 2)
  test0("a")
-message(${bb})
 
 
 
@@ -137,7 +128,7 @@ message(${bb})
 #target_link_libraries(test_proj ${dddd})
 #target_link_libraries(test_proj ${b0})
 
-set(abc libmysql my_library)
 
 add_subdirectory(library/src)
 add_subdirectory(monitor)
+add_subdirectory(test/src)
