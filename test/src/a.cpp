@@ -18,6 +18,33 @@ BOOST_AUTO_TEST_CASE(test0){
 		std::cout << "connection error!" << std::endl;
 		return;
 	}
+
+	_RecordsetPtr pRst;
+	char sql[255] = { 0 };
+	strcpy_s(sql, "select * from menu where 1=1");
+	pRst = dbOper.ExecuteWithResSQL(sql);
+	if (NULL == pRst){
+		std::cout << "data query error!" << std::endl;
+		return;
+	}
+
+	if (pRst->adoEOF){
+		pRst->Close();
+		return;
+	}
+
+	_variant_t id, parentId,menuName,url;
+	while (!pRst->adoEOF)
+	{
+		id = pRst->GetCollect(_variant_t("id"));
+		parentId = pRst->GetCollect(_variant_t("parent_id"));
+		menuName = pRst->GetCollect(_variant_t("menu_name"));
+		url = pRst->GetCollect(_variant_t("url"));
+		std::cout << (_bstr_t)id << "\t" << (_bstr_t)parentId << "\t" << (_bstr_t)menuName << "\t" << (_bstr_t)url << std::endl;
+		pRst->MoveNext();
+	}
+
+	std::cout << "" << std::endl;
 }
 BOOST_AUTO_TEST_SUITE_END()
 

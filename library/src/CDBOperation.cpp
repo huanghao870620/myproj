@@ -20,6 +20,12 @@ CDBOperation::~CDBOperation(){
 	this->m_pConnection->Close();
 }
 
+_RecordsetPtr CDBOperation::ExecuteWithResSQL(const char *sql){
+	this->m_pCommand->CommandText = _bstr_t(sql);
+	_RecordsetPtr pRst = this->m_pCommand->Execute(NULL, NULL, adCmdText);
+	return pRst;
+}
+
 bool CDBOperation::ConnToDB(char *ConnectionString, char *UserID, char *Password){
 	if (NULL == this->m_pConnection){
 		std::cout << "Failed to create connection." << std::endl;
