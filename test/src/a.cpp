@@ -4,12 +4,24 @@
 #include "CDBOperation.h"
 
 using boost::unit_test::test_suite;
+
+void test3(){
+	std::cout << "" << std::endl;
+}
+
+void test4(int a){
+	std::cout << "" << std::endl;
+}
+
 test_suite* init_unit_test_suite(int, char*[]){
+	int params[] = { 1, 2, 3, 4, 5 };
 	std::cout << "111111" << std::endl;
+	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&test3));
+	boost::unit_test::framework::master_test_suite().add(BOOST_PARAM_TEST_CASE(&test4, params, params + 5));
 	return 0;
 }
 
-
+/*
 BOOST_AUTO_TEST_SUITE(d)
 BOOST_AUTO_TEST_CASE(test0){
 	CDBOperation dbOper;
@@ -46,5 +58,11 @@ BOOST_AUTO_TEST_CASE(test0){
 
 	std::cout << "" << std::endl;
 }
-BOOST_AUTO_TEST_SUITE_END()
 
+BOOST_AUTO_TEST_CASE(test1){
+
+}
+
+
+BOOST_AUTO_TEST_SUITE_END()
+*/
