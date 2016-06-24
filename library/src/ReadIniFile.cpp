@@ -4,6 +4,7 @@
 
 ReadIniFile::ReadIniFile() 
 {
+	
 }
 
 ReadIniFile::~ReadIniFile() 

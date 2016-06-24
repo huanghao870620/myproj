@@ -7,6 +7,8 @@ using boost::unit_test::test_suite;
 
 void test3(){
 	std::cout << "" << std::endl;
+	LPCSTR d = "dd";
+	::MessageBox(NULL,d, "fff", MB_OK);
 }
 
 void test4(int a){
@@ -16,8 +18,8 @@ void test4(int a){
 test_suite* init_unit_test_suite(int, char*[]){
 	int params[] = { 1, 2, 3, 4, 5 };
 	std::cout << "111111" << std::endl;
-	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&test3));
-	boost::unit_test::framework::master_test_suite().add(BOOST_PARAM_TEST_CASE(&test4, params, params + 5));
+	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&test3));
+	//boost::unit_test::framework::master_test_suite().add(BOOST_PARAM_TEST_CASE(&test4, params, params + 5));
 	return 0;
 }
 

@@ -20,12 +20,14 @@ CDBOperation::~CDBOperation(){
 	this->m_pConnection->Close();
 }
 
+/*执行sql*/
 _RecordsetPtr CDBOperation::ExecuteWithResSQL(const char *sql){
 	this->m_pCommand->CommandText = _bstr_t(sql);
 	_RecordsetPtr pRst = this->m_pCommand->Execute(NULL, NULL, adCmdText);
 	return pRst;
 }
 
+/*连接数据库*/
 bool CDBOperation::ConnToDB(char *ConnectionString, char *UserID, char *Password){
 	if (NULL == this->m_pConnection){
 		std::cout << "Failed to create connection." << std::endl;
@@ -46,6 +48,7 @@ bool CDBOperation::ConnToDB(char *ConnectionString, char *UserID, char *Password
 	}
 }
 
+/*打印错误消息*/
 void CDBOperation::PrintErrorInfo(_com_error &e){
 	std::cout << "Error information are as follows" << std::endl;
 	std::cout << "ErrorNo: " << e.Error() << std::endl;
@@ -54,6 +57,7 @@ void CDBOperation::PrintErrorInfo(_com_error &e){
 	std::cout << "Error Description : " << e.Description() << std::endl;
 }
 
+/*创建连接*/
 _ConnectionPtr CDBOperation::CreateConnPtr()
 {
 	HRESULT hr;
@@ -65,6 +69,7 @@ _ConnectionPtr CDBOperation::CreateConnPtr()
 	return connPtr;
 }
 
+/*创建命令*/
 _CommandPtr CDBOperation::CreateCommPtr()
 {
 	HRESULT hr;
@@ -76,6 +81,7 @@ _CommandPtr CDBOperation::CreateCommPtr()
 	return commPtr;
 }
 
+/*创建结果*/
 _RecordsetPtr CDBOperation::CreateRecsetPtr(){
 	HRESULT hr;
 	_RecordsetPtr recsetPtr;

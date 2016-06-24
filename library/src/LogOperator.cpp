@@ -3,14 +3,9 @@
 
 #include "LogOperator.h"
 
-	LogOperator::LogOperator() {
+	LogOperator::LogOperator() {}
 
-
-
-	}
-
-	LogOperator::~LogOperator(){
-	}
+	LogOperator::~LogOperator(){}
 
 	void LogOperator::select(){
 		ConnMysql * conn = ConnMysql::getInstance();

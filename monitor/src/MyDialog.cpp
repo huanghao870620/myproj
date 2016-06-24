@@ -17,6 +17,7 @@ END_MESSAGE_MAP()
 
 MyDialog::MyDialog() 
 {
+	this->MessageBox(_T("ddd"));
 	this->dc = new DataCollection;
 }
 
