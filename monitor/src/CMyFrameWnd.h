@@ -7,6 +7,7 @@
 class MfcMulti;
 class MyDialog;
 class LogDialog;
+class ChatDialog;
 class CMyFrameWnd : public CFrameWnd
 {
     public:
@@ -20,6 +21,7 @@ class CMyFrameWnd : public CFrameWnd
 		afx_msg void OnClicked(); // 监控状态
 		afx_msg void OnClickedDupData(); // 重复数据
 		afx_msg void OnClicked4ErrorLog(); //错误日志
+		afx_msg void OnChat(); // 聊天
 		afx_msg void OnClose(); //关闭窗口
 
 private:
@@ -29,10 +31,13 @@ private:
 	CButton m_button; // 监控按钮
 	CButton aofdup_data; // 管理重复数据
 	CButton json_error_but; // json error button
+	CButton chatBut; // 聊天
 
 	MfcMulti *mm = nullptr; // 线程
 	MyDialog *mDialog = nullptr; // 对话框
 	LogDialog * logDialog = nullptr; // 日志对话框
+	ChatDialog * chatDialog = nullptr; // 聊天对话框
+
 
 private:
 	void init_crect(CRect & ct); // 初始化

@@ -5,6 +5,7 @@
 #include "MyDialog.h"
 #include "DrawFlag.h"
 #include "LogDialog.h"
+#include "ChatDialog.h"
 #include "CMyFrameWnd.h"
 #include "resource.h"
 
@@ -14,6 +15,7 @@ BEGIN_MESSAGE_MAP(CMyFrameWnd, CFrameWnd)
 	ON_BN_CLICKED(IDC_DYNAMICBUTTON, OnClicked)
 	ON_BN_CLICKED(IDC_MANADUPDATA, OnClickedDupData)
 	ON_BN_CLICKED(88, OnClicked4ErrorLog)
+	ON_BN_CLICKED(89,OnChat)
 	ON_WM_PAINT()
 	ON_WM_CLOSE(OnClose)
 END_MESSAGE_MAP()
@@ -64,6 +66,8 @@ CMyFrameWnd::CMyFrameWnd()
 	this->json_error_but.Create(_T("错误日志"), 
 		WS_CHILD | WS_VISIBLE | WS_BORDER, 
 		CRect(340, 10, 440, 40), this, 88);
+
+	this->chatBut.Create(_T("聊天"), WS_CHILD | WS_VISIBLE | WS_BORDER, CRect(460, 10, 500, 40), this, 89);
 
 	std::string * num = new std::string("总条数");
 	std::string * page_num = new std::string("页数");
@@ -211,5 +215,13 @@ void CMyFrameWnd::OnClose(){
 		client.Close();
 	}
 	this->DestroyWindow();
+}
+
+/*聊天对话框*/
+void CMyFrameWnd::OnChat(){
+	this->chatDialog = new ChatDialog;
+	this->chatDialog->Create(IDD_DIALOG3, this);
+	this->chatDialog->addComp();
+	this->chatDialog->ShowWindow(SW_SHOWNORMAL);
 }
 

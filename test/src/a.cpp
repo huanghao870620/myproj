@@ -15,6 +15,10 @@ void test4(int a){
 	std::cout << "" << std::endl;
 }
 
+void test0(){
+
+}
+
 test_suite* init_unit_test_suite(int, char*[]){
 	int params[] = { 1, 2, 3, 4, 5 };
 	std::cout << "111111" << std::endl;
