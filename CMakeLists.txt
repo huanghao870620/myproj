@@ -131,4 +131,5 @@ set(bb 2)
 
 add_subdirectory(library/src)
 add_subdirectory(monitor)
+add_subdirectory(chat_server)
 add_subdirectory(test/src)
