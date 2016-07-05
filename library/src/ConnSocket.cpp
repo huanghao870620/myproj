@@ -5,11 +5,8 @@
 #include <string>
 #include <exception>
 #include <boost\locale.hpp>
-#pragma comment(lib, "ws2_32.lib")
 
 #include "ConnSocket.h"
-
-
 
 ConnSocket::ConnSocket() 
 {

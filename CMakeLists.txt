@@ -49,6 +49,7 @@ set(
  libname
  libmysql
  my_library
+ ws2_32
  libboost_locale-vc120-mt-sgd-1_60 
  libboost_unit_test_framework-vc120-mt-s-1_60
  #libboost_unit_test_framework-vc120-mt-sgd-1_60
