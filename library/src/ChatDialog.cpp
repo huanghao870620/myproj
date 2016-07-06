@@ -7,6 +7,7 @@
 #include <iostream>
 #include <afxwin.h>
 #include "ChatDialog.h"
+#include "Client.h"
 
 BEGIN_MESSAGE_MAP(ChatDialog, CDialog)
 	ON_BN_CLICKED(333, OnChat)
@@ -26,6 +27,8 @@ void ChatDialog::OnChat(){
 	CString dd;
 	this->edit.GetWindowTextA(dd);
 	std::cout << "dddd" << std::endl;
+	Client *client = new Client;
+	client->Send(dd);
 }
 
 void ChatDialog::addComp(){
