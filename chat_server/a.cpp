@@ -1,9 +1,13 @@
 #include <afxwin.h>
 #include "ConnSocket.h"
+#include "DealSocket.h"
 
 int main(){
-	ConnSocket *cs = new ConnSocket;
+	//_CrtSetBreakAlloc(405);
+	ConnSocket *cs = new ConnSocket();
 	//cs->sendMsg();
-	cs->receiveMsg();
+	//cs->receiveMsg();
+	DealSocket * ds = new DealSocket(cs->getSerConn());
+	ds->Start();
 	return 0;
 }

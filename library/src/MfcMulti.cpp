@@ -34,7 +34,6 @@ UINT ThreadFun(LPVOID pParam){
 		RECT rect;
 		std::list<StruInte *> * list =  client->get_st();
 		CWnd *pMainWnd = AfxGetMainWnd();
-		pMainWnd->m_hWnd;
 		LPARAM time = GetCurrentTime();
 		pMainWnd->GetClientRect(&rect);
 		::PostMessageA(pMainWnd->m_hWnd, WM_PAINT, 0, (LPARAM)list);

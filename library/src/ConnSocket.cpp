@@ -31,9 +31,9 @@ void ConnSocket::init()
 		printf("Ê§°Ü !");
 		return;
 	}
-
+	
 	//´´½¨socket
-	SOCKET serSocket = socket(AF_INET, SOCK_STREAM, 0);
+	this->serSocket = socket(AF_INET, SOCK_STREAM, 0);
 
 	//Ê§°Ü
 	if (serSocket == INVALID_SOCKET){
@@ -93,4 +93,8 @@ void ConnSocket::Close(){
 	WSACleanup();
 }
 
+
+SOCKET * ConnSocket::getSerConn(){
+	return  & this->serConn;
+}
 

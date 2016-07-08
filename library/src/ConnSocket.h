@@ -26,6 +26,8 @@ class ConnSocket
 		void receiveMsg();
 
 		void Close();
+
+		SOCKET * getSerConn();
 private:
         void init(); 
 
@@ -37,6 +39,7 @@ private:
 		char sendBuf[100]; // ·¢ËÍ×Ö·û´®
 		char receiveBuf[100]; // ½ÓÊÕ×Ö·û´®
 		SOCKET serConn;
+		SOCKET serSocket;
 
 };  //end class ConnSocket
 
