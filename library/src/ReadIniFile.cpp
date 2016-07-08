@@ -11,9 +11,23 @@ ReadIniFile::~ReadIniFile()
 {
 }
 
-char * ReadIniFile::get_path(){
-	char * path = "test.ini";
-	return  path;
+char * ReadIniFile::get_path(/*char * path,  char * szAppPath*/){
+	//char * path = "test.ini";
+	//char szAppPath[MAX_PATH];
+
+	/*GetModuleFileName(NULL, szAppPath, MAX_PATH);
+	strrchr(szAppPath, '\\')[1] = 0;
+	const char  *   b = "";
+	char c[2];
+	char * d = c;
+	 strcat_s(c, b);
+	 std::string a0 = "";
+	 std::string b0 = "";*/
+
+	//strcat_s(b, "");
+//	strcat_s("", "");
+	//return  szAppPath;
+	return 0;
 }
 
 
@@ -43,6 +57,7 @@ void ReadIniFile::get_dbname(char * dbname){
 
 
 void ReadIniFile::get_server_ip(char * server_ip){
+	std::string path = "";
 	GetPrivateProfileString(_T("SOCKET_CLIENT"), _T("server_ip"), _T(""), server_ip, 256, get_path());
 }
 

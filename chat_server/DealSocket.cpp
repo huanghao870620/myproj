@@ -19,6 +19,10 @@ UINT ThreadFun(LPVOID lParam){
 	//std::cout << "===bb====" << std::endl;
 	char receiveBuf[100];
 	recv(*socket, receiveBuf, strlen(receiveBuf) + 1, 0);
+	int comp = strcmp(receiveBuf, "");
+	if (comp){
+		OutputDebugString("");
+	}
 	return 0;
 }
 

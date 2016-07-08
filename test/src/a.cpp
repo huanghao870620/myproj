@@ -2,13 +2,14 @@
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/parameterized_test.hpp>
 #include "CDBOperation.h"
+#include "MyTest.h"
 
 using boost::unit_test::test_suite;
 
 void test3(){
-	std::cout << "" << std::endl;
-	LPCSTR d = "dd";
-	::MessageBox(NULL,d, "fff", MB_OK);
+	MyTest * mt = new MyTest;
+	int a[] = {1,3,4};
+	mt->test0(a);
 }
 
 void test4(int a){

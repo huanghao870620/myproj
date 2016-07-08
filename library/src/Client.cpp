@@ -7,7 +7,7 @@
 #include "StruInte.h"
 #include "Client.h"
 
-#pragma comment(lib,"ws2_32.lib")  
+//#pragma comment(lib,"ws2_32.lib")  
 
 
 Client::Client()
@@ -22,7 +22,7 @@ Client::Client()
 	}
 
 	serveraddr.sin_family = AF_INET;
-	serveraddr.sin_port = htons(4000);
+	serveraddr.sin_port = htons(6000);
 	
 	ReadIniFile::get_server_ip(server_ip);
 	serveraddr.sin_addr.S_un.S_addr = inet_addr(server_ip);
