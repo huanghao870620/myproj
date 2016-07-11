@@ -21,6 +21,7 @@ public:
 private:
 	CEdit edit;
 	CButton but;
+	CStatic cs;
 
 private:
 	DECLARE_MESSAGE_MAP()

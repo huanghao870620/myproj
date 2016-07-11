@@ -15,14 +15,10 @@ DealSocket::DealSocket(SOCKET * socket){
 }
 
 UINT ThreadFun(LPVOID lParam){
-	SOCKET * socket = (SOCKET*)lParam;
-	//std::cout << "===bb====" << std::endl;
 	char receiveBuf[100];
+	SOCKET * socket = (SOCKET*)lParam;
 	recv(*socket, receiveBuf, strlen(receiveBuf) + 1, 0);
 	int comp = strcmp(receiveBuf, "");
-	if (comp){
-		OutputDebugString("");
-	}
 	return 0;
 }
 

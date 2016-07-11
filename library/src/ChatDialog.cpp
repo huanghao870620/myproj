@@ -32,10 +32,12 @@ void ChatDialog::OnChat(){
 }
 
 void ChatDialog::addComp(){
-}
+}	
 
 BOOL ChatDialog::OnInitDialog(){
-	this->edit.Create(ES_MULTILINE|WS_CHILD|WS_VISIBLE|WS_TABSTOP|WS_BORDER, CRect(10, 10, 200, 200), this, 36);
+	this->edit.Create(ES_MULTILINE|WS_CHILD|WS_VISIBLE|WS_TABSTOP|WS_BORDER, CRect(10, 150, 200, 200), this, 36);
+	CRect ct(10, 10, 100, 100);
+	this->cs.Create("ÄãºÃ", WS_CHILD | WS_VISIBLE | CA_CENTER |WS_BORDER, ct, this);
 	this->but.Create(_T("·¢ËÍ"), WS_CHILD | WS_VISIBLE | WS_BORDER, CRect(210, 210, 250, 250), this, 333);
 	return FALSE;
 }
