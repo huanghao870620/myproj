@@ -4,26 +4,28 @@
 #include "CDBOperation.h"
 #include "MyTest.h"
 
+
 using boost::unit_test::test_suite;
 
-void test3(){
+void testDelete(){
 	MyTest * mt = new MyTest;
-	int a[] = {1,3,4};
-	mt->test0(a);
+	mt->testDelete();
 }
 
 void test4(int a){
 	std::cout << "" << std::endl;
 }
 
-void test0(){
-
+void testCopy(){
+	MyTest * mt = new MyTest;
+	mt->testCopy();
 }
 
 test_suite* init_unit_test_suite(int, char*[]){
 	int params[] = { 1, 2, 3, 4, 5 };
 	std::cout << "111111" << std::endl;
-	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&test3));
+	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testDelete));
+	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testCopy));
 	//boost::unit_test::framework::master_test_suite().add(BOOST_PARAM_TEST_CASE(&test4, params, params + 5));
 	return 0;
 }

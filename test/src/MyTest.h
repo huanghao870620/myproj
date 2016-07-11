@@ -15,6 +15,7 @@ public:
 	MyTest();
 	virtual ~MyTest();
 
-	void test0(int a[]);
+	void testDelete();
+	void testCopy();
 };
 #endif // !defined(EA_77122CA7_9414_4921_8809_99FE786EDE83__INCLUDED_)
