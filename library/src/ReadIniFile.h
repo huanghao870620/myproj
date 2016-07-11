@@ -10,7 +10,7 @@ class ReadIniFile
 
         ~ReadIniFile(); 
 
-		static char * get_path(/*char * path, char * szAppPath*/);
+		static char * get_path(char * path, char  szAppPath[]);
 		static void get_dbuser(char * dbuser);
 		static void get_dbpass(char * dbpass);
 		static void get_dbip(char * dbip);
