@@ -1,6 +1,7 @@
 #include <iostream>
 #include <afxwin.h>
 #include <afxdisp.h>
+#include "resource.h"
 #include "MyDocument.h"
 #include "MyView.h"
 #include "CMyFrameWnd.h"
@@ -28,7 +29,27 @@ BOOL CMyWinApp::InitInstance() {
 	TRACE("");
 	CMultiDocTemplate * pDocTemplate;
 	
-	pDocTemplate = new CMultiDocTemplate(2, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
+	pDocTemplate = new CMultiDocTemplate(IDD_DIALOG1, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
+	if (!pDocTemplate){
+		return FALSE;
+	}
+	AddDocTemplate(pDocTemplate);
+
+	CMyFrameWnd * frame = new CMyFrameWnd;
+	if (!frame || !frame->LoadFrame(IDD_DIALOG1)){
+		return FALSE;
+	}
+
+	this->m_pMainWnd = frame;
+
+	CCommandLineInfo cmdInfo;
+	ParseCommandLine(cmdInfo);
+	if (!ProcessShellCommand(cmdInfo)){
+		return FALSE;
+	}
+
+	frame->ShowWindow(this->m_nCmdShow);
+	frame->UpdateWindow();
 	return TRUE;
 }
 
