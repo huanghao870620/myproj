@@ -23,10 +23,8 @@ ChatDialog::~ChatDialog(){
 }
 
 void ChatDialog::OnChat(){
-	//this->MessageBox(_T("aabb"));
 	CString dd;
 	this->edit.GetWindowTextA(dd);
-	std::cout << "dddd" << std::endl;
 	Client *client = new Client;
 	client->Send(dd);
 }

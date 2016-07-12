@@ -84,7 +84,6 @@ CMyFrameWnd::CMyFrameWnd()
 	this->str_list.push_back(dist_bet);
 
 	std::list<std::string * >::iterator iter = str_list.begin();
-
 	CRect ct;
 	this->init_crect(ct);
 

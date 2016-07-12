@@ -16,11 +16,16 @@ CMyWinApp::~CMyWinApp()
 
 CMyWinApp theApp;
 BOOL CMyWinApp::InitInstance() {
+	InitCommonControls();
+	CWinApp::InitInstance();
 	AfxOleInit();
+	AfxEnableControlContainer();
+	SetRegistryKey("");
+	LoadStdProfileSettings(4);
+	TRACE("");
+	CMultiDocTemplate * pDocTemplate;
 	
-	this->m_pMainWnd = new CMyFrameWnd;
-	this->m_pMainWnd->ShowWindow(this->m_nCmdShow);
-	this->m_pMainWnd->UpdateWindow();
+	//pDocTemplate = new CMultiDocTemplate(idr_mdite)
 	return TRUE;
 }
 
