@@ -1,8 +1,11 @@
 #include <iostream>
 #include <afxwin.h>
 #include <afxdisp.h>
+#include "MyDocument.h"
+#include "MyView.h"
 #include "CMyFrameWnd.h"
 #include "CMyWinApp.h"
+
 
 using namespace std;
 
@@ -25,7 +28,7 @@ BOOL CMyWinApp::InitInstance() {
 	TRACE("");
 	CMultiDocTemplate * pDocTemplate;
 	
-	//pDocTemplate = new CMultiDocTemplate(idr_mdite)
+	pDocTemplate = new CMultiDocTemplate(2, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
 	return TRUE;
 }
 

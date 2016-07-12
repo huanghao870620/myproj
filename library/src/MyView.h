@@ -13,7 +13,7 @@
  */
 class MyView : public CView
 {
-
+	DECLARE_DYNAMIC(MyView)
 public:
 	MyView();
 	virtual ~MyView();

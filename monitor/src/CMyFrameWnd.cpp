@@ -20,6 +20,7 @@ BEGIN_MESSAGE_MAP(CMyFrameWnd, CFrameWnd)
 	ON_WM_CLOSE(OnClose)
 END_MESSAGE_MAP()
 
+IMPLEMENT_DYNAMIC(CMyFrameWnd,CFrameWnd)
 void CMyFrameWnd::OnCreate(){
 	this->MessageBox(_T("dd"));
 }

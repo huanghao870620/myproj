@@ -11,7 +11,7 @@ class ChatDialog;
 class CMyFrameWnd : public CFrameWnd
 {
     public:
-
+		DECLARE_DYNAMIC(CMyFrameWnd)
         CMyFrameWnd(); 
         ~CMyFrameWnd(); 
 

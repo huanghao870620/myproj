@@ -7,7 +7,7 @@
 
 #include "MyDocument.h"
 
-
+IMPLEMENT_DYNAMIC(MyDocument,CDocument)
 MyDocument::MyDocument(){
 
 }

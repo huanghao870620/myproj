@@ -13,7 +13,7 @@
  */
 class MyDocument : public CDocument
 {
-
+	DECLARE_DYNAMIC(MyDocument)
 public:
 	MyDocument();
 	virtual ~MyDocument();

@@ -7,7 +7,7 @@
 
 #include "MyView.h"
 
-
+IMPLEMENT_DYNAMIC(MyView,CView)
 MyView::MyView(){
 
 }
