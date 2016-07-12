@@ -29,14 +29,15 @@ BOOL CMyWinApp::InitInstance() {
 	TRACE("");
 	CMultiDocTemplate * pDocTemplate;
 	
-	pDocTemplate = new CMultiDocTemplate(IDD_DIALOG1, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
+	pDocTemplate = new CMultiDocTemplate(IDR_MENU3, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
 	if (!pDocTemplate){
 		return FALSE;
 	}
 	AddDocTemplate(pDocTemplate);
 
 	CMyFrameWnd * frame = new CMyFrameWnd;
-	if (!frame || !frame->LoadFrame(IDD_DIALOG1)){
+	
+	if (!frame || !frame->LoadFrame(IDR_MENU3)){
 		return FALSE;
 	}
 
@@ -44,9 +45,9 @@ BOOL CMyWinApp::InitInstance() {
 
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
-	if (!ProcessShellCommand(cmdInfo)){
-		return FALSE;
-	}
+	//if (!ProcessShellCommand(cmdInfo)){
+	//	return FALSE;
+	//}
 
 	frame->ShowWindow(this->m_nCmdShow);
 	frame->UpdateWindow();

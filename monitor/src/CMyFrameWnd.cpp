@@ -49,7 +49,7 @@ CMyFrameWnd::~CMyFrameWnd()
 CMyFrameWnd::CMyFrameWnd()
 {
 	
-	this->Create(NULL, _T("ÑÐ±¨×´Ì¬¼à¿ØÆ÷"), WS_OVERLAPPEDWINDOW, this->rectDefault, NULL, NULL);
+	/*this->Create(NULL, _T("ÑÐ±¨×´Ì¬¼à¿ØÆ÷"), WS_OVERLAPPEDWINDOW, this->rectDefault, NULL, NULL);
 	HICON ico = AfxGetApp()->LoadIconA(IDR_DD1);
 	SetIcon(ico, true);
 
@@ -119,7 +119,7 @@ CMyFrameWnd::CMyFrameWnd()
 			this->content_list.push_back(cs);
 		}
 		this->add_crect_vertical(ct, y);
-	}
+	}*/
 
 	
 }
