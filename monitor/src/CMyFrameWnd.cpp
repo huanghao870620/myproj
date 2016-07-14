@@ -48,7 +48,7 @@ CMyFrameWnd::~CMyFrameWnd()
 
 CMyFrameWnd::CMyFrameWnd()
 {
-	
+
 	/*this->Create(NULL, _T("ÑÐ±¨×´Ì¬¼à¿ØÆ÷"), WS_OVERLAPPEDWINDOW, this->rectDefault, NULL, NULL);
 	HICON ico = AfxGetApp()->LoadIconA(IDR_DD1);
 	SetIcon(ico, true);

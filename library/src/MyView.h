@@ -18,5 +18,16 @@ public:
 	MyView();
 	virtual ~MyView();
 
+protected:
+	bool m_bDraw;
+	HCURSOR m_Hcursor;
+	CPoint m_pOld;
+
+
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint  point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	DECLARE_MESSAGE_MAP();
+
 };
 #endif // !defined(EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_)

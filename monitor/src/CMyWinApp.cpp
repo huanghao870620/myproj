@@ -24,9 +24,8 @@ BOOL CMyWinApp::InitInstance() {
 	CWinApp::InitInstance();
 	AfxOleInit();
 	AfxEnableControlContainer();
-	SetRegistryKey("");
+	SetRegistryKey("abc");
 	LoadStdProfileSettings(4);
-	TRACE("");
 	CMultiDocTemplate * pDocTemplate;
 	
 	pDocTemplate = new CMultiDocTemplate(IDR_MENU3, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
@@ -45,9 +44,9 @@ BOOL CMyWinApp::InitInstance() {
 
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
-	//if (!ProcessShellCommand(cmdInfo)){
-	//	return FALSE;
-	//}
+	/*if (!ProcessShellCommand(cmdInfo)){
+		return FALSE;
+	}*/
 
 	frame->ShowWindow(this->m_nCmdShow);
 	frame->UpdateWindow();
