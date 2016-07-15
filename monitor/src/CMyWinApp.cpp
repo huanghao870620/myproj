@@ -1,4 +1,6 @@
+
 #include <iostream>
+#include <vld.h>
 #include <afxwin.h>
 #include <afxdisp.h>
 #include "resource.h"
@@ -6,6 +8,7 @@
 #include "MyView.h"
 #include "CMyFrameWnd.h"
 #include "CMyWinApp.h"
+
 
 
 using namespace std;
@@ -21,14 +24,14 @@ CMyWinApp::~CMyWinApp()
 CMyWinApp theApp;
 BOOL CMyWinApp::InitInstance() {
 	InitCommonControls();
-	CWinApp::InitInstance();
+	//CWinApp::InitInstance();
 	AfxOleInit();
 	AfxEnableControlContainer();
 	SetRegistryKey("abc");
 	LoadStdProfileSettings(4);
 	CMultiDocTemplate * pDocTemplate;
 	
-	pDocTemplate = new CMultiDocTemplate(IDR_MENU3, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
+	pDocTemplate = new CMultiDocTemplate(IDR_MENU1, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
 	if (!pDocTemplate){
 		return FALSE;
 	}
@@ -44,9 +47,9 @@ BOOL CMyWinApp::InitInstance() {
 
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
-	/*if (!ProcessShellCommand(cmdInfo)){
+	if (!ProcessShellCommand(cmdInfo)){
 		return FALSE;
-	}*/
+	}
 
 	frame->ShowWindow(this->m_nCmdShow);
 	frame->UpdateWindow();
