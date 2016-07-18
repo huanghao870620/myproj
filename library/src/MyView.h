@@ -19,6 +19,8 @@ public:
 	MyView();
 	virtual ~MyView();
 
+	CButton but;
+
 protected:
 	bool m_bDraw;
 	HCURSOR m_Hcursor;
@@ -29,6 +31,8 @@ protected:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnDraw(CDC* pDC);
+	afx_msg void OnClicked();
+	afx_msg int OnCreate(LPCREATESTRUCT lpcs);
 	DECLARE_MESSAGE_MAP();
 
 };
