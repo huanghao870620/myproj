@@ -24,14 +24,14 @@ CMyWinApp::~CMyWinApp()
 CMyWinApp theApp;
 BOOL CMyWinApp::InitInstance() {
 	InitCommonControls();
-	//CWinApp::InitInstance();
+	CWinApp::InitInstance();
 	AfxOleInit();
 	AfxEnableControlContainer();
 	SetRegistryKey("abc");
 	LoadStdProfileSettings(4);
 	CMultiDocTemplate * pDocTemplate;
 	
-	pDocTemplate = new CMultiDocTemplate(IDR_MENU1, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
+	pDocTemplate = new CMultiDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDocument), RUNTIME_CLASS(CMyFrameWnd), RUNTIME_CLASS(MyView));
 	if (!pDocTemplate){
 		return FALSE;
 	}
@@ -39,7 +39,7 @@ BOOL CMyWinApp::InitInstance() {
 
 	CMyFrameWnd * frame = new CMyFrameWnd;
 	
-	if (!frame || !frame->LoadFrame(IDR_MENU3)){
+	if (!frame || !frame->LoadFrame(IDR_MAINFRAME)){
 		return FALSE;
 	}
 

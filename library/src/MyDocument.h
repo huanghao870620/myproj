@@ -13,7 +13,8 @@
  */
 class MyDocument : public CDocument
 {
-	DECLARE_DYNAMIC(MyDocument)
+	//DECLARE_DYNAMIC(MyDocument)
+	DECLARE_DYNCREATE(MyDocument)
 public:
 	MyDocument();
 	virtual ~MyDocument();

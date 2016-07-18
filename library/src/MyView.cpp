@@ -7,7 +7,8 @@
 
 #include "MyView.h"
 
-IMPLEMENT_DYNAMIC(MyView,CView)
+//IMPLEMENT_DYNAMIC(MyView,CView)
+IMPLEMENT_DYNCREATE(MyView,CView)
 
 
 BEGIN_MESSAGE_MAP(MyView,CView)
@@ -25,6 +26,11 @@ MyView::MyView(){
 
 MyView::~MyView(){
 
+}
+
+
+void MyView::OnDraw(CDC *pDC){
+	OutputDebugString("");
 }
 
 void MyView::OnLButtonDown(UINT nFlags, CPoint point)

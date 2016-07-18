@@ -7,7 +7,8 @@
 
 #include "MyDocument.h"
 
-IMPLEMENT_DYNAMIC(MyDocument,CDocument)
+//IMPLEMENT_DYNAMIC(MyDocument,CDocument)
+IMPLEMENT_DYNCREATE(MyDocument,CDocument)
 MyDocument::MyDocument(){
 
 }
