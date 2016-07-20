@@ -8,12 +8,12 @@
 #if !defined(EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_)
 #define EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_
 #include<afxwin.h>
+#include"ChatDialog.h"
 /**
  * йсм╪
  */
 class MyView : public CView
 {
-	//DECLARE_DYNAMIC(MyView)
 	DECLARE_DYNCREATE(MyView)
 public:
 	MyView();
@@ -33,7 +33,11 @@ protected:
 	afx_msg void OnDraw(CDC* pDC);
 	afx_msg void OnClicked();
 	afx_msg int OnCreate(LPCREATESTRUCT lpcs);
+	afx_msg void doCommand();
 	DECLARE_MESSAGE_MAP();
+
+private:
+	ChatDialog *chatDialog = nullptr;
 
 };
 #endif // !defined(EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_)

@@ -5,7 +5,8 @@
 //End section for file ConnSocket.h
 
 
-
+#include<list>
+//#include"deal"
 
 //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 class ConnSocket
@@ -40,6 +41,7 @@ private:
 		char receiveBuf[100]; // 接收字符串
 		SOCKET serConn;
 		SOCKET serSocket;
+		std::list<SOCKET*> serConnList; // 客户端socket列表
 
 };  //end class ConnSocket
 

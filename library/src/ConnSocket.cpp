@@ -59,6 +59,7 @@ void ConnSocket::init()
     // 循环体
 	//获取socket
 	this->serConn = accept(serSocket, (SOCKADDR*)&clientsocket, &len);
+	
 
 	//格式化ip
 	//sprintf(sendBuf, "welcome %s to bejing", inet_ntoa(clientsocket.sin_addr));

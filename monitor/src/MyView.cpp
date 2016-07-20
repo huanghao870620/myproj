@@ -5,10 +5,8 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include "MyView.h"
-
-//IMPLEMENT_DYNAMIC(MyView,CView)
+#include "resource.h"
 IMPLEMENT_DYNCREATE(MyView,CView)
-
 
 BEGIN_MESSAGE_MAP(MyView,CView)
 	ON_WM_LBUTTONDOWN(OnLButtonDown)
@@ -16,7 +14,7 @@ BEGIN_MESSAGE_MAP(MyView,CView)
 	ON_WM_CREATE()
 	ON_BN_CLICKED(1, OnClicked)
 	ON_WM_LBUTTONUP(OnLButtonUp)
-	ON_COMMAND(id,dd)
+	ON_COMMAND(ID_40007, doCommand)
 END_MESSAGE_MAP()
 
 MyView::MyView(){
@@ -28,6 +26,13 @@ MyView::MyView(){
 
 MyView::~MyView(){
 
+}
+
+void MyView::doCommand(){
+	//this->MessageBox(_T("command"));
+	this->chatDialog = new ChatDialog;
+	this->chatDialog->Create(IDD_DIALOG1, this);
+	this->chatDialog->ShowWindow(SW_SHOWNORMAL);
 }
 
 void MyView::OnClicked(){
