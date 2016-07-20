@@ -29,8 +29,6 @@ set(
 	"${boost_home}/lib"
 	"${boost_home}/stage/lib"
 	"${boost_home}/lib/vc12_x64/lib"
-#	"${boost_home}/bin.v2/libs/locale/build/msvc-12.0/debug/address-model-64/link-static/runtime-link-static/threading-multi"
-#	"${boost_home}/bin.v2/libs/test/build/msvc-12.0/debug/address-model-64/link-static/runtime-link-static/threading-multi"
 	"${vld_home}/lib"
 )
 
@@ -42,18 +40,20 @@ aux_source_directory(library dir_src2)
 aux_source_directory(src_mfc monitor)
 
 
-include_directories(./library/src)
+include_directories(
+./library/src
+./chat_server
+)
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 set(
  libname
  libmysql
  my_library
+ chat_serverlib
  ws2_32
  libboost_locale-vc120-mt-sgd-1_60 
  libboost_unit_test_framework-vc120-mt-s-1_60
- #libboost_unit_test_framework-vc120-mt-sgd-1_60
- #libboost_unit_test_framework-vc120-mt-1_60
 )
 
 
