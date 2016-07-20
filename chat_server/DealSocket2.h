@@ -8,12 +8,12 @@
 #if !defined(EA_8316CDF3_A3A6_425e_A72D_03DF36BA6C6F__INCLUDED_)
 #define EA_8316CDF3_A3A6_425e_A72D_03DF36BA6C6F__INCLUDED_
 #include <afxwin.h>
-class DealSocket
+class DealSocket2
 {
 
 public:
-	DealSocket(SOCKET * socket);
-	virtual ~DealSocket();
+	DealSocket2(SOCKET * socket);
+	virtual ~DealSocket2();
 	void Start();
 
 private:

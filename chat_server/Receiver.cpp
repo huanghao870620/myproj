@@ -4,9 +4,15 @@
 //  Created on:      19-ÆßÔÂ-2016 19:02:24
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
-
+#include<iostream>
 #include "Receiver.h"
 
+
+UINT fun(LPVOID lParam){
+	SOCKET * client_socket = (SOCKET *)lParam;
+
+	return 0;
+}
 
 Receiver::Receiver(){
 	WORD reqVersion = MAKEWORD(1, 1);
@@ -30,14 +36,15 @@ Receiver::Receiver(){
 
 	SOCKADDR * server_sock_addr = (SOCKADDR *)& server_addr;
 	bind(serverSocket, server_sock_addr, sizeof(SOCKADDR));
+	listen(serverSocket, 5);
 
 	SOCKADDR_IN client_sock_addr_in;
-	SOCKET client_socket;
-
 	SOCKADDR * client_sock_addr = (SOCKADDR *)& client_sock_addr_in;
 	int len = sizeof(SOCKADDR); // 
-	accept(client_socket, client_sock_addr, & len); //
-
+	SOCKET client_socket = accept(serverSocket, client_sock_addr, & len); //
+	this->clients.push_back(&client_socket);
+	CWinThread * cwt = AfxBeginThread(fun, (LPVOID)&client_socket, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);
+	cwt->ResumeThread(); // »Ö¸´Ïß³Ì
 }
 
 

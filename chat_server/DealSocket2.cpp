@@ -5,11 +5,11 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include<iostream>
-#include "DealSocket.h"
+#include "DealSocket2.h"
 
 UINT ThreadFun(LPVOID);
 
-DealSocket::DealSocket(SOCKET * socket){	
+DealSocket2::DealSocket2(SOCKET * socket){	
 	this->socket = socket;
 	this->cwt = AfxBeginThread(ThreadFun, (LPVOID)this->socket, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);
 }
@@ -22,10 +22,10 @@ UINT ThreadFun(LPVOID lParam){
 	return 0;
 }
 
-DealSocket::~DealSocket(){
+DealSocket2::~DealSocket2(){
 
 }
 
-void DealSocket::Start(){
+void DealSocket2::Start(){
 	this->cwt->ResumeThread();
 }

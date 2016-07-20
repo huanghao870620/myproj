@@ -1,7 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
+#include<afxwin.h>
 #include <list>
-
 class parser_json;
 class StruInte;
 

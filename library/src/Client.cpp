@@ -1,13 +1,11 @@
 #include <stdio.h>  
-#include <winsock2.h>  
+//#include <winsock2.h>  
 #include "parser_json.h"
 
 #include "ReadIniFile.h"
 #include "DrawFlag.h"
 #include "StruInte.h"
 #include "Client.h"
-
-//#pragma comment(lib,"ws2_32.lib")  
 
 
 Client::Client()

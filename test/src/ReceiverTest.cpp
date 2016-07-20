@@ -18,5 +18,5 @@ ReceiverTest::~ReceiverTest(){
 }
 
 void ReceiverTest::testConstructor(){
-
+	Receiver * receiver = new Receiver;
 }

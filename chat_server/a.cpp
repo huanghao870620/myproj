@@ -1,6 +1,6 @@
 #include <afxwin.h>
 #include "ConnSocket.h"
-#include "DealSocket.h"
+#include "DealSocket2.h"
 #include "SocketList.h"
 
 int main(){
@@ -13,7 +13,7 @@ int main(){
 	SocketList * sl = SocketList::getInstance();
 	sl->add(socket);
 
-	DealSocket * ds = new DealSocket(cs->getSerConn());
+	DealSocket2 * ds = new DealSocket2(cs->getSerConn());
 	ds->Start();
 	return 0;
 }

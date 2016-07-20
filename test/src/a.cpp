@@ -3,6 +3,7 @@
 #include <boost/test/parameterized_test.hpp>
 #include "CDBOperation.h"
 #include "MyTest.h"
+#include "ReceiverTest.h"
 
 
 using boost::unit_test::test_suite;
@@ -21,11 +22,17 @@ void testCopy(){
 	mt->testCopy();
 }
 
+void testReceiver(){
+	ReceiverTest * rt = new ReceiverTest;
+	rt->testConstructor();
+}
+
 test_suite* init_unit_test_suite(int, char*[]){
 	int params[] = { 1, 2, 3, 4, 5 };
 	std::cout << "111111" << std::endl;
 	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testDelete));
-	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testCopy));
+	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testCopy));
+	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testReceiver));
 	//boost::unit_test::framework::master_test_suite().add(BOOST_PARAM_TEST_CASE(&test4, params, params + 5));
 	return 0;
 }
