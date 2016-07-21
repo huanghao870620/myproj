@@ -59,7 +59,7 @@ void Client::Recv() {
 }
 
 int Client::Send(const char *msg) {
-	int r = send(soc, msg, 4, 0);
+	int r = send(soc, msg, strlen(msg), 0);
 	if (r == SOCKET_ERROR){
 
 	}

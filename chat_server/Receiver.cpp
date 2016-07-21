@@ -5,12 +5,14 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include<iostream>
+#define DEFAULT_BUFLEN 512
 #include "Receiver.h"
 
 
 UINT fun(LPVOID lParam){
 	SOCKET * client_socket = (SOCKET *)lParam;
-
+	char recv_msg[DEFAULT_BUFLEN];
+	recv(*client_socket, recv_msg, DEFAULT_BUFLEN, 0);
 	return 0;
 }
 
@@ -41,13 +43,15 @@ Receiver::Receiver(){
 	SOCKADDR_IN client_sock_addr_in;
 	SOCKADDR * client_sock_addr = (SOCKADDR *)& client_sock_addr_in;
 	int len = sizeof(SOCKADDR); // 
+	while (true){
 	SOCKET client_socket = accept(serverSocket, client_sock_addr, & len); //
 	this->clients.push_back(&client_socket);
 	CWinThread * cwt = AfxBeginThread(fun, (LPVOID)&client_socket, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);
 	cwt->ResumeThread(); // »Ö¸´Ïß³Ì
+	}
 }
 
-
+//Receiver::Receiver(){}
 
 Receiver::~Receiver(){
 
