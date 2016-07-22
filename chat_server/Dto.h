@@ -16,7 +16,11 @@ public:
 	Dto();
 	virtual ~Dto();
 
+	void addClientSocket(SOCKET * client);
+	void setServerSocket(SOCKET * serverSocket);
+
 private:
 	std::list<SOCKET *> clients; // 所有客户端
+	SOCKET * serverSocket; // 服务端socket
 };
 #endif // !defined(EA_C550C720_F69C_4b2a_8F4F_65F7ECF8CF36__INCLUDED_)

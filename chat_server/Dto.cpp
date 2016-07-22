@@ -17,3 +17,12 @@ Dto::Dto(){
 Dto::~Dto(){
 
 }
+
+void Dto::setServerSocket(SOCKET * serverSocket){
+	this->serverSocket = serverSocket;
+}
+
+//Ìí¼Ó¿Í»§¶Ë
+void Dto::addClientSocket(SOCKET * client){
+	this->clients.push_back(client);
+}

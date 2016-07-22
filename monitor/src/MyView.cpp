@@ -33,6 +33,21 @@ void MyView::doCommand(){
 	this->chatDialog = new ChatDialog;
 	this->chatDialog->Create(IDD_DIALOG1, this);
 	this->chatDialog->ShowWindow(SW_SHOWNORMAL);
+
+	char server_ip[100];
+	WORD versionRequested = MAKEWORD(1, 1);
+	WSADATA  wsaData;
+	WSAStartup(versionRequested, &wsaData);
+	SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	if (sock <= 0){
+		::MessageBox(NULL, _T("´´½¨socketÊ§°Ü!"), _T(""), MB_OK);
+		return;
+	}
+
+	SOCKADDR_IN server_addr;
+	server_addr.sin_family = AF_INET;
+	server_addr.sin_port = htons(6000);
+
 }
 
 void MyView::OnClicked(){
