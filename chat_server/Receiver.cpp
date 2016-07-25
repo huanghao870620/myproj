@@ -13,6 +13,13 @@ UINT fun(LPVOID lParam){
 	SOCKET * client_socket = (SOCKET *)lParam;
 	char recv_msg[DEFAULT_BUFLEN];
 	recv(*client_socket, recv_msg, DEFAULT_BUFLEN, 0);
+	char * b = recv_msg;
+	for (int i = 0; i < DEFAULT_BUFLEN; i++, b++){
+		if (*b == -52){
+			*b = '\0';
+			break;
+		}
+	}
 	return 0;
 }
 
