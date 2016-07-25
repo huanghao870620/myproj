@@ -4,6 +4,7 @@
 //  Created on:      25-ÆßÔÂ-2016 14:58:50
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
+#include "Client2.h"
 #include "Client2Test.h"
 
 
@@ -18,5 +19,6 @@ Client2Test::~Client2Test(){
 }
 
 void Client2Test::testClient2(){
-
+	Client2 * c2 = new Client2;
+	
 }

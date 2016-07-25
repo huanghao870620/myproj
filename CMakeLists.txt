@@ -26,6 +26,7 @@ set(
 	link_lib
 	"${mysql_sdk_home}/lib"
 	"library/src/Debug"
+	"monitor/src/Debug"
 	"${boost_home}/lib"
 	"${boost_home}/stage/lib"
 	"${boost_home}/lib/vc12_x64/lib"
@@ -43,12 +44,14 @@ aux_source_directory(src_mfc monitor)
 include_directories(
 ./library/src
 ./chat_server
+./monitor/src
 )
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 set(
  libname
  libmysql
+ #mfcde2lib
  my_library
  chat_serverlib
  ws2_32
