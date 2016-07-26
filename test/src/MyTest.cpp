@@ -32,3 +32,10 @@ void MyTest::testCopy(){
 	char * newFile = "D:/cppwork/myproj/monitor/src/Debug/test.ini";
 	fo->copy_File(sourceFile, newFile);
 }
+
+void MyTest::testCopy2TestDir(){
+	FileOperator * fo = new FileOperator;
+	char * sourceFile = "D:/cppwork/myproj/monitor/src/test.ini";
+	char * newFile = "D:/cppwork/myproj/test/src/Debug/test.ini";
+	fo->copy_File(sourceFile, newFile);
+}

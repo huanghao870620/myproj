@@ -20,7 +20,8 @@ void test4(int a){
 
 void testCopy(){
 	MyTest * mt = new MyTest;
-	mt->testCopy();
+	//mt->testCopy();
+	mt->testCopy2TestDir();
 }
 
 void testReceiver(){
@@ -29,6 +30,8 @@ void testReceiver(){
 }
 
 void testClient2(){
+	Sleep(1000 * 5);
+	::OutputDebugString("-- testClient2 --");
 	Client2Test * ct = new Client2Test;
 	ct->testClient2();
 }

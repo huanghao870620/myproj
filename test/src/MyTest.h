@@ -17,5 +17,6 @@ public:
 
 	void testDelete();
 	void testCopy();
+	void testCopy2TestDir();
 };
 #endif // !defined(EA_77122CA7_9414_4921_8809_99FE786EDE83__INCLUDED_)

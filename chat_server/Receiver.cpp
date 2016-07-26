@@ -50,15 +50,15 @@ Receiver::Receiver(){
 	SOCKADDR_IN client_sock_addr_in;
 	SOCKADDR * client_sock_addr = (SOCKADDR *)& client_sock_addr_in;
 	int len = sizeof(SOCKADDR); // 
+	OutputDebugString("--- front accept --");
 	while (true){
 	SOCKET client_socket = accept(serverSocket, client_sock_addr, & len); //
 	this->clients.push_back(&client_socket);
-	CWinThread * cwt = AfxBeginThread(fun, (LPVOID)&client_socket, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);
+	CWinThread * cwt = AfxBeginThread(fun, (LPVOID)&client_socket, THREAD_PRIORITY_HIGHEST, 0, CREATE_SUSPENDED);
 	cwt->ResumeThread(); // »Ö¸´Ïß³Ì
 	}
 }
 
-//Receiver::Receiver(){}
 
 Receiver::~Receiver(){
 
