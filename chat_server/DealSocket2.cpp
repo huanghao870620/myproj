@@ -5,6 +5,7 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include<iostream>
+#include "SocketList.h"
 #include "DealSocket2.h"
 
 UINT ThreadFun(LPVOID);
@@ -19,6 +20,9 @@ UINT ThreadFun(LPVOID lParam){
 	SOCKET * socket = (SOCKET*)lParam;
 	recv(*socket, receiveBuf, strlen(receiveBuf) + 1, 0);
 	int comp = strcmp(receiveBuf, "");
+
+	SocketList * sockList = SocketList::getInstance();
+	sockList->messaging(receiveBuf);
 	return 0;
 }
 
