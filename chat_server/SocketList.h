@@ -19,6 +19,8 @@ public:
 
 	static SocketList * getInstance();
 	void add(SOCKET * socket);
+	/*消息群发*/
+	void messaging(char * msg);
 
 private:
 	std::list<SOCKET*> socke_list;

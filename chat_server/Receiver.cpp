@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 #include<iostream>
 #define DEFAULT_BUFLEN 512
+#include "SocketList.h"
 #include "Receiver.h"
 
 
@@ -20,6 +21,8 @@ UINT fun(LPVOID lParam){
 			break;
 		}
 	}
+
+	SocketList * sockList = SocketList::getInstance();
 	return 0;
 }
 

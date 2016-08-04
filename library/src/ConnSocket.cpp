@@ -10,18 +10,6 @@
 
 ConnSocket::ConnSocket() 
 {
-	this->init();
-}
-
-ConnSocket::~ConnSocket() 
-{
-}
-
-
-//初始化
-void ConnSocket::init() 
-{
-	
 	WORD myVersionRequest = MAKEWORD(1, 1); //; // request
 
 	//开始
@@ -31,7 +19,7 @@ void ConnSocket::init()
 		printf("失败 !");
 		return;
 	}
-	
+
 	//创建socket
 	this->serSocket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -56,10 +44,10 @@ void ConnSocket::init()
 
 	int len = sizeof(SOCKADDR);
 
-    // 循环体
+	// 循环体
 	//获取socket
 	this->serConn = accept(serSocket, (SOCKADDR*)&clientsocket, &len);
-	
+
 
 	//格式化ip
 	//sprintf(sendBuf, "welcome %s to bejing", inet_ntoa(clientsocket.sin_addr));
@@ -73,6 +61,12 @@ void ConnSocket::init()
 
 	//string c0 = boost::locale::conv::between(receiveBuf, "UTF-8", "gb2312");
 }
+
+ConnSocket::~ConnSocket() 
+{
+}
+
+
 
 
 void ConnSocket::sendMsg(){

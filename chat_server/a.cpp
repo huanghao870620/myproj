@@ -9,11 +9,11 @@ int main(){
 	//cs->sendMsg();
 	//cs->receiveMsg();
 
-	SOCKET * socket = cs->getSerConn();
+	SOCKET * sock = cs->getSerConn();
 	SocketList * sl = SocketList::getInstance();
-	sl->add(socket);
+	sl->add(sock);
 
-	DealSocket2 * ds = new DealSocket2(cs->getSerConn());
+	DealSocket2 * ds = new DealSocket2(sock);
 	ds->Start();
 	return 0;
 }

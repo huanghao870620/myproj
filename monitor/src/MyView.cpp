@@ -5,6 +5,7 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include "MyView.h"
+
 #include "resource.h"
 IMPLEMENT_DYNCREATE(MyView,CView)
 
@@ -34,7 +35,7 @@ void MyView::doCommand(){
 	this->chatDialog->Create(IDD_DIALOG1, this);
 	this->chatDialog->ShowWindow(SW_SHOWNORMAL);
 
-	char server_ip[100];
+	/*char server_ip[100];
 	WORD versionRequested = MAKEWORD(1, 1);
 	WSADATA  wsaData;
 	WSAStartup(versionRequested, &wsaData);
@@ -46,7 +47,10 @@ void MyView::doCommand(){
 
 	SOCKADDR_IN server_addr;
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_port = htons(6000);
+	server_addr.sin_port = htons(6000);*/
+	Client2 * c2 = new Client2;
+	std::cout << "" << std::endl;
+	
 
 }
 

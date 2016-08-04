@@ -31,7 +31,8 @@ Client2::Client2(){
 		::MessageBox(NULL, _T("socket¡¨Ω” ß∞‹"), _T(""), MB_OK);
 		return;
 	}
-
+	/*char buf[DEFAULT_BUFLEN];
+	send(sock, buf, DEFAULT_BUFLEN, 0);*/
 }
 
 

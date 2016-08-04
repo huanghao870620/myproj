@@ -29,8 +29,6 @@ class ConnSocket
 		void Close();
 
 		SOCKET * getSerConn();
-private:
-        void init(); 
 
 private:
 		int err; // error

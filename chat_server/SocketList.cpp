@@ -16,6 +16,14 @@ SocketList::~SocketList(){
 
 }
 
+
+void SocketList::messaging(char * msg){
+	std::list<SOCKET *>::iterator itor = this->socke_list.begin();
+	for (; itor != this->socke_list.end(); itor++){
+		send(**itor, msg, strlen(msg), 0);
+	}
+}
+
  SocketList * SocketList::getInstance(){
 	if (instance == nullptr){
 		instance = new SocketList;
