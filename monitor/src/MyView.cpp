@@ -31,7 +31,6 @@ MyView::~MyView(){
 }
 
 void MyView::doCommand(){
-	//this->MessageBox(_T("command"));
 	this->chatDialog = new ChatDialog;
 	this->chatDialog->Create(IDD_DIALOG1, this);
 	this->chatDialog->ShowWindow(SW_SHOWNORMAL);
@@ -49,8 +48,7 @@ void MyView::doCommand(){
 	SOCKADDR_IN server_addr;
 	server_addr.sin_family = AF_INET;
 	server_addr.sin_port = htons(6000);*/
-	Client2 * c2 = new Client2;
-	std::cout << "" << std::endl;
+	//Client2 * c2 = new Client2;
 	
 
 }

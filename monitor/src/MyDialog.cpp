@@ -122,18 +122,3 @@ void MyDialog::ReDraw(){
 		this->m_UserList.SetItemText(i, 18, report->checkr.c_str());
 	}
 }
-
-
-/*
-37726 ÐèÒªÉ¾³ýµÄid
-select id  from rr_report  where id not in (select t.id from (
-select pdf_url,id from rr_report where pdf_url is not null) as t
-group by t.pdf_url having count(1)=1)
-
-and id not in (select t.id from (
-select t2.pdf_url,count(1),t2.id from
-(select pdf_url,id from rr_report where pdf_url is not null) as t2
-group by pdf_url having count(1)>1 ) as t)
-
-and id not in ( select id from rr_report where pdf_url is null)
-*/
