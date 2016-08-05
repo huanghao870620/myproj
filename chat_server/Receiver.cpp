@@ -13,16 +13,20 @@
 UINT fun(LPVOID lParam){
 	SOCKET * client_socket = (SOCKET *)lParam;
 	char recv_msg[DEFAULT_BUFLEN];
-	recv(*client_socket, recv_msg, DEFAULT_BUFLEN, 0);
-	char * b = recv_msg;
-	for (int i = 0; i < DEFAULT_BUFLEN; i++, b++){
-		if (*b == -52){
-			*b = '\0';
-			break;
+	while (true){
+		recv(*client_socket, recv_msg, DEFAULT_BUFLEN, 0);
+		char * b = recv_msg;
+		for (int i = 0; i < DEFAULT_BUFLEN; i++, b++){
+			if (*b == -52){
+				*b = '\0';
+				break;
+			}
 		}
+		std::cout << recv_msg << std::endl;
+		std::cout << "------------------" << std::endl;
 	}
 
-	SocketList * sockList = SocketList::getInstance();
+	//SocketList * sockList = SocketList::getInstance();
 	return 0;
 }
 
@@ -56,6 +60,7 @@ Receiver::Receiver(){
 	OutputDebugString("--- front accept --");
 	while (true){
 	SOCKET client_socket = accept(serverSocket, client_sock_addr, & len); //
+	std::cout << "接收到一个socket" << std::endl;
 	this->clients.push_back(&client_socket);
 	CWinThread * cwt = AfxBeginThread(fun, (LPVOID)&client_socket, THREAD_PRIORITY_HIGHEST, 0, CREATE_SUSPENDED);
 	cwt->ResumeThread(); // 恢复线程
