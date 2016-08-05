@@ -18,5 +18,10 @@ public:
 	Client2();
 	virtual ~Client2();
 
+	void sendMsg(char * msg);
+
+private:
+	SOCKET  sock;
+
 };
 #endif // !defined(EA_ECDE219A_7BEB_4eb0_A208_BF8E8F1DC903__INCLUDED_)

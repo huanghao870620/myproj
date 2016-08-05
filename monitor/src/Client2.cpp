@@ -13,7 +13,7 @@ Client2::Client2(){
 	WSADATA wsaData;
 	WORD versionRequested = MAKEWORD(1, 1);
 	WSAStartup(versionRequested, &wsaData); //初始化dll
-	SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // 创建socket
+	this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // 创建socket
 	if (sock <= 0){
 		::MessageBox(NULL, _T("创建socket失败"), _T(""), MB_OK);
 		return;
@@ -39,4 +39,8 @@ Client2::Client2(){
 
 Client2::~Client2(){
 
+}
+
+void Client2::sendMsg(char * msg){
+	send(this->sock, msg, strlen(msg), 0);
 }

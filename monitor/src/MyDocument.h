@@ -9,6 +9,7 @@
 #define EA_63C861EC_1575_4b0c_A1B6_165863ED73A5__INCLUDED_
 #include<iostream>
 #include<afxwin.h>
+#include "Client2.h"
 /**
  * ÎÄµµ
  */
@@ -19,6 +20,11 @@ class MyDocument : public CDocument
 public:
 	MyDocument();
 	virtual ~MyDocument();
+
+	void sendMsg(char * msg);
+
+private:
+	Client2 * c2;
 
 };
 #endif // !defined(EA_63C861EC_1575_4b0c_A1B6_165863ED73A5__INCLUDED_)
