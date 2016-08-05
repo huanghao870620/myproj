@@ -23,6 +23,11 @@ CMyWinApp::~CMyWinApp()
 
 CMyWinApp theApp;
 BOOL CMyWinApp::InitInstance() {
+	AllocConsole();
+	SetConsoleTitle("²âÊÔ´°¿Ú");
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONIN$", "r+t", stdin);
+
 	InitCommonControls();
 	CWinApp::InitInstance();
 	AfxOleInit();
