@@ -21,6 +21,7 @@ END_MESSAGE_MAP()
 MyView::MyView(){
 	this->m_bDraw = false;
 	this->m_Hcursor = AfxGetApp()->LoadStandardCursor(IDC_CROSS);
+	std::cout << "myview constructor" << std::endl;
 }
 
 

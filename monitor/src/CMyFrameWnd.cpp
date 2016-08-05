@@ -49,7 +49,7 @@ CMyFrameWnd::~CMyFrameWnd()
 
 CMyFrameWnd::CMyFrameWnd()
 {
-
+	std::cout << "cmyframewnd constructor" << std::endl;
 	/*this->Create(NULL, _T("ÑÐ±¨×´Ì¬¼à¿ØÆ÷"), WS_OVERLAPPEDWINDOW, this->rectDefault, NULL, NULL);
 	HICON ico = AfxGetApp()->LoadIconA(IDR_DD1);
 	SetIcon(ico, true);

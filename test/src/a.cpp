@@ -20,8 +20,8 @@ void test4(int a){
 
 void testCopy(){
 	MyTest * mt = new MyTest;
-	//mt->testCopy();
-	mt->testCopy2TestDir();
+	mt->testCopy();
+	//mt->testCopy2TestDir();
 }
 
 void testReceiver(){
@@ -40,9 +40,9 @@ test_suite* init_unit_test_suite(int, char*[]){
 	int params[] = { 1, 2, 3, 4, 5 };
 	std::cout << "111111" << std::endl;
 	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testDelete));
-	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testCopy));
-	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testReceiver));
-	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testClient2));
+	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testCopy));
+	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testReceiver));
+	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testClient2));
 	//boost::unit_test::framework::master_test_suite().add(BOOST_PARAM_TEST_CASE(&test4, params, params + 5));
 	return 0;
 }

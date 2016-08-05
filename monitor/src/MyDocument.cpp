@@ -6,11 +6,13 @@
 ///////////////////////////////////////////////////////////
 
 #include "MyDocument.h"
+#include "Client2.h"
 
 //IMPLEMENT_DYNAMIC(MyDocument,CDocument)
 IMPLEMENT_DYNCREATE(MyDocument,CDocument)
 MyDocument::MyDocument(){
-
+	std::cout << "mydocument constructor" << std::endl;
+	Client2  * c2 = new Client2;
 }
 
 
