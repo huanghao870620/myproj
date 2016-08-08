@@ -10,6 +10,7 @@
 #include<afxwin.h>
 #include<iostream>
 #include"Client2.h"
+#include "MyDocument.h"
 #include"ChatDialog.h"
 /**
  * йсм╪

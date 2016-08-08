@@ -8,10 +8,12 @@
 #if !defined(EA_5B3D004C_A895_4c13_82B9_E5423BA9750A__INCLUDED_)
 #define EA_5B3D004C_A895_4c13_82B9_E5423BA9750A__INCLUDED_
 #include <afxwin.h>
+#include "Client2.h"
 class ChatDialog : public CDialog
 {
 
 public:
+	ChatDialog(Client2 * c2);
 	ChatDialog();
 	virtual BOOL OnInitDialog();
 	virtual ~ChatDialog();
@@ -22,6 +24,7 @@ private:
 	CEdit edit;
 	CButton but;
 	CStatic cs;
+	Client2 * c2;
 
 private:
 	DECLARE_MESSAGE_MAP()

@@ -14,7 +14,12 @@ BEGIN_MESSAGE_MAP(ChatDialog, CDialog)
 END_MESSAGE_MAP()
 
 
+ChatDialog::ChatDialog(Client2 * c2){
+	this->c2 = c2;
+}
+
 ChatDialog::ChatDialog(){
+
 }
 
 
@@ -25,8 +30,8 @@ ChatDialog::~ChatDialog(){
 void ChatDialog::OnChat(){
 	CString dd;
 	this->edit.GetWindowTextA(dd);
-	Client *client = new Client;
-	client->Send(dd);
+	/*Client *client = new Client;
+	client->Send(dd);*/
 }
 
 void ChatDialog::addComp(){

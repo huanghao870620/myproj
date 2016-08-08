@@ -22,5 +22,5 @@ MyDocument::~MyDocument(){
 }
 
 void MyDocument::sendMsg(char * msg){
-
+	this->c2->sendMsg(msg);
 }

@@ -28,7 +28,7 @@ void CMyFrameWnd::OnCreate(){
 
 CMyFrameWnd::~CMyFrameWnd()
 {
-	std::list<std::string *>::iterator iter = this->str_list.begin();
+	/*std::list<std::string *>::iterator iter = this->str_list.begin();
 	while (iter != this->str_list.end())
 	{
 		std::string * s = *iter;
@@ -42,7 +42,7 @@ CMyFrameWnd::~CMyFrameWnd()
 		CStatic * cs = *cs_iter;
 		delete cs;
 		cs_iter++;
-	}
+	}*/
 
 }
 

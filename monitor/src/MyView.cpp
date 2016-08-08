@@ -54,7 +54,9 @@ void MyView::doCommand(){
 }
 
 void MyView::OnClicked(){
-	this->MessageBox(_T("cc"));
+	//this->MessageBox(_T("cc"));
+	 MyDocument * doc = (MyDocument *)this->GetDocument();
+	 doc->sendMsg(0);
 }
 
 void MyView::OnDraw(CDC *pDC){
