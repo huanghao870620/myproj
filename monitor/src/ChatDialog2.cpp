@@ -28,4 +28,10 @@ BOOL ChatDialog2::OnInitDialog(){
 	pWnd->DestroyWindow();
 	this->ScreenToClient(rectTargetCtrl);
 
+	if (NULL == this->m_pDrawView){
+		return FALSE;
+	}
+	this->m_pDrawView = (CDrawView*)RUNTIME_CLASS(CDrawView)->CreateObject();
+	this->m_pDrawView->Create(NULL, NULL, AFX_WS_DEFAULT_VIEW | WS_VSCROLL | WS_HSCROLL, rectTargetCtrl, this, targetCtrlId);
+	return TRUE;
 }
