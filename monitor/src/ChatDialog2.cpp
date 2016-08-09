@@ -14,6 +14,18 @@ ChatDialog2::ChatDialog2(){
 
 
 
+
 ChatDialog2::~ChatDialog2(){
+
+}
+
+BOOL ChatDialog2::OnInitDialog(){
+	CDialog::OnInitDialog();
+	UINT targetCtrlId = IDC_STATIC;
+	CWnd *pWnd = this->GetDlgItem(targetCtrlId);
+	CRect rectTargetCtrl;
+	pWnd->GetWindowRect(rectTargetCtrl);
+	pWnd->DestroyWindow();
+	this->ScreenToClient(rectTargetCtrl);
 
 }
