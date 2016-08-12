@@ -1,4 +1,4 @@
-#include <afxwin.h>
+//#include <afxwin.h>
 #include <iostream>
 #include "MfcMulti.h"
 #include "StruInte.h"

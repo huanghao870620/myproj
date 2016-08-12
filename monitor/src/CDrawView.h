@@ -17,5 +17,9 @@ public:
 	CDrawView();
 	virtual ~CDrawView();
 
+	void OnDraw(CDC *pDC);
+
+	//DECLARE_MESSAGE_MAP();
+
 };
 #endif // !defined(EA_8AA7A857_155C_41cf_942E_C45CB3286775__INCLUDED_)

@@ -7,11 +7,11 @@
 
 #if !defined(EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_)
 #define EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_
-#include<afxwin.h>
+//#include<afxwin.h>
 #include<iostream>
-#include"Client2.h"
-#include "MyDocument.h"
+//#include"Client2.h"
 #include"ChatDialog.h"
+
 /**
  * йсм╪
  */

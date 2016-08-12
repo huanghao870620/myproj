@@ -8,7 +8,7 @@
 #if !defined(EA_63C861EC_1575_4b0c_A1B6_165863ED73A5__INCLUDED_)
 #define EA_63C861EC_1575_4b0c_A1B6_165863ED73A5__INCLUDED_
 #include<iostream>
-#include<afxwin.h>
+//#include<afxwin.h>
 #include "Client2.h"
 /**
  * ÎÄµµ

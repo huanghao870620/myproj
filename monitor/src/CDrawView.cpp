@@ -7,6 +7,11 @@
 
 #include "CDrawView.h"
 
+//
+IMPLEMENT_DYNCREATE(CDrawView, CScrollView)
+//
+//BEGIN_MESSAGE_MAP(MyView, CView)
+//END_MESSAGE_MAP()
 
 CDrawView::CDrawView(){
 
@@ -15,5 +20,9 @@ CDrawView::CDrawView(){
 
 
 CDrawView::~CDrawView(){
+
+}
+
+void CDrawView::OnDraw(CDC * pDC){
 
 }

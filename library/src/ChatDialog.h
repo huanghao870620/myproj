@@ -7,7 +7,7 @@
 
 #if !defined(EA_5B3D004C_A895_4c13_82B9_E5423BA9750A__INCLUDED_)
 #define EA_5B3D004C_A895_4c13_82B9_E5423BA9750A__INCLUDED_
-#include <afxwin.h>
+//#include <afxwin.h>
 #include "Client2.h"
 class ChatDialog : public CDialog
 {

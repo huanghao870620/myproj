@@ -5,7 +5,7 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include <iostream>
-#include <afxwin.h>
+//#include <afxwin.h>
 #include "ChatDialog.h"
 #include "Client.h"
 

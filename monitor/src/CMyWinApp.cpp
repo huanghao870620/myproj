@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <vld.h>
-#include <afxwin.h>
+
 #include <afxdisp.h>
 #include "resource.h"
 #include "MyDocument.h"

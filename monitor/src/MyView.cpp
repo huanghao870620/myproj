@@ -5,8 +5,9 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include "MyView.h"
-
+#include "MyDocument.h"
 #include "resource.h"
+
 IMPLEMENT_DYNCREATE(MyView,CView)
 
 BEGIN_MESSAGE_MAP(MyView,CView)
