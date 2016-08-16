@@ -15,7 +15,7 @@ END_MESSAGE_MAP()
 
 LogDialog::LogDialog()
 {
-	this->logOperator = new LogOperator;
+	//this->logOperator = new LogOperator;
 }
 
 
@@ -25,7 +25,7 @@ LogDialog::~LogDialog()
 
 
 BOOL LogDialog::OnInitDialog(){
-	this->logOperator->select();
+	/*this->logOperator->select();
 	std::list<rr_report_dialy_log * > *log_list = this->logOperator->get_fields();
 	std::list<rr_report_dialy_log *>::iterator iter = log_list->begin();
 	
@@ -51,6 +51,6 @@ BOOL LogDialog::OnInitDialog(){
 		this->listCtrl.InsertItem(i, log->get_id().c_str());
 
 		const char * arr[] = {0};
-	}
+	}*/
 	return FALSE;
 }

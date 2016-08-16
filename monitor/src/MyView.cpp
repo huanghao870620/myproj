@@ -32,7 +32,7 @@ MyView::~MyView(){
 }
 
 void MyView::doCommand(){
-	this->chatDialog = new ChatDialog;
+	this->chatDialog = new ChatDialog2;
 	this->chatDialog->Create(IDD_DIALOG1, this);
 	this->chatDialog->ShowWindow(SW_SHOWNORMAL);
 
@@ -55,9 +55,9 @@ void MyView::doCommand(){
 }
 
 void MyView::OnClicked(){
-	//this->MessageBox(_T("cc"));
+	this->MessageBox(_T("cc"));
 	 MyDocument * doc = (MyDocument *)this->GetDocument();
-	 doc->sendMsg(0);
+	 doc->sendMsg("bbbb");
 }
 
 void MyView::OnDraw(CDC *pDC){

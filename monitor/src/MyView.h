@@ -7,10 +7,8 @@
 
 #if !defined(EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_)
 #define EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_
-//#include<afxwin.h>
 #include<iostream>
-//#include"Client2.h"
-#include"ChatDialog.h"
+#include"ChatDialog2.h"
 
 /**
  * йсм╪
@@ -40,7 +38,7 @@ protected:
 	DECLARE_MESSAGE_MAP();
 
 private:
-	ChatDialog *chatDialog = nullptr;
+	ChatDialog2 *chatDialog = nullptr;
 
 };
 #endif // !defined(EA_B1AC21D4_BA72_4fe2_BB2A_CC2B823CB3B2__INCLUDED_)
