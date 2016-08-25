@@ -35,10 +35,23 @@ BOOL ChatDialog2::OnInitDialog(){
 	this->m_pDrawView = (CDrawView*)RUNTIME_CLASS(CDrawView)->CreateObject();
 	this->m_pDrawView->Create(NULL, NULL, AFX_WS_DEFAULT_VIEW | WS_VSCROLL | WS_HSCROLL, rectTargetCtrl, this, targetCtrlId);*/
 
+
+	/*ASSERT(1 == 1);
+	ASSERT(2 > 1);
+	ASSERT(3 < 2);*/
+	//ASSERT((ID_40007 & 0xFFF0) == ID_40007);
+	//ASSERT(IDM_ABOUTBOX < 0XF000);
+
 	CDialog::OnInitDialog();
-	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
-	ASSERT(IDM_ABOUTBOX < 0XF000);
-
-
+	CMenu * pSysMenu = GetSystemMenu(FALSE);
+	if (pSysMenu != NULL){
+		CString strAboutMenu;
+		strAboutMenu.LoadStringA(IDS_STRING204);
+		if (!strAboutMenu.IsEmpty()){
+			//pSysMenu->AppendMenuA("");
+		}
+	}
+	HICON ico = LoadIcon(NULL, IDI_ERROR);
+	SetIcon(ico, TRUE);
 	return TRUE;
 }
