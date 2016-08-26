@@ -23,6 +23,8 @@ public:
 
 private:
 	CDrawView * m_pDrawView;
+	CStatic * text;
+	CDrawView * m_pView;
 	
 };
 #endif // !defined(EA_920BDF9C_A865_4b15_A032_C3140C50E331__INCLUDED_)
