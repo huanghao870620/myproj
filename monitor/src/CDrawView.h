@@ -9,6 +9,7 @@
 #define EA_8AA7A857_155C_41cf_942E_C45CB3286775__INCLUDED_
 
 #include<afxwin.h>
+#include<iostream>
 class CDrawView : public CScrollView
 {
 	DECLARE_DYNCREATE(CDrawView)

@@ -14,7 +14,7 @@ IMPLEMENT_DYNCREATE(CDrawView, CScrollView)
 //END_MESSAGE_MAP()
 
 CDrawView::CDrawView(){
-
+	std::cout << "" << std::endl;
 }
 
 
@@ -24,5 +24,5 @@ CDrawView::~CDrawView(){
 }
 
 void CDrawView::OnDraw(CDC * pDC){
-
+	pDC->DrawText("11111111111111111111111111122222222222222222sddddddddddddddddddsssssssssssssss", CRect(100, 100, 500, 500), DT_CENTER);
 }
