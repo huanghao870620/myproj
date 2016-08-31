@@ -23,6 +23,8 @@ public:
 	CSquaresDoc * GetDocument();
 	virtual void OnDraw(CDC* pDC);
 
+protected:afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+
 	DECLARE_MESSAGE_MAP()
 };
 #endif // !defined(EA_948095E2_2506_4bdf_B54B_CAA0F6D14F54__INCLUDED_)

@@ -37,22 +37,28 @@ CSquaresDoc::~CSquaresDoc(){
 }
 
 void CSquaresDoc::OnColorBlue(){
-
+	this->m_clrCurrentColor = RGB(0, 0, 255);
 }
 
 void CSquaresDoc::OnColorCyan(){
-
+	this->m_clrCurrentColor = RGB(0, 255, 255);
 }
 
-void CSquaresDoc::OnColorGreen(){}
+void CSquaresDoc::OnColorGreen(){
+	this->m_clrCurrentColor = RGB(0, 255, 0);
+}
 
 void CSquaresDoc::OnColorRed(){
-	std::cout << "select red menu" << std::endl;
+	this->m_clrCurrentColor = RGB(255, 0, 0);
 }
 
-void CSquaresDoc::OnColorWhite(){}
+void CSquaresDoc::OnColorWhite(){
+	this->m_clrCurrentColor = RGB(255, 255, 255);
+}
 
-void CSquaresDoc::OnColorYellow(){}
+void CSquaresDoc::OnColorYellow(){
+	this->m_clrCurrentColor = RGB(255, 255, 0);
+}
 
 void CSquaresDoc::OnUpdateColorRed(CCmdUI *pCmdUI){
 	std::cout << "update red" << std::endl;
@@ -113,3 +119,7 @@ void CSquaresDoc::Dump(CDumpContext &dc) const
 }
 	  
 #endif // _DEBUG
+
+COLORREF CSquaresDoc::GetCurrentColor(){
+	return this->m_clrCurrentColor;
+}

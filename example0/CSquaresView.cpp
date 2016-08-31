@@ -9,6 +9,7 @@
 
 
 BEGIN_MESSAGE_MAP(CSquaresView,CView)
+	ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
 
 IMPLEMENT_DYNCREATE(CSquaresView,CView)
@@ -59,4 +60,20 @@ void CSquaresView::OnDraw(CDC* pDC){
 CSquaresDoc* CSquaresView::GetDocument(){
 	ASSERT(this->m_pDocument->IsKindOf(RUNTIME_CLASS(CSquaresDoc)));
 	return (CSquaresDoc*)this->m_pDocument;
+}
+
+void CSquaresView::OnLButtonDown(UINT nFlags, CPoint point){
+	CView::OnLButtonDown(nFlags, point);
+	CClientDC dc(this);
+	dc.SetMapMode(MM_LOENGLISH);
+	CPoint pos = point;
+	dc.DPtoLP(&pos);
+
+	if (pos.x >= 50 && pos.x <= 450 && pos.y <= -50 && pos.y >= -450){
+		int i = (-pos.y - 50) / 100;
+		int j = (pos.x - 50) / 100;
+		CSquaresDoc *pDoc = GetDocument();
+		COLORREF clrCurrentColor = pDoc->GetCurrentColor();
+		pDoc->SetSquares(i, j, clrCurrentColor);
+	}
 }
