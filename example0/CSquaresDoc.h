@@ -18,6 +18,7 @@ public:virtual ~CSquaresDoc();
 public: void SetSquares(int i, int j, COLORREF color);
 public: COLORREF GetSquares(int i, int j);
 public: COLORREF GetCurrentColor();
+public:virtual BOOL OnNewDocument();
 
 #ifdef _DEBUG
 public:virtual void AssertValid() const;

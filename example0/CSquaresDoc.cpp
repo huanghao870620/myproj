@@ -83,6 +83,22 @@ COLORREF CSquaresDoc::GetSquares(int i, int j){
 	ASSERT(i >= 0 && i <= 3 && j >= 0 && j <= 3);
 	return this->m_clrGrid[i][j];
 }
+ 
+BOOL  CSquaresDoc::OnNewDocument(){
+	if (!CDocument::OnNewDocument()){
+		return FALSE;
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			this->m_clrGrid[i][j] = RGB(255, 255, 255);
+		}
+	}
+
+	this->m_clrCurrentColor = RGB(255, 0, 0);
+	return TRUE;
+}
 
 
 #ifdef _DEBUG

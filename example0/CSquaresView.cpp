@@ -42,6 +42,18 @@ void CSquaresView::OnDraw(CDC* pDC){
 			pDC->FillRect(rect, &brush);
 		}
 	}
+
+	for (size_t x = 50; x <= 450; x += 100)
+	{
+		pDC->MoveTo(x, -50);
+		pDC->LineTo(x, -450);
+	}
+
+	for (size_t y = -50; y >= -450; y -= 100)
+	{
+		pDC->MoveTo(50, y);
+		pDC->LineTo(450, y);
+	}
 }
 
 CSquaresDoc* CSquaresView::GetDocument(){
