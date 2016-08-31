@@ -8,11 +8,17 @@
 #include "MyDocument.h"
 
 
-//IMPLEMENT_DYNAMIC(MyDocument,CDocument)
 IMPLEMENT_DYNCREATE(MyDocument,CDocument)
+
+
+BEGIN_MESSAGE_MAP(MyDocument,CDocument)
+END_MESSAGE_MAP()
+
 MyDocument::MyDocument(){
 	std::cout << "mydocument constructor" << std::endl;
 	this->c2 = new Client2;
+	//this->SetModifiedFlag(true);
+	//this->UpdateAllViews(nullptr);
 }
 
 

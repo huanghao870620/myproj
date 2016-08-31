@@ -26,5 +26,6 @@ public:
 private:
 	Client2 * c2;
 
+	DECLARE_MESSAGE_MAP()
 };
 #endif // !defined(EA_63C861EC_1575_4b0c_A1B6_165863ED73A5__INCLUDED_)

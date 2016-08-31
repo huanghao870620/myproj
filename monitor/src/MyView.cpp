@@ -5,6 +5,7 @@
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
 #include "MyView.h"
+#include"CMyWinApp.h"
 #include "MyDocument.h"
 #include "resource.h"
 
@@ -41,10 +42,29 @@ void MyView::OnClicked(){
 	this->MessageBox(_T("cc"));
 	 MyDocument * doc = (MyDocument *)this->GetDocument();
 	 doc->sendMsg("bbbb");
+
+
+
+	  /*CMyWinApp *pMyApp = (CMyWinApp*)AfxGetApp();
+	  POSITION p = pMyApp->GetFirstDocTemplatePosition();
+	  while (p != NULL)
+	  {
+		  CDocTemplate *pDocTemplate = pMyApp->GetNextDocTemplate(p);
+		  POSITION docPosition = pDocTemplate->GetFirstDocPosition();
+		  while (docPosition != NULL)
+		  {
+			  CDocument *document = pDocTemplate->GetNextDoc(docPosition);
+			  POSITION viewPostion = document->GetFirstViewPosition();
+			  while (viewPostion != NULL)
+			  {
+				  CView *pView = document->GetNextView(viewPostion);
+			  }
+		  }
+	  }*/
 }
 
 void MyView::OnDraw(CDC *pDC){
-	OutputDebugString("");
+	std::cout << "draw" << std::endl;
 }
 
 void MyView::OnLButtonDown(UINT nFlags, CPoint point)
@@ -62,7 +82,6 @@ void MyView::OnLButtonDown(UINT nFlags, CPoint point)
 }
 
 int MyView::OnCreate(LPCREATESTRUCT lpcs){
-	OutputDebugString(_T(""));
 	this->but.Create(_T("aa"), WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, CRect(10, 10, 100, 30), this, 1);
 	return 0;
 }
