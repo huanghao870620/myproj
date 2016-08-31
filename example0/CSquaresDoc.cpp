@@ -78,3 +78,22 @@ void CSquaresDoc::OnUpdateColorWhite(CCmdUI *pCmdUI){
 void CSquaresDoc::OnUpdateColorYellow(CCmdUI *pCmdUI){
 	std::cout << "update yellow" << std::endl;
 }
+
+COLORREF CSquaresDoc::GetSquares(int i, int j){
+	ASSERT(i >= 0 && i <= 3 && j >= 0 && j <= 3);
+	return this->m_clrGrid[i][j];
+}
+
+
+#ifdef _DEBUG
+void  CSquaresDoc::AssertValid() const
+{
+	CDocument::AssertValid();
+}
+
+void CSquaresDoc::Dump(CDumpContext &dc) const
+{
+	CDocument::Dump(dc);
+}
+	  
+#endif // _DEBUG

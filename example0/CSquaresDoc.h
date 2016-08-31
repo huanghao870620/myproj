@@ -24,6 +24,8 @@ public:virtual void AssertValid() const;
 public:virtual void Dump(CDumpContext &dc) const;
 #endif
 
+protected:COLORREF m_clrCurrentColor;
+protected:COLORREF m_clrGrid[4][4];
 protected:afx_msg void OnColorRed();
 protected:afx_msg void OnColorYellow();
 protected:afx_msg void OnColorGreen();
@@ -37,6 +39,6 @@ protected:afx_msg void OnUpdateColorGreen(CCmdUI *pCmdUI);
 protected:afx_msg void OnUpdateColorCyan(CCmdUI *pCmdUI);
 protected:afx_msg void OnUpdateColorBlue(CCmdUI *pCmdUI);
 protected:afx_msg void OnUpdateColorWhite(CCmdUI *pCmdUI);
-	DECLARE_MESSAGE_MAP()
+DECLARE_MESSAGE_MAP()
 };
 #endif // !defined(EA_AC3DFB64_8283_4b48_8B1F_7974621F5D26__INCLUDED_)

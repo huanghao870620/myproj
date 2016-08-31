@@ -25,13 +25,21 @@ CSquaresView::~CSquaresView(){
 
 void CSquaresView::OnDraw(CDC* pDC){
 	//std::cout << "on draw" << std::endl;
-	CDocument * pDoc = this->GetDocument();
+	CSquaresDoc * pDoc = this->GetDocument();
 	ASSERT_VALID(pDoc);
 	pDC->SetMapMode(MM_LOENGLISH);
 
 	for (size_t i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 4; j++){
+			COLORREF color = pDoc->GetSquares(i, j);
+			CBrush brush(color);
+			int x1 = (j * 100) + 50;
+			int y1 = (i*-100) - 50;
+			int x2 = x1 + 100;
+			int y2 = y1 - 100;
+			CRect rect(x1, y1, x2, y2);
+			pDC->FillRect(rect, &brush);
 		}
 	}
 }
