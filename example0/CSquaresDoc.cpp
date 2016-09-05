@@ -61,28 +61,28 @@ void CSquaresDoc::OnColorYellow(){
 }
 
 void CSquaresDoc::OnUpdateColorRed(CCmdUI *pCmdUI){
-	std::cout << "update red" << std::endl;
+	pCmdUI->SetRadio(this->m_clrCurrentColor == RGB(255, 0, 0));
 }
 
 void CSquaresDoc::OnUpdateColorBlue(CCmdUI *pCmdUI){
-	std::cout << "update blue" << std::endl;
+	pCmdUI->SetRadio(this->m_clrCurrentColor == RGB(0, 0, 255));
 }
 
 void CSquaresDoc::OnUpdateColorCyan(CCmdUI *pCmdUI){
-	std::cout << "update cyan" << std::endl;
+	pCmdUI->SetRadio(this->m_clrCurrentColor == RGB(0, 255, 255));
 }
 
 void CSquaresDoc::OnUpdateColorGreen(CCmdUI *pCmdUI){
-	std::cout << "update green" << std::endl;
+	pCmdUI->SetRadio(this->m_clrCurrentColor == RGB(0, 255, 0));
 }
 
 
 void CSquaresDoc::OnUpdateColorWhite(CCmdUI *pCmdUI){
-	std::cout << "update white" << std::endl;
+	pCmdUI->SetRadio(this->m_clrCurrentColor == RGB(255, 255, 255));
 }
 
 void CSquaresDoc::OnUpdateColorYellow(CCmdUI *pCmdUI){
-	std::cout << "update yellow" << std::endl;
+	pCmdUI->SetRadio(this->m_clrCurrentColor == RGB(255, 255, 0));
 }
 
 COLORREF CSquaresDoc::GetSquares(int i, int j){
@@ -123,3 +123,11 @@ void CSquaresDoc::Dump(CDumpContext &dc) const
 COLORREF CSquaresDoc::GetCurrentColor(){
 	return this->m_clrCurrentColor;
 }
+
+void CSquaresDoc::SetSquares(int i, int j, COLORREF color){
+	ASSERT(i >= 0 && i <= 3 && j >= 0 && j <= 3);
+	this->m_clrGrid[i][j] = color;
+	SetModifiedFlag(TRUE);
+	UpdateAllViews(NULL);
+}
+
