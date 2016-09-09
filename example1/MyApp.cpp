@@ -17,3 +17,7 @@ MyApp::MyApp(){
 MyApp::~MyApp(){
 
 }
+
+BOOL MyApp::InitInstance(){
+
+}
