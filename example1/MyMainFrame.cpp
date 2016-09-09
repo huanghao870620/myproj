@@ -7,6 +7,10 @@
 
 #include "MyMainFrame.h"
 
+IMPLEMENT_DYNCREATE(MyMainFrame,CFrameWnd)
+
+BEGIN_MESSAGE_MAP(MyMainFrame,CFrameWnd)
+END_MESSAGE_MAP()
 
 MyMainFrame::MyMainFrame(){
 

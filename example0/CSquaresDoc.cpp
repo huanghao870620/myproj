@@ -25,7 +25,6 @@ END_MESSAGE_MAP()
 
 
 IMPLEMENT_DYNCREATE(CSquaresDoc,CDocument)
-
 CSquaresDoc::CSquaresDoc(){
 	std::cout << "create csquaresdoc" << std::endl;
 }

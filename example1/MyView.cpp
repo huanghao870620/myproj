@@ -9,6 +9,9 @@
 
 IMPLEMENT_DYNCREATE(MyView,CView)
 
+BEGIN_MESSAGE_MAP(MyView,CView)
+END_MESSAGE_MAP()
+
 MyView::MyView(){
 
 }
