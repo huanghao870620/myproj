@@ -19,5 +19,6 @@ MyApp::~MyApp(){
 }
 
 BOOL MyApp::InitInstance(){
-
+	AllocConsole();
+	return TRUE;
 }
