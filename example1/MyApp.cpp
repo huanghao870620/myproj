@@ -15,7 +15,7 @@ MyApp::~MyApp(){
 BOOL MyApp::InitInstance(){
 	AllocConsole();
 	SetConsoleTitle("dd");
-	freopen("", "", stdout);
-	freopen("", "", stdin);
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONIN$", "r+t", stdin);
 	return TRUE;
 }
