@@ -7,6 +7,10 @@
 
 #if !defined(EA_25FB0572_E466_45f2_BE40_C2975D602FEC__INCLUDED_)
 #define EA_25FB0572_E466_45f2_BE40_C2975D602FEC__INCLUDED_
+#include"resource.h"
+#include"MyDoc.h"
+#include"MyView.h"
+#include"MyMainFrame.h"
 #include<afxwin.h>
 class MyApp : public CWinApp
 {

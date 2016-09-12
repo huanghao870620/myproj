@@ -3,8 +3,8 @@ project(proj0)
 
 aux_source_directory("library/src"  bbcd)
 
-#file(STRINGS path_company.txt variables)
-file(STRINGS path_home.txt variables)
+file(STRINGS path_company.txt variables)
+#file(STRINGS path_home.txt variables)
 #list(GET bb0 [0 2] c0)
 list(GET variables 0 boost_home)
 list(GET variables 1 mysql_sdk_home)
