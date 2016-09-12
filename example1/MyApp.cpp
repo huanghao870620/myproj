@@ -22,6 +22,7 @@ BOOL MyApp::InitInstance(){
 	LoadStdProfileSettings();
 	CSingleDocTemplate * temp;
 	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyMainFrame), RUNTIME_CLASS(MyView));
+	this->AddDocTemplate(temp);
 	EnableShellOpen();
 	RegisterShellFileTypes(TRUE);
 	CCommandLineInfo info;

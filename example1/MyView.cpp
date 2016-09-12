@@ -23,5 +23,10 @@ MyView::~MyView(){
 }
 
 void MyView::OnDraw(CDC *pDC){
-
+	RECT * rect = new RECT;
+	rect->top = 0;
+	rect->left = 0;
+	rect->bottom = 100;
+	rect->right = 100;
+	pDC->DrawText("dddddd", rect, DT_MODIFYSTRING);
 }
