@@ -34,9 +34,8 @@ protected:int m_nCellWidth;
 #ifdef _DEBUG
 protected:void AssertValid() const;
 protected:void Dump(CDumpContext& dc) const;
-protected:MyDoc* GetDocument() inline;
 #endif
 protected: afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
-protected: DECLARE_MESSAGE_MAP()
+protected: DECLARE_MESSAGE_MAP();
 };
 #endif // !defined(EA_CA6B56CD_31C4_495b_AFE8_73426F02D3B7__INCLUDED_)

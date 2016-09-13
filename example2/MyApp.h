@@ -7,6 +7,7 @@
 
 #if !defined(EA_526BAC9D_828B_429e_BCB3_999D448B839B__INCLUDED_)
 #define EA_526BAC9D_828B_429e_BCB3_999D448B839B__INCLUDED_
+#include"resource.h"
 #include"MyDoc.h"
 #include"CScrollDemoView.h"
 #include"MyFrame.h"

@@ -6,7 +6,10 @@
 ///////////////////////////////////////////////////////////
 
 #include "MyFrame.h"
+IMPLEMENT_DYNCREATE(MyFrame,CFrameWnd)
 
+BEGIN_MESSAGE_MAP(MyFrame,CFrameWnd)
+END_MESSAGE_MAP()
 
 MyFrame::MyFrame(){
 

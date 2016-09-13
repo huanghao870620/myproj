@@ -30,7 +30,7 @@ BOOL MyApp::InitInstance(){
 	freopen("CONIN$", "w+t", stdout);
 
 	CSingleDocTemplate *temp;
-	temp = new CSingleDocTemplate(0, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(CScrollDemoView));
+	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(CScrollDemoView));
 	AddDocTemplate(temp);
 	EnableShellOpen();
 	RegisterShellFileTypes(TRUE);

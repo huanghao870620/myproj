@@ -131,7 +131,7 @@ void CScrollDemoView::Dump(CDumpContext& dc) const
 	CScrollView::Dump(dc);
 }
 
-MyDoc* CScrollDemoView::GetDocument() inline
+MyDoc* CScrollDemoView::GetDocument() 
 {
 	//ASSERT(this->m_pDocument->IsKindOf(RUNTIME_CLASS(MyDoc)));
 	return (MyDoc*)this->m_pDocument;
