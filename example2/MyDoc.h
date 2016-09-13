@@ -10,10 +10,11 @@
 #include<afxwin.h>
 class MyDoc : public CDocument
 {
-
+	DECLARE_DYNCREATE(MyDoc,CDocument)
 public:
 	MyDoc();
 	virtual ~MyDoc();
 
+	DECLARE_MESSAGE_MAP()
 };
 #endif // !defined(EA_DD9BA8D3_7275_4409_85D1_711DC239C7B9__INCLUDED_)

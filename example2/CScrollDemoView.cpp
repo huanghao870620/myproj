@@ -10,6 +10,7 @@
 IMPLEMENT_DYNCREATE(CScrollDemoView,CScrollView)
 
 BEGIN_MESSAGE_MAP(CScrollDemoView,CScrollView)
+	ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
 
 CScrollDemoView::CScrollDemoView(){

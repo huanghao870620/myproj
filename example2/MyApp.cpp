@@ -7,13 +7,31 @@
 
 #include "MyApp.h"
 
+
+BEGIN_MESSAGE_MAP(MyApp,CWinApp)
+END_MESSAGE_MAP()
+
 MyApp app;
 MyApp::MyApp(){
 
 }
 
+IMPLEMENT_DYNCREATE(MyApp,CWinApp)
 
 
 MyApp::~MyApp(){
 
+}
+
+BOOL MyApp::InitInstance(){
+	AllocConsole();
+	SetConsoleTitle("");
+	freopen("CONOUT$", "r", stdin);
+	freopen("CONIN$", "w+t", stdout);
+
+	CSingleDocTemplate *temp;
+	temp = new CSingleDocTemplate(9, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(CScrollDemoView));
+	AddDocTemplate(temp);
+
+	return TRUE;
 }

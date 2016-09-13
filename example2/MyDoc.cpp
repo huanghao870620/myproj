@@ -7,11 +7,14 @@
 
 #include "MyDoc.h"
 
+BEGIN_MESSAGE_MAP(MyDoc,CDocument)
+END_MESSAGE_MAP()
 
 MyDoc::MyDoc(){
 
 }
 
+IMPLEMENT_DYNCREATE(MyDoc,CDocument)
 
 
 MyDoc::~MyDoc(){

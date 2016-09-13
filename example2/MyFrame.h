@@ -8,12 +8,14 @@
 #if !defined(EA_2FFFC463_60B7_44ab_8B52_CC69B8CDFBD1__INCLUDED_)
 #define EA_2FFFC463_60B7_44ab_8B52_CC69B8CDFBD1__INCLUDED_
 #include<afxwin.h>
-class MyFrame : public CMiniFrameWnd
+class MyFrame : public CFrameWnd
 {
-
+	DECLARE_DYNCREATE(MyFrame,CFrameWnd)
 public:
 	MyFrame();
 	virtual ~MyFrame();
+
+	DECLARE_MESSAGE_MAP()
 
 };
 #endif // !defined(EA_2FFFC463_60B7_44ab_8B52_CC69B8CDFBD1__INCLUDED_)
