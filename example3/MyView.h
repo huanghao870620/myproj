@@ -8,15 +8,16 @@
 #if !defined(EA_753C7D69_F941_4600_A5DD_C99DDFFB08D9__INCLUDED_)
 #define EA_753C7D69_F941_4600_A5DD_C99DDFFB08D9__INCLUDED_
 #include"MyDoc.h"
-#include<afxwin.h>
+#include<afxext.h>
 #include<afxhtml.h>
+#include<afxwin.h>
 class MyView : public CHtmlView
 {
 	DECLARE_DYNCREATE(MyView,CHtmlView)
 public:
 	MyView();
 	virtual ~MyView();
-	DECLARE_MESSAGE_MAP()
+protected:DECLARE_MESSAGE_MAP()
 
 public:MyDoc* GetDocument();
 public:virtual void OnDraw(CDC *pDC);
