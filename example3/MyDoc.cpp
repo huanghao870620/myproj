@@ -6,7 +6,10 @@
 ///////////////////////////////////////////////////////////
 
 #include "MyDoc.h"
+IMPLEMENT_DYNCREATE(MyDoc,CDocument)
 
+BEGIN_MESSAGE_MAP(MyDoc,CDocument)
+END_MESSAGE_MAP()
 
 MyDoc::MyDoc(){
 

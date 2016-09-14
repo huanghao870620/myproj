@@ -16,7 +16,8 @@ MyView::MyView(){
 }
 
 void MyView::OnDraw(CDC *pDC){
-
+	MyDoc *doc = this->GetDocument();
+	ASSERT_VALID(doc);
 }
 
 MyView::~MyView(){
