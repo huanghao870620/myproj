@@ -104,3 +104,6 @@ chat_server/chat_server.vcxproj.filters
 chat_server/chat_serverlib.vcxproj.filters
 example3/example3.vcxproj
 example3/example3.vcxproj.filters
+example3/Debug/
+example3/example3.aps
+example3/example3.dir/
