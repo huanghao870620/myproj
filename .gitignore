@@ -102,3 +102,5 @@ example2/example2.vcxproj.filters
 library/src/CMakeFiles/
 chat_server/chat_server.vcxproj.filters
 chat_server/chat_serverlib.vcxproj.filters
+example3/example3.vcxproj
+example3/example3.vcxproj.filters
