@@ -23,3 +23,38 @@ void MyView::OnDraw(CDC *pDC){
 MyView::~MyView(){
 
 }
+
+BOOL MyView::PreCreateWindow(CREATESTRUCT&cs){
+	return CHtmlView::PreCreateWindow(cs);
+}
+
+void MyView::OnInitialUpdate(){
+	CHtmlView::OnInitialUpdate();
+	TCHAR szPath[MAX_PATH];
+	GetModuleFileName(NULL, szPath, sizeof(szPath) / sizeof(TCHAR));
+	CString string = szPath;
+	int nIndex = string.ReverseFind('\\');
+	ASSERT(nIndex != -1);
+	string = string.Left(nIndex + 1) + "Clock.htm";
+	Navigate(string);
+}
+
+#ifdef _DEBUG
+void MyView::AssertValid() const{
+	CHtmlView::AssertValid();
+}
+
+void MyView::Dump(CDumpContext&dc)const{
+	CHtmlView::Dump(dc);
+}
+
+MyDoc* MyView::GetDocument(){
+	ASSERT(this->m_pDocument->IsKindOf(RUNTIME_CLASS(MyDoc)));
+	return (MyDoc*)this->m_pDocument;
+}
+#endif
+
+void MyView::OnTitleChange(LPCTSTR lpszText){
+	CHtmlView::OnTitleChange(lpszText);
+	AfxGetMainWnd()->SetWindowTextA(lpszText);
+}
