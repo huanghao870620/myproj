@@ -27,7 +27,8 @@ BOOL MyApp::InitInstance(){
 	CSingleDocTemplate *temp;
 	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
 	AddDocTemplate(temp);
-
+	EnableShellOpen();
+	RegisterShellFileTypes(TRUE);
 	CCommandLineInfo info;
 	ParseCommandLine(info);
 	if (!ProcessShellCommand(info)){
