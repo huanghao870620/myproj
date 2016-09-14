@@ -7,7 +7,7 @@
 
 #if !defined(EA_753C7D69_F941_4600_A5DD_C99DDFFB08D9__INCLUDED_)
 #define EA_753C7D69_F941_4600_A5DD_C99DDFFB08D9__INCLUDED_
-
+#include<afxwin.h>
 class MyView
 {
 
