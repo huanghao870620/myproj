@@ -113,3 +113,8 @@ example3/OUTPUT.vcxproj
 example3/OUTPUT.vcxproj.filters
 example4/example4.vcxproj
 example4/example4.vcxproj.filters
+chat_server/Debug/
+example0/Debug/
+library/src/Debug/
+path_home.txt.bak
+path_home.txt
