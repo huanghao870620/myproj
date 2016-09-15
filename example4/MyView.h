@@ -7,13 +7,15 @@
 
 #if !defined(EA_4CDCA07D_9021_4184_A748_CF557CCF8606__INCLUDED_)
 #define EA_4CDCA07D_9021_4184_A748_CF557CCF8606__INCLUDED_
-
-class MyView
+#include<afxcview.h>
+#include<afxwin.h>
+class MyView : public CTreeView
 {
-
-public:
-	MyView();
-	virtual ~MyView();
+protected:DECLARE_DYNCREATE(MyView, CTreeView)
+protected:DECLARE_MESSAGE_MAP(MyView, CTreeView)
+public:MyView();
+public:virtual ~MyView();
+public:virtual void OnDraw(CDC *pDC);
 
 };
 #endif // !defined(EA_4CDCA07D_9021_4184_A748_CF557CCF8606__INCLUDED_)

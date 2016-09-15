@@ -7,10 +7,11 @@
 
 #if !defined(EA_814AB1F4_82C2_4e3d_82B9_A65609CA142A__INCLUDED_)
 #define EA_814AB1F4_82C2_4e3d_82B9_A65609CA142A__INCLUDED_
-
-class MyDoc
+#include<afxwin.h>
+class MyDoc : public CDocument
 {
-
+protected:DECLARE_DYNCREATE(MyDoc,CDocument)
+protected:DECLARE_MESSAGE_MAP(MyDoc,CDocument)
 public:
 	MyDoc();
 	virtual ~MyDoc();

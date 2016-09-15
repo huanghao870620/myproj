@@ -7,13 +7,18 @@
 
 #include "MyView.h"
 
-
+IMPLEMENT_DYNCREATE(MyView, CTreeView)
+BEGIN_MESSAGE_MAP(MyView, CTreeView)
+END_MESSAGE_MAP()
 MyView::MyView(){
 
 }
 
 
-
 MyView::~MyView(){
+
+}
+
+void MyView::OnDraw(CDC*pDC){
 
 }
