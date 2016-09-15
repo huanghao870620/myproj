@@ -109,3 +109,5 @@ example3/example3.aps
 example3/example3.dir/
 example3/Project.sln
 example3/example3.vcxproj.user
+example3/OUTPUT.vcxproj
+example3/OUTPUT.vcxproj.filters
