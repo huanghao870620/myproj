@@ -111,3 +111,5 @@ example3/Project.sln
 example3/example3.vcxproj.user
 example3/OUTPUT.vcxproj
 example3/OUTPUT.vcxproj.filters
+example4/example4.vcxproj
+example4/example4.vcxproj.filters
