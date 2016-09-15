@@ -37,6 +37,11 @@ void MyView::OnInitialUpdate(){
 	ASSERT(nIndex != -1);
 	string = string.Left(nIndex + 1) + "Clock.htm";
 	Navigate(string);
+	//CByteArray d;
+	//OnBeforeNavigate2(0,0,0,d,0,0);
+	//OnDownloadBegin();
+	/*OnProgressChange(100 / 10000);
+	OnProgressChange(150 / 10000);*/
 }
 
 #ifdef _DEBUG
