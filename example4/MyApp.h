@@ -7,13 +7,16 @@
 
 #if !defined(EA_CFC00FE4_19B1_4738_A289_05041E2C05F0__INCLUDED_)
 #define EA_CFC00FE4_19B1_4738_A289_05041E2C05F0__INCLUDED_
-
-class MyApp
+#include"MyDoc.h"
+#include"MyView.h"
+#include"MyFrame.h"
+#include<afxwin.h>
+class MyApp : public CWinApp
 {
 
 public:
 	MyApp();
 	virtual ~MyApp();
-
+public:BOOL InitInstance();
 };
 #endif // !defined(EA_CFC00FE4_19B1_4738_A289_05041E2C05F0__INCLUDED_)
