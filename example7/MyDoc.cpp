@@ -1,0 +1,19 @@
+///////////////////////////////////////////////////////////
+//  MyDoc.cpp
+//  Implementation of the Class MyDoc
+//  Created on:      16-¾ÅÔÂ-2016 15:39:00
+//  Original author: huang.hao
+///////////////////////////////////////////////////////////
+
+#include "MyDoc.h"
+
+
+MyDoc::MyDoc(){
+
+}
+
+
+
+MyDoc::~MyDoc(){
+
+}
