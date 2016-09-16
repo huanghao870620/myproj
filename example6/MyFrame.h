@@ -7,6 +7,7 @@
 
 #if !defined(EA_2A84A857_4D3A_4962_A6A3_D96C053B0972__INCLUDED_)
 #define EA_2A84A857_4D3A_4962_A6A3_D96C053B0972__INCLUDED_
+#include"resource.h"
 #include<afxwin.h>
 class MyFrame : public CFrameWnd
 {
@@ -16,5 +17,6 @@ public:
 	virtual ~MyFrame();
 protected:DECLARE_MESSAGE_MAP(MyFrame, CFrameWnd);
 public:afx_msg void OnPaint();
+private:CButton m_wndPushButton;
 };
 #endif // !defined(EA_2A84A857_4D3A_4962_A6A3_D96C053B0972__INCLUDED_)
