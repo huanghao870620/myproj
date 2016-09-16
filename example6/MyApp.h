@@ -7,6 +7,7 @@
 
 #if !defined(EA_E633DE67_9DB0_404e_9FE2_0ED4D9249371__INCLUDED_)
 #define EA_E633DE67_9DB0_404e_9FE2_0ED4D9249371__INCLUDED_
+#include<iostream>
 #include<afxwin.h>
 class MyApp : public CWinApp
 {
@@ -15,5 +16,7 @@ public:
 	MyApp();
 	virtual ~MyApp();
 public:virtual BOOL InitInstance();
+//private:CButton m_wndPushButton;
+//protected:DECLARE_MESSAGE_MAP(MyApp,CWinApp)
 };
 #endif // !defined(EA_E633DE67_9DB0_404e_9FE2_0ED4D9249371__INCLUDED_)

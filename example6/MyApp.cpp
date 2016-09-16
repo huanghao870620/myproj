@@ -7,6 +7,9 @@
 
 #include "MyApp.h"
 
+//BEGIN_MESSAGE_MAP(MyApp,CWinApp)
+//END_MESSAGE_MAP()
+
 MyApp app;
 MyApp::MyApp(){
 
@@ -21,9 +24,12 @@ MyApp::~MyApp(){
 BOOL MyApp::InitInstance(){
 	AllocConsole();
 	SetConsoleTitle("");
-	freopen("", "", stdin);
-	freopen("", "", stdout);
+	freopen("CONIN$", "r", stdin);
+	freopen("CONOUT$", "w+t", stdout);
 
+	std::cout << "ddddd" << std::endl;
+
+	//this->m_wndPushButton.Create("",WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON)
 
 	return TRUE;
 }
