@@ -7,8 +7,8 @@
 
 #include "MyApp.h"
 
-//BEGIN_MESSAGE_MAP(MyApp,CWinApp)
-//END_MESSAGE_MAP()
+BEGIN_MESSAGE_MAP(MyApp,CWinApp)
+END_MESSAGE_MAP()
 
 MyApp app;
 MyApp::MyApp(){
