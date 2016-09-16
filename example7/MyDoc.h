@@ -7,13 +7,14 @@
 
 #if !defined(EA_F9E9D898_7146_4214_9EB3_70F2564830FB__INCLUDED_)
 #define EA_F9E9D898_7146_4214_9EB3_70F2564830FB__INCLUDED_
-
-class MyDoc
+#include<afxwin.h>
+class MyDoc : public CDocument
 {
 
 public:
 	MyDoc();
 	virtual ~MyDoc();
-
+protected:DECLARE_DYNCREATE(MyDoc,CDocument)
+protected:DECLARE_MESSAGE_MAP(MyDoc,CDocument)
 };
 #endif // !defined(EA_F9E9D898_7146_4214_9EB3_70F2564830FB__INCLUDED_)

@@ -7,13 +7,13 @@
 
 #if !defined(EA_8CE7F929_C8D3_4557_973B_147E1A7C47A2__INCLUDED_)
 #define EA_8CE7F929_C8D3_4557_973B_147E1A7C47A2__INCLUDED_
-
-class MyApp
+#include<afxwin.h>
+class MyApp : public CWinApp
 {
 
 public:
 	MyApp();
 	virtual ~MyApp();
-
+public:virtual BOOL InitInstance();
 };
 #endif // !defined(EA_8CE7F929_C8D3_4557_973B_147E1A7C47A2__INCLUDED_)

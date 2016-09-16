@@ -17,3 +17,14 @@ MyApp::MyApp(){
 MyApp::~MyApp(){
 
 }
+
+BOOL MyApp::InitInstance(){
+	AllocConsole();
+	SetConsoleTitle("");
+	freopen("", "", stdin);
+	freopen("", "", stdout);
+
+	CSingleDocTemplate *temp;
+
+	return TRUE;
+}
