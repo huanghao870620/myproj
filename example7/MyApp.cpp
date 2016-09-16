@@ -7,7 +7,7 @@
 
 #include "MyApp.h"
 
-
+MyApp app;
 MyApp::MyApp(){
 
 }
@@ -25,6 +25,17 @@ BOOL MyApp::InitInstance(){
 	freopen("", "", stdout);
 
 	CSingleDocTemplate *temp;
+	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
+	AddDocTemplate(temp);
+
+	EnableShellOpen();
+	RegisterShellFileTypes(TRUE);
+
+	CCommandLineInfo info;
+	ParseCommandLine(info);
+	if (!ProcessShellCommand(info)){
+		return FALSE;
+	}
 
 	return TRUE;
 }

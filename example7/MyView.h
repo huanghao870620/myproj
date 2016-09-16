@@ -7,6 +7,7 @@
 
 #if !defined(EA_65F0A035_1FF3_4486_8B94_C127775C2363__INCLUDED_)
 #define EA_65F0A035_1FF3_4486_8B94_C127775C2363__INCLUDED_
+#include"resource.h"
 #include<afxwin.h>
 class MyView : public CView
 {
