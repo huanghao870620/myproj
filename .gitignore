@@ -120,3 +120,5 @@ path_home.txt.bak
 path_home.txt
 example5/example5.vcxproj
 example5/example5.vcxproj.filters
+example5/Debug/
+example5/example5.dir/
