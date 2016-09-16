@@ -19,5 +19,6 @@ protected:DECLARE_DYNCREATE(MyView, CView);
 protected:DECLARE_MESSAGE_MAP(MyView, CView);
 private:CButton m_wndPushButton;
 protected:void OnDraw(CDC*pDC);
+protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
 #endif // !defined(EA_65F0A035_1FF3_4486_8B94_C127775C2363__INCLUDED_)

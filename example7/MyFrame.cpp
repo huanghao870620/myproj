@@ -11,7 +11,8 @@ IMPLEMENT_DYNCREATE(MyFrame,CFrameWnd)
 BEGIN_MESSAGE_MAP(MyFrame,CFrameWnd)
 END_MESSAGE_MAP()
 MyFrame::MyFrame(){
-
+	CRect rect(0, 0, 100, 100);
+	this->m_wndPushButton.Create("ddd", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, rect, this, IDC_BUTTON);
 }
 
 
