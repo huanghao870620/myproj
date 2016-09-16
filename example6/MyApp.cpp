@@ -31,5 +31,8 @@ BOOL MyApp::InitInstance(){
 
 	//this->m_wndPushButton.Create("",WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON)
 
+	this->m_pMainWnd = new MyFrame;
+	this->m_pMainWnd->ShowWindow(this->m_nCmdShow);
+	this->m_pMainWnd->UpdateWindow();
 	return TRUE;
 }

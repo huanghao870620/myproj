@@ -7,6 +7,7 @@
 
 #if !defined(EA_E633DE67_9DB0_404e_9FE2_0ED4D9249371__INCLUDED_)
 #define EA_E633DE67_9DB0_404e_9FE2_0ED4D9249371__INCLUDED_
+#include"MyFrame.h"
 #include<iostream>
 #include<afxwin.h>
 class MyApp : public CWinApp

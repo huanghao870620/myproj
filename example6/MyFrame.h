@@ -14,6 +14,7 @@ class MyFrame : public CFrameWnd
 public:
 	MyFrame();
 	virtual ~MyFrame();
-
+protected:DECLARE_MESSAGE_MAP(MyFrame, CFrameWnd);
+public:afx_msg void OnPaint();
 };
 #endif // !defined(EA_2A84A857_4D3A_4962_A6A3_D96C053B0972__INCLUDED_)
