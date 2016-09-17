@@ -10,6 +10,7 @@
 IMPLEMENT_DYNCREATE(MyView,CView)
 BEGIN_MESSAGE_MAP(MyView,CView)
 	ON_WM_CREATE()
+	ON_WM_LBUTTONDOWN(IDC_BUTTON, MyView::OnButton)
 END_MESSAGE_MAP()
 MyView::MyView(){
 	
@@ -30,4 +31,8 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	this->m_wndPushButton.Create("ddd", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, rect, this, IDC_BUTTON);
 	this->m_wndPushButton.ShowWindow(SW_SHOW);
 	return TRUE;
+}
+
+void MyView::OnButton(){
+	std::cout << "333" << std::endl;
 }

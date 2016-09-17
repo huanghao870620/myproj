@@ -20,10 +20,10 @@ MyApp::~MyApp(){
 
 BOOL MyApp::InitInstance(){
 	AllocConsole();
-	SetConsoleTitle("");
-	freopen("", "", stdin);
-	freopen("", "", stdout);
-
+	SetConsoleTitle("bb");
+	freopen("CONIN$", "r", stdin);
+	freopen("CONOUT$", "w+t", stdout);
+	std::cout << "cccc" << std::endl;
 	CSingleDocTemplate *temp;
 	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
 	AddDocTemplate(temp);
