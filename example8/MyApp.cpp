@@ -20,12 +20,12 @@ MyApp::~MyApp(){
 
 BOOL MyApp::InitInstance(){
 	AllocConsole();
-	SetConsoleTitle("");
-	freopen("", "", stdin);
-	freopen("", "", stdout);
+	SetConsoleTitle("cc");
+	freopen("CONIN$", "r", stdin);
+	freopen("CONOUT$", "w+t", stdout);
 
 	CSingleDocTemplate *temp;
-	temp = new CSingleDocTemplate(0, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
+	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
 	AddDocTemplate(temp);
 
 	CCommandLineInfo info;

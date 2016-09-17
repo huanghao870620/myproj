@@ -7,6 +7,7 @@
 
 #if !defined(EA_4BE7CCA5_7769_454f_B49F_2D6A9AE1505C__INCLUDED_)
 #define EA_4BE7CCA5_7769_454f_B49F_2D6A9AE1505C__INCLUDED_
+#include"resource.h"
 #include"MyDoc.h"
 #include"MyFrame.h"
 #include"MyView.h"

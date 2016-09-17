@@ -7,6 +7,7 @@
 
 #if !defined(EA_9826E1CD_DC3D_49ac_B8FC_AE0D6C6FDFEB__INCLUDED_)
 #define EA_9826E1CD_DC3D_49ac_B8FC_AE0D6C6FDFEB__INCLUDED_
+#include"resource.h"
 #include<afxwin.h>
 class MyView : public CView
 {
@@ -15,8 +16,8 @@ protected:DECLARE_MESSAGE_MAP(MyView,CView)
 public:
 	MyView();
 	virtual ~MyView();
-protected:virtual void OnCreate(LPCREATESTRUCT lpCreateStruct);
+protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
 public:afx_msg void OnDraw(CDC*pDC);
-
+private:CButton m_wndListBox;
 };
 #endif // !defined(EA_9826E1CD_DC3D_49ac_B8FC_AE0D6C6FDFEB__INCLUDED_)

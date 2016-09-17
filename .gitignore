@@ -134,3 +134,6 @@ example7/example7.aps
 example7/example7.dir/
 example8/example8.vcxproj
 example8/example8.vcxproj.filters
+example8/Debug/
+example8/example8.aps
+example8/example8.dir/
