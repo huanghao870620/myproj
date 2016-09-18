@@ -24,6 +24,11 @@ MyView::~MyView(){
 BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	CRect rect(0, 0, 100, 100);
 	this->m_wndListBox.CreateEx(WS_EX_CLIENTEDGE, "LISTBOX", NULL, WS_CHILD | WS_VISIBLE | LBS_STANDARD, rect, this, IDC_LISTBOX);
+	this->m_wndListBox.AddString("aaaaaa");
+	this->m_wndListBox.AddString("bbbbbb");
+	this->m_wndListBox.AddString("cccccc");
+	this->m_wndListBox.AddString("dddddd");
+	this->m_wndListBox.AddString("eeeeee");
 	return TRUE;
 }
 

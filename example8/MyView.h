@@ -18,6 +18,6 @@ public:
 	virtual ~MyView();
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
 public:afx_msg void OnDraw(CDC*pDC);
-private:CButton m_wndListBox;
+private:CListBox m_wndListBox;
 };
 #endif // !defined(EA_9826E1CD_DC3D_49ac_B8FC_AE0D6C6FDFEB__INCLUDED_)
