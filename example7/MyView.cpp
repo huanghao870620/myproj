@@ -43,6 +43,9 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	CRect rect3(440, 10, 540, 100);
 	this->m_wnd3State.Create("3state", WS_CHILD | WS_VISIBLE | BS_3STATE, rect3, this, IDC_3STATE);
 
+	CRect rect4(550, 10, 650, 100);
+	this->m_wndAuto3State.Create("auto3state",WS_CHILD|WS_VISIBLE|BS_AUTO3STATE,rect4,this,IDC_AUTO3STATE);
+
 	return TRUE;
 }
 

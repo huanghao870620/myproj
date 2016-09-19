@@ -24,6 +24,7 @@ private:CButton m_wndDefPushButton;
 private:CButton m_wndRadio;
 private:CButton m_wndAutoCheckBox;
 private:CButton m_wnd3State;
+private:CButton m_wndAuto3State;
 
 protected:void OnDraw(CDC*pDC);
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
