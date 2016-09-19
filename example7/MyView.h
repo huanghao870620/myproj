@@ -19,6 +19,7 @@ public:
 protected:DECLARE_DYNCREATE(MyView, CView);
 protected:DECLARE_MESSAGE_MAP(MyView, CView);
 private:CButton m_wndPushButton;
+private:CButton m_wndRadio;
 protected:void OnDraw(CDC*pDC);
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
 protected:afx_msg void OnButton();

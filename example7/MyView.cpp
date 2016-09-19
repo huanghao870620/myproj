@@ -30,6 +30,9 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	CRect rect(0, 0, 100, 100);
 	this->m_wndPushButton.Create("ddd", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, rect, this, IDC_BUTTON);
 	this->m_wndPushButton.ShowWindow(SW_SHOW);
+
+	CRect rect2(101, 101, 200, 200);
+	this->m_wndRadio.Create("radio", WS_CHILD | WS_VISIBLE|BS_CHECKBOX, rect2, this, IDC_RADIO);
 	return TRUE;
 }
 
