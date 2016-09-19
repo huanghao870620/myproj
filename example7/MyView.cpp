@@ -36,6 +36,13 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 
 	CRect rect2(220, 10, 320, 100);
 	this->m_wndRadio.Create("checkbox", WS_CHILD | WS_VISIBLE|BS_CHECKBOX, rect2, this, IDC_RADIO);
+
+	CRect rect1(330, 10, 430, 100);
+	this->m_wndAutoCheckBox.Create("autoCheckBox", WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX, rect1, this, IDC_AUTOCHECKBOX);
+
+	CRect rect3(440, 10, 540, 100);
+	this->m_wnd3State.Create("3state", WS_CHILD | WS_VISIBLE | BS_3STATE, rect3, this, IDC_3STATE);
+
 	return TRUE;
 }
 
