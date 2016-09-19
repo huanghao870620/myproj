@@ -49,6 +49,11 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	CRect rect5(660, 10, 760, 100);
 	this->m_wndRadioButton.Create("radiobutton", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON, rect5, this, IDC_RADIOBUTTON);
 
+	CRect rect6(770, 10, 870, 100);
+	this->m_wndAutoRadioButton.Create("autoradiobutton", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON, rect6, this, IDC_AUTORADIOBUTTON);
+
+	CRect rect7(880, 10, 980, 100);
+	this->m_wndGroupBox.Create("groupbox", WS_CHILD | WS_VISIBLE | BS_GROUPBOX, rect7, this, IDC_GROUPBOX);
 	return TRUE;
 }
 

@@ -26,6 +26,9 @@ private:CButton m_wndAutoCheckBox;
 private:CButton m_wnd3State;
 private:CButton m_wndAuto3State;
 private:CButton m_wndRadioButton;
+private:CButton m_wndAutoRadioButton;
+private:CButton m_wndGroupBox;
+
 protected:void OnDraw(CDC*pDC);
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
 protected:afx_msg void OnButton();
