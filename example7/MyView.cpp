@@ -46,6 +46,9 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	CRect rect4(550, 10, 650, 100);
 	this->m_wndAuto3State.Create("auto3state",WS_CHILD|WS_VISIBLE|BS_AUTO3STATE,rect4,this,IDC_AUTO3STATE);
 
+	CRect rect5(660, 10, 760, 100);
+	this->m_wndRadioButton.Create("radiobutton", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON, rect5, this, IDC_RADIOBUTTON);
+
 	return TRUE;
 }
 
