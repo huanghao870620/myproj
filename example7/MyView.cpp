@@ -27,12 +27,15 @@ void MyView::OnDraw(CDC*pDC){
 }
 
 BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
-	CRect rect(0, 0, 100, 100);
-	this->m_wndPushButton.Create("ddd", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, rect, this, IDC_BUTTON);
+	CRect rect(10, 10, 100, 100);
+	this->m_wndPushButton.Create("pushbutton", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, rect, this, IDC_BUTTON);
 	this->m_wndPushButton.ShowWindow(SW_SHOW);
 
-	CRect rect2(101, 101, 200, 200);
-	this->m_wndRadio.Create("radio", WS_CHILD | WS_VISIBLE|BS_CHECKBOX, rect2, this, IDC_RADIO);
+	CRect rect0(110, 10, 210, 100);
+	this->m_wndDefPushButton.Create("defpushbutton", WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, rect0, this, IDC_DEFPUSHBUTTON);
+
+	CRect rect2(220, 10, 320, 100);
+	this->m_wndRadio.Create("checkbox", WS_CHILD | WS_VISIBLE|BS_CHECKBOX, rect2, this, IDC_RADIO);
 	return TRUE;
 }
 
