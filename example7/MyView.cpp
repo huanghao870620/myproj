@@ -54,6 +54,9 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 
 	CRect rect7(880, 10, 980, 100);
 	this->m_wndGroupBox.Create("groupbox", WS_CHILD | WS_VISIBLE | BS_GROUPBOX, rect7, this, IDC_GROUPBOX);
+
+	CRect rect8(10, 110, 510, 410);
+	this->m_wndListCtrl.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | LVS_REPORT | LVS_EDITLABELS, rect8, this, IDC_LISTCTRL);
 	return TRUE;
 }
 

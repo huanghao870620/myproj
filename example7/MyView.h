@@ -7,6 +7,7 @@
 
 #if !defined(EA_65F0A035_1FF3_4486_8B94_C127775C2363__INCLUDED_)
 #define EA_65F0A035_1FF3_4486_8B94_C127775C2363__INCLUDED_
+#include<afxlistctrl.h>
 #include<iostream>
 #include"resource.h"
 #include<afxwin.h>
@@ -28,6 +29,7 @@ private:CButton m_wndAuto3State;
 private:CButton m_wndRadioButton;
 private:CButton m_wndAutoRadioButton;
 private:CButton m_wndGroupBox;
+private:CListCtrl m_wndListCtrl;
 
 protected:void OnDraw(CDC*pDC);
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
