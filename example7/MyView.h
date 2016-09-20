@@ -42,6 +42,7 @@ private:CButton m_wndRadioButton1;
 private:CButton m_wndRadioButton2;
 private:CButton m_wndRadioButton3;
 private:CListBox m_wndListBox;
+private:CEdit m_wndEdit;
 
 protected:void OnDraw(CDC*pDC);
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);

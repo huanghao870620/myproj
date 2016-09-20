@@ -112,6 +112,9 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	this->m_wndListBox.AddString("深圳");
 	this->m_wndListBox.AddString("香港");
 	this->m_wndListBox.AddString("广州");
+
+	CRect rect20(660, 170, 760, 190);
+	this->m_wndEdit.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL, rect20, this, IDC_EDIT);
 	return TRUE;
 }
 
