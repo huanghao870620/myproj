@@ -7,13 +7,14 @@
 
 #if !defined(EA_72F5FA6F_FD53_4152_8950_60F0074250B0__INCLUDED_)
 #define EA_72F5FA6F_FD53_4152_8950_60F0074250B0__INCLUDED_
-
-class MyFrame
+#include<afxwin.h>
+class MyFrame : public CFrameWnd
 {
 
 public:
 	MyFrame();
 	virtual ~MyFrame();
-
+protected:DECLARE_DYNCREATE(MyFrame,CFrameWnd)
+protected:DECLARE_MESSAGE_MAP()
 };
 #endif // !defined(EA_72F5FA6F_FD53_4152_8950_60F0074250B0__INCLUDED_)

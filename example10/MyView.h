@@ -7,13 +7,15 @@
 
 #if !defined(EA_BB551AA4_9112_45a3_A229_1752C69B5CF5__INCLUDED_)
 #define EA_BB551AA4_9112_45a3_A229_1752C69B5CF5__INCLUDED_
-
-class MyView
+#include<afxwin.h>
+class MyView : public CView
 {
 
 public:
 	MyView();
 	virtual ~MyView();
-
+protected:DECLARE_DYNCREATE(MyView, CView)
+protected:DECLARE_MESSAGE_MAP()
+public:virtual void OnDraw(CDC*pDC);
 };
 #endif // !defined(EA_BB551AA4_9112_45a3_A229_1752C69B5CF5__INCLUDED_)
