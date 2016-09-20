@@ -101,6 +101,17 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	CRect rect18(800, 140, 850, 160);
 	this->m_wndRadioButton3.Create("d", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON, rect18, this, IDC_RADIOBUTTON3);
 
+	CRect rect19(520, 170, 650, 250);
+	this->m_wndListBox.Create(WS_CHILD | WS_VISIBLE | LBS_STANDARD, rect19, this, IDC_LISTBOX);
+	this->m_wndListBox.SetTabStops(64);
+	int nTabStops[] = {32,48,64,128};
+	this->m_wndListBox.SetTabStops(4, nTabStops);
+	this->m_wndListBox.AddString("北京");
+	this->m_wndListBox.AddString("上海");
+	this->m_wndListBox.AddString("重庆");
+	this->m_wndListBox.AddString("深圳");
+	this->m_wndListBox.AddString("香港");
+	this->m_wndListBox.AddString("广州");
 	return TRUE;
 }
 
