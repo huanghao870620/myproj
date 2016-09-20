@@ -30,9 +30,18 @@ private:CButton m_wndRadioButton;
 private:CButton m_wndAutoRadioButton;
 private:CButton m_wndGroupBox;
 private:CListCtrl m_wndListCtrl;
+private:CButton m_wndCheckBox0;
+private:CButton m_wndCheckBox1;
+private:CButton m_wndCheckBox2;
+private:CButton m_wndCheckBox3;
+private:CStatic m_wndStatic;
 
 protected:void OnDraw(CDC*pDC);
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpCreateStruct);
 protected:afx_msg void OnButton();
+protected:afx_msg void OnCheckBox0();
+protected:afx_msg void OnCheckBox1();
+protected:afx_msg void OnCheckBox2();
+protected:afx_msg void OnCheckBox3();
 };
 #endif // !defined(EA_65F0A035_1FF3_4486_8B94_C127775C2363__INCLUDED_)

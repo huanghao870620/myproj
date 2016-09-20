@@ -11,6 +11,10 @@ IMPLEMENT_DYNCREATE(MyView,CView)
 BEGIN_MESSAGE_MAP(MyView,CView)
 	ON_WM_CREATE()
 	ON_BN_CLICKED(IDC_BUTTON, MyView::OnButton)
+	ON_BN_CLICKED(IDC_CHECKBOX0,MyView::OnCheckBox0)
+	ON_BN_CLICKED(IDC_CHECKBOX1,MyView::OnCheckBox1)
+	ON_BN_CLICKED(IDC_CHECKBOX2,MyView::OnCheckBox2)
+	ON_BN_CLICKED(IDC_CHECKBOX3,MyView::OnCheckBox3)
 END_MESSAGE_MAP()
 MyView::MyView(){
 	
@@ -61,9 +65,40 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	this->m_wndListCtrl.InsertColumn(1, "Name", LVCFMT_LEFT, 50);
 	int nRow = this->m_wndListCtrl.InsertItem(0, "11");
 	this->m_wndListCtrl.SetItemText(nRow, 1, "jacky");
+
+	CRect rect9(620, 110, 670, 120);
+	this->m_wndCheckBox0.Create("a", WS_CHILD | WS_VISIBLE | BS_CHECKBOX, rect9, this, IDC_CHECKBOX0);
+
+	CRect rect10(680, 110, 730, 120);
+	this->m_wndCheckBox1.Create("b", WS_CHILD | WS_VISIBLE | BS_CHECKBOX, rect10, this, IDC_CHECKBOX1);
+
+	CRect rect11(740, 110, 790, 120);
+	this->m_wndCheckBox2.Create("c", WS_CHILD | WS_VISIBLE | BS_CHECKBOX, rect11, this, IDC_CHECKBOX2);
+
+	CRect rect12(800, 110, 850, 120);
+	this->m_wndCheckBox3.Create("d", WS_CHILD | WS_VISIBLE | BS_CHECKBOX, rect12, this, IDC_CHECKBOX3);
+	
+	CRect rect13(520, 110, 570, 130);
+	this->m_wndStatic.Create("¸´Ñ¡¿ò:", WS_CHILD | WS_VISIBLE | SS_CENTER, rect13, this);
 	return TRUE;
 }
 
 void MyView::OnButton(){
 	std::cout << "333" << std::endl;
+}
+
+void MyView::OnCheckBox0(){
+	this->m_wndCheckBox0.SetCheck(this->m_wndCheckBox0.GetCheck() == BST_CHECKED ? BST_UNCHECKED : BST_CHECKED);
+}
+
+void MyView::OnCheckBox1(){
+	this->m_wndCheckBox1.SetCheck(this->m_wndCheckBox1.GetCheck() == BST_CHECKED ? BST_UNCHECKED : BST_CHECKED);
+}
+
+void MyView::OnCheckBox2(){
+	this->m_wndCheckBox2.SetCheck(this->m_wndCheckBox2.GetCheck() == BST_CHECKED ? BST_UNCHECKED : BST_CHECKED);
+}
+
+void MyView::OnCheckBox3(){
+	this->m_wndCheckBox3.SetCheck(this->m_wndCheckBox3.GetCheck() == BST_CHECKED ? BST_UNCHECKED : BST_CHECKED);
 }
