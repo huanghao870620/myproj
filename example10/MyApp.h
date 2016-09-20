@@ -7,13 +7,13 @@
 
 #if !defined(EA_0D0730EA_6CBB_49ff_9B7F_690B9F328F68__INCLUDED_)
 #define EA_0D0730EA_6CBB_49ff_9B7F_690B9F328F68__INCLUDED_
-
-class MyApp
+#include<afxwin.h>
+class MyApp : public CWinApp
 {
 
 public:
 	MyApp();
 	virtual ~MyApp();
-
+public:virtual BOOL InitInstance();
 };
 #endif // !defined(EA_0D0730EA_6CBB_49ff_9B7F_690B9F328F68__INCLUDED_)

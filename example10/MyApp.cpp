@@ -7,7 +7,7 @@
 
 #include "MyApp.h"
 
-
+MyApp app;
 MyApp::MyApp(){
 
 }
@@ -16,4 +16,8 @@ MyApp::MyApp(){
 
 MyApp::~MyApp(){
 
+}
+
+BOOL MyApp::InitInstance(){
+	return TRUE;
 }
