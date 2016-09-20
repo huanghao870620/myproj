@@ -15,6 +15,10 @@ BEGIN_MESSAGE_MAP(MyView,CView)
 	ON_BN_CLICKED(IDC_CHECKBOX1,MyView::OnCheckBox1)
 	ON_BN_CLICKED(IDC_CHECKBOX2,MyView::OnCheckBox2)
 	ON_BN_CLICKED(IDC_CHECKBOX3,MyView::OnCheckBox3)
+	ON_BN_CLICKED(IDC_RADIOBUTTON0,MyView::OnRadioButton0)
+	ON_BN_CLICKED(IDC_RADIOBUTTON1,MyView::OnRadioButton1)
+	ON_BN_CLICKED(IDC_RADIOBUTTON2,MyView::OnRadioButton2)
+	ON_BN_CLICKED(IDC_RADIOBUTTON3,MyView::OnRadioButton3)
 END_MESSAGE_MAP()
 MyView::MyView(){
 	
@@ -80,6 +84,23 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	
 	CRect rect13(520, 110, 570, 130);
 	this->m_wndStatic.Create("¸´Ñ¡¿ò:", WS_CHILD | WS_VISIBLE | SS_CENTER, rect13, this);
+
+
+	CRect rect14(520, 140, 570, 160);
+	this->m_wndStatic0.Create("µ¥Ñ¡¿ò:", WS_CHILD | WS_VISIBLE | SS_CENTER, rect14, this);
+
+	CRect rect15(620, 140, 670, 160);
+	this->m_wndRadioButton0.Create("a", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON, rect15, this, IDC_RADIOBUTTON0);
+
+	CRect rect16(680, 140, 730, 160);
+	this->m_wndRadioButton1.Create("b", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON, rect16, this, IDC_RADIOBUTTON1);
+
+	CRect rect17(740, 140, 790, 160);
+	this->m_wndRadioButton2.Create("c", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON, rect17, this, IDC_RADIOBUTTON2);
+
+	CRect rect18(800, 140, 850, 160);
+	this->m_wndRadioButton3.Create("d", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON, rect18, this, IDC_RADIOBUTTON3);
+
 	return TRUE;
 }
 
@@ -101,4 +122,32 @@ void MyView::OnCheckBox2(){
 
 void MyView::OnCheckBox3(){
 	this->m_wndCheckBox3.SetCheck(this->m_wndCheckBox3.GetCheck() == BST_CHECKED ? BST_UNCHECKED : BST_CHECKED);
+}
+
+void MyView::OnRadioButton0(){
+	this->m_wndRadioButton0.SetCheck(BST_CHECKED);
+	this->m_wndRadioButton1.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton2.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton3.SetCheck(BST_UNCHECKED);
+}
+
+void MyView::OnRadioButton1(){
+	this->m_wndRadioButton0.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton1.SetCheck(BST_CHECKED);
+	this->m_wndRadioButton2.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton3.SetCheck(BST_UNCHECKED);
+}
+
+void MyView::OnRadioButton2(){
+	this->m_wndRadioButton0.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton1.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton2.SetCheck(BST_CHECKED);
+	this->m_wndRadioButton3.SetCheck(BST_UNCHECKED);
+}
+
+void MyView::OnRadioButton3(){
+	this->m_wndRadioButton0.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton1.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton2.SetCheck(BST_UNCHECKED);
+	this->m_wndRadioButton3.SetCheck(BST_CHECKED);
 }
