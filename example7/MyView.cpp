@@ -57,6 +57,10 @@ BOOL MyView::OnCreate(LPCREATESTRUCT lpCreateStruct){
 
 	CRect rect8(10, 110, 510, 410);
 	this->m_wndListCtrl.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | LVS_REPORT | LVS_EDITLABELS, rect8, this, IDC_LISTCTRL);
+	this->m_wndListCtrl.InsertColumn(0, "ID", LVCFMT_LEFT, 40);
+	this->m_wndListCtrl.InsertColumn(1, "Name", LVCFMT_LEFT, 50);
+	int nRow = this->m_wndListCtrl.InsertItem(0, "11");
+	this->m_wndListCtrl.SetItemText(nRow, 1, "jacky");
 	return TRUE;
 }
 
