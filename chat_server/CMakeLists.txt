@@ -1,5 +1,5 @@
 aux_source_directory(. source_files)
-message(${source_files})
+#message(${source_files})
 set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 set(CMAKE_MFC_FLAG 1)

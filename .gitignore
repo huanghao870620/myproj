@@ -151,3 +151,6 @@ example12/Debug/
 example12/example12.dir/
 example12/example12.vcxproj
 example12/example12.vcxproj.filters
+example11/Debug/
+example11/example11.dir/
+example11/execute.cpp

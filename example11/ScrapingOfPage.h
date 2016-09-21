@@ -8,6 +8,7 @@
 #if !defined(EA_37605C5E_A1FA_4def_914F_AB882473BCC3__INCLUDED_)
 #define EA_37605C5E_A1FA_4def_914F_AB882473BCC3__INCLUDED_
 #include<iostream>
+#include<afxinet.h>
 /**
  * ×¥È¡ÍøÒ³
  */
@@ -17,6 +18,7 @@ class ScrapingOfPage
 public:
 	ScrapingOfPage();
 	virtual ~ScrapingOfPage();
+public: void grab();
 
 };
 #endif // !defined(EA_37605C5E_A1FA_4def_914F_AB882473BCC3__INCLUDED_)
