@@ -4,9 +4,9 @@
 //  Created on:      21-╬етб-2016 9:54:46
 //  Original author: huang.hao
 ///////////////////////////////////////////////////////////
+#include "CommonTest.h"
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/parameterized_test.hpp>
-#include "CommonTest.h"
 using boost::unit_test::test_suite;
 
 

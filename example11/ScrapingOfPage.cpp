@@ -26,7 +26,9 @@ void ScrapingOfPage::grab(){
 	CFileStatus fileStatus;
 	pfile->GetStatus(fileStatus);
 	CTime atime = fileStatus.m_atime;
+	//std::cout << atime << std::endl;
 	fileStatus.m_attribute;
+	std::cout << fileStatus.m_attribute << std::endl;
 	CTime ctime = fileStatus.m_ctime;
 	CTime mtime = fileStatus.m_mtime;
 	fileStatus.m_size;
