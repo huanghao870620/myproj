@@ -147,3 +147,7 @@ example10/example10.vcxproj.filters
 example10/example10.aps
 example11/example11.vcxproj
 example11/example11.vcxproj.filters
+example12/Debug/
+example12/example12.dir/
+example12/example12.vcxproj
+example12/example12.vcxproj.filters
