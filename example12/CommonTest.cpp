@@ -12,12 +12,12 @@ using boost::unit_test::test_suite;
 
 
 void testCopy(){
-	std::cout << "22" << std::endl;
+	ScrapingOfPage * soPage = new ScrapingOfPage;
+	soPage->grab();
 }
 
 test_suite* init_unit_test_suite(int, char*[]){
 	int params[] = { 1, 2, 3, 4, 5 };
-	std::cout << "111111" << std::endl;
 	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testDelete));
 	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testCopy));
 	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testReceiver));
