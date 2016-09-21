@@ -21,17 +21,17 @@ ScrapingOfPage::~ScrapingOfPage(){
 void ScrapingOfPage::grab(){
 	CInternetSession session("HttpClient");
 	char * url = "http://www.baidu.com";
-	CStdioFile * pfile = session.OpenURL(url);
+	CHttpFile *pfile = (CHttpFile*) session.OpenURL(url);
 	DWORD dwStatusCode;
-	CFileStatus fileStatus;
-	pfile->GetStatus(fileStatus);
-	CTime atime = fileStatus.m_atime;
-	//std::cout << atime << std::endl;
-	fileStatus.m_attribute;
-	std::cout << fileStatus.m_attribute << std::endl;
-	CTime ctime = fileStatus.m_ctime;
-	CTime mtime = fileStatus.m_mtime;
-	fileStatus.m_size;
-	fileStatus.m_szFullName;
-	atime.GetDay();
+	pfile->QueryInfoStatusCode(dwStatusCode);
+	if (dwStatusCode == HTTP_STATUS_OK){
+		CString	content;
+		CString data;
+		while (pfile->ReadString(data))
+		{
+			content += data + "\r\n";
+		}
+		content.TrimRight();
+		printf("%s\n", content);
+	}
 }

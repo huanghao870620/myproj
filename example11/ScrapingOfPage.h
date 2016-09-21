@@ -9,6 +9,7 @@
 #define EA_37605C5E_A1FA_4def_914F_AB882473BCC3__INCLUDED_
 #include<iostream>
 #include<afxinet.h>
+//#define _M_IX86
 /**
  * ืฅศกอ๘าณ
  */
