@@ -34,4 +34,7 @@ void ScrapingOfPage::grab(){
 		content.TrimRight();
 		printf("%s\n", content);
 	}
+	pfile->Close();
+	delete pfile;
+	session.Close();
 }
