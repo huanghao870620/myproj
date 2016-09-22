@@ -157,3 +157,8 @@ example11/execute.cpp
 example11/example11lib.vcxproj
 example11/example11lib.vcxproj.filters
 example11/example11lib.dir/
+example13/example13.vcxproj
+example13/example13.vcxproj.filters
+example13/Debug/
+example13/example13.aps
+example13/example13.dir/
