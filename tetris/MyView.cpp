@@ -22,4 +22,9 @@ MyView::~MyView(){
 
 void MyView::OnDraw(CDC*pDC){
 
+	CPen pen;
+	pen.CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
+	pDC->SelectObject(pen);
+	pDC->MoveTo(10, 20);
+	pDC->LineTo(500, 20);
 }

@@ -14,7 +14,8 @@ class MyFrame : public CFrameWnd
 public:
 	MyFrame();
 	virtual ~MyFrame();
-protected:DECLARE_DYNCREATE(MyFrame,CFrameWnd)
-protected:DECLARE_MESSAGE_MAP(MyFrame,CFrameWnd)
+protected:DECLARE_DYNCREATE(MyFrame, CFrameWnd)
+protected:DECLARE_MESSAGE_MAP(MyFrame, CFrameWnd)
+protected:virtual BOOL PreCreateWindow(CREATESTRUCT &cs);
 };
 #endif // !defined(EA_7326DB1D_D818_4548_A664_D03CC0FFA8CF__INCLUDED_)

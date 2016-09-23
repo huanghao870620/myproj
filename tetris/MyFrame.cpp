@@ -19,3 +19,7 @@ MyFrame::MyFrame(){
 MyFrame::~MyFrame(){
 
 }
+
+BOOL MyFrame::PreCreateWindow(CREATESTRUCT &cs){
+	return TRUE;
+}
