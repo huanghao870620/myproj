@@ -47,12 +47,11 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->FillRect(leftSideRect, &brush);
 	brush.DeleteObject();
 	CRect leftBrickRect(41, 10, 71, 520);
-	pDC->Rectangle(leftBrickRect);
-	brush.CreateSolidBrush(RGB(195, 182, 173));
-	pDC->FillRect(leftBrickRect, &brush);
-
-	pen.DeleteObject();
-	pen.CreatePen(PS_SOLID, 4, RGB(0, 0, 0));
-	pDC->SelectObject(pen);
 	
+	LeftBrick *lb = new LeftBrick(pDC, leftBrickRect,brush,pen);
+	lb->drawBrick();
+
+	CRect rightBrickRect(leftBrickRect.left + 300, leftBrickRect.top, leftBrickRect.right + 300, leftBrickRect.bottom);
+	LeftBrick *rb = new LeftBrick(pDC, rightBrickRect,brush,pen);
+	rb->drawBrick();
 }

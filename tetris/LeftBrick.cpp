@@ -12,9 +12,12 @@ LeftBrick::LeftBrick(){
 
 }
 
-LeftBrick::LeftBrick(CDC *pDC,CRect leftBrickRect){
+LeftBrick::LeftBrick(CDC *pDC,CRect &leftBrickRect,CBrush &brush, CPen &pen){
 	this->pDC = pDC;
 	this->leftBrickRect = leftBrickRect;
+	this->brush = brush;
+	this->pen = pen;
+	this->drawBack();
 }
 
 LeftBrick::~LeftBrick(){
@@ -47,4 +50,15 @@ void LeftBrick::drawBrick(){
 			pDC->LineTo(leftBrickRect.left + 28, i + 5);
 		}
 	}
+}
+
+/*»­±³¾°*/
+void LeftBrick::drawBack(){
+	pDC->Rectangle(leftBrickRect);
+	brush.CreateSolidBrush(RGB(195, 182, 173));
+	pDC->FillRect(leftBrickRect, &brush);
+
+	pen.DeleteObject();
+	pen.CreatePen(PS_SOLID, 4, RGB(0, 0, 0));
+	pDC->SelectObject(pen);
 }
