@@ -1,0 +1,19 @@
+///////////////////////////////////////////////////////////
+//  MyApp.cpp
+//  Implementation of the Class MyApp
+//  Created on:      23-¾ÅÔÂ-2016 9:04:26
+//  Original author: huang.hao
+///////////////////////////////////////////////////////////
+
+#include "MyApp.h"
+
+
+MyApp::MyApp(){
+
+}
+
+
+
+MyApp::~MyApp(){
+
+}
