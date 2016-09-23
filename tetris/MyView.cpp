@@ -21,9 +21,21 @@ MyView::~MyView(){
 }
 
 void MyView::OnDraw(CDC*pDC){
+	/*CRect rect;
+	GetClientRect(&rect);
+	pDC->FillSolidRect(rect, RGB(0, 255, 0));*/
+
+	CBitmap bitmap;
+	bitmap.LoadBitmapA(IDB_BG);
+	BITMAP bmp;
+	bitmap.GetBitmap(&bmp);
+	CDC dcCompatible;
+	dcCompatible.CreateCompatibleDC(pDC);
+	dcCompatible.SelectObject(bitmap);
+
 	CRect rect;
 	GetClientRect(&rect);
-	pDC->FillSolidRect(rect, RGB(0, 255, 0));
+	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dcCompatible, 0, 0, bmp.bmWidth, bmp.bmHeight, SRCCOPY);
 
 
 	CPen pen;
