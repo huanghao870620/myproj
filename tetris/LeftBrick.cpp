@@ -54,7 +54,6 @@ void LeftBrick::drawBrick(){
 
 /*»­±³¾°*/
 void LeftBrick::drawBack(){
-	pDC->Rectangle(leftBrickRect);
 	brush->m_hObject = NULL;
 	brush->CreateSolidBrush(RGB(195, 182, 173));
 	pDC->FillRect(leftBrickRect, brush);

@@ -55,4 +55,13 @@ void MyView::OnDraw(CDC*pDC){
 	LeftBrick *rb = new LeftBrick(pDC, &rightBrickRect,&brush,&pen);
 	rb->drawBrick();
 	delete rb;
+
+
+	CRect brickCrect(100, 100, 120, 120);
+	pDC->Rectangle(brickCrect);
+	CRect innerBrickCrect(107, 107, 113, 113);
+	pDC->Rectangle(innerBrickCrect);
+	brush.m_hObject = NULL;
+	brush.CreateSolidBrush(RGB(0, 0, 0));
+	pDC->FillRect(innerBrickCrect,&brush);
 }
