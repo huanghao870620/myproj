@@ -164,3 +164,6 @@ example13/example13.aps
 example13/example13.dir/
 tetris/tetris.vcxproj
 tetris/tetris.vcxproj.filters
+tetris/Debug/
+tetris/tetris.aps
+tetris/tetris.dir/
