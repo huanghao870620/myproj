@@ -69,7 +69,7 @@ function(test0 arg)
 endfunction()
 
 set(bb 2)
- test0("a")
+test0("a")
 
 add_subdirectory(library/src)
 add_subdirectory(monitor)
