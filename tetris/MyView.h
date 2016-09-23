@@ -18,9 +18,5 @@ public:
 protected:DECLARE_DYNCREATE(MyView, CView)
 protected:DECLARE_MESSAGE_MAP(MyView, CView)
 protected:virtual void OnDraw(CDC*pDC);
-//private:IPicture *m_picture;
-//private:OLE_XSIZE_HIMETRIC m_width;
-//private:OLE_XSIZE_HIMETRIC m_height;
-//private:BOOL m_IsShow;
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)
