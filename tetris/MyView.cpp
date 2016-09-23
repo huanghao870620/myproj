@@ -46,9 +46,13 @@ void MyView::OnDraw(CDC*pDC){
 	CBrush brush(RGB(0,0,0));
 	pDC->FillRect(leftSideRect, &brush);
 	brush.DeleteObject();
-	// 4 30
 	CRect leftBrickRect(41, 10, 71, 520);
 	pDC->Rectangle(leftBrickRect);
 	brush.CreateSolidBrush(RGB(195, 182, 173));
 	pDC->FillRect(leftBrickRect, &brush);
+
+	pen.DeleteObject();
+	pen.CreatePen(PS_SOLID, 4, RGB(0, 0, 0));
+	pDC->SelectObject(pen);
+	
 }
