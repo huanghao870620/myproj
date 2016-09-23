@@ -50,8 +50,9 @@ void MyView::OnDraw(CDC*pDC){
 	
 	LeftBrick *lb = new LeftBrick(pDC, &leftBrickRect,&brush,&pen);
 	lb->drawBrick();
-
+	delete lb;
 	CRect rightBrickRect(leftBrickRect.left + 300, leftBrickRect.top, leftBrickRect.right + 300, leftBrickRect.bottom);
 	LeftBrick *rb = new LeftBrick(pDC, &rightBrickRect,&brush,&pen);
 	rb->drawBrick();
+	delete rb;
 }
