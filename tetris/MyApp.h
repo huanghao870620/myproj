@@ -8,9 +8,9 @@
 #if !defined(EA_8496411F_19E6_409c_A706_78B46A0E10B2__INCLUDED_)
 #define EA_8496411F_19E6_409c_A706_78B46A0E10B2__INCLUDED_
 #include"resource.h"
-#include"MyDoc.h"
-#include"MyView.h"
-#include"MyFrame.h"
+//#include"MyDoc.h"
+//#include"MyView.h"
+//#include"MyFrame.h"
 #include<afxwin.h>
 class MyApp : public CWinApp
 {

@@ -18,17 +18,18 @@ Singleton::~Singleton(){
 
 }
 
-std::list<Coordinates*>* Singleton::getCoors(){
-	return this->coors;
-}
+//std::list<Coordinates*>* Singleton::getCoors(){
+//	return this->coors;
+//}
+//
+//void Singleton::setCoors(std::list<Coordinates*> *coors){
+//	this->coors = coors;
+//}
 
-void Singleton::setCoors(std::list<Coordinates*> *coors){
-	this->coors = coors;
-}
-
-Singleton* Singleton::getSingleton(){
-	if (instance == nullptr){
-		instance = new Singleton;
-	}
-	return instance;
-}
+//
+//Singleton* Singleton::getSingleton(){
+//		if (nullptr == instance){
+//			instance = new Singleton;
+//		}
+//		return instance;
+//}

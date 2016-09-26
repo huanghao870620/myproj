@@ -19,12 +19,12 @@ MyApp::~MyApp(){
 }
 
 BOOL MyApp::InitInstance(){
-	AllocConsole();
+	/*AllocConsole();
 	SetConsoleTitle("");
 	freopen("CONIN$", "r", stdin);
-	freopen("CONOUT$", "w+t", stdout);
+	freopen("CONOUT$", "w+t", stdout);*/
 
-	CSingleDocTemplate *temp;
+	/*CSingleDocTemplate *temp;
 	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
 	AddDocTemplate(temp);
 
@@ -35,6 +35,6 @@ BOOL MyApp::InitInstance(){
 	}
 
 	this->m_pMainWnd->ShowWindow(SW_SHOW);
-	this->m_pMainWnd->UpdateWindow();
+	this->m_pMainWnd->UpdateWindow();*/
 	return TRUE;
 }

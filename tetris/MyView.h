@@ -7,14 +7,14 @@
 
 #if !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)
 #define EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_
-#include<iostream>
-#include"Tile.h"
-#include"LeftBrick.h"
-#include"resource.h"
+//#include<iostream>
+//#include"Tile.h"
+//#include"LeftBrick.h"
+//#include"resource.h"
 #include<afxwin.h>
-#include"Dto.h"
-#include"Singleton.h"
-#include"ArrayDto.h"
+//#include"Dto.h"
+//#include"Singleton.h"
+//#include"ArrayDto.h"
 class MyView : public CView
 {
 
@@ -24,9 +24,9 @@ public:
 protected:DECLARE_DYNCREATE(MyView)
 protected:DECLARE_MESSAGE_MAP()
 protected:virtual void OnDraw(CDC*pDC);
-private:static const int gap = 2;
-private:static const int sideLength = 20;
-private: Dto *dto;
-private:ArrayDto *arrayDto;
+//private:static const int gap = 2;
+//private:static const int sideLength = 20;
+//private: Dto *dto;
+//private:ArrayDto *arrayDto;
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)

@@ -18,18 +18,18 @@ ArrayDto::~ArrayDto(){
 
 }
 
-void ArrayDto::setXArray(int *xArray){
-	this->xArray = xArray;
-}
-
-int* ArrayDto::getXArray(){
-	return this->xArray;
-}
-
-void ArrayDto::setYArray(int *yArray){
-	this->yArray = yArray;
-}
-
-int* ArrayDto::getYArray(){
-	return this->yArray;
-}
+//void ArrayDto::setXArray(int *xArray){
+//	this->xArray = xArray;
+//}
+//
+//int* ArrayDto::getXArray(){
+//	return this->xArray;
+//}
+//
+//void ArrayDto::setYArray(int *yArray){
+//	this->yArray = yArray;
+//}
+//
+//int* ArrayDto::getYArray(){
+//	return this->yArray;
+//}
