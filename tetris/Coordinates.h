@@ -19,6 +19,10 @@ public:
 	virtual ~Coordinates();
 public:Coordinates();
 private:int x, y;
+public:void setX(int x);
+public:int getX();
+public:void setY(int y);
+public:int getY();
 
 };
 #endif // !defined(EA_D2216E27_C8B6_46dd_91D0_1D94F2EAA781__INCLUDED_)
