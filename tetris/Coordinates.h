@@ -17,6 +17,7 @@ class Coordinates
 public:
 	Coordinates(int x,int y);
 	virtual ~Coordinates();
+public:Coordinates();
 private:int x, y;
 
 };

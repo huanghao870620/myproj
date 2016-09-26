@@ -14,6 +14,10 @@ Coordinates::Coordinates(int x,int y){
 }
 
 
+Coordinates::Coordinates(){
+
+}
+
 
 Coordinates::~Coordinates(){
 
