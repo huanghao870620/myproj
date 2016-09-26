@@ -51,23 +51,15 @@ void MyView::OnDraw(CDC*pDC){
 	LeftBrick *lb = new LeftBrick(pDC, &leftBrickRect,&brush,&pen);
 	lb->drawBrick();
 	delete lb; 
-	CRect rightBrickRect(leftBrickRect.left + 256, leftBrickRect.top, leftBrickRect.right + 300, leftBrickRect.bottom);
+	CRect rightBrickRect(leftBrickRect.left + 256, leftBrickRect.top, leftBrickRect.right + 256, leftBrickRect.bottom);
 	LeftBrick *rb = new LeftBrick(pDC, &rightBrickRect,&brush,&pen);
 	rb->drawBrick();
 	delete rb;
 
-
-	/*CRect brickCrect(100, 100, 120, 120);
-	pDC->Rectangle(brickCrect);
-	CRect innerBrickCrect(107, 107, 113, 113);
-	pDC->Rectangle(innerBrickCrect);
-	brush.m_hObject = NULL;
-	brush.CreateSolidBrush(RGB(0, 0, 0));
-	pDC->FillRect(innerBrickCrect,&brush);*/
-
 	pen.m_hObject = NULL;
 	pen.CreatePen(PS_DOT, 1, RGB(0, 0, 0));
 	pDC->SelectObject(pen);
+
 	pDC->MoveTo(leftBrickRect.right + gap, leftBrickRect.top);
 	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top);
 	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.bottom);
@@ -80,12 +72,22 @@ void MyView::OnDraw(CDC*pDC){
 
 	pDC->MoveTo(leftBrickRect.right + gap + gap, leftBrickRect.top);
 	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);
+
+	Singleton *instance = Singleton::getSingleton();
+
+	/*for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
+	{
+		for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength){
+
+		}
+	}*/
+
+
 	int yCount = 0;
 	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength,yCount++)
 	{
 		pDC->MoveTo(leftBrickRect.right + gap, y);
 		pDC->LineTo(rightBrickRect.left - gap, y);
-		//std::cout << "y : " << y << std::endl;
 		y = y + gap;
 		pDC->MoveTo(leftBrickRect.right + gap, y );
 		pDC->LineTo(rightBrickRect.left - gap, y );
@@ -97,19 +99,20 @@ void MyView::OnDraw(CDC*pDC){
 	{
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
-		std::cout << "x = " << x << std::endl;
 		x = x + gap;
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
 		if (count == 10){
-			std::cout << "x = " << x << std::endl;
 			pen.m_hObject = NULL;
 			pen.CreatePen(PS_DOT, 1, RGB(255, 0, 0));
 			pDC->SelectObject(pen);
 		}
-		/*std::cout << "i = " << i << std::endl;
-		std::cout << " i + gap : " << i + gap << std::endl;*/
 	}
 
-	
+	Tile *tile = new Tile(0,0,0,0);
+	tile->createTile();
+
+
+	CRect scoreRect(rightBrickRect.right + gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
+	pDC->Rectangle(scoreRect);
 }

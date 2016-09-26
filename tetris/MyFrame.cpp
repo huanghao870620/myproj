@@ -21,7 +21,7 @@ MyFrame::~MyFrame(){
 }
 
 BOOL MyFrame::PreCreateWindow(CREATESTRUCT &cs){
-	cs.style &= ~(WS_MAXIMIZEBOX | WS_THICKFRAME);
+	cs.style &= ~(WS_MAXIMIZEBOX | WS_THICKFRAME|WS_CAPTION|WS_SYSMENU);
 	cs.cx = 500;
 	cs.cy = 600;
 	CFrameWnd::PreCreateWindow(cs);

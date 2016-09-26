@@ -56,7 +56,7 @@ void LeftBrick::drawBrick(){
 void LeftBrick::drawBack(){
 	brush->m_hObject = NULL;
 	brush->CreateSolidBrush(RGB(195, 182, 173));
-	pDC->FillRect(leftBrickRect, brush);
+	pDC->FillRect(this->leftBrickRect, brush);
 
 	pen->DeleteObject();
 	pen->CreatePen(PS_SOLID, 4, RGB(0, 0, 0));
