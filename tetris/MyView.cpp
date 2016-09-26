@@ -90,6 +90,7 @@ void MyView::OnDraw(CDC*pDC){
 	for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
 	{
 		Coordinates * coor = new Coordinates;
+		
 		pDC->MoveTo(leftBrickRect.right + gap, y);
 		pDC->LineTo(rightBrickRect.left - gap, y);
 		y = y + gap;
