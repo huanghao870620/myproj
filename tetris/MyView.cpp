@@ -87,10 +87,17 @@ void MyView::OnDraw(CDC*pDC){
 	std::list<Coordinates*> *xList = new std::list<Coordinates*>;
 	this->dto->setXList(xList);
 
-	for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
+	this->arrayDto = new ArrayDto;
+	int *xArray = new int[10];
+	int *yArray = new int[10];
+
+
+	int count = 0;
+	for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength,count++)
 	{
 		Coordinates * coor = new Coordinates;
 		
+		yArray[count] = y;
 		pDC->MoveTo(leftBrickRect.right + gap, y);
 		pDC->LineTo(rightBrickRect.left - gap, y);
 		y = y + gap;

@@ -14,6 +14,7 @@
 #include<afxwin.h>
 #include"Dto.h"
 #include"Singleton.h"
+#include"ArrayDto.h"
 class MyView : public CView
 {
 
@@ -26,5 +27,6 @@ protected:virtual void OnDraw(CDC*pDC);
 private:static const int gap = 2;
 private:static const int sideLength = 20;
 private: Dto *dto;
+private:ArrayDto *arrayDto;
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)
