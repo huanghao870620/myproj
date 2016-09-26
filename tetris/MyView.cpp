@@ -50,8 +50,8 @@ void MyView::OnDraw(CDC*pDC){
 	
 	LeftBrick *lb = new LeftBrick(pDC, &leftBrickRect,&brush,&pen);
 	lb->drawBrick();
-	delete lb;
-	CRect rightBrickRect(leftBrickRect.left + 300, leftBrickRect.top, leftBrickRect.right + 300, leftBrickRect.bottom);
+	delete lb; 
+	CRect rightBrickRect(leftBrickRect.left + 256, leftBrickRect.top, leftBrickRect.right + 300, leftBrickRect.bottom);
 	LeftBrick *rb = new LeftBrick(pDC, &rightBrickRect,&brush,&pen);
 	rb->drawBrick();
 	delete rb;
@@ -75,11 +75,17 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->LineTo(leftBrickRect.right + gap, leftBrickRect.top);
 
 
-	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength)
+	pDC->MoveTo(leftBrickRect.right + gap, leftBrickRect.top + gap);
+	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top + gap);
+
+	pDC->MoveTo(leftBrickRect.right + gap + gap, leftBrickRect.top);
+	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);
+	int yCount = 0;
+	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength,yCount++)
 	{
 		pDC->MoveTo(leftBrickRect.right + gap, y);
 		pDC->LineTo(rightBrickRect.left - gap, y);
-
+		//std::cout << "y : " << y << std::endl;
 		y = y + gap;
 		pDC->MoveTo(leftBrickRect.right + gap, y );
 		pDC->LineTo(rightBrickRect.left - gap, y );
@@ -87,11 +93,11 @@ void MyView::OnDraw(CDC*pDC){
 
 
 	int count = 0;
-	for (int x = leftBrickRect.right +gap+ sideLength; x < rightBrickRect.left; x+=sideLength,count++)
+	for (int x = leftBrickRect.right +gap + gap + sideLength; x < rightBrickRect.left; x+=sideLength,count++)
 	{
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
-
+		std::cout << "x = " << x << std::endl;
 		x = x + gap;
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
@@ -105,9 +111,5 @@ void MyView::OnDraw(CDC*pDC){
 		std::cout << " i + gap : " << i + gap << std::endl;*/
 	}
 
-	pDC->MoveTo(leftBrickRect.right + gap, leftBrickRect.top + gap);
-	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top + gap);
-
-	pDC->MoveTo(leftBrickRect.right + gap + gap, leftBrickRect.top);
-	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);
+	
 }
