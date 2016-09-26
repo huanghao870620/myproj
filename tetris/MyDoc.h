@@ -14,7 +14,7 @@ class MyDoc : public CDocument
 public:
 	MyDoc();
 	virtual ~MyDoc();
-protected:DECLARE_DYNCREATE(MyDoc,CDocument)
-protected:DECLARE_MESSAGE_MAP(MyDoc,CDocument)
+protected:DECLARE_DYNCREATE(MyDoc)
+protected:DECLARE_MESSAGE_MAP()
 };
 #endif // !defined(EA_2365CBE8_8311_4b00_975C_6BB13F62EA06__INCLUDED_)

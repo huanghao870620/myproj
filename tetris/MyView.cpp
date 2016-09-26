@@ -57,11 +57,54 @@ void MyView::OnDraw(CDC*pDC){
 	delete rb;
 
 
-	CRect brickCrect(100, 100, 120, 120);
+	/*CRect brickCrect(100, 100, 120, 120);
 	pDC->Rectangle(brickCrect);
 	CRect innerBrickCrect(107, 107, 113, 113);
 	pDC->Rectangle(innerBrickCrect);
 	brush.m_hObject = NULL;
 	brush.CreateSolidBrush(RGB(0, 0, 0));
-	pDC->FillRect(innerBrickCrect,&brush);
+	pDC->FillRect(innerBrickCrect,&brush);*/
+
+	pen.m_hObject = NULL;
+	pen.CreatePen(PS_DOT, 1, RGB(0, 0, 0));
+	pDC->SelectObject(pen);
+	pDC->MoveTo(leftBrickRect.right + gap, leftBrickRect.top);
+	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top);
+	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.bottom);
+	pDC->LineTo(leftBrickRect.right + gap, leftBrickRect.bottom);
+	pDC->LineTo(leftBrickRect.right + gap, leftBrickRect.top);
+
+
+	for (int i = leftBrickRect.top+sideLength; i < rightBrickRect.bottom; i+=sideLength)
+	{
+		pDC->MoveTo(leftBrickRect.right + gap, i);
+		pDC->LineTo(rightBrickRect.left - gap, i);
+
+		i = i + gap;
+		pDC->MoveTo(leftBrickRect.right + gap, i );
+		pDC->LineTo(rightBrickRect.left - gap, i );
+	}
+
+
+	int count = 0;
+	for (int i = leftBrickRect.right +gap+ sideLength; i < rightBrickRect.left; i+=sideLength,count++)
+	{
+		pDC->MoveTo(i, leftBrickRect.top);
+		pDC->LineTo(i, leftBrickRect.bottom);
+
+		i = i + gap;
+		pDC->MoveTo(i, leftBrickRect.top);
+		pDC->LineTo(i, leftBrickRect.bottom);
+		/*if (count == 10){
+			std::cout << "i = " << i << std::endl;
+		}*/
+		/*std::cout << "i = " << i << std::endl;
+		std::cout << " i + gap : " << i + gap << std::endl;*/
+	}
+
+	pDC->MoveTo(leftBrickRect.right + gap, leftBrickRect.top + gap);
+	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top + gap);
+
+	pDC->MoveTo(leftBrickRect.right + gap + gap, leftBrickRect.top);
+	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);
 }

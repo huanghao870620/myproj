@@ -7,6 +7,7 @@
 
 #if !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)
 #define EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_
+#include<iostream>
 #include"LeftBrick.h"
 #include"resource.h"
 #include<afxwin.h>
@@ -16,8 +17,10 @@ class MyView : public CView
 public:
 	MyView();
 	virtual ~MyView();
-protected:DECLARE_DYNCREATE(MyView, CView)
-protected:DECLARE_MESSAGE_MAP(MyView, CView)
+protected:DECLARE_DYNCREATE(MyView)
+protected:DECLARE_MESSAGE_MAP()
 protected:virtual void OnDraw(CDC*pDC);
+private:static const int gap = 2;
+private:static const int sideLength = 20;
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)
