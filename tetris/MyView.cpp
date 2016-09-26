@@ -105,6 +105,17 @@ void MyView::OnDraw(CDC*pDC){
 		pDC->LineTo(rightBrickRect.left - gap, y);
 	}
 
+	count = 0;
+	for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength, count++)
+	{
+		xArray[count] = x;
+		pDC->MoveTo(x, leftBrickRect.top);
+		pDC->LineTo(x, leftBrickRect.bottom);
+		x = x + gap;
+		pDC->MoveTo(x, leftBrickRect.top);
+		pDC->LineTo(x, leftBrickRect.bottom);
+	}
+
 
 	int yCount = 0;
 	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength,yCount++)
@@ -117,7 +128,7 @@ void MyView::OnDraw(CDC*pDC){
 	}
 
 
-	int count = 0;
+	 count = 0;
 	for (int x = leftBrickRect.right +gap + gap + sideLength; x < rightBrickRect.left; x+=sideLength,count++)
 	{
 		pDC->MoveTo(x, leftBrickRect.top);
