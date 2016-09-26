@@ -75,29 +75,32 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->LineTo(leftBrickRect.right + gap, leftBrickRect.top);
 
 
-	for (int i = leftBrickRect.top+sideLength; i < rightBrickRect.bottom; i+=sideLength)
+	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength)
 	{
-		pDC->MoveTo(leftBrickRect.right + gap, i);
-		pDC->LineTo(rightBrickRect.left - gap, i);
+		pDC->MoveTo(leftBrickRect.right + gap, y);
+		pDC->LineTo(rightBrickRect.left - gap, y);
 
-		i = i + gap;
-		pDC->MoveTo(leftBrickRect.right + gap, i );
-		pDC->LineTo(rightBrickRect.left - gap, i );
+		y = y + gap;
+		pDC->MoveTo(leftBrickRect.right + gap, y );
+		pDC->LineTo(rightBrickRect.left - gap, y );
 	}
 
 
 	int count = 0;
-	for (int i = leftBrickRect.right +gap+ sideLength; i < rightBrickRect.left; i+=sideLength,count++)
+	for (int x = leftBrickRect.right +gap+ sideLength; x < rightBrickRect.left; x+=sideLength,count++)
 	{
-		pDC->MoveTo(i, leftBrickRect.top);
-		pDC->LineTo(i, leftBrickRect.bottom);
+		pDC->MoveTo(x, leftBrickRect.top);
+		pDC->LineTo(x, leftBrickRect.bottom);
 
-		i = i + gap;
-		pDC->MoveTo(i, leftBrickRect.top);
-		pDC->LineTo(i, leftBrickRect.bottom);
-		/*if (count == 10){
-			std::cout << "i = " << i << std::endl;
-		}*/
+		x = x + gap;
+		pDC->MoveTo(x, leftBrickRect.top);
+		pDC->LineTo(x, leftBrickRect.bottom);
+		if (count == 10){
+			std::cout << "x = " << x << std::endl;
+			pen.m_hObject = NULL;
+			pen.CreatePen(PS_DOT, 1, RGB(255, 0, 0));
+			pDC->SelectObject(pen);
+		}
 		/*std::cout << "i = " << i << std::endl;
 		std::cout << " i + gap : " << i + gap << std::endl;*/
 	}
