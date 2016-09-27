@@ -15,6 +15,7 @@
 #include"Dto.h"
 #include"Singleton.h"
 #include"ArrayDto.h"
+#include"Adto.h"
 class MyView : public CView
 {
 
@@ -28,5 +29,6 @@ private:static const int gap = 2;
 private:static const int sideLength = 20;
 private: Dto *dto;
 private:ArrayDto *arrayDto;
+private:Adto *adto;
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)
