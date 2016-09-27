@@ -18,11 +18,11 @@ public:
 	LeftBrick();
 	virtual ~LeftBrick();
 public:LeftBrick(CDC *pDC, CRect *leftBrickRect,CBrush *brush, CPen *pen);
-//private:CDC *pDC;
-//public:void drawBrick(); // »­Ç½
-//public:void drawBack();
-//private:CRect *leftBrickRect;
-//private:CBrush *brush;
-//private:CPen *pen;
+private:CDC *pDC;
+public:void drawBrick(); // »­Ç½
+public:void drawBack();
+private:CRect *leftBrickRect;
+private:CBrush *brush;
+private:CPen *pen;
 };
 #endif // !defined(EA_FFAE19A3_B91D_48d6_8BDB_D629A8A5C1BB__INCLUDED_)

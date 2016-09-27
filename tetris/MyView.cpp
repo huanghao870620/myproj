@@ -21,9 +21,9 @@ MyView::~MyView(){
 }
 
 void MyView::OnDraw(CDC*pDC){
-	/*CRect rect;
+	CRect rect;
 	GetClientRect(&rect);
-	pDC->FillSolidRect(rect, RGB(255, 255, 255));*/
+	pDC->FillSolidRect(rect, RGB(255, 255, 255));
 	//201 178 162
 	/*CBitmap bitmap;
 	bitmap.LoadBitmapA(IDB_BG);
@@ -38,7 +38,7 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dcCompatible, 0, 0, bmp.bmWidth, bmp.bmHeight, SRCCOPY);*/
 
 
-	/*CPen pen;
+	CPen pen;
 	pen.CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
 	pDC->SelectObject(pen);
 	CRect leftSideRect(10,10,37,520);
@@ -71,9 +71,9 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top + gap);
 
 	pDC->MoveTo(leftBrickRect.right + gap + gap, leftBrickRect.top);
-	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);*/
+	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);
 
-	//Singleton *d = Singleton::getSingleton();
+	Singleton *d = Singleton::getSingleton();
 
 	/*for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
 	{
@@ -83,7 +83,7 @@ void MyView::OnDraw(CDC*pDC){
 	}*/
 
 
-	/*this->dto = new Dto;
+	this->dto = new Dto;
 	std::list<Coordinates*> *xList = new std::list<Coordinates*>;
 	this->dto->setXList(xList);
 
@@ -148,5 +148,5 @@ void MyView::OnDraw(CDC*pDC){
 
 
 	CRect scoreRect(rightBrickRect.right + gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
-	pDC->Rectangle(scoreRect);*/
+	pDC->Rectangle(scoreRect);
 }

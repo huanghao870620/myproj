@@ -18,18 +18,18 @@ Dto::~Dto(){
 
 }
 
-//void Dto::setXList(std::list<Coordinates*>* xList){
-//	this->xList = xList;
-//}
-//
-//std::list<Coordinates*>* Dto::getXList(){
-//	return  this->xList;
-//}
-//
-//void Dto::setYList(std::list<Coordinates*>* yList){
-//	this->yList = yList;
-//}
-//
-//std::list<Coordinates*>* Dto::getYList(){
-//	return this->yList;
-//}
+void Dto::setXList(std::list<Coordinates*>* xList){
+	this->xList = xList;
+}
+
+std::list<Coordinates*>* Dto::getXList(){
+	return  this->xList;
+}
+
+void Dto::setYList(std::list<Coordinates*>* yList){
+	this->yList = yList;
+}
+
+std::list<Coordinates*>* Dto::getYList(){
+	return this->yList;
+}

@@ -18,13 +18,13 @@ Singleton::~Singleton(){
 
 }
 
-//std::list<Coordinates*>* Singleton::getCoors(){
-//	return this->coors;
-//}
-//
-//void Singleton::setCoors(std::list<Coordinates*> *coors){
-//	this->coors = coors;
-//}
+std::list<Coordinates*>* Singleton::getCoors(){
+	return this->coors;
+}
+
+void Singleton::setCoors(std::list<Coordinates*> *coors){
+	this->coors = coors;
+}
 
 //
 //Singleton* Singleton::getSingleton(){
