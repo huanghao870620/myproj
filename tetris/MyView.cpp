@@ -75,14 +75,6 @@ void MyView::OnDraw(CDC*pDC){
 
 	Singleton *inst = Singleton::getSingleton();
 
-	/*for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
-	{
-		for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength){
-
-		}
-	}*/
-
-
 	this->dto = new Dto;
 	std::list<Coordinates*> *xList = new std::list<Coordinates*>;
 	this->dto->setXList(xList);
@@ -97,7 +89,7 @@ void MyView::OnDraw(CDC*pDC){
 	{
 		Coordinates * coor = new Coordinates;
 		
-		yArray[count] = y;
+		yArray[count] = y - sideLength;
 		pDC->MoveTo(leftBrickRect.right + gap, y);
 		pDC->LineTo(rightBrickRect.left - gap, y);
 		y = y + gap;
@@ -105,16 +97,23 @@ void MyView::OnDraw(CDC*pDC){
 		pDC->LineTo(rightBrickRect.left - gap, y);
 	}
 
+
+	
 	count = 0;
 	for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength, count++)
 	{
-		xArray[count] = x;
+		xArray[count] = x - sideLength;
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
 		x = x + gap;
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
 	}
+
+	for (int i = 0; i < 10; i++){
+		std::cout << xArray[i] << "," << yArray[i] << std::endl;
+	}
+
 
 
 	int yCount = 0;
