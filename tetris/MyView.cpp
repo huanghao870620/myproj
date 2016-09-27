@@ -116,14 +116,14 @@ void MyView::OnDraw(CDC*pDC){
 
 	std::list<int>* xIntList = this->adto->getXList();
 	std::list<int>* yList = this->adto->getYList();
-	//std::list<int>::iterator iter = 
-	xIntList->begin();
-	for (int i = 0; i < xlen; i++){
-		//xArray[i] = 
+	std::list<int>::iterator iter = xIntList->begin();
+	std::list<int>::iterator yIter = yList->begin();
+	for (int i = 0; i < xlen; i++, iter++){
+		xArray[i] = *iter;
 	}
 
-	for (int i = 0; i < ylen; i++){
-
+	for (int i = 0; i < ylen; i++,yIter++){
+		yArray[i] = *yIter;
 	}
 
 	std::cout << " xlen : " << xlen << std::endl;
