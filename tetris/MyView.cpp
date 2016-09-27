@@ -137,6 +137,13 @@ void MyView::OnDraw(CDC*pDC){
 		std::cout << "y[" << i << "] : " << yArray[i] << std::endl;
 	}
 
+	for (int i = 0; i < xlen; i++){
+		for (int j = 0; j < ylen; j++){
+			Coordinates *coor = new Coordinates(i,j);
+			inst->addCoor(coor);
+		}
+	}
+
 
 	int yCount = 0;
 	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength,yCount++)

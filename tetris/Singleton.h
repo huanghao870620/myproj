@@ -18,6 +18,7 @@ class Singleton
 private:Singleton();
 public:virtual ~Singleton();
 private: std::list<Coordinates*> *coors;
+public:void addCoor(Coordinates *coor);
 public: std::list<Coordinates*>* getCoors();
 public: void setCoors(std::list<Coordinates*> *coors);
 //private:static Singleton * instance ;

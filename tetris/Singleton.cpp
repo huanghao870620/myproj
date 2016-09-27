@@ -26,10 +26,6 @@ void Singleton::setCoors(std::list<Coordinates*> *coors){
 	this->coors = coors;
 }
 
-//
-//Singleton* Singleton::getSingleton(){
-//		if (nullptr == instance){
-//			instance = new Singleton;
-//		}
-//		return instance;
-//}
+void Singleton::addCoor(Coordinates *coor){
+	this->coors->push_back(coor);
+}
