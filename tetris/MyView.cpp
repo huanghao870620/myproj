@@ -144,6 +144,8 @@ void MyView::OnDraw(CDC*pDC){
 		}
 	}
 
+	 int len = inst->getCoors()->size();
+	 std::cout << "len : " << len << std::endl;
 
 	int yCount = 0;
 	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength,yCount++)
