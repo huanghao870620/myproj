@@ -126,16 +126,6 @@ void MyView::OnDraw(CDC*pDC){
 		yArray[i] = *yIter;
 	}
 
-	std::cout << " xlen : " << xlen << std::endl;
-	std::cout << " ylen : " << ylen << std::endl;
-
-	for (int i = 0; i < xlen; i++){
-		std::cout << "x[" << i << "] : " << xArray[i] << std::endl;
-	}
-
-	for (int i = 0; i < ylen; i++){
-		std::cout << "y[" << i << "] : " << yArray[i] << std::endl;
-	}
 
 	for (int i = 0; i < xlen; i++){
 		for (int j = 0; j < ylen; j++){
