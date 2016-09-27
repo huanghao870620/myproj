@@ -73,7 +73,7 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->MoveTo(leftBrickRect.right + gap + gap, leftBrickRect.top);
 	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);
 
-	Singleton *d = Singleton::getSingleton();
+	Singleton *inst = Singleton::getSingleton();
 
 	/*for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
 	{
