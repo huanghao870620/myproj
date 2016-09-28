@@ -164,9 +164,20 @@ void MyView::OnDraw(CDC*pDC){
 	}
 
 	Tile *tile = new Tile(0,0,0,0);
+	try{
 	tile->createTile();
+	}
+	catch (std::exception e){
+		std::cout << "" << std::endl;
+	}
 
 
 	CRect scoreRect(rightBrickRect.right + gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
 	pDC->Rectangle(scoreRect);
-}
+
+	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
+	Coordinates *coor0 = (Coordinates*)*iter2;
+	int x = coor0->getX();
+	int y = coor0->getY();
+	std::cout << "x : " << x << " y: " << y << std::endl;
+} 
