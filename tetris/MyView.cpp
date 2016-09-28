@@ -129,7 +129,7 @@ void MyView::OnDraw(CDC*pDC){
 
 	for (int i = 0; i < xlen; i++){
 		for (int j = 0; j < ylen; j++){
-			Coordinates *coor = new Coordinates(i,j);
+			Coordinates *coor = new Coordinates(xArray[i],yArray[j]);
 			inst->addCoor(coor);
 		}
 	}
@@ -180,4 +180,7 @@ void MyView::OnDraw(CDC*pDC){
 	int x = coor0->getX();
 	int y = coor0->getY();
 	std::cout << "x : " << x << " y: " << y << std::endl;
+
+	CRect rect2(x, y, x + sideLength, y + sideLength);
+	pDC->FillRect(rect2, &brush);
 } 

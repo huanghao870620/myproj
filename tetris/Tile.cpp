@@ -27,7 +27,7 @@ Tile::~Tile(){
 }
 
 void Tile::createTile(){
-	pen->m_hObject = NULL;
+	/*pen->m_hObject = NULL;
 	pen->CreatePen(PS_SOLID, 1, this->ref);
 	pDC->SelectObject(pen);
 	pDC->Rectangle(brickCrect);
@@ -41,5 +41,5 @@ void Tile::createTile(){
 	pDC->Rectangle(innerBrickCrect);
 	brush->m_hObject = NULL;
 	brush->CreateSolidBrush(RGB(118, 92, 77));
-	pDC->FillRect(innerBrickCrect, brush);
+	pDC->FillRect(innerBrickCrect, brush);*/
 }
