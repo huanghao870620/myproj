@@ -31,5 +31,9 @@ private:static const int sideLength = 20;
 private: Dto *dto;
 private:ArrayDto *arrayDto;
 private:Adto *adto;
+private:CRect *c0;
+private:CRect *c1;
+private:CRect *c2;
+private:CRect *rect2;
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)

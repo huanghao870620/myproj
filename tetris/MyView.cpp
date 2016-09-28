@@ -181,7 +181,11 @@ void MyView::OnDraw(CDC*pDC){
 	int y = coor0->getY();
 	std::cout << "x : " << x << " y: " << y << std::endl;
 
-	CRect rect2(x, y, x + sideLength, y + sideLength);
+	rect2 = new CRect;
+	rect2->left = x;
+	rect2->top = y;
+	rect2->right = x + sideLength;
+	rect2->bottom = y + sideLength;
 	pDC->FillRect(rect2, &brush);
 
 	while (iter2 != inst->getCoors()->end())
@@ -193,28 +197,27 @@ void MyView::OnDraw(CDC*pDC){
 		iter2++;
 	}
 
-	CRect *c0 = new CRect;
-	c0->left = rect2.left + sideLength + gap;
-	c0->top = rect2.top;
-	c0->bottom = rect2.bottom;
-	c0->right = rect2.right + sideLength + gap;
+	 c0 = new CRect;
+	c0->left = rect2->left + sideLength + gap;
+	c0->top = rect2->top;
+	c0->bottom = rect2->bottom;
+	c0->right = rect2->right + sideLength + gap;
 	pDC->FillRect(c0, &brush);
 
-	CRect *c1 = new CRect;
+	 c1 = new CRect;
 	c1->left = c0->left + sideLength + gap;
-	c1->top = rect2.top;
-	c1->bottom = rect2.bottom;
+	c1->top = rect2->top;
+	c1->bottom = rect2->bottom;
 	c1->right = c0->right + sideLength + gap;
 	pDC->FillRect(c1, &brush);
 
-	CRect *c2 = new CRect;
+	c2 = new CRect;
 	c2->left = c1->left + sideLength + gap;
-	c2->top = rect2.top;
+	c2->top = rect2->top;
 	c2->right = c1->right + sideLength + gap;
-	c2->bottom = rect2.bottom;
+	c2->bottom = rect2->bottom;
 	pDC->FillRect(c2, &brush);
 
-	CRect *c3 = new CRect;
-
+	std::cout << "1111" << std::endl;
 
 } 

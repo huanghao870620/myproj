@@ -36,5 +36,7 @@ BOOL MyApp::InitInstance(){
 
 	this->m_pMainWnd->ShowWindow(SW_SHOW);
 	this->m_pMainWnd->UpdateWindow();
+
+	//AfxBeginThread()
 	return TRUE;
 }
