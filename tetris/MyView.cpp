@@ -43,7 +43,7 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->SelectObject(pen);
 	CRect leftSideRect(10,10,37,520);
 	pDC->Rectangle(leftSideRect);
-	CBrush brush(RGB(0,0,0));
+	CBrush brush(RGB(0,0,0)); 
 	pDC->FillRect(leftSideRect, &brush);
 	brush.DeleteObject();
 	CRect leftBrickRect(41, 10, 71, 520);
@@ -176,11 +176,45 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->Rectangle(scoreRect);
 
 	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
-	Coordinates *coor0 = (Coordinates*)*iter2;
+	Coordinates *coor0 = *iter2;
 	int x = coor0->getX();
 	int y = coor0->getY();
 	std::cout << "x : " << x << " y: " << y << std::endl;
 
 	CRect rect2(x, y, x + sideLength, y + sideLength);
 	pDC->FillRect(rect2, &brush);
+
+	while (iter2 != inst->getCoors()->end())
+	{
+		Coordinates *coor1 = *iter2;
+		int x = coor1->getX();
+		int y = coor1->getY();
+		std::cout << " x : " << x << " y : " << y << std::endl;
+		iter2++;
+	}
+
+	CRect *c0 = new CRect;
+	c0->left = rect2.left + sideLength + gap;
+	c0->top = rect2.top;
+	c0->bottom = rect2.bottom;
+	c0->right = rect2.right + sideLength + gap;
+	pDC->FillRect(c0, &brush);
+
+	CRect *c1 = new CRect;
+	c1->left = c0->left + sideLength + gap;
+	c1->top = rect2.top;
+	c1->bottom = rect2.bottom;
+	c1->right = c0->right + sideLength + gap;
+	pDC->FillRect(c1, &brush);
+
+	CRect *c2 = new CRect;
+	c2->left = c1->left + sideLength + gap;
+	c2->top = rect2.top;
+	c2->right = c1->right + sideLength + gap;
+	c2->bottom = rect2.bottom;
+	pDC->FillRect(c2, &brush);
+
+	CRect *c3 = new CRect;
+
+
 } 
