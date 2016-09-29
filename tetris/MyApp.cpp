@@ -19,11 +19,13 @@ MyApp::~MyApp(){
 }
 
 long a = 0;
-void f(){
-	std::cout << "111111111111112222222222222" << std::endl;
-	while (true){
-		a++;
-		std::cout << a << std::endl;
+void f(LPVOID lParam){
+	CWnd *wnd = (CWnd*)lParam;
+	while (true)
+	{
+		std::cout << a++ << std::endl;
+		wnd->Invalidate();
+		Sleep(1000);
 	}
 }
 
@@ -45,9 +47,7 @@ BOOL MyApp::InitInstance(){
 
 	this->m_pMainWnd->ShowWindow(SW_SHOW);
 	this->m_pMainWnd->UpdateWindow();
-	//AFX_THREADPROC d;
-	CWinThread *cwin = AfxBeginThread((AFX_THREADPROC)f, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED,0,0);
+	CWinThread *cwin = AfxBeginThread((AFX_THREADPROC)f, (LPVOID)this->m_pMainWnd,THREAD_PRIORITY_NORMAL,  CREATE_SUSPENDED,0,0);
 	cwin->ResumeThread();
-	//cwin->r
 	return TRUE;
 }
