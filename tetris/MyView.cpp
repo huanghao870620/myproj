@@ -179,7 +179,6 @@ void MyView::OnDraw(CDC*pDC){
 	Coordinates *coor0 = *iter2;
 	int x = coor0->getX();
 	int y = coor0->getY();
-	std::cout << "x : " << x << " y: " << y << std::endl;
 
 	rect2 = new CRect;
 	rect2->left = x;
@@ -193,7 +192,6 @@ void MyView::OnDraw(CDC*pDC){
 		Coordinates *coor1 = *iter2;
 		int x = coor1->getX();
 		int y = coor1->getY();
-		std::cout << " x : " << x << " y : " << y << std::endl;
 		iter2++;
 	}
 
@@ -218,6 +216,5 @@ void MyView::OnDraw(CDC*pDC){
 	c2->bottom = rect2->bottom;
 	pDC->FillRect(c2, &brush);
 
-	std::cout << "1111" << std::endl;
-
+	std::cout << "111111111111" << std::endl;
 } 

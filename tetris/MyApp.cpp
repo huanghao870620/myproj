@@ -23,7 +23,7 @@ void f(LPVOID lParam){
 	CWnd *wnd = (CWnd*)lParam;
 	while (true)
 	{
-		std::cout << a++ << std::endl;
+		//std::cout << a++ << std::endl;
 		wnd->Invalidate();
 		Sleep(1000);
 	}
