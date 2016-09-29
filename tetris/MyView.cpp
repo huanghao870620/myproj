@@ -134,20 +134,13 @@ void MyView::OnDraw(CDC*pDC){
 
 	Singleton *inst = Singleton::getSingleton();
 
-	this->dto = new Dto;
-	std::list<Coordinates*> *xList = new std::list<Coordinates*>;
-	this->dto->setXList(xList);
 
 	this->arrayDto = new ArrayDto;
-	
-
-	this->adto = new Adto;
 
 	for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
 	{
 		Coordinates * coor = new Coordinates;
 		
-		this->adto->addY(y - sideLength);
 		pDC->MoveTo(leftBrickRect.right + gap, y);
 		pDC->LineTo(rightBrickRect.left - gap, y);
 		y = y + gap;
@@ -159,7 +152,6 @@ void MyView::OnDraw(CDC*pDC){
 	
 	for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength)
 	{
-		this->adto->addX(x - sideLength);
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
 		x = x + gap;
@@ -168,29 +160,7 @@ void MyView::OnDraw(CDC*pDC){
 	}
 
 
-	int xlen = this->adto->getXList()->size();
-	int ylen = this->adto->getYList()->size();
-	int *xArray = new int[xlen];
-	int *yArray = new int[ylen];
-
-	std::list<int>* xIntList = this->adto->getXList();
-	std::list<int>* yList = this->adto->getYList();
-	std::list<int>::iterator iter = xIntList->begin();
-	std::list<int>::iterator yIter = yList->begin();
-	for (int i = 0; i < xlen; i++, iter++){
-		xArray[i] = *iter;
-	}
-
-	for (int i = 0; i < ylen; i++,yIter++){
-		yArray[i] = *yIter;
-	}
-
-
-	 int len = inst->getCoors()->size();
-	 std::cout << "len : " << len << std::endl;
-
-	int yCount = 0;
-	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength,yCount++)
+	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength)
 	{
 		pDC->MoveTo(leftBrickRect.right + gap, y);
 		pDC->LineTo(rightBrickRect.left - gap, y);
