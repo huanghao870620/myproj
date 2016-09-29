@@ -11,7 +11,66 @@ IMPLEMENT_DYNCREATE(MyView,CView)
 BEGIN_MESSAGE_MAP(MyView,CView)
 END_MESSAGE_MAP()
 MyView::MyView(){
+	CRect rect;
+	GetClientRect(&rect);
 
+	CRect leftSideRect(10, 10, 37, 520);
+	CBrush brush(RGB(0, 0, 0));
+	brush.DeleteObject();
+	CRect leftBrickRect(41, 10, 71, 520);
+
+	CRect rightBrickRect(leftBrickRect.left + 256, leftBrickRect.top, leftBrickRect.right + 256, leftBrickRect.bottom);
+
+
+	Singleton *inst = Singleton::getSingleton();
+
+	this->dto = new Dto;
+	std::list<Coordinates*> *xList = new std::list<Coordinates*>;
+	this->dto->setXList(xList);
+
+	this->arrayDto = new ArrayDto;
+	this->adto = new Adto;
+
+	for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
+	{
+		Coordinates * coor = new Coordinates;
+		this->adto->addY(y - sideLength);
+		y = y + gap;
+	}
+
+
+
+	for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength)
+	{
+		this->adto->addX(x - sideLength);
+		x = x + gap;
+	}
+
+
+	int xlen = this->adto->getXList()->size();
+	int ylen = this->adto->getYList()->size();
+	int *xArray = new int[xlen];
+	int *yArray = new int[ylen];
+
+	std::list<int>* xIntList = this->adto->getXList();
+	std::list<int>* yList = this->adto->getYList();
+	std::list<int>::iterator iter = xIntList->begin();
+	std::list<int>::iterator yIter = yList->begin();
+	for (int i = 0; i < xlen; i++, iter++){
+		xArray[i] = *iter;
+	}
+
+	for (int i = 0; i < ylen; i++, yIter++){
+		yArray[i] = *yIter;
+	}
+
+
+	for (int i = 0; i < xlen; i++){
+		for (int j = 0; j < ylen; j++){
+			Coordinates *coor = new Coordinates(xArray[i], yArray[j]);
+			inst->addCoor(coor);
+		}
+	}
 }
 
 
@@ -126,13 +185,6 @@ void MyView::OnDraw(CDC*pDC){
 		yArray[i] = *yIter;
 	}
 
-
-	for (int i = 0; i < xlen; i++){
-		for (int j = 0; j < ylen; j++){
-			Coordinates *coor = new Coordinates(xArray[i],yArray[j]);
-			inst->addCoor(coor);
-		}
-	}
 
 	 int len = inst->getCoors()->size();
 	 std::cout << "len : " << len << std::endl;
