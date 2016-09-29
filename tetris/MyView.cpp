@@ -11,8 +11,6 @@ IMPLEMENT_DYNCREATE(MyView,CView)
 BEGIN_MESSAGE_MAP(MyView,CView)
 END_MESSAGE_MAP()
 MyView::MyView(){
-	this->com = new Combination;
-
 	CRect leftSideRect(10, 10, 37, 520);
 	CBrush brush(RGB(0, 0, 0));
 	brush.DeleteObject();
@@ -66,6 +64,7 @@ MyView::MyView(){
 			inst->addCoor(coor);
 		}
 	}
+	this->com = new Combination;
 }
 
 
@@ -187,5 +186,4 @@ void MyView::OnDraw(CDC*pDC){
 	this->com->setBrush(&brush);
 	this->com->setCDC(pDC);
 	this->com->DrawCom();
-
 } 
