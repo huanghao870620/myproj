@@ -11,8 +11,6 @@ IMPLEMENT_DYNCREATE(MyView,CView)
 BEGIN_MESSAGE_MAP(MyView,CView)
 END_MESSAGE_MAP()
 MyView::MyView(){
-	CRect rect;
-	GetClientRect(&rect);
 
 	CRect leftSideRect(10, 10, 37, 520);
 	CBrush brush(RGB(0, 0, 0));
@@ -20,7 +18,6 @@ MyView::MyView(){
 	CRect leftBrickRect(41, 10, 71, 520);
 
 	CRect rightBrickRect(leftBrickRect.left + 256, leftBrickRect.top, leftBrickRect.right + 256, leftBrickRect.bottom);
-
 
 	Singleton *inst = Singleton::getSingleton();
 
@@ -197,46 +194,9 @@ void MyView::OnDraw(CDC*pDC){
 	CRect scoreRect(rightBrickRect.right + gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
 	pDC->Rectangle(scoreRect);
 
-	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
-	Coordinates *coor0 = *iter2;
-	int x = coor0->getX();
-	int y = coor0->getY();
+	
 
-	rect2 = new CRect;
-	rect2->left = x;
-	rect2->top = y;
-	rect2->right = x + sideLength;
-	rect2->bottom = y + sideLength;
-	pDC->FillRect(rect2, &brush);
-
-	while (iter2 != inst->getCoors()->end())
-	{
-		Coordinates *coor1 = *iter2;
-		int x = coor1->getX();
-		int y = coor1->getY();
-		iter2++;
-	}
-
-	c0 = new CRect;
-	c0->left = rect2->left + sideLength + gap;
-	c0->top = rect2->top;
-	c0->bottom = rect2->bottom;
-	c0->right = rect2->right + sideLength + gap;
-	pDC->FillRect(c0, &brush);
-
-	c1 = new CRect;
-	c1->left = c0->left + sideLength + gap;
-	c1->top = rect2->top;
-	c1->bottom = rect2->bottom;
-	c1->right = c0->right + sideLength + gap;
-	pDC->FillRect(c1, &brush);
-
-	c2 = new CRect;
-	c2->left = c1->left + sideLength + gap;
-	c2->top = rect2->top;
-	c2->right = c1->right + sideLength + gap;
-	c2->bottom = rect2->bottom;
-	pDC->FillRect(c2, &brush);
+	
 
 	std::cout << "111111111111" << std::endl;
 } 

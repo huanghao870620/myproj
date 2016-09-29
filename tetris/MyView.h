@@ -26,8 +26,8 @@ public:
 protected:DECLARE_DYNCREATE(MyView)
 protected:DECLARE_MESSAGE_MAP()
 protected:virtual void OnDraw(CDC*pDC);
-private:static const int gap = 2;
-private:static const int sideLength = 20;
+public:static const int gap = 2;
+public:static const int sideLength = 20;
 private: Dto *dto;
 private:ArrayDto *arrayDto;
 private:Adto *adto;

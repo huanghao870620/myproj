@@ -10,6 +10,9 @@
 #include<list>
 #include"Tile.h"
 #include"Template.h"
+#include"Coordinates.h"
+#include"MyView.h"
+#include"Singleton.h"
 /**
  * ×éºÏ
  */
@@ -17,10 +20,17 @@ class Combination
 {
 
 public:
-	Combination();
+	Combination(CDC*pDC);
 	virtual ~Combination();
 
 public:Combination* getOne();
 private: std::list<Tile*> tiles;
+public:void t();
+private:CRect *rect2;
+private:CRect *c0;
+private:CRect *c1;
+private:CRect *c2;
+private:CDC*pDC;
+private:CBrush *brush;
 };
 #endif // !defined(EA_32DFF089_B8A4_40b1_86E8_36519606DDFB__INCLUDED_)
