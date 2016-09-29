@@ -11,6 +11,7 @@ IMPLEMENT_DYNCREATE(MyView,CView)
 BEGIN_MESSAGE_MAP(MyView,CView)
 END_MESSAGE_MAP()
 MyView::MyView(){
+	this->com = new Combination;
 
 	CRect leftSideRect(10, 10, 37, 520);
 	CBrush brush(RGB(0, 0, 0));
@@ -28,21 +29,18 @@ MyView::MyView(){
 	this->arrayDto = new ArrayDto;
 	this->adto = new Adto;
 
-	for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
+	for (int y = leftBrickRect.top + Constants::gap + Constants::sideLength; y < rightBrickRect.bottom; y += Constants::sideLength)
 	{
 		Coordinates * coor = new Coordinates;
-		this->adto->addY(y - sideLength);
-		y = y + gap;
+		this->adto->addY(y - Constants::sideLength);
+		y = y + Constants::gap;
 	}
 
-
-
-	for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength)
+	for (int x = leftBrickRect.right + Constants::gap + Constants::gap + Constants::sideLength; x < rightBrickRect.left; x += Constants::sideLength)
 	{
-		this->adto->addX(x - sideLength);
-		x = x + gap;
+		this->adto->addX(x - Constants::sideLength);
+		x = x + Constants::gap;
 	}
-
 
 	int xlen = this->adto->getXList()->size();
 	int ylen = this->adto->getYList()->size();
@@ -116,63 +114,56 @@ void MyView::OnDraw(CDC*pDC){
 	pen.CreatePen(PS_DOT, 1, RGB(0, 0, 0));
 	pDC->SelectObject(pen);
 
-	pDC->MoveTo(leftBrickRect.right + gap, leftBrickRect.top);
-	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top);
-	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.bottom);
-	pDC->LineTo(leftBrickRect.right + gap, leftBrickRect.bottom);
-	pDC->LineTo(leftBrickRect.right + gap, leftBrickRect.top);
+	pDC->MoveTo(leftBrickRect.right + Constants::gap, leftBrickRect.top);
+	pDC->LineTo(rightBrickRect.left - Constants::gap, leftBrickRect.top);
+	pDC->LineTo(rightBrickRect.left - Constants::gap, leftBrickRect.bottom);
+	pDC->LineTo(leftBrickRect.right + Constants::gap, leftBrickRect.bottom);
+	pDC->LineTo(leftBrickRect.right + Constants::gap, leftBrickRect.top);
 
+	pDC->MoveTo(leftBrickRect.right + Constants::gap, leftBrickRect.top + Constants::gap);
+	pDC->LineTo(rightBrickRect.left - Constants::gap, leftBrickRect.top + Constants::gap);
 
-	pDC->MoveTo(leftBrickRect.right + gap, leftBrickRect.top + gap);
-	pDC->LineTo(rightBrickRect.left - gap, leftBrickRect.top + gap);
-
-	pDC->MoveTo(leftBrickRect.right + gap + gap, leftBrickRect.top);
-	pDC->LineTo(leftBrickRect.right + gap + gap, leftBrickRect.bottom);
+	pDC->MoveTo(leftBrickRect.right + Constants::gap + Constants::gap, leftBrickRect.top);
+	pDC->LineTo(leftBrickRect.right + Constants::gap + Constants::gap, leftBrickRect.bottom);
 
 	Singleton *inst = Singleton::getSingleton();
-
-
 	this->arrayDto = new ArrayDto;
 
-	for (int y = leftBrickRect.top + gap + sideLength; y < rightBrickRect.bottom; y += sideLength)
+	for (int y = leftBrickRect.top + Constants::gap + Constants::sideLength; y < rightBrickRect.bottom; y += Constants::sideLength)
 	{
 		Coordinates * coor = new Coordinates;
 		
-		pDC->MoveTo(leftBrickRect.right + gap, y);
-		pDC->LineTo(rightBrickRect.left - gap, y);
-		y = y + gap;
-		pDC->MoveTo(leftBrickRect.right + gap, y);
-		pDC->LineTo(rightBrickRect.left - gap, y);
+		pDC->MoveTo(leftBrickRect.right + Constants::gap, y);
+		pDC->LineTo(rightBrickRect.left - Constants::gap, y);
+		y = y + Constants::gap;
+		pDC->MoveTo(leftBrickRect.right + Constants::gap, y);
+		pDC->LineTo(rightBrickRect.left - Constants::gap, y);
 	}
-
-
 	
-	for (int x = leftBrickRect.right + gap + gap + sideLength; x < rightBrickRect.left; x += sideLength)
+	for (int x = leftBrickRect.right + Constants::gap + Constants::gap + Constants::sideLength; x < rightBrickRect.left; x += Constants::sideLength)
 	{
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
-		x = x + gap;
+		x = x + Constants::gap;
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
 	}
 
-
-	for (int y = leftBrickRect.top+gap+sideLength; y < rightBrickRect.bottom; y+=sideLength)
+	for (int y = leftBrickRect.top + Constants::gap + Constants::sideLength; y < rightBrickRect.bottom; y += Constants::sideLength)
 	{
-		pDC->MoveTo(leftBrickRect.right + gap, y);
-		pDC->LineTo(rightBrickRect.left - gap, y);
-		y = y + gap;
-		pDC->MoveTo(leftBrickRect.right + gap, y );
-		pDC->LineTo(rightBrickRect.left - gap, y );
+		pDC->MoveTo(leftBrickRect.right + Constants::gap, y);
+		pDC->LineTo(rightBrickRect.left - Constants::gap, y);
+		y = y + Constants::gap;
+		pDC->MoveTo(leftBrickRect.right + Constants::gap, y);
+		pDC->LineTo(rightBrickRect.left - Constants::gap, y);
 	}
-
 
 	int count = 0;
-	for (int x = leftBrickRect.right +gap + gap + sideLength; x < rightBrickRect.left; x+=sideLength,count++)
+	for (int x = leftBrickRect.right + Constants::gap + Constants::gap + Constants::sideLength; x < rightBrickRect.left; x += Constants::sideLength, count++)
 	{
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
-		x = x + gap;
+		x = x + Constants::gap;
 		pDC->MoveTo(x, leftBrickRect.top);
 		pDC->LineTo(x, leftBrickRect.bottom);
 		if (count == 10){
@@ -190,14 +181,11 @@ void MyView::OnDraw(CDC*pDC){
 		std::cout << "" << std::endl;
 	}
 
-
-	CRect scoreRect(rightBrickRect.right + gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
+	CRect scoreRect(rightBrickRect.right + Constants::gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
 	pDC->Rectangle(scoreRect);
-
 	
-	Combination *com = new Combination(pDC,&brush);
-	com->DrawCom();
-	
+	this->com->setBrush(&brush);
+	this->com->setCDC(pDC);
+	this->com->DrawCom();
 
-	std::cout << "111111111111" << std::endl;
 } 

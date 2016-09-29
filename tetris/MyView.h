@@ -17,24 +17,25 @@
 #include"Singleton.h"
 #include"ArrayDto.h"
 #include"Adto.h"
-#include"Combination.h"
+#include "Combination.h"
+
 class MyView : public CView
 {
 
 public:
 	MyView();
-	virtual ~MyView();
+	 ~MyView();
+private: Combination *com;
 protected:DECLARE_DYNCREATE(MyView)
 protected:DECLARE_MESSAGE_MAP()
 protected:virtual void OnDraw(CDC*pDC);
-public:static const int gap = 2;
-public:static const int sideLength = 20;
-private: Dto *dto;
+private:Dto *dto;
 private:ArrayDto *arrayDto;
 private:Adto *adto;
 private:CRect *c0;
 private:CRect *c1;
 private:CRect *c2;
 private:CRect *rect2;
+
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)

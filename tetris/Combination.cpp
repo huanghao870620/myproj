@@ -11,7 +11,18 @@
 Combination::Combination(CDC*pDC,CBrush *brush){
 	this->pDC = pDC;
 	this->brush = brush;
+	this->init();
+}
 
+Combination::Combination(){
+	this->init();
+}
+
+Combination::~Combination(){
+	
+}
+
+void Combination::init(){
 	Singleton *inst = Singleton::getSingleton();
 	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
 	Coordinates *coor0 = *iter2;
@@ -21,27 +32,27 @@ Combination::Combination(CDC*pDC,CBrush *brush){
 	rect2 = new CRect;
 	rect2->left = x;
 	rect2->top = y;
-
-	rect2->right = x + MyView::sideLength;
-	rect2->bottom = y + MyView::sideLength;
+	
+	rect2->right = x + Constants::sideLength;
+	rect2->bottom = y + Constants::sideLength;
 
 
 	c0 = new CRect;
-	c0->left = rect2->left + MyView::sideLength + MyView::gap;
+	c0->left = rect2->left + Constants::sideLength + Constants::gap;
 	c0->top = rect2->top;
 	c0->bottom = rect2->bottom;
-	c0->right = rect2->right + MyView::sideLength + MyView::gap;
+	c0->right = rect2->right + Constants::sideLength + Constants::gap;
 
 	c1 = new CRect;
-	c1->left = c0->left + MyView::sideLength + MyView::gap;
+	c1->left = c0->left + Constants::sideLength + Constants::gap;
 	c1->top = rect2->top;
 	c1->bottom = rect2->bottom;
-	c1->right = c0->right + MyView::sideLength + MyView::gap;
+	c1->right = c0->right + Constants::sideLength + Constants::gap;
 
 	c2 = new CRect;
-	c2->left = c1->left + MyView::sideLength + MyView::gap;
+	c2->left = c1->left + Constants::sideLength + Constants::gap;
 	c2->top = rect2->top;
-	c2->right = c1->right + MyView::sideLength + MyView::gap;
+	c2->right = c1->right + Constants::sideLength + Constants::gap;
 	c2->bottom = rect2->bottom;
 
 	this->rectList.push_back(rect2);
@@ -49,13 +60,6 @@ Combination::Combination(CDC*pDC,CBrush *brush){
 	this->rectList.push_back(c1);
 	this->rectList.push_back(c2);
 }
-
-
-
-Combination::~Combination(){
-	
-}
-
 
 Combination* Combination::getOne(){
 	Tile *t0 = new Tile(0, 0, 0, 0);
@@ -83,8 +87,16 @@ void Combination::landing(){
 	while (iter != this->rectList.end())
 	{
 		CRect *rect = *iter;
-		rect->top = rect->top + MyView::sideLength + MyView::gap;
-		rect->bottom = rect->bottom + MyView::sideLength + MyView::gap;
+		rect->top = rect->top + Constants::sideLength + Constants::gap;
+		rect->bottom = rect->bottom + Constants::sideLength + Constants::gap;
 		iter++;
 	}
+}
+
+void Combination::setCDC(CDC*pDC){
+	this->pDC = pDC;
+}
+
+void Combination::setBrush(CBrush*brush){
+	this->brush = brush;
 }
