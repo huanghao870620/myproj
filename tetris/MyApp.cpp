@@ -18,6 +18,15 @@ MyApp::~MyApp(){
 
 }
 
+long a = 0;
+void f(){
+	std::cout << "111111111111112222222222222" << std::endl;
+	while (true){
+		a++;
+		std::cout << a << std::endl;
+	}
+}
+
 BOOL MyApp::InitInstance(){
 	AllocConsole();
 	SetConsoleTitle("");
@@ -36,7 +45,9 @@ BOOL MyApp::InitInstance(){
 
 	this->m_pMainWnd->ShowWindow(SW_SHOW);
 	this->m_pMainWnd->UpdateWindow();
-
-	//AfxBeginThread()
+	//AFX_THREADPROC d;
+	CWinThread *cwin = AfxBeginThread((AFX_THREADPROC)f, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED,0,0);
+	cwin->ResumeThread();
+	//cwin->r
 	return TRUE;
 }

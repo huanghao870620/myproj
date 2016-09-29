@@ -3,7 +3,7 @@ project(proj0)
 
 aux_source_directory("library/src"  bbcd)
 
-file(STRINGS path_company.txt variables)
+file(STRINGS path_home.txt variables)
 list(GET variables 0 boost_home)
 list(GET variables 1 mysql_sdk_home)
 list(GET variables 2 vld_home)
@@ -46,8 +46,8 @@ set(
  my_library
  chat_serverlib
  ws2_32
- libboost_locale-vc120-mt-sgd-1_60 
- libboost_unit_test_framework-vc120-mt-s-1_60
+# libboost_locale-vc120-mt-sgd-1_60 
+# libboost_unit_test_framework-vc120-mt-s-1_60
  nafxcwd
  libcmtd
 )

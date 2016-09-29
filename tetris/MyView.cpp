@@ -197,14 +197,14 @@ void MyView::OnDraw(CDC*pDC){
 		iter2++;
 	}
 
-	 c0 = new CRect;
+	c0 = new CRect;
 	c0->left = rect2->left + sideLength + gap;
 	c0->top = rect2->top;
 	c0->bottom = rect2->bottom;
 	c0->right = rect2->right + sideLength + gap;
 	pDC->FillRect(c0, &brush);
 
-	 c1 = new CRect;
+	c1 = new CRect;
 	c1->left = c0->left + sideLength + gap;
 	c1->top = rect2->top;
 	c1->bottom = rect2->bottom;

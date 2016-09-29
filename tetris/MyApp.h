@@ -12,6 +12,7 @@
 #include"MyView.h"
 #include"MyFrame.h"
 #include<afxwin.h>
+#include"CSockThread.h"
 class MyApp : public CWinApp
 {
 
