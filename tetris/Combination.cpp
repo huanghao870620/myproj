@@ -8,8 +8,9 @@
 #include "Combination.h"
 
 
-Combination::Combination(CDC*pDC){
+Combination::Combination(CDC*pDC,CBrush *brush){
 	this->pDC = pDC;
+	this->brush = brush;
 }
 
 
@@ -31,7 +32,7 @@ Combination* Combination::getOne(){
 	return this;
 }
 
-void Combination::t(){
+void Combination::DrawCom(){
 	Singleton *inst = Singleton::getSingleton();
 	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
 	Coordinates *coor0 = *iter2;
@@ -39,6 +40,7 @@ void Combination::t(){
 	int y = coor0->getY();
 
 	rect2 = new CRect;
+	this->rectList.push_back(rect2);
 	rect2->left = x;
 	rect2->top = y;
 
@@ -49,6 +51,7 @@ void Combination::t(){
 
 
 	c0 = new CRect;
+	this->rectList.push_back(c0);
 	c0->left = rect2->left + MyView::sideLength + MyView::gap;
 	c0->top = rect2->top;
 	c0->bottom = rect2->bottom;
@@ -56,6 +59,7 @@ void Combination::t(){
 	pDC->FillRect(c0, brush);
 
 	c1 = new CRect;
+	this->rectList.push_back(c1);
 	c1->left = c0->left + MyView::sideLength + MyView::gap;
 	c1->top = rect2->top;
 	c1->bottom = rect2->bottom;
@@ -63,9 +67,16 @@ void Combination::t(){
 	pDC->FillRect(c1, brush);
 
 	c2 = new CRect;
+	this->rectList.push_back(c2);
 	c2->left = c1->left + MyView::sideLength + MyView::gap;
 	c2->top = rect2->top;
 	c2->right = c1->right + MyView::sideLength + MyView::gap;
 	c2->bottom = rect2->bottom;
 	pDC->FillRect(c2, brush);
+
+	//std::cout << "size : " << this->rectList.size() << std::endl;
+}
+
+
+void Combination::landing(){
 }

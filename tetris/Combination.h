@@ -20,17 +20,20 @@ class Combination
 {
 
 public:
-	Combination(CDC*pDC);
+	Combination(CDC*pDC,CBrush *brush);
 	virtual ~Combination();
 
 public:Combination* getOne();
 private: std::list<Tile*> tiles;
-public:void t();
+public:void DrawCom();
 private:CRect *rect2;
 private:CRect *c0;
 private:CRect *c1;
 private:CRect *c2;
 private:CDC*pDC;
 private:CBrush *brush;
+private:std::list<CRect*> rectList;
+private:void landing(); // ½µÂä
+
 };
 #endif // !defined(EA_32DFF089_B8A4_40b1_86E8_36519606DDFB__INCLUDED_)

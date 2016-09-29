@@ -195,7 +195,8 @@ void MyView::OnDraw(CDC*pDC){
 	pDC->Rectangle(scoreRect);
 
 	
-
+	Combination *com = new Combination(pDC,&brush);
+	com->DrawCom();
 	
 
 	std::cout << "111111111111" << std::endl;

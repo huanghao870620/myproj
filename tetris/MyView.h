@@ -17,6 +17,7 @@
 #include"Singleton.h"
 #include"ArrayDto.h"
 #include"Adto.h"
+#include"Combination.h"
 class MyView : public CView
 {
 
