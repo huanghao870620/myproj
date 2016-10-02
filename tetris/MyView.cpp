@@ -173,17 +173,15 @@ void MyView::OnDraw(CDC*pDC){
 	}
 
 	Tile *tile = new Tile(0,0,0,0);
-	try{
 	tile->createTile();
-	}
-	catch (std::exception e){
-		std::cout << "" << std::endl;
-	}
-
 	CRect scoreRect(rightBrickRect.right + Constants::gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
 	pDC->Rectangle(scoreRect);
 	
 	this->com->setBrush(&brush);
 	this->com->setCDC(pDC);
 	this->com->DrawCom();
+
+	/*Screen *scre = new Screen;
+	Coordinates *coor = scre->getBottomCoor();*/
+
 } 

@@ -59,6 +59,9 @@ void Combination::init(){
 	this->rectList.push_back(c0);
 	this->rectList.push_back(c1);
 	this->rectList.push_back(c2);
+
+	this->scre = new Screen;
+	this->last = this->scre->getBottomCoor();
 }
 
 Combination* Combination::getOne(){
@@ -78,7 +81,9 @@ void Combination::DrawCom(){
 	pDC->FillRect(c0, brush);
 	pDC->FillRect(c1, brush);
 	pDC->FillRect(c2, brush);
-	this->landing();
+	if (!this->isStop){
+		this->landing();
+	}
 }
 
 
@@ -89,6 +94,10 @@ void Combination::landing(){
 		CRect *rect = *iter;
 		rect->top = rect->top + Constants::sideLength + Constants::gap;
 		rect->bottom = rect->bottom + Constants::sideLength + Constants::gap;
+		std::cout << " bottom : " << rect->bottom << std::endl;
+		if (rect->top == this->last->getY()){
+			this->isStop = true;
+		}
 		iter++;
 	}
 }

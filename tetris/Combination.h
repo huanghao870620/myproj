@@ -13,6 +13,7 @@
 #include"Coordinates.h"
 #include"Singleton.h"
 #include"Constants.h"
+#include"Screen.h"
 /**
  * ×éºÏ
  */
@@ -31,10 +32,13 @@ private:CRect *c0;
 private:CRect *c1;
 private:CRect *c2;
 private:CDC*pDC;
+private:bool isStop = false;
+private:Screen *scre;
 public:void setCDC(CDC*pDC);
 public:void setBrush(CBrush*brush);
 private:CBrush *brush;
 private:std::list<CRect*> rectList;
+private:Coordinates *last;
 private:void landing(); // ½µÂä
 private:void init();
 
