@@ -29,36 +29,34 @@ void Combination::init(){
 	int x = coor0->getX();
 	int y = coor0->getY();
 
-	rect2 = new CRect;
-	rect2->left = x;
-	rect2->top = y;
-	
-	rect2->right = x + Constants::sideLength;
-	rect2->bottom = y + Constants::sideLength;
+	rect2 = new Tile();
+	rect2->setX1(x);
+	rect2->setY1(y);
+	rect2->setX2(x + Constants::sideLength);
+	rect2->setY2(y + Constants::sideLength);
+	 
+	c0 = new Tile();
+	c0->setX1(rect2->getX1() + Constants::sideLength + Constants::gap);
+	c0->setY1(rect2->getY1());
+	c0->setX2(rect2->getX2() + Constants::sideLength + Constants::gap);
+	c0->setY2(rect2->getY2());
 
+	c1 = new Tile();
+	c1->setX1(c0->getX1() + Constants::sideLength + Constants::gap);
+	c1->setY1(rect2->getY1());
+	c1->setX2(c0->getX2() + Constants::sideLength + Constants::gap);
+	c1->setY2(rect2->getY2());
 
-	c0 = new CRect;
-	c0->left = rect2->left + Constants::sideLength + Constants::gap;
-	c0->top = rect2->top;
-	c0->bottom = rect2->bottom;
-	c0->right = rect2->right + Constants::sideLength + Constants::gap;
+	c2 = new Tile();
+	c2->setX1(c1->getX1() + Constants::sideLength + Constants::gap);
+	c2->setY1(rect2->getY1());
+	c2->setX2(c1->getX2() + Constants::sideLength + Constants::gap);
+	c2->setY2(rect2->getY2());
 
-	c1 = new CRect;
-	c1->left = c0->left + Constants::sideLength + Constants::gap;
-	c1->top = rect2->top;
-	c1->bottom = rect2->bottom;
-	c1->right = c0->right + Constants::sideLength + Constants::gap;
-
-	c2 = new CRect;
-	c2->left = c1->left + Constants::sideLength + Constants::gap;
-	c2->top = rect2->top;
-	c2->right = c1->right + Constants::sideLength + Constants::gap;
-	c2->bottom = rect2->bottom;
-
-	this->rectList.push_back(rect2);
-	this->rectList.push_back(c0);
-	this->rectList.push_back(c1);
-	this->rectList.push_back(c2);
+	this->tileList.push_back(rect2);
+	this->tileList.push_back(c0);
+	this->tileList.push_back(c1);
+	this->tileList.push_back(c2);
 
 	this->scre = new Screen;
 	this->last = this->scre->getBottomCoor();
@@ -77,10 +75,10 @@ Combination* Combination::getOne(){
 }
 
 void Combination::DrawCom(){
-	pDC->FillRect(rect2, brush);
-	pDC->FillRect(c0, brush);
-	pDC->FillRect(c1, brush);
-	pDC->FillRect(c2, brush);
+	pDC->FillRect(CRect(rect2->getX1(), rect2->getY1(), rect2->getX2(), rect2->getY2()), brush);
+	pDC->FillRect(CRect(c0->getX1(),c0->getY1(),c0->getX2(),c0->getY2()), brush);
+	pDC->FillRect(CRect(c1->getX1(),c1->getY1(),c1->getX2(),c1->getY2()), brush);
+	pDC->FillRect(CRect(c2->getX1(),c2->getY1(),c2->getX2(),c2->getY2()), brush);
 	if (!this->isStop){
 		this->landing();
 	}
@@ -88,14 +86,14 @@ void Combination::DrawCom(){
 
 
 void Combination::landing(){
-	std::list<CRect*>::iterator iter = this->rectList.begin();
-	while (iter != this->rectList.end())
+	std::list<Tile*>::iterator iter = this->tileList.begin();
+	while (iter != this->tileList.end())
 	{
-		CRect *rect = *iter;
-		rect->top = rect->top + Constants::sideLength + Constants::gap;
-		rect->bottom = rect->bottom + Constants::sideLength + Constants::gap;
-		std::cout << " bottom : " << rect->bottom << std::endl;
-		if (rect->top == this->last->getY()){
+		Tile *rect = *iter;
+		rect->setY1(rect->getY1() + Constants::sideLength + Constants::gap);
+		rect->setY2(rect->getY2() + Constants::sideLength + Constants::gap);
+		std::cout << " bottom : " << rect->getY2() << std::endl;
+		if (rect->getY1() == this->last->getY()){
 			this->isStop = true;
 		}
 		iter++;

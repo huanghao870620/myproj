@@ -29,6 +29,10 @@ void f(LPVOID lParam){
 	}
 }
 
+void f0(LPVOID lParam){
+
+}
+
 BOOL MyApp::InitInstance(){
 	AllocConsole();
 	SetConsoleTitle("");
@@ -49,5 +53,8 @@ BOOL MyApp::InitInstance(){
 	this->m_pMainWnd->UpdateWindow();
 	CWinThread *cwin = AfxBeginThread((AFX_THREADPROC)f, (LPVOID)this->m_pMainWnd,THREAD_PRIORITY_NORMAL,  CREATE_SUSPENDED,0,0);
 	cwin->ResumeThread();
+
+	CWinThread *cwin0 = AfxBeginThread((AFX_THREADPROC)f0, (LPVOID)0, THREAD_PRIORITY_NORMAL, CREATE_SUSPENDED, 0, 0);
+	cwin0->ResumeThread();
 	return TRUE;
 }
