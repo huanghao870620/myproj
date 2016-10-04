@@ -23,14 +23,13 @@ void f(LPVOID lParam){
 	CWnd *wnd = (CWnd*)lParam;
 	while (true)
 	{
-		//std::cout << a++ << std::endl;
 		wnd->Invalidate();
 		Sleep(1000);
 	}
 }
 
 void f0(LPVOID lParam){
-
+	std::cout << "44444444444444444444444444" << std::endl;
 }
 
 BOOL MyApp::InitInstance(){
@@ -56,5 +55,8 @@ BOOL MyApp::InitInstance(){
 
 	CWinThread *cwin0 = AfxBeginThread((AFX_THREADPROC)f0, (LPVOID)0, THREAD_PRIORITY_NORMAL, CREATE_SUSPENDED, 0, 0);
 	cwin0->ResumeThread();
+
+	Random *ran = new Random;
+	ran->getRandomInt();
 	return TRUE;
 }

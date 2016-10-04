@@ -77,19 +77,6 @@ void MyView::OnDraw(CDC*pDC){
 	CRect rect;
 	GetClientRect(&rect);
 	pDC->FillSolidRect(rect, RGB(255, 255, 255));
-	//201 178 162
-	/*CBitmap bitmap;
-	bitmap.LoadBitmapA(IDB_BG);
-	BITMAP bmp;
-	bitmap.GetBitmap(&bmp);
-	CDC dcCompatible;
-	dcCompatible.CreateCompatibleDC(pDC);
-	dcCompatible.SelectObject(bitmap);
-
-	CRect rect;
-	GetClientRect(&rect);
-	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dcCompatible, 0, 0, bmp.bmWidth, bmp.bmHeight, SRCCOPY);*/
-
 
 	CPen pen;
 	pen.CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
@@ -180,8 +167,4 @@ void MyView::OnDraw(CDC*pDC){
 	this->com->setBrush(&brush);
 	this->com->setCDC(pDC);
 	this->com->DrawCom();
-
-	/*Screen *scre = new Screen;
-	Coordinates *coor = scre->getBottomCoor();*/
-
 } 

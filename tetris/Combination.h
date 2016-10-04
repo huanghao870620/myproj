@@ -22,12 +22,14 @@ class Combination
 
 public:Combination(CDC*pDC,CBrush *brush);
 public: Combination();
+public:Combination(int pat);
 public: ~Combination();
 
 public:Combination* getOne();
+public:Coordinates* getFirstCoor();
 private: std::list<Tile*> tiles;
 public:void DrawCom();
-private:Tile *rect2;
+private:Tile *c3;
 private:Tile *c0;
 private:Tile *c1;
 private:Tile *c2;

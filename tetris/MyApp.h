@@ -13,6 +13,7 @@
 #include"MyFrame.h"
 #include<afxwin.h>
 #include"CSockThread.h"
+#include"Random.h"
 class MyApp : public CWinApp
 {
 

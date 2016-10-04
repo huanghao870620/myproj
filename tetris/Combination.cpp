@@ -22,6 +22,49 @@ Combination::~Combination(){
 	
 }
 
+Combination::Combination(int pat){
+	Coordinates *coor = this->getFirstCoor();
+	int x = coor->getX();
+	int y = coor->getY();
+	switch (pat)
+	{
+	case 0: // ----
+		break;
+	case 1: // | | | |
+		this->c0 = new Tile;
+		this->c0->setX1(x);
+		this->c0->setY1(y);
+		this->c0->setX2(x + Constants::sideLength);
+		this->c0->setY2(y + Constants::sideLength);
+
+		this->c1 = new Tile;
+		this->c1->setX1(x);
+		this->c1->setY1(this->c0->getY1() + Constants::sideLength + Constants::gap);
+		this->c1->setX2(x + Constants::sideLength);
+		this->c1->setY2(this->c0->getY2() + Constants::sideLength + Constants::gap);
+
+		this->c2 = new Tile;
+		this->c3 = new Tile;
+		this->tileList.push_back(this->c0);
+		this->tileList.push_back(this->c1);
+		this->tileList.push_back(this->c2);
+		this->tileList.push_back(this->c3);
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	case 5:
+		break;
+	case 6:
+		break;
+	default:
+		break;
+	}
+}
+
 void Combination::init(){
 	Singleton *inst = Singleton::getSingleton();
 	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
@@ -29,34 +72,34 @@ void Combination::init(){
 	int x = coor0->getX();
 	int y = coor0->getY();
 
-	rect2 = new Tile();
-	rect2->setX1(x);
-	rect2->setY1(y);
-	rect2->setX2(x + Constants::sideLength);
-	rect2->setY2(y + Constants::sideLength);
+	this->c3 = new Tile();
+	this->c3->setX1(x);
+	this->c3->setY1(y);
+	this->c3->setX2(x + Constants::sideLength);
+	this->c3->setY2(y + Constants::sideLength);
 	 
-	c0 = new Tile();
-	c0->setX1(rect2->getX1() + Constants::sideLength + Constants::gap);
-	c0->setY1(rect2->getY1());
-	c0->setX2(rect2->getX2() + Constants::sideLength + Constants::gap);
-	c0->setY2(rect2->getY2());
+	this->c0 = new Tile();
+	this->c0->setX1(this->c3->getX1() + Constants::sideLength + Constants::gap);
+	this->c0->setY1(this->c3->getY1());
+	this->c0->setX2(this->c3->getX2() + Constants::sideLength + Constants::gap);
+	this->c0->setY2(this->c3->getY2());
 
-	c1 = new Tile();
-	c1->setX1(c0->getX1() + Constants::sideLength + Constants::gap);
-	c1->setY1(rect2->getY1());
-	c1->setX2(c0->getX2() + Constants::sideLength + Constants::gap);
-	c1->setY2(rect2->getY2());
+	this->c1 = new Tile();
+	this->c1->setX1(c0->getX1() + Constants::sideLength + Constants::gap);
+	this->c1->setY1(this->c3->getY1());
+	this->c1->setX2(c0->getX2() + Constants::sideLength + Constants::gap);
+	this->c1->setY2(this->c3->getY2());
 
-	c2 = new Tile();
-	c2->setX1(c1->getX1() + Constants::sideLength + Constants::gap);
-	c2->setY1(rect2->getY1());
-	c2->setX2(c1->getX2() + Constants::sideLength + Constants::gap);
-	c2->setY2(rect2->getY2());
+	this->c2 = new Tile();
+	this->c2->setX1(this->c1->getX1() + Constants::sideLength + Constants::gap);
+	this->c2->setY1(this->c3->getY1());
+	this->c2->setX2(this->c1->getX2() + Constants::sideLength + Constants::gap);
+	this->c2->setY2(this->c3->getY2());
 
-	this->tileList.push_back(rect2);
-	this->tileList.push_back(c0);
-	this->tileList.push_back(c1);
-	this->tileList.push_back(c2);
+	this->tileList.push_back(this->c3);
+	this->tileList.push_back(this->c0);
+	this->tileList.push_back(this->c1);
+	this->tileList.push_back(this->c2);
 
 	this->scre = new Screen;
 	this->last = this->scre->getBottomCoor();
@@ -75,7 +118,7 @@ Combination* Combination::getOne(){
 }
 
 void Combination::DrawCom(){
-	pDC->FillRect(CRect(rect2->getX1(), rect2->getY1(), rect2->getX2(), rect2->getY2()), brush);
+	pDC->FillRect(CRect(this->c3->getX1(), this->c3->getY1(), this->c3->getX2(), this->c3->getY2()), brush);
 	pDC->FillRect(CRect(c0->getX1(),c0->getY1(),c0->getX2(),c0->getY2()), brush);
 	pDC->FillRect(CRect(c1->getX1(),c1->getY1(),c1->getX2(),c1->getY2()), brush);
 	pDC->FillRect(CRect(c2->getX1(),c2->getY1(),c2->getX2(),c2->getY2()), brush);
@@ -98,6 +141,12 @@ void Combination::landing(){
 		}
 		iter++;
 	}
+}
+
+Coordinates* Combination::getFirstCoor(){
+	Singleton *inst = Singleton::getSingleton();
+	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
+	return *iter2;
 }
 
 void Combination::setCDC(CDC*pDC){
