@@ -29,7 +29,7 @@ void f(LPVOID lParam){
 }
 
 void f0(LPVOID lParam){
-	std::cout << "44444444444444444444444444" << std::endl;
+	  
 }
 
 BOOL MyApp::InitInstance(){

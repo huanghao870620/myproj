@@ -64,7 +64,10 @@ MyView::MyView(){
 			inst->addCoor(coor);
 		}
 	}
-	this->com = new Combination;
+	//this->com = new Combination;
+	Random *rand = new Random;
+	int randInt = rand->getRandomInt();
+	this->com = rand->getRandomCom(randInt);
 }
 
 

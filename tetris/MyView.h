@@ -18,6 +18,7 @@
 #include"ArrayDto.h"
 #include"Adto.h"
 #include "Combination.h"
+#include"Random.h"
 
 class MyView : public CView
 {

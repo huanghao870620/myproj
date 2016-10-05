@@ -44,7 +44,17 @@ Combination::Combination(int pat){
 		this->c1->setY2(this->c0->getY2() + Constants::sideLength + Constants::gap);
 
 		this->c2 = new Tile;
+		this->c2->setX1(x);
+		this->c2->setY1(this->c1->getY1() + Constants::sideLength + Constants::gap);
+		this->c2->setX2(x + Constants::sideLength);
+		this->c2->setY2(this->c1->getY2() + Constants::sideLength + Constants::gap);
+
 		this->c3 = new Tile;
+		this->c3->setX1(x);
+		this->c3->setY1(this->c2->getY1() + Constants::sideLength + Constants::gap);
+		this->c3->setX2(x + Constants::sideLength);
+		this->c3->setY2(this->c2->getY2() + Constants::sideLength + Constants::gap);
+
 		this->tileList.push_back(this->c0);
 		this->tileList.push_back(this->c1);
 		this->tileList.push_back(this->c2);
