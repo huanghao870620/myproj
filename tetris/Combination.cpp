@@ -11,11 +11,9 @@
 Combination::Combination(CDC*pDC,CBrush *brush){
 	this->pDC = pDC;
 	this->brush = brush;
-	this->init();
 }
 
 Combination::Combination(){
-	this->init();
 }
 
 Combination::~Combination(){
@@ -78,11 +76,6 @@ Combination::Combination(int pat){
 		this->c3->setY1(this->c2->getY1() + Constants::sideLength + Constants::gap);
 		this->c3->setX2(x + Constants::sideLength);
 		this->c3->setY2(this->c2->getY2() + Constants::sideLength + Constants::gap);
-
-		this->tileList.push_back(this->c0);
-		this->tileList.push_back(this->c1);
-		this->tileList.push_back(this->c2);
-		this->tileList.push_back(this->c3);
 		break;
 	case 2: // |_ _ _
 		this->c0->setX1(x);
@@ -146,7 +139,6 @@ Combination::Combination(int pat){
 		this->c3->setY1(this->c2->getY1());
 		this->c3->setX2(this->c3->getX1() + Constants::sideLength);
 		this->c3->setY2(this->c2->getY2());
-		
 		break;
 	case 5: // _ _ _|
 		this->c0->setX1(x);
@@ -193,31 +185,20 @@ Combination::Combination(int pat){
 	default:
 		break;
 	}
-}
-
-void Combination::init(){
-	Singleton *inst = Singleton::getSingleton();
-	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
-	Coordinates *coor0 = *iter2;
-	int x = coor0->getX();
-	int y = coor0->getY();
-
-	this->tileList.push_back(this->c3);
-	this->tileList.push_back(this->c0);
-	this->tileList.push_back(this->c1);
-	this->tileList.push_back(this->c2);
-
 	this->scre = new Screen;
 	this->last = this->scre->getBottomCoor();
 }
 
 
 
+
 void Combination::DrawCom(){
-	pDC->FillRect(CRect(this->c0->getX1(),this->c0->getY1(),this->c0->getX2(),this->c0->getY2()), brush);
-	pDC->FillRect(CRect(this->c1->getX1(), this->c1->getY1(), this->c1->getX2(), this->c1->getY2()), brush);
-	pDC->FillRect(CRect(this->c2->getX1(), this->c2->getY1(), this->c2->getX2(), this->c2->getY2()), brush);
-	pDC->FillRect(CRect(this->c3->getX1(), this->c3->getY1(), this->c3->getX2(), this->c3->getY2()), brush);
+	std::list<Tile*>::iterator itor =  this->tileList.begin();
+	while (itor != this->tileList.end()){
+		Tile *tile = *itor;
+		pDC->FillRect(CRect(tile->getX1(), tile->getY1(), tile->getX2(), tile->getY2()), brush);
+		itor++;
+	}
 	if (!this->isStop){
 		this->landing();
 	}
@@ -231,7 +212,7 @@ void Combination::landing(){
 		Tile *tile = *iter;
 		tile->setY1(tile->getY1() + Constants::sideLength + Constants::gap);
 		tile->setY2(tile->getY2() + Constants::sideLength + Constants::gap);
-		std::cout << " bottom : " << tile->getY2() << std::endl;
+		std::cout << " bottom : " << tile->getY1() << std::endl;
 		if (tile->getY1() == this->last->getY()){
 			this->isStop = true;
 		}

@@ -40,7 +40,6 @@ private:CBrush *brush;
 private:std::list<Tile*> tileList;
 private:Coordinates *last;
 private:void landing(); // ½µÂä
-private:void init();
 
 };
 #endif // !defined(EA_32DFF089_B8A4_40b1_86E8_36519606DDFB__INCLUDED_)

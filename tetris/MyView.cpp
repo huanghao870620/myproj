@@ -161,8 +161,6 @@ void MyView::OnDraw(CDC*pDC){
 		}
 	}
 
-	Tile *tile = new Tile(0,0,0,0);
-	tile->createTile();
 	CRect scoreRect(rightBrickRect.right + Constants::gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
 	pDC->Rectangle(scoreRect);
 	
