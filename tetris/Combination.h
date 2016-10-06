@@ -25,9 +25,7 @@ public: Combination();
 public:Combination(int pat);
 public: ~Combination();
 
-public:Combination* getOne();
 public:Coordinates* getFirstCoor();
-private: std::list<Tile*> tiles;
 public:void DrawCom();
 private:Tile *c3;
 private:Tile *c0;
