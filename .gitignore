@@ -171,3 +171,5 @@ example10/example10.dir/
 example10/Debug/
 chat_server/Release/
 library/src/Release/
+example14/example14.vcxproj
+example14/example14.vcxproj.filters
