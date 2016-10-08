@@ -20,9 +20,6 @@ Combination::Combination(int pat){
 	this->init(pat);
 }
 
-Combination::Combination(int pat){
-	this->init(pat);
-}
 
 void Combination::init(int pat){
 	Coordinates *coor = this->getFirstCoor();
@@ -137,7 +134,7 @@ void Combination::init(int pat){
 		this->c2->setX1(this->c1->getX1() + Constants::sideLength + Constants::gap);
 		this->c2->setY1(this->c1->getY1());
 		this->c2->setX2(this->c2->getX1() + Constants::sideLength);
-		this->c2->setY2(this->c2->getX1() + Constants::sideLength);
+		this->c2->setY2(this->c2->getY1() + Constants::sideLength);
 
 		this->c3->setX1(this->c2->getX1() + Constants::sideLength + Constants::gap);
 		this->c3->setY1(this->c2->getY1());
@@ -187,6 +184,7 @@ void Combination::init(int pat){
 		this->c3->setY2(this->c3->getY1() + Constants::sideLength);
 		break;
 	default:
+		std::cout << "" << std::endl;
 		break;
 	}
 	this->scre = new Screen;

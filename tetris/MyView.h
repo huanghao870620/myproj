@@ -13,7 +13,6 @@
 #include"LeftBrick.h"
 #include"resource.h"
 #include<afxwin.h>
-#include"Dto.h"
 #include"Singleton.h"
 #include"ArrayDto.h"
 #include"Adto.h"
@@ -30,7 +29,6 @@ private: Combination *com;
 protected:DECLARE_DYNCREATE(MyView)
 protected:DECLARE_MESSAGE_MAP()
 protected:virtual void OnDraw(CDC*pDC);
-private:Dto *dto;
 private:ArrayDto *arrayDto;
 private:Adto *adto;
 private:CRect *c0;

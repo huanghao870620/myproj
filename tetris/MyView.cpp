@@ -20,9 +20,6 @@ MyView::MyView(){
 
 	Singleton *inst = Singleton::getSingleton();
 
-	this->dto = new Dto;
-	std::list<Coordinates*> *xList = new std::list<Coordinates*>;
-	this->dto->setXList(xList);
 
 	this->arrayDto = new ArrayDto;
 	this->adto = new Adto;

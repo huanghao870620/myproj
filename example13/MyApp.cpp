@@ -25,13 +25,13 @@ CCriticalSection d;
 void f0(LPVOID lParam){
 	while (true){
 		//d.Lock();
-	//EnterCriticalSection(d);
+	EnterCriticalSection(d);
 	std::cout << "A : " ;
 	A * a0 = app.getA();
 	a0->add();
 	int aInt = a0->getA();
 	std::cout << aInt << std::endl;
-	//LeaveCriticalSection(d);
+	LeaveCriticalSection(d);
 	Sleep(1000);
 	}
 
