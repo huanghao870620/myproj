@@ -18,6 +18,10 @@ Random::~Random(){
 
 }
 
+Combination* Random::getRandomCom(int rand,CDC*pDC,CBrush*brush){
+	return new Combination(rand,pDC,brush);
+}
+
 Combination* Random::getRandomCom(int rand){
 	return new Combination(rand);
 }

@@ -19,6 +19,7 @@ public:
 	Random();
 	virtual ~Random();
 
+public:Combination* getRandomCom(int rand,CDC*pDC,CBrush*brush);
 public:Combination* getRandomCom(int rand);
 public:int getRandomInt();
 

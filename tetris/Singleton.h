@@ -20,14 +20,9 @@ public:virtual ~Singleton();
 private: std::list<Coordinates*> coors;
 public:void addCoor(Coordinates *coor);
 public: std::list<Coordinates*>* getCoors();
-//public: void setCoors(std::list<Coordinates*> *coors);
-//private:static Singleton * instance ;
 public:static Singleton* getSingleton(){
-		/*if (nullptr == instance){
-					instance = new Singleton;
-				}*/
 	static Singleton instance;
-				return &instance;
+	return &instance;
 }
 };
 #endif // !defined(EA_FE2C68F5_23B3_4e5b_9A5C_033183EFB853__INCLUDED_)

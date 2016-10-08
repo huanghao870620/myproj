@@ -20,26 +20,22 @@
 class Combination
 {
 
-public:Combination(CDC*pDC,CBrush *brush);
-public: Combination();
+public:Combination();
 public:Combination(int pat);
-public: ~Combination();
+public:~Combination();
 
 public:Coordinates* getFirstCoor();
-public:void DrawCom();
-private:Tile *c3;
+public:void DrawCom(CDC*pDC,CBrush*brush);
 private:Tile *c0;
 private:Tile *c1;
 private:Tile *c2;
-private:CDC*pDC;
+private:Tile *c3;
 private:bool isStop = false;
 private:Screen *scre;
-public:void setCDC(CDC*pDC);
-public:void setBrush(CBrush*brush);
-private:CBrush *brush;
 private:std::list<Tile*> tileList;
 private:Coordinates *last;
 private:void landing(); // ½µÂä
+private:void init(int pat);
 
 };
 #endif // !defined(EA_32DFF089_B8A4_40b1_86E8_36519606DDFB__INCLUDED_)

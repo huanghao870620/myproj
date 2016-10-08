@@ -12,6 +12,9 @@
 #include"MyFrame.h"
 #include"MyView.h"
 #include<afxwin.h>
+#include<iostream>
+#include<afxmt.h>
+#include"A.h"
 class MyApp : public CWinApp
 {
 
@@ -19,5 +22,7 @@ public:
 	MyApp();
 	virtual ~MyApp();
 public:virtual BOOL InitInstance();
+private:A *a;
+public:A* getA();
 };
 #endif // !defined(EA_F9C0FC87_150C_45f1_8A53_42921EA228E0__INCLUDED_)

@@ -8,10 +8,6 @@
 #include "Combination.h"
 
 
-Combination::Combination(CDC*pDC,CBrush *brush){
-	this->pDC = pDC;
-	this->brush = brush;
-}
 
 Combination::Combination(){
 }
@@ -21,6 +17,14 @@ Combination::~Combination(){
 }
 
 Combination::Combination(int pat){
+	this->init(pat);
+}
+
+Combination::Combination(int pat){
+	this->init(pat);
+}
+
+void Combination::init(int pat){
 	Coordinates *coor = this->getFirstCoor();
 	int x = coor->getX();
 	int y = coor->getY();
@@ -179,7 +183,7 @@ Combination::Combination(int pat){
 
 		this->c3->setX1(this->c2->getX1() + Constants::sideLength + Constants::gap);
 		this->c3->setY1(this->c2->getY1());
-		this->c3->setX2(this->c3->getX1()+Constants::sideLength);
+		this->c3->setX2(this->c3->getX1() + Constants::sideLength);
 		this->c3->setY2(this->c3->getY1() + Constants::sideLength);
 		break;
 	default:
@@ -190,9 +194,7 @@ Combination::Combination(int pat){
 }
 
 
-
-
-void Combination::DrawCom(){
+void Combination::DrawCom(CDC*pDC,CBrush*brush){
 	std::list<Tile*>::iterator itor =  this->tileList.begin();
 	while (itor != this->tileList.end()){
 		Tile *tile = *itor;
@@ -226,10 +228,3 @@ Coordinates* Combination::getFirstCoor(){
 	return *iter2;
 }
 
-void Combination::setCDC(CDC*pDC){
-	this->pDC = pDC;
-}
-
-void Combination::setBrush(CBrush*brush){
-	this->brush = brush;
-}

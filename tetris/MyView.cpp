@@ -163,8 +163,5 @@ void MyView::OnDraw(CDC*pDC){
 
 	CRect scoreRect(rightBrickRect.right + Constants::gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
 	pDC->Rectangle(scoreRect);
-	
-	this->com->setBrush(&brush);
-	this->com->setCDC(pDC);
-	this->com->DrawCom();
+	this->com->DrawCom(pDC,&brush);
 } 

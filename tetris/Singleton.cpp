@@ -22,9 +22,6 @@ std::list<Coordinates*>* Singleton::getCoors(){
 	return &this->coors;
 }
 
-//void Singleton::setCoors(std::list<Coordinates*> *coors){
-//	this->coors = coors;
-//}
 
 void Singleton::addCoor(Coordinates *coor){
 	this->coors.push_back(coor);
