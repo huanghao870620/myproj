@@ -15,6 +15,7 @@
 #include"CSockThread.h"
 #include"Random.h"
 #include"Queue.h"
+#include"A.h"
 class MyApp : public CWinApp
 {
 

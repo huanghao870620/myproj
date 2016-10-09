@@ -43,6 +43,9 @@ BOOL MyApp::InitInstance(){
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "w+t", stdout);
 
+	A*a = new A;
+	a->init();
+
 	Queue *queue = Queue::getInstance();
 	queue->add();
 

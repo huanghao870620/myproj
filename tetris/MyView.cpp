@@ -14,6 +14,8 @@ MyView::MyView(){
 	CRect leftSideRect(10, 10, 37, 520);
 	CBrush brush(RGB(0, 0, 0));
 	brush.DeleteObject();
+	Queue *queue = Queue::getInstance();
+	this->com = queue->get();
 }
 
 

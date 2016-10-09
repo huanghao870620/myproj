@@ -63,6 +63,5 @@ void A::init(){
 		}
 	}
 
-	Queue *queue = Queue::getInstance();
-	this->com = queue->get();
+	
 }
