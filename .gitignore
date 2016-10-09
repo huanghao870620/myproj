@@ -173,3 +173,9 @@ chat_server/Release/
 library/src/Release/
 example14/example14.vcxproj
 example14/example14.vcxproj.filters
+example16/example16.vcxproj
+example16/example16.vcxproj.filters
+example15/example15.dir/
+example15/example15.vcxproj
+example15/example15.vcxproj.filters
+example15/Debug/
