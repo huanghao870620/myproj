@@ -18,7 +18,7 @@
 #include"Adto.h"
 #include "Combination.h"
 #include"Random.h"
-
+#include"Queue.h"
 class MyView : public CView
 {
 

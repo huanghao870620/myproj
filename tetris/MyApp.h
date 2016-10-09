@@ -14,6 +14,7 @@
 #include<afxwin.h>
 #include"CSockThread.h"
 #include"Random.h"
+#include"Queue.h"
 class MyApp : public CWinApp
 {
 

@@ -28,8 +28,13 @@ void f(LPVOID lParam){
 	}
 }
 
-void f0(LPVOID lParam){
-	  
+void addCom(LPVOID lParam){
+	while (true)
+	{
+		Queue *queue = Queue::getInstance();
+		queue->add();
+		Sleep(5000);
+	}
 }
 
 BOOL MyApp::InitInstance(){
@@ -37,6 +42,12 @@ BOOL MyApp::InitInstance(){
 	SetConsoleTitle("");
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "w+t", stdout);
+
+	Queue *queue = Queue::getInstance();
+	queue->add();
+
+	CWinThread *cwin0 = AfxBeginThread((AFX_THREADPROC)addCom, (LPVOID)0, THREAD_PRIORITY_NORMAL, CREATE_SUSPENDED, 0, 0);
+	cwin0->ResumeThread();
 
 	CSingleDocTemplate *temp;
 	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
@@ -53,10 +64,5 @@ BOOL MyApp::InitInstance(){
 	CWinThread *cwin = AfxBeginThread((AFX_THREADPROC)f, (LPVOID)this->m_pMainWnd,THREAD_PRIORITY_NORMAL,  CREATE_SUSPENDED,0,0);
 	cwin->ResumeThread();
 
-	CWinThread *cwin0 = AfxBeginThread((AFX_THREADPROC)f0, (LPVOID)0, THREAD_PRIORITY_NORMAL, CREATE_SUSPENDED, 0, 0);
-	cwin0->ResumeThread();
-
-	Random *ran = new Random;
-	ran->getRandomInt();
 	return TRUE;
 }

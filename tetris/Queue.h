@@ -8,15 +8,19 @@
 #if !defined(EA_DC8550A1_F5F6_4d2b_A1CB_8C8CACC209FC__INCLUDED_)
 #define EA_DC8550A1_F5F6_4d2b_A1CB_8C8CACC209FC__INCLUDED_
 #include<list>
+#include<queue>
 #include"Combination.h"
+#include"Random.h"
 class Queue
 {
 
 private:Queue();
 public:
 	virtual ~Queue();
-private:std::list<Combination*> comList;
+private:std::queue<Combination*> comQueue;
 public:static Queue* getInstance();
+public:void add();
+public:Combination* get();
 
 };
 #endif // !defined(EA_DC8550A1_F5F6_4d2b_A1CB_8C8CACC209FC__INCLUDED_)
