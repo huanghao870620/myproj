@@ -23,5 +23,10 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCm
 	SetConsoleTitle("");
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "w+t", stdout);
+
+	std::cout << hInstance << std::endl;
+	std::cout << hPrevInstance << std::endl;
+	std::cout << lpCmdLine << std::endl;
+	std::cout << nCmdShow << std::endl;
 	return (0);
 }
