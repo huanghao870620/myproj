@@ -1,15 +1,17 @@
 ///////////////////////////////////////////////////////////
 //  MyApp.h
 //  Implementation of the Class MyApp
-//  Created on:      09-十月-2016 21:37:54
+//  Created on:      10-十月-2016 19:33:22
 //  Original author: huanghao
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_BFFDF4F0_E96F_4dd8_A1AD_2A6748E6B459__INCLUDED_)
-#define EA_BFFDF4F0_E96F_4dd8_A1AD_2A6748E6B459__INCLUDED_
+#if !defined(EA_95935FD8_0D2E_4161_A056_B5240B8665BC__INCLUDED_)
+#define EA_95935FD8_0D2E_4161_A056_B5240B8665BC__INCLUDED_
 #include<afxwin.h>
 #include<iostream>
-#include<afxmt.h>
+#include"A.h"
+#include"Singleton.h"
+
 class MyApp : public CWinApp
 {
 
@@ -18,4 +20,4 @@ public:
 	virtual ~MyApp();
 public:BOOL InitInstance();
 };
-#endif // !defined(EA_BFFDF4F0_E96F_4dd8_A1AD_2A6748E6B459__INCLUDED_)
+#endif // !defined(EA_95935FD8_0D2E_4161_A056_B5240B8665BC__INCLUDED_)
