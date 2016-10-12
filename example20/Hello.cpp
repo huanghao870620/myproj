@@ -28,5 +28,14 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCm
 	std::cout << hPrevInstance << std::endl;
 	std::cout << lpCmdLine << std::endl;
 	std::cout << nCmdShow << std::endl;
+
+	SECURITY_ATTRIBUTES sa;
+	sa.nLength = sizeof(sa);
+	//sa.lpSecurityDescriptor = pSD;
+	HANDLE hMutex = CreateMutex(NULL, FALSE, "JeffObj");
+	std::cout << hMutex << std::endl;
+
+	HANDLE h = CreateEvent(NULL, FALSE, FALSE, "Local\\MyName");
+	std::cout << h << std::endl;
 	return (0);
 }
