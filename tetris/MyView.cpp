@@ -15,7 +15,7 @@ MyView::MyView(){
 	CBrush brush(RGB(0, 0, 0));
 	brush.DeleteObject();
 	Queue *queue = Queue::getInstance();
-	this->com = queue->get();
+	//this->com = queue->get();
 }
 
 
@@ -112,5 +112,5 @@ void MyView::OnDraw(CDC*pDC){
 
 	CRect scoreRect(rightBrickRect.right + Constants::gap * 2, rightBrickRect.top, rightBrickRect.right + 140, rightBrickRect.bottom);
 	pDC->Rectangle(scoreRect);
-	this->com->DrawCom(pDC,&brush);
+	com->DrawCom(pDC,&brush);
 } 
