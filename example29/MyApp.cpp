@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////
 //  MyApp.cpp
 //  Implementation of the Class MyApp
-//  Created on:      16-十月-2016 16:39:22
+//  Created on:      16-十月-2016 20:07:11
 //  Original author: huanghao
 ///////////////////////////////////////////////////////////
 
@@ -13,7 +13,7 @@ MyApp::MyApp(){
 }
 
 
-
+MyApp app;
 MyApp::~MyApp(){
 
 }
@@ -21,34 +21,32 @@ MyApp::~MyApp(){
 CEvent g_event;
 
 UINT f0(LPVOID lParam){
-	while (true){
-		std::cout << "A";
-		Sleep(1);
-		g_event.Lock();
-	}
+	A*a = (A*)lParam;
+	std::cout << a << std::endl;
+	std::cout << "out a : " << a->getA() << std::endl;
 	return(0);
 }
 
 UINT f1(LPVOID lParam){
-	while (true){
-		std::cout << "B";
-		Sleep(1);
-		g_event.Lock();
-	}
-	return(0);
+	A*a = (A*)lParam;
+	std::cout << a << std::endl;
+	return(1);
 }
 
-
-MyApp app;
 BOOL MyApp::InitInstance(){
 	AllocConsole();
 	SetConsoleTitle("");
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "w+t", stdout);
 
-	AfxBeginThread(f0, NULL);
-	AfxBeginThread(f1, NULL);
+
+	A*a = new A;
+	std::cout << a << std::endl;
+	std::cout << "out a : " << a->getA() << std::endl;
+	delete a;
+	AfxBeginThread(f0, a);
+	AfxBeginThread(f1, a);
 
 	Sleep(1000 * 3600);
-	return TRUE;
+	return(TRUE);
 }
