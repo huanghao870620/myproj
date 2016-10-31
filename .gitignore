@@ -238,3 +238,8 @@ example30/example30.vcxproj.filters
 example31/example31.dir/
 example30/Debug/
 example31/Debug/
+example32/Debug/
+example32/Project.sln
+example32/example32.dir/
+example32/example32.vcxproj
+example32/example32.vcxproj.filters
