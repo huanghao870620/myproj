@@ -1,46 +1,31 @@
 #include <iostream>
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/parameterized_test.hpp>
-#include "CDBOperation.h"
-#include "MyTest.h"
-#include "ReceiverTest.h"
-#include "Client2Test.h"
+//#include "CDBOperation.h"
+//#include "MyTest.h"
+//#include "ReceiverTest.h"
+//#include "Client2Test.h"
+//#include<Windows.h>
+//#include"UploadFile.h"
+#include"generate_random.h"
 
 
-using boost::unit_test::test_suite;
 
-void testDelete(){
-	MyTest * mt = new MyTest;
-	mt->testDelete();
+void testUpload(){
+	//UploadFile *uf = new UploadFile;
+	//delete uf;
 }
 
-void test4(int a){
-	std::cout << "" << std::endl;
+void test0(){
+	generate_random *gr = new generate_random;
+	gr->t();
 }
 
-void testCopy(){
-	MyTest * mt = new MyTest;
-	mt->testCopy();
-	//mt->testCopy2TestDir();
-}
-
-void testReceiver(){
-	ReceiverTest * rt = new ReceiverTest;
-	rt->testConstructor();
-}
-
-void testClient2(){
-	Sleep(1000 * 5);
-	::OutputDebugString("-- testClient2 --");
-	Client2Test * ct = new Client2Test;
-	ct->testClient2();
-}
-
-test_suite* init_unit_test_suite(int, char*[]){
+boost::unit_test::test_suite* init_unit_test_suite(int, char*[]){
 	int params[] = { 1, 2, 3, 4, 5 };
 	std::cout << "111111" << std::endl;
 	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testDelete));
-	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testCopy));
+	boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&test0));
 	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testReceiver));
 	//boost::unit_test::framework::master_test_suite().add(BOOST_TEST_CASE(&testClient2));
 	//boost::unit_test::framework::master_test_suite().add(BOOST_PARAM_TEST_CASE(&test4, params, params + 5));

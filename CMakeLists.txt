@@ -7,6 +7,8 @@ file(STRINGS path_company.txt variables)
 list(GET variables 0 boost_home)
 list(GET variables 1 mysql_sdk_home)
 list(GET variables 2 vld_home)
+list(GET variables 3 libodb)
+list(GET variables 4 libodb_mysql)
 
 include_directories(
  "${boost_home}"
@@ -17,8 +19,8 @@ include_directories(
 set(
 	link_lib
 	"${mysql_sdk_home}/lib"
-	"library/src/Debug"
-	"monitor/src/Debug"
+#	"library/src/Debug"
+#	"monitor/src/Debug"
 	"${boost_home}/lib"
 	"${boost_home}/stage/lib"
 	"${boost_home}/lib/vc12_x64/lib"
@@ -33,21 +35,18 @@ aux_source_directory(library dir_src2)
 aux_source_directory(src_mfc monitor)
 
 include_directories(
-./library/src
-./chat_server
-./monitor/src
+#./library/src
+#./chat_server
+#./monitor/src
 )
 
-set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
+
 set(
  libname
  libmysql
- my_library
- chat_serverlib
+# my_library
+# chat_serverlib
  ws2_32
-# libboost_locale-vc120-mt-sgd-1_60 
-# libboost_unit_test_framework-vc120-mt-s-1_60
  nafxcwd
  libcmtd
 )
@@ -88,7 +87,7 @@ add_subdirectory(example9)
 add_subdirectory(example10)
 add_subdirectory(example11)
 add_subdirectory(example12)
-add_subdirectory(example13)
+add_subdirectory(xunan_admin)
 add_subdirectory(example14)
 add_subdirectory(example15)
 add_subdirectory(example16)
@@ -109,4 +108,5 @@ add_subdirectory(example30)
 add_subdirectory(example31)
 add_subdirectory(example32)
 add_subdirectory(example33)
+add_subdirectory(example34)
 add_subdirectory(tetris)
