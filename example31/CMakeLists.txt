@@ -1,3 +1,6 @@
 aux_source_directory(. source)
-add_executable(example31 WIN32 ${source})
-target_link_libraries(example31 ${libname})
+set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /MDd /ZI /Ob0 /Od /RTC1") 
+ADD_DEFINITIONS(-D_AFXDLL)
+SET(CMAKE_MFC_FLAG 2)
+add_executable(example31 WIN32 ${source} example31.rc)
+target_link_libraries(example31 )
