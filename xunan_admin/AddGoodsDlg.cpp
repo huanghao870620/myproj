@@ -83,7 +83,7 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 		 std::cout << "" << std::endl;
 		 std::string url_str = "http://192.168.1.102" + thumbFile->get_uri_path();
 		 url_str = "http://pic7.nipic.com/20100611/2113444_004433009618_2.jpg";
-		 //this->ShowPic(url_str.c_str(), this->gatp.GetDC());
+		 this->ShowPic(url_str.c_str(), this->gatp.GetDC());
 		 //ShowJpg::ShowJpgGif(this->gatp.GetDC(), url_str.c_str(), 0, 0);
 		
 		this->nameEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_name()).c_str());/*名称*/
@@ -439,6 +439,10 @@ void AddGoodsDlg::uploadCutFigure2(){
 void AddGoodsDlg::OnPaint(){
 	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
 	//ShowJpg::ShowJpgGif(this->bgat.GetDC(), this->Big1path, this->big1Rect.left, this->big1Rect.top);
+
+	/*std::string url_str = "http://pic7.nipic.com/20100611/2113444_004433009618_2.jpg";
+	this->ShowPic(url_str.c_str(), this->gatp.GetDC());*/
+
 	CDialogEx::OnPaint();
 	
 }
@@ -449,13 +453,10 @@ BOOL AddGoodsDlg::OnEraseBkgnd(CDC*pDC){
 
 /*初始化数据*/
 BOOL AddGoodsDlg::OnInitDialog(){
-
 	CDialogEx::OnInitDialog();
 	Gdiplus::GdiplusStartupInput gi;
 	ULONG_PTR gdiToken;
 	GdiplusStartup(&gdiToken, &gi, NULL);
-
-	
 	return TRUE;
 }
 
