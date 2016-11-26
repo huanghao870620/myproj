@@ -17,6 +17,7 @@
 #include"good_file-odb.hxx"
 #include"db_util.h"
 #include"good_file.h"
+#include"file_dao.h"
 
 
 class good_file_dao
@@ -30,5 +31,6 @@ public:static good_file_dao* get_good_file_dao(){
 	return &dao;
 }
 public:void add_good_file(good_file&gf);
+public:void findFileByGoodId(long goodId, long type_id_, std::list<file*> *fs);
 };
 #endif // !defined(EA_33C8784F_4A1E_4073_8EA1_3621CFE523DA__INCLUDED_)

@@ -2,6 +2,7 @@
 #pragma execution_character_set("utf-8")
 #include<iostream>
 #include<list>
+
 #include"resource.h"
 #include<afxdialogex.h>
 #include"MyFrame.h"
@@ -13,6 +14,9 @@
 #include"good_file_dao.h"
 #include"file.h"
 #include"UploadFile.h"
+#include"good_dao.h"
+#include"classification_dao.h"
+
 //#include"util\"
 
 // AddGoodsDlg 对话框
@@ -23,7 +27,8 @@ class AddGoodsDlg : public CDialogEx
 
 public:
 	AddGoodsDlg(CWnd* pParent = NULL);   // 标准构造函数
-	virtual ~AddGoodsDlg();
+public:AddGoodsDlg(long goodId);
+public:virtual ~AddGoodsDlg();
 
 // 对话框数据
 	enum { IDD = IDD_DIALOG_ADD_GOODS };
@@ -37,7 +42,9 @@ protected:afx_msg void uploadFileBig1(); /*上傳大圖1*/
 protected:afx_msg void uploadFileBig2(); /*上傳大圖2*/
 protected:afx_msg void uploadCutFigure1(); /*切圖1*/
 protected:afx_msg void uploadCutFigure2(); /*切圖2*/
-protected:afx_msg void SetSecondClass();/*设置二级分类*/
+protected:afx_msg void SetSecondClass();/*点击一级分类*/
+protected:afx_msg void SetThirdClass();/*点击二级分类*/
+protected:afx_msg void SelThirdClass();/*点击三级分类*/
 protected:virtual BOOL OnEraseBkgnd(CDC*pDC);
 private:CString Big1path; /*商品大圖1*/
 private:CString big2Path; /*商品大圖2*/
@@ -45,8 +52,12 @@ private:CString thumbPath;/*縮略圖*/
 private:CString cutFigure1Path;/*切圖1*/
 private:CString cutFigure2Path;/*切圖2*/
 
+private:long goodId;
 
 private:RECT big1Rect;
+private:RECT thumbRect;/*缩略图*/
+
+private:int selClass; /*选择分类*/
 
 protected:afx_msg void f1();
 protected:afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
@@ -60,8 +71,24 @@ private:CStatic pp; // 商品大圖2
 private:CStatic cutFigure1; // 切圖1
 private:CStatic cutFigure2; //切圖2
 
+private:CEdit nameEdit; /*商品名称编辑控件*/
+private:CEdit infoEdit;/*描述*/
+private:CEdit capacityEdit;/*容量*/
+private:CWnd dateOfProductionControl;/*生产日期*/
+private:CEdit lowestPriceEdit;/*最低价*/
+private:CEdit highestPriceEdit;/*最高价*/
+private:CEdit purchasPositonEdit;/*采购位置*/
+private:CComboBox firstClass;/*一级分类*/
+private:CComboBox secondClass;/*二级分类*/
+private:CComboBox thirdClass;/*三级分类*/
+
 private:int m_nYPos = 0;
 private:int m_nXPos = 0;
+
+
+private:long getClassId(std::list<long> *ls, int index);
+private:void SetCurSel(CComboBox *box, long id, int i);
+private:HRESULT ShowPic(const char *lpstrImgUrl, CDC*pDC);
 
 private:CStringW ConvertUTF82CStringW(char* instr);/*转换为utf8*/
 protected:virtual BOOL OnInitDialog();

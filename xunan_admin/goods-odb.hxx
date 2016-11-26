@@ -294,6 +294,18 @@ namespace odb
     add_time_type_;
 
     static const add_time_type_ add_time;
+
+    // classid
+    //
+    typedef
+    mysql::query_column<
+      mysql::value_traits<
+        long int,
+        mysql::id_longlong >::query_type,
+      mysql::id_longlong >
+    classid_type_;
+
+    static const classid_type_ classid;
   };
 
   template <typename A>
@@ -380,6 +392,11 @@ namespace odb
   const typename query_columns< ::goods, id_mysql, A >::add_time_type_
   query_columns< ::goods, id_mysql, A >::
   add_time (A::table_name, "`add_time`", 0);
+
+  template <typename A>
+  const typename query_columns< ::goods, id_mysql, A >::classid_type_
+  query_columns< ::goods, id_mysql, A >::
+  classid (A::table_name, "`classid`", 0);
 
   template <typename A>
   struct pointer_query_columns< ::goods, id_mysql, A >:
@@ -494,6 +511,11 @@ namespace odb
       unsigned long add_time_size;
       my_bool add_time_null;
 
+      // classid_
+      //
+      long long classid_value;
+      my_bool classid_null;
+
       std::size_t version;
     };
 
@@ -536,7 +558,7 @@ namespace odb
 
     typedef mysql::query_base query_base_type;
 
-    static const std::size_t column_count = 17UL;
+    static const std::size_t column_count = 18UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;

@@ -23,8 +23,25 @@ void good_dao::query_list(std::list<goods*>* goods_list){
 	odb::result<goods> r(this->db->query<goods>(odb::query<goods>::id>1));
 	for (odb::result<goods>::iterator i(r.begin()); i != r.end(); ++i){
 		goods *g = new goods;
+		g->set_id(i->get_id());
 		g->set_name(i->get_name());
 		g->set_info(i->get_info());
 		goods_list->push_back(g);
 	}
+	
+}
+
+/*通过id获取商品*/
+void good_dao::findById(goods*good,long id){
+	odb::core::transaction tx(this->db->begin());
+	odb::result<goods> r(this->db->query<goods>(odb::query<goods>::id == id));
+	odb::result<goods>::iterator i(r.begin());
+	good->set_id(i->get_id());
+	good->set_name(i->get_name());
+	good->set_info(i->get_info());
+	good->set_capacity(i->get_capacity());
+	good->set_lowest_price(i->get_lowest_price());
+	good->set_highestPrice(i->get_highest_price());
+	good->set_purchasing_position(i->get_purchasing_position());
+	good->set_classid(i->get_classid());
 }

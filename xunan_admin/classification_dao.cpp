@@ -25,3 +25,12 @@ void classification_dao::add_classifi(classification&classifi){
 	this->db->persist(classifi);
 	t->commit();
 }
+
+/**/
+void classification_dao::getParentClass(classification*classifi, long classid){
+	odb::core::transaction t(db->begin());
+	odb::result<classification> r(db->query<classification>(odb::query<classification>::id==classid));
+	odb::result<classification>::iterator i(r.begin());
+	classifi->set_pid(i->get_pid());
+	classifi->set_id(classid);
+}

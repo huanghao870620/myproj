@@ -29,5 +29,6 @@ public:static classification_dao* get_classification_dao(){
 	return &dao;
 }
 public:void add_classifi(classification&classifi);
+public:void getParentClass(classification*classifi,long classid);
 };
 #endif // !defined(EA_FA146DB4_0BBA_414e_A8D2_49E24CC24013__INCLUDED_)

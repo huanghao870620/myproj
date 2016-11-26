@@ -184,6 +184,10 @@ namespace odb
       grew = true;
     }
 
+    // classid_
+    //
+    t[17UL] = 0;
+
     return grew;
   }
 
@@ -350,6 +354,14 @@ namespace odb
     b[n].length = &i.add_time_size;
     b[n].is_null = &i.add_time_null;
     n++;
+
+    // classid_
+    //
+    b[n].buffer_type = MYSQL_TYPE_LONGLONG;
+    b[n].is_unsigned = 0;
+    b[n].buffer = &i.classid_value;
+    b[n].is_null = &i.classid_null;
+    n++;
   }
 
   void access::object_traits_impl< ::goods, id_mysql >::
@@ -393,7 +405,7 @@ namespace odb
     // name_
     //
     {
-      // From goods.h:37:12
+      // From goods.h:43:12
       ::std::string const& v =
         o.name_;
 
@@ -664,6 +676,20 @@ namespace odb
       grew = grew || (cap != i.add_time_value.capacity ());
     }
 
+    // classid_
+    //
+    {
+      long int const& v =
+        o.classid_;
+
+      bool is_null (false);
+      mysql::value_traits<
+          long int,
+          mysql::id_longlong >::set_image (
+        i.classid_value, is_null, v);
+      i.classid_null = is_null;
+    }
+
     return grew;
   }
 
@@ -693,7 +719,7 @@ namespace odb
     // name_
     //
     {
-      // From goods.h:37:23
+      // From goods.h:43:23
       ::std::string& v =
         o.name_;
 
@@ -921,6 +947,20 @@ namespace odb
         i.add_time_size,
         i.add_time_null);
     }
+
+    // classid_
+    //
+    {
+      long int& v =
+        o.classid_;
+
+      mysql::value_traits<
+          long int,
+          mysql::id_longlong >::set_value (
+        v,
+        i.classid_value,
+        i.classid_null);
+    }
   }
 
   void access::object_traits_impl< ::goods, id_mysql >::
@@ -954,9 +994,10 @@ namespace odb
   "`goods_invoice`, "
   "`express_single`, "
   "`state`, "
-  "`add_time`) "
+  "`add_time`, "
+  "`classid`) "
   "VALUES "
-  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
   const char access::object_traits_impl< ::goods, id_mysql >::find_statement[] =
   "SELECT "
@@ -976,7 +1017,8 @@ namespace odb
   "`goods`.`goods_invoice`, "
   "`goods`.`express_single`, "
   "`goods`.`state`, "
-  "`goods`.`add_time` "
+  "`goods`.`add_time`, "
+  "`goods`.`classid` "
   "FROM `goods` "
   "WHERE `goods`.`id`=?";
 
@@ -998,7 +1040,8 @@ namespace odb
   "`goods_invoice`=?, "
   "`express_single`=?, "
   "`state`=?, "
-  "`add_time`=? "
+  "`add_time`=?, "
+  "`classid`=? "
   "WHERE `id`=?";
 
   const char access::object_traits_impl< ::goods, id_mysql >::erase_statement[] =
@@ -1023,7 +1066,8 @@ namespace odb
   "`goods`.`goods_invoice`, "
   "`goods`.`express_single`, "
   "`goods`.`state`, "
-  "`goods`.`add_time` "
+  "`goods`.`add_time`, "
+  "`goods`.`classid` "
   "FROM `goods`";
 
   const char access::object_traits_impl< ::goods, id_mysql >::erase_query_statement[] =

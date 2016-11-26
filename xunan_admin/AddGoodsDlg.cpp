@@ -20,6 +20,17 @@ AddGoodsDlg::AddGoodsDlg(CWnd* pParent /*=NULL*/)
 
 }
 
+AddGoodsDlg::AddGoodsDlg(long goodId)
+: CDialogEx(){
+#ifndef _WIN32_WCE
+	EnableActiveAccessibility();
+#endif
+
+	std::cout << "1" << std::endl;
+	this->goodId = goodId;
+
+}
+
 AddGoodsDlg::~AddGoodsDlg()
 {
 	std::cout << "fdsfsd" << std::endl;
@@ -34,6 +45,197 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_PP, this->pp); //商品大圖2
 	DDX_Control(pDX, IDC_STATIC1, this->cutFigure1); // 切圖1
 	DDX_Control(pDX, IDC_STATIC2, this->cutFigure2);//切圖2
+	DDX_Control(pDX, IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX, this->nameEdit);/*商品名称*/
+	DDX_Control(pDX, IDC_EDIT_DESCRIBE, this->infoEdit);/*商品描述*/
+	DDX_Control(pDX, IDC_EDIT_CAPACITY, this->capacityEdit);/*容量*/
+	DDX_Control(pDX, IDC_DATETIMEPICKER1, this->dateOfProductionControl);/*生产日期*/
+	DDX_Control(pDX, IDC_LOWEST_PRICE, this->lowestPriceEdit);/*最低价*/
+	DDX_Control(pDX, IDC_HIGHEST_PRICE, this->highestPriceEdit);/*最高价*/
+	DDX_Control(pDX, IDC_EDIT_PURCHASING_POSITION, this->purchasPositonEdit);/*采购位置*/
+	DDX_Control(pDX, IDC_COMBO_BIG_CLASS, this->firstClass);/*一级分类*/
+	DDX_Control(pDX, IDC_COMBO_CHILD_CLASS, this->secondClass);/*二级分类*/
+	DDX_Control(pDX, IDC_COMBO1, this->thirdClass);/*三级分类*/
+	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
+	std::list<classification*> *ls = new std::list<classification*>;
+	myDoc->query_classification(ls);
+
+	std::list<classification*>::iterator iter = ls->begin();
+	for (int i = 0; iter != ls->end(); iter++, i++){
+		classification *classi = (classification*)*iter;
+		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
+		this->firstClass.AddString(classi->get_name().c_str());
+		long id = classi->get_id();
+		this->firstClass.SetItemData(i, id);
+	}
+	long d0 = this->firstClass.GetItemData(0);
+	long d1 = this->firstClass.GetItemData(1);
+	long d2 = this->firstClass.GetItemData(2);
+
+	if (this->goodId > 0){
+		good_dao*gd = good_dao::get_good_dao();
+		goods g;
+		gd->findById(&g, this->goodId);
+
+		 good_file_dao*gfd = good_file_dao::get_good_file_dao();
+		 std::list<file*> fileList;
+		 gfd->findFileByGoodId(this->goodId, 12, &fileList);/*商品缩略图*/
+		 file *thumbFile = fileList.front();/*缩略图*/
+		 std::cout << "" << std::endl;
+		 std::string url_str = "http://192.168.1.102" + thumbFile->get_uri_path();
+		 url_str = "http://pic7.nipic.com/20100611/2113444_004433009618_2.jpg";
+		 //this->ShowPic(url_str.c_str(), this->gatp.GetDC());
+		 //ShowJpg::ShowJpgGif(this->gatp.GetDC(), url_str.c_str(), 0, 0);
+		
+		this->nameEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_name()).c_str());/*名称*/
+		this->infoEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_info()).c_str());/*描述*/
+		this->capacityEdit.SetWindowTextA(Util::ltos(g.get_capacity()).c_str());/*容量*/
+		this->dateOfProductionControl.SetWindowTextA(g.get_dateOfProduction().c_str());/*生产日期*/
+		this->lowestPriceEdit.SetWindowTextA(Util::ltos(g.get_lowest_price()).c_str());/*最低价*/
+		this->highestPriceEdit.SetWindowTextA(Util::ltos(g.get_highest_price()).c_str());/*最高价*/
+		this->purchasPositonEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_purchasing_position()).c_str());/*采购位置*/
+
+		long classid = g.get_classid();
+		classification clas;
+		classification_dao*cd = classification_dao::get_classification_dao();
+		std::list<long> ids;
+		do
+		{
+			cd->getParentClass(&clas,classid);
+			classid = clas.get_pid();
+			ids.push_back(clas.get_id());
+		} while (clas.get_pid() != -1);
+
+		
+		CComboBox **boxArr = new CComboBox*[3]{
+			  &this->firstClass,
+				&this->secondClass,
+				&this->thirdClass
+		};
+
+		CComboBox *b0 = boxArr[0];
+		CComboBox*b1 = boxArr[1];
+		CComboBox*b2 = boxArr[2];
+
+		int len = ids.size();
+		for (int i = 0; i < len; i++){
+			long id= this->getClassId(&ids, len-i-1);
+			CComboBox *box = boxArr[i];
+			this->SetCurSel(box, id,i);
+		}
+
+		delete[]boxArr;
+	}
+}
+
+
+HRESULT AddGoodsDlg::ShowPic(const char *lpstrImgUrl, CDC*pDC)
+{
+	//HDC hDC_Temp = GetDC(hWnd);
+
+	IPicture *pPic;
+	IStream *pStm;
+
+	BOOL bResult;
+
+	DWORD dwFileSize, dwByteRead;
+
+	//读取网页上图片文件，实际是个CHttpFile指针    
+	CInternetSession session("HttpClient");
+	CFile* httpFile = (CFile*)session.OpenURL(lpstrImgUrl);
+
+	if (httpFile != INVALID_HANDLE_VALUE)
+	{
+		dwFileSize = httpFile->GetLength();//获取文件字节数        
+
+		if (dwFileSize == 0xFFFFFFFF)
+			return E_FAIL;
+	}
+	else
+	{
+		return E_FAIL;
+	}
+
+
+	//分配全局存储空间        
+	HGLOBAL hGlobal = GlobalAlloc(GMEM_MOVEABLE, dwFileSize);
+	LPVOID pvData = NULL;
+
+	if (hGlobal == NULL)
+		return E_FAIL;
+
+	if ((pvData = GlobalLock(hGlobal)) == NULL)//锁定分配内存块        
+		return E_FAIL;
+
+	//把文件读入内存缓冲区        
+	dwByteRead = httpFile->Read(pvData, dwFileSize);
+
+	GlobalUnlock(hGlobal);
+
+	CreateStreamOnHGlobal(hGlobal, TRUE, &pStm);
+
+	//装入图形文件        
+	bResult = OleLoadPicture(pStm, dwFileSize, TRUE, IID_IPicture, (LPVOID*)&pPic);
+
+	if (FAILED(bResult))
+		return E_FAIL;
+
+	OLE_XSIZE_HIMETRIC hmWidth; //图片的真实宽度, 单位为英寸       
+	OLE_YSIZE_HIMETRIC hmHeight; //图片的真实高度, 单位为英寸       
+	pPic->get_Width(&hmWidth);
+	pPic->get_Height(&hmHeight);
+
+	//转换hmWidth和hmHeight为pixels距离，1英寸=25.4毫米       
+	int nWidth = MulDiv(hmWidth, GetDeviceCaps(pDC->m_hDC, LOGPIXELSX), 2540);
+	int nHeight = MulDiv(hmHeight, GetDeviceCaps(pDC->m_hDC, LOGPIXELSY), 2540);
+
+	//将图形输出到屏幕上（有点像BitBlt）        
+	bResult = pPic->Render(pDC->m_hDC, 10, 40, nWidth, nHeight,
+		0, hmHeight, hmWidth, -hmHeight, NULL);
+
+	pPic->Release();
+
+	httpFile->Close();//关闭打开的文件        
+
+	if (SUCCEEDED(bResult))
+	{
+		return S_OK;
+	}
+	else
+	{
+		return E_FAIL;
+	}
+}
+
+
+void AddGoodsDlg::SetCurSel(CComboBox *box, long id, int k){
+	int count = box->GetCount();
+	for (int i = 0; i < count; i++){
+		DWORD_PTR data = box->GetItemData(i);
+		std::cout << "" << std::endl;
+		if (data == id){
+			box->SetCurSel(i);
+			//box->SendMessage(CBN_SELCHANGE);
+			if (k == 0){
+				this->SetSecondClass();
+			}
+			else if (k == 1){
+				this->SetThirdClass();
+			}
+			else if (k == 2){
+				this->SelThirdClass();
+			}
+			break;
+		}
+	}
+}
+
+long AddGoodsDlg::getClassId(std::list<long> *ls, int index){
+	std::list<long>::iterator iter = ls->begin();
+	for (int i=0; iter != ls->end(); iter++,i++){
+		if (i == index){
+			return *iter;
+		}
+	}
 }
 
 /**/
@@ -72,32 +274,56 @@ void ConvertUtf8ToGBK(CString &strUtf8)
 void AddGoodsDlg::addGood(){
 
 	/*商品名称*/
-	CWnd *c2 = this->GetDlgItem(IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX);
+	//CWnd *c2 = this->GetDlgItem(IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX);
 	CString cs0;
-	c2->GetWindowTextA(cs0);
+	this->nameEdit.GetWindowTextA(cs0);
 	
 	MyDoc * myDoc = (MyDoc*) ((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
 	std::string name = cs0.GetBuffer(0);
 	name = charset_util::GBKToUTF8(name);
 	goods good;
 	good.set_name(name);
-
+	good.set_classid(this->selClass);
 	/*描述*/
 	CString info;
-	this->GetDlgItem(IDC_EDIT_DESCRIBE)->GetWindowTextA(info);
+	//CWnd *infoEdit = this->GetDlgItem(IDC_EDIT_DESCRIBE);
+	infoEdit.GetWindowTextA(info);
 	std::string info_str = info.GetBuffer(0);
+	info_str = charset_util::GBKToUTF8(info_str);
 	good.set_info(info_str);
 	
 	/*容量*/
 	CString capacity;
-	this->GetDlgItem(IDC_EDIT_CAPACITY)->GetWindowTextA(capacity);
+	this->capacityEdit.GetWindowTextA(capacity);
 	long capl = Util::stol(capacity.GetBuffer(0));
 	good.set_capacity(capl);
 
+	/*生产日期*/
 	CString dateOfProduction;
-	this->GetDlgItem(IDC_DATETIMEPICKER1)->GetWindowTextA(dateOfProduction);
+	this->dateOfProductionControl.GetWindowTextA(dateOfProduction);
 	std::string dop = dateOfProduction.GetBuffer(0);
 	good.set_date_of_production(dop);
+
+	/*最低价*/
+	CString lowestPrice;
+	this->lowestPriceEdit.GetWindowTextA(lowestPrice);
+	long lp = Util::stol(lowestPrice.GetBuffer(0));
+	good.set_lowest_price(lp);
+
+
+	/*最高价*/
+	CString highestPrice;
+	this->highestPriceEdit.GetWindowTextA(highestPrice);
+	long hp = Util::stol(highestPrice.GetBuffer(0));
+	good.set_highestPrice(hp);
+
+	/*采购位置*/
+	CString purchasPositon;
+	this->purchasPositonEdit.GetWindowTextA(purchasPositon);
+	std::string purchPostion = purchasPositon.GetBuffer(0);
+	purchPostion = charset_util::GBKToUTF8(purchPostion);
+	good.set_purchasing_position(purchPostion);
+
 
 	/*时间戳*/
 	std::string addTime = "2015/11/21";
@@ -173,10 +399,10 @@ void AddGoodsDlg::uploadFileGatp(){
 	Gdiplus::Rect rect(d.left, d.top, d.right - d.left, d.bottom - d.top);
 	graphics.DrawImage(gatpImage, rect);*/
 	
-	RECT d;
-	this->gatp.GetClientRect(&d);
+	
+	this->gatp.GetClientRect(&thumbRect);
 	this->thumbPath = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, d.left, d.top);
+	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
 }
 
 /*商品大圖1*/
@@ -210,15 +436,18 @@ void AddGoodsDlg::uploadCutFigure2(){
 	ShowJpg::ShowJpgGif(this->cutFigure2.GetDC(), cutFigure2Path, d.left, d.top);
 }
 
-void AddGoodsDlg::OnPaint(){ 
+void AddGoodsDlg::OnPaint(){
+	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
 	//ShowJpg::ShowJpgGif(this->bgat.GetDC(), this->Big1path, this->big1Rect.left, this->big1Rect.top);
 	CDialogEx::OnPaint();
+	
 }
 
 BOOL AddGoodsDlg::OnEraseBkgnd(CDC*pDC){
 	return CDialogEx::OnEraseBkgnd(pDC);
 }
 
+/*初始化数据*/
 BOOL AddGoodsDlg::OnInitDialog(){
 
 	CDialogEx::OnInitDialog();
@@ -226,36 +455,19 @@ BOOL AddGoodsDlg::OnInitDialog(){
 	ULONG_PTR gdiToken;
 	GdiplusStartup(&gdiToken, &gi, NULL);
 
-	CComboBox *box = (CComboBox*) this->GetDlgItem(IDC_COMBO_BIG_CLASS);
-	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
-	std::list<classification*> *ls = new std::list<classification*>;
-	myDoc->query_classification(ls);
 	
-	std::list<classification*>::iterator iter = ls->begin();
-	for (int i=0; iter != ls->end(); iter++,i++){
-		classification *classi = (classification*)*iter;
-		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
-		box->AddString(classi->get_name().c_str());
-		long id=classi->get_id();
-		std::cout << i << " : " << id << std::endl;
-		box->SetItemData(i, id);
-	}
-	long d0 = box->GetItemData(0);
-	long d1= box->GetItemData(1);
-	long d2 = box->GetItemData(2);
 	return TRUE;
 }
 
-/*设置二级分类*/
+/*点击一级分类*/
 void AddGoodsDlg::SetSecondClass(){
-	CComboBox *box = (CComboBox*) this->GetDlgItem(IDC_COMBO_BIG_CLASS);
-	int index = box->GetCurSel();
-	box->SetCurSel(index);
+	int index = this->firstClass.GetCurSel();
+	this->firstClass.SetCurSel(index);
 	
-	index = box->GetCurSel();
-	DWORD_PTR id = box->GetItemData(index);
+	index = this->firstClass.GetCurSel();
+	DWORD_PTR id = this->firstClass.GetItemData(index);
 	CString content;
-	box->GetWindowTextA(content);
+	this->firstClass.GetWindowTextA(content);
 
 	CComboBox *secondClass = (CComboBox*)this->GetDlgItem(IDC_COMBO_CHILD_CLASS);/*二级分类控件*/
 	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
@@ -264,12 +476,47 @@ void AddGoodsDlg::SetSecondClass(){
 
 	std::list<classification*>::iterator iter = ls->begin();
 	secondClass->ResetContent();
-	std::cout << "size : " << secondClass->GetCount() << std::endl;
-	for (; iter != ls->end(); iter++){
+	for (int i=0; iter != ls->end(); iter++,i++){
 		classification*classi = *iter;
 		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
 		secondClass->AddString(classi->get_name().c_str());
+		long id_second = classi->get_id();
+		secondClass->SetItemData(i, id_second);
 	}
+}
+
+/*点击二级分类*/
+void AddGoodsDlg::SetThirdClass(){
+	int index = this->secondClass.GetCurSel();
+	this->secondClass.SetCurSel(index);
+	index = this->secondClass.GetCurSel();
+	DWORD_PTR id = this->secondClass.GetItemData(index);
+	this->selClass = id;
+	CString content;
+	this->secondClass.GetWindowTextA(content);
+	CComboBox *thirdClass = (CComboBox*)this->GetDlgItem(IDC_COMBO1);/*三级分类控件*/
+	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
+	std::list<classification*> *ls = new std::list<classification*>;
+	myDoc->query_class_bypid(ls, id);
+
+	std::list<classification*>::iterator iter = ls->begin();
+	thirdClass->ResetContent();
+	for (int i=0; iter != ls->end(); iter++,i++){
+		classification*classi = *iter;
+		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
+		thirdClass->AddString(classi->get_name().c_str());
+		thirdClass->SetItemData(i,classi->get_id());
+	}
+}
+
+/*点击三级分类*/
+void AddGoodsDlg::SelThirdClass(){
+	CComboBox*box=(CComboBox*) this->GetDlgItem(IDC_COMBO1);
+	int index= box->GetCurSel();
+	box->SetCurSel(index);
+	index = box->GetCurSel();
+	DWORD_PTR id = box->GetItemData(index);
+	this->selClass = id;
 }
 
 void AddGoodsDlg::f1(){
@@ -291,6 +538,7 @@ void AddGoodsDlg::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar){
 		ScrollWindow(0, (scrollinfo.nPos - scrollinfo.nMax) * 10);
 		scrollinfo.nPos = scrollinfo.nMax;
 		SetScrollInfo(SB_VERT, &scrollinfo, SIF_ALL);
+
 		break;
 	case SB_TOP:
 		ScrollWindow(0, (scrollinfo.nPos - scrollinfo.nMin) * 10);
@@ -411,6 +659,8 @@ BEGIN_MESSAGE_MAP(AddGoodsDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON9, uploadCutFigure1) /*切圖1*/
 	ON_BN_CLICKED(IDC_BUTTON10, uploadCutFigure2) /*切圖2*/
 	ON_CBN_SELCHANGE(IDC_COMBO_BIG_CLASS, SetSecondClass)
+	ON_CBN_SELCHANGE(IDC_COMBO_CHILD_CLASS, SetThirdClass)
+	ON_CBN_SELCHANGE(IDC_COMBO1, SelThirdClass)/**/
 	ON_CBN_SETFOCUS(IDC_COMBO_BIG_CLASS,f1)
 	ON_WM_VSCROLL()
 	ON_WM_HSCROLL()

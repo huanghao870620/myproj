@@ -30,3 +30,11 @@ void file_dao::update_file(file&f){
 	 this->db->update(f);
 	 t->commit();
 }
+
+void file_dao::findById(long id, file*f, std::auto_ptr<odb::database> &db){
+	//odb::core::transaction t(db->begin());
+	odb::result<file> r(db->query<file>(odb::query<file>::id == id));
+	odb::result<file>::iterator i(r.begin());
+	f->set_type_id(i->get_type_id());
+	f->set_uri_path(i->get_uri_path());
+}

@@ -159,6 +159,14 @@ private:std::string add_time_; //添加时间
 			return this->add_time_;
 		}
 
+private:long classid_;//分类id
+public: void set_classid(long classid){
+	this->classid_ = classid;
+}
+public:long get_classid(){
+	return this->classid_;
+}
+
 
 
 };

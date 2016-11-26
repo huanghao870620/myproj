@@ -3,6 +3,9 @@
 #include"resource.h"
 #include<iostream>
 #include"good_dao.h"
+#include"charset_util.h"
+#include"MyCListCtrl.h"
+#include"Util.h"
 
 // ListGoodsDlg 对话框
 
@@ -17,8 +20,9 @@ public:
 // 对话框数据
 	enum { IDD = IDD_DIALOG2 };
 
+protected:afx_msg void OnItemChanged(NMHDR*pNMHDR,LRESULT*pResult);
 
-private:CListCtrl listCtrl; /*列表控件*/
+private:MyCListCtrl listCtrl; /*列表控件*/
 protected:BOOL OnInitDialog();
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持

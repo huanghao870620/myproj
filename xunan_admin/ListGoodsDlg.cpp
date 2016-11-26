@@ -23,8 +23,10 @@ ListGoodsDlg::~ListGoodsDlg()
 BOOL ListGoodsDlg::OnInitDialog(){
 	CDialogEx::OnInitDialog();
 	std::cout << "" << std::endl;
-	this->listCtrl.InsertColumn(1, "商品名称",LVCFMT_CENTER,40);
-	this->listCtrl.InsertColumn(2, "商品描述",LVCFMT_CENTER,50);
+	this->listCtrl.InsertColumn(1, "ID", LVCFMT_CENTER, 40);
+	
+	this->listCtrl.InsertColumn(2, charset_util::UTF8ToGBK("商品名称").c_str(), LVCFMT_CENTER, 40);
+	this->listCtrl.InsertColumn(3, charset_util::UTF8ToGBK("商品描述").c_str(), LVCFMT_CENTER, 50);
 	//int nRow = this->listCtrl.InsertItem(1, "asddas");
 	//this->listCtrl.SetItemText(nRow, 1, "fddfdf");
 	
@@ -35,8 +37,13 @@ BOOL ListGoodsDlg::OnInitDialog(){
 	std::list<goods*>::iterator iter = glist.begin();
 	for (int i=0; iter != glist.end(); iter++,i++){
 		goods *g = *iter;
-		int nRow = this->listCtrl.InsertItem(i+1, g->get_name().c_str());
-		this->listCtrl.SetItemText(nRow, 1, g->get_info().c_str());
+		long id = g->get_id();
+		std::string id_str = Util::ltos(id);
+		std::string &name = charset_util::UTF8ToGBK(g->get_name());
+		std::string&info = charset_util::UTF8ToGBK(g->get_info());
+		int nRow = this->listCtrl.InsertItem(i + 1, id_str.c_str());
+		this->listCtrl.SetItemText(nRow, 1, name.c_str());
+		this->listCtrl.SetItemText(nRow, 2, info.c_str());
 	}
 	return TRUE;
 }
@@ -49,7 +56,10 @@ void ListGoodsDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 
+
+
 BEGIN_MESSAGE_MAP(ListGoodsDlg, CDialogEx)
+	//ON_NOTIFY_REFLECT(LVN_ITEMCHANGED,OnItemChanged)
 END_MESSAGE_MAP()
 
 
