@@ -21,3 +21,7 @@ int CDlgDisplayPane::OnCreate(LPCREATESTRUCT lpCreateStruct){
 	this->m_display.ShowWindow(SW_SHOW);
 	return 0;
 }
+
+BEGIN_MESSAGE_MAP(CDlgDisplayPane, CDockablePane)
+	ON_WM_CREATE()
+END_MESSAGE_MAP()

@@ -10,5 +10,6 @@ public:
 
 private:CDlgDisplay m_display;
 protected:virtual int OnCreate(LPCREATESTRUCT lpCreateStruct);
+protected:DECLARE_MESSAGE_MAP();
 };
 

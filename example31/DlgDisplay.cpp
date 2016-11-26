@@ -8,7 +8,7 @@
 
 // CDlgDisplay ¶Ô»°¿ò
 
-IMPLEMENT_DYNAMIC(CDlgDisplay, CDialogEx)
+IMPLEMENT_DYNAMIC(CDlgDisplay, CDialog)
 
 CDlgDisplay::CDlgDisplay(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgDisplay::IDD, pParent)
