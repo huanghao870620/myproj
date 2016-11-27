@@ -13,11 +13,10 @@ IMPLEMENT_DYNAMIC(AddGoodsDlg, CDialogEx)
 AddGoodsDlg::AddGoodsDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(AddGoodsDlg::IDD, pParent)
 {
-	std::cout << "但对方是否" << std::endl;
 #ifndef _WIN32_WCE
 	EnableActiveAccessibility();
 #endif
-
+	this->init();
 }
 
 AddGoodsDlg::AddGoodsDlg(long goodId)
@@ -28,12 +27,17 @@ AddGoodsDlg::AddGoodsDlg(long goodId)
 
 	std::cout << "1" << std::endl;
 	this->goodId = goodId;
-
+	this->init();
 }
 
 AddGoodsDlg::~AddGoodsDlg()
 {
-	std::cout << "fdsfsd" << std::endl;
+}
+
+void AddGoodsDlg::init(){
+	this->fs = file_service::get_file_service();
+	this->gfs = good_file_service::get_good_file_service();
+	this->cs = classification_service::get_classification_service();
 }
 
 /**/
@@ -72,20 +76,37 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 	long d2 = this->firstClass.GetItemData(2);
 
 	if (this->goodId > 0){
-		good_dao*gd = good_dao::get_good_dao();
+		good_service *gs = good_service::get_good_service();
 		goods g;
-		gd->findById(&g, this->goodId);
+		gs->findById(&g, this->goodId);
 
-		 good_file_dao*gfd = good_file_dao::get_good_file_dao();
+		good_file_service *gfs = good_file_service::get_good_file_service();
 		 std::list<file*> fileList;
-		 gfd->findFileByGoodId(this->goodId, 12, &fileList);/*商品缩略图*/
+		 gfs->findFileByGoodId(this->goodId, 12, &fileList);/*商品缩略图*/
 		 file *thumbFile = fileList.front();/*缩略图*/
-		 std::cout << "" << std::endl;
-		 std::string url_str = "http://192.168.1.102" + thumbFile->get_uri_path();
-		 url_str = "http://pic7.nipic.com/20100611/2113444_004433009618_2.jpg";
-		 this->ShowPic(url_str.c_str(), this->gatp.GetDC());
-		 //ShowJpg::ShowJpgGif(this->gatp.GetDC(), url_str.c_str(), 0, 0);
+		 this->thumbFileId = thumbFile->get_id(); /*缩略图文件id*/
+
+		 gfs->findFileByGoodId(this->goodId, 13, &this->bigFileList);/*商品大图*/
+
+		 std::string url_str = "";
+		 url_str = "/home/xa/www" + thumbFile->get_uri_path();
+		 localPath = "d:/temp" + thumbFile->get_uri_path();
+
+		 std::string resultPath;
+		 std::string filename;
+		 resultPath = this->getPath(localPath, filename);
+		 resultPath = this->myReplaceAll(resultPath, "/", "\\");
+		 if (!PathIsDirectory(resultPath.c_str())){
+			 /*不存在则创建*/
+			 this->CreateMuliteDirectory(resultPath.c_str());
+		 }
+		 UploadFile *uf = new UploadFile;
+		 uf->download(url_str.c_str(), localPath.c_str());
+		 delete uf;
 		
+		 /*=======*/
+		 this->gatp.GetClientRect(&thumbRect);
+
 		this->nameEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_name()).c_str());/*名称*/
 		this->infoEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_info()).c_str());/*描述*/
 		this->capacityEdit.SetWindowTextA(Util::ltos(g.get_capacity()).c_str());/*容量*/
@@ -96,11 +117,11 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 
 		long classid = g.get_classid();
 		classification clas;
-		classification_dao*cd = classification_dao::get_classification_dao();
+		
 		std::list<long> ids;
 		do
 		{
-			cd->getParentClass(&clas,classid);
+			this->cs->getParentClass(&clas,classid);
 			classid = clas.get_pid();
 			ids.push_back(clas.get_id());
 		} while (clas.get_pid() != -1);
@@ -128,83 +149,96 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 
-HRESULT AddGoodsDlg::ShowPic(const char *lpstrImgUrl, CDC*pDC)
+std::string AddGoodsDlg::myReplaceAll(const std::string& str, std::string org_str, std::string rep_str) // 把org_str 替换为rep_str; 
 {
-	//HDC hDC_Temp = GetDC(hWnd);
-
-	IPicture *pPic;
-	IStream *pStm;
-
-	BOOL bResult;
-
-	DWORD dwFileSize, dwByteRead;
-
-	//读取网页上图片文件，实际是个CHttpFile指针    
-	CInternetSession session("HttpClient");
-	CFile* httpFile = (CFile*)session.OpenURL(lpstrImgUrl);
-
-	if (httpFile != INVALID_HANDLE_VALUE)
+	std::vector<std::string>  delimVec = mySplit(str, org_str);
+	if (delimVec.size() <= 0)
 	{
-		dwFileSize = httpFile->GetLength();//获取文件字节数        
-
-		if (dwFileSize == 0xFFFFFFFF)
-			return E_FAIL;
+		std::cout << "can not find" << std::endl;
+		return str;
 	}
-	else
+	std::string target("");
+	std::vector<std::string>::iterator it = delimVec.begin();
+	for (; it != delimVec.end(); ++it)
 	{
-		return E_FAIL;
+		target = target + (*it) + rep_str;
 	}
-
-
-	//分配全局存储空间        
-	HGLOBAL hGlobal = GlobalAlloc(GMEM_MOVEABLE, dwFileSize);
-	LPVOID pvData = NULL;
-
-	if (hGlobal == NULL)
-		return E_FAIL;
-
-	if ((pvData = GlobalLock(hGlobal)) == NULL)//锁定分配内存块        
-		return E_FAIL;
-
-	//把文件读入内存缓冲区        
-	dwByteRead = httpFile->Read(pvData, dwFileSize);
-
-	GlobalUnlock(hGlobal);
-
-	CreateStreamOnHGlobal(hGlobal, TRUE, &pStm);
-
-	//装入图形文件        
-	bResult = OleLoadPicture(pStm, dwFileSize, TRUE, IID_IPicture, (LPVOID*)&pPic);
-
-	if (FAILED(bResult))
-		return E_FAIL;
-
-	OLE_XSIZE_HIMETRIC hmWidth; //图片的真实宽度, 单位为英寸       
-	OLE_YSIZE_HIMETRIC hmHeight; //图片的真实高度, 单位为英寸       
-	pPic->get_Width(&hmWidth);
-	pPic->get_Height(&hmHeight);
-
-	//转换hmWidth和hmHeight为pixels距离，1英寸=25.4毫米       
-	int nWidth = MulDiv(hmWidth, GetDeviceCaps(pDC->m_hDC, LOGPIXELSX), 2540);
-	int nHeight = MulDiv(hmHeight, GetDeviceCaps(pDC->m_hDC, LOGPIXELSY), 2540);
-
-	//将图形输出到屏幕上（有点像BitBlt）        
-	bResult = pPic->Render(pDC->m_hDC, 10, 40, nWidth, nHeight,
-		0, hmHeight, hmWidth, -hmHeight, NULL);
-
-	pPic->Release();
-
-	httpFile->Close();//关闭打开的文件        
-
-	if (SUCCEEDED(bResult))
-	{
-		return S_OK;
-	}
-	else
-	{
-		return E_FAIL;
-	}
+	//target = target +(*it); 
+	return target;
 }
+
+
+
+std::vector<std::string> AddGoodsDlg::mySplit(const std::string& str, std::string sp_string)  // split(), str 是要分割的string
+{
+	std::vector<std::string> vecString;
+	int sp_stringLen = sp_string.size();
+	int lastPosition = 0;
+	int index = -1;
+	while (-1 != (index = str.find(sp_string, lastPosition)))
+	{
+		vecString.push_back(str.substr(lastPosition, index - lastPosition));
+		lastPosition = index + sp_stringLen;
+	}
+	std::string lastStr = str.substr(lastPosition);
+	if (!lastStr.empty())
+	{
+		vecString.push_back(lastStr);
+	}
+	return vecString;
+}
+
+BOOL AddGoodsDlg::FolderExists(CString s)
+{
+	DWORD attr;
+	attr = GetFileAttributes(s);
+	return (attr != (DWORD)(-1)) &&
+		(attr & FILE_ATTRIBUTE_DIRECTORY);
+}
+
+
+BOOL AddGoodsDlg::CreateMuliteDirectory(CString P)
+{
+	int len = P.GetLength();
+	if (len <2) return false;
+	if ('\\' == P[len - 1])
+	{
+		P = P.Left(len - 1);
+		len = P.GetLength();
+	}
+	if (len <= 0) return false;
+	if (len <= 3)
+	{
+		if (FolderExists(P))return true;
+		else return false;
+	}
+	if (FolderExists(P))return true;
+	CString Parent;
+	Parent = P.Left(P.ReverseFind('\\'));
+	if (Parent.GetLength() <= 0)return false;
+	BOOL Ret = CreateMuliteDirectory(Parent);
+	if (Ret)
+	{
+		SECURITY_ATTRIBUTES sa;
+		sa.nLength = sizeof(SECURITY_ATTRIBUTES);
+		sa.lpSecurityDescriptor = NULL;
+		sa.bInheritHandle = 0;
+		Ret = (CreateDirectory(P, &sa) == TRUE);
+		return Ret;
+	}
+	else
+		return FALSE;
+}
+
+std::string AddGoodsDlg::getPath(std::string&path,std::string&filename){
+	int lastp = path.find_last_of("/");
+	std::string b = path.substr(0, lastp);
+	/*result =  path.substr(2, lastp).c_str();
+	std::cout << "" << std::endl;*/
+	filename =path.substr(lastp+1);
+	return b;
+}
+
 
 
 void AddGoodsDlg::SetCurSel(CComboBox *box, long id, int k){
@@ -274,7 +308,6 @@ void ConvertUtf8ToGBK(CString &strUtf8)
 void AddGoodsDlg::addGood(){
 
 	/*商品名称*/
-	//CWnd *c2 = this->GetDlgItem(IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX);
 	CString cs0;
 	this->nameEdit.GetWindowTextA(cs0);
 	
@@ -286,7 +319,6 @@ void AddGoodsDlg::addGood(){
 	good.set_classid(this->selClass);
 	/*描述*/
 	CString info;
-	//CWnd *infoEdit = this->GetDlgItem(IDC_EDIT_DESCRIBE);
 	infoEdit.GetWindowTextA(info);
 	std::string info_str = info.GetBuffer(0);
 	info_str = charset_util::GBKToUTF8(info_str);
@@ -310,7 +342,6 @@ void AddGoodsDlg::addGood(){
 	long lp = Util::stol(lowestPrice.GetBuffer(0));
 	good.set_lowest_price(lp);
 
-
 	/*最高价*/
 	CString highestPrice;
 	this->highestPriceEdit.GetWindowTextA(highestPrice);
@@ -324,11 +355,9 @@ void AddGoodsDlg::addGood(){
 	purchPostion = charset_util::GBKToUTF8(purchPostion);
 	good.set_purchasing_position(purchPostion);
 
-
 	/*时间戳*/
 	std::string addTime = "2015/11/21";
 	good.set_addTime(addTime);
-
 
 	good.set_backGoodsAccordingTo(2);
 	good.set_expressSingle(2);
@@ -336,43 +365,85 @@ void AddGoodsDlg::addGood(){
 	good.set_goodsInvoice(2);
 	good.set_productProfile(2);
 
+	good_service*gs= good_service::get_good_service();
+	if (this->goodId > 0){ /*修改商品*/
+		good.set_id(this->goodId);
+		gs->update_good(good);
+	}
+	else{ /*添加商品*/
 	myDoc->addGood(good);
+	}
 
-	file_dao*fd = file_dao::get_file_dao();
-	good_file_dao*gfd = good_file_dao::get_good_file_dao();
+	
 
 	/*图片*/
-
-	/*縮略圖*/
-	file*f0 = new file;
-	f0->set_name("");
-	std::string path = "";
-	f0->set_path(path);
-	f0->set_type_id(12);
-	std::string uri_path = "";
-	f0->set_uri_path(uri_path);
-	fd->add_file(*f0);
-
-	UploadFile *uf = new UploadFile;
+	long fileTypeId = -1;/*文件类型*/
 	std::string base;
-	std::string id_str = Util::ltos(f0->get_id());
-	long fileTypeId = 11;
-	std::string fileTypeIdStr = Util::ltos(fileTypeId);
-	uf->upload(this->thumbPath, base, fileTypeIdStr.c_str(), id_str.c_str());
-	f0->set_uri_path(base);
-	fd->update_file(*f0);
+	std::string fileTypeIdStr = "";
+	std::string id_str = "";
+	UploadFile *uf = new UploadFile;
+	/*縮略圖*/
+	if (this->thumbFileId > 0){ /*修改缩略图*/
+		
+		if (this->thumbPath != ""){
+		file thumbFile;
+		fs->findById(this->thumbFileId, &thumbFile);
+		std::string base;
+		id_str = Util::ltos(thumbFile.get_id());
+		fileTypeId = 11;
+		fileTypeIdStr = Util::ltos(fileTypeId);
+		uf->upload(this->thumbPath, base, fileTypeIdStr.c_str(), id_str.c_str());
+		delete uf;
+		thumbFile.set_uri_path(base);
+		fs->update_file(thumbFile);
+		}
+	}
+	else{ /*添加缩略图*/
+		file*f0 = new file;
+		f0->set_name("");
+		std::string path = "";
+		f0->set_path(path);
+		f0->set_type_id(12);
+		std::string uri_path = "";
+		f0->set_uri_path(uri_path);
+		fs->add_file(*f0);
+		
+		std::string id_str = Util::ltos(f0->get_id());
+		fileTypeId = 11;
+		std::string fileTypeIdStr = Util::ltos(fileTypeId);
+		uf->upload(this->thumbPath, base, fileTypeIdStr.c_str(), id_str.c_str());
+		delete uf;
+		f0->set_uri_path(base);
+		fs->update_file(*f0);
 
-	good_file *gf = new good_file;
-	gf->set_file_id(f0->get_id());
-	gf->set_good_id(good.get_id());
-	gfd->add_good_file(*gf);
+		good_file *gf = new good_file;
+		gf->set_file_id(f0->get_id());
+		gf->set_good_id(good.get_id());
+		
+		gfs->add_good_file(*gf);
+	}
+
+	
 
 	/*商品大图1*/
-	/*file*big1File = new file;
+	file*big1File = new file;
+	fileTypeId = 13;
 	big1File->set_name("");
-	big1File->set_path("");
-	big1File->set_type_id(2);*/
-	//big1File->set_uri_path(base);
+	std::string b1Path = "";
+	big1File->set_path(b1Path);
+	big1File->set_type_id(fileTypeId);
+	big1File->set_uri_path(base);
+	fs->add_file(*big1File);
+
+	UploadFile *ufBig1 = new UploadFile;
+	
+	fileTypeIdStr = Util::ltos(fileTypeId);
+	id_str = Util::ltos(big1File->get_id());
+	ufBig1->upload(Big1path, base, fileTypeIdStr.c_str(), id_str.c_str());
+	delete ufBig1;
+	big1File->set_uri_path(base);
+	fs->update_file(*big1File);
+
 }
 
 /*縮略圖*/
@@ -436,16 +507,107 @@ void AddGoodsDlg::uploadCutFigure2(){
 	ShowJpg::ShowJpgGif(this->cutFigure2.GetDC(), cutFigure2Path, d.left, d.top);
 }
 
+/*重绘*/
 void AddGoodsDlg::OnPaint(){
-	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
-	//ShowJpg::ShowJpgGif(this->bgat.GetDC(), this->Big1path, this->big1Rect.left, this->big1Rect.top);
-
-	/*std::string url_str = "http://pic7.nipic.com/20100611/2113444_004433009618_2.jpg";
-	this->ShowPic(url_str.c_str(), this->gatp.GetDC());*/
-
+	ShowJpg::ShowJpgGif(this->gatp.GetDC(), localPath.c_str(), thumbRect.left, thumbRect.top);
+	//ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
 	CDialogEx::OnPaint();
 	
 }
+
+
+HRESULT AddGoodsDlg::ShowPic(CDC* pDC, CString strImgUrl, CRect rect)
+{
+	HDC hDC_Temp = pDC->GetSafeHdc();
+
+	IPicture *pPic;
+	IStream *pStm;
+
+	HRESULT bResult;// = FALSE;        
+
+	DWORD dwFileSize, dwByteRead;
+
+	//读取网页上图片文件，实际是个CHttpFile指针    
+	CInternetSession session("HttpClient");
+	CFile* httpFile = (CFile*)session.OpenURL(strImgUrl);
+
+	if (httpFile != INVALID_HANDLE_VALUE)
+	{
+		dwFileSize = httpFile->GetLength();//获取文件字节数        
+
+		if (dwFileSize == 0xFFFFFFFF)
+			return E_FAIL;
+	}
+	else
+	{
+		return E_FAIL;
+	}
+
+
+	//分配全局存储空间        
+	HGLOBAL hGlobal = GlobalAlloc(GMEM_MOVEABLE, dwFileSize);
+	LPVOID pvData = NULL;
+
+	if (hGlobal == NULL)
+		return E_FAIL;
+
+	if ((pvData = GlobalLock(hGlobal)) == NULL)//锁定分配内存块        
+		return E_FAIL;
+
+	//把文件读入内存缓冲区        
+	dwByteRead = httpFile->Read(pvData, dwFileSize);
+
+	GlobalUnlock(hGlobal);
+
+	CreateStreamOnHGlobal(hGlobal, TRUE, &pStm);
+
+	//装入图形文件        
+	bResult = OleLoadPicture(pStm, dwFileSize, TRUE, IID_IPicture, (LPVOID*)&pPic);
+
+	if (FAILED(bResult))
+		return E_FAIL;
+
+	OLE_XSIZE_HIMETRIC hmWidth; //图片的真实宽度, 单位为英寸       
+	OLE_YSIZE_HIMETRIC hmHeight; //图片的真实高度, 单位为英寸       
+	pPic->get_Width(&hmWidth);
+	pPic->get_Height(&hmHeight);
+
+	//转换hmWidth和hmHeight为pixels距离，1英寸=25.4毫米       
+	int nWidth = MulDiv(hmWidth, GetDeviceCaps(hDC_Temp, LOGPIXELSX), 2540);
+	int nHeight = MulDiv(hmHeight, GetDeviceCaps(hDC_Temp, LOGPIXELSY), 2540);
+
+	//缩放图片
+	int nWZoom = nWidth / rect.Width();
+	int nHZoom = nHeight / rect.Height();
+	int nZoom = 1;
+	nZoom = (nWZoom > nHZoom) ? nWZoom : nHZoom;
+	nWidth /= nZoom;
+	nHeight /= nZoom;
+	int midW = (rect.left + rect.right) / 2;
+	int midH = (rect.top + rect.bottom) / 2;
+	rect.left = midW - nWidth / 2;
+	rect.right = midW + nWidth / 2;
+	rect.top = midH - nHeight / 2;
+	rect.bottom = midH + nHeight / 2;
+
+	//将图形输出到屏幕上（有点像BitBlt）        
+	bResult = pPic->Render(hDC_Temp, rect.left, rect.top, rect.Width(), rect.Height(),
+		0, hmHeight, hmWidth, -hmHeight, NULL);
+
+	pPic->Release();
+
+	httpFile->Close();//关闭打开的文件        
+
+	if (SUCCEEDED(bResult))
+	{
+		return S_OK;
+	}
+	else
+	{
+		return E_FAIL;
+	}
+}
+
 
 BOOL AddGoodsDlg::OnEraseBkgnd(CDC*pDC){
 	return CDialogEx::OnEraseBkgnd(pDC);

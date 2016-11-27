@@ -30,9 +30,9 @@ BOOL ListGoodsDlg::OnInitDialog(){
 	//int nRow = this->listCtrl.InsertItem(1, "asddas");
 	//this->listCtrl.SetItemText(nRow, 1, "fddfdf");
 	
-	good_dao*gd= good_dao::get_good_dao();
+	good_service*gs = good_service::get_good_service();
 	std::list<goods*> glist;
-	gd->query_list(&glist);
+	gs->query_list(&glist);
 
 	std::list<goods*>::iterator iter = glist.begin();
 	for (int i=0; iter != glist.end(); iter++,i++){

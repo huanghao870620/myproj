@@ -150,3 +150,4 @@ BOOL ShowJpg::ShowImage(CDC* pDC, CString strPath, int x, int y)
 
 	return true;
 }
+

@@ -20,6 +20,5 @@ public:
 	virtual ~ShowJpg();
 public:static BOOL ShowJpg::ShowJpgGif(CDC* pDC, CString strPath, int x, int y);
 public:static BOOL ShowJpg::ShowImage(CDC* pDC, CString strPath, int x, int y);
-
 };
 #endif // !defined(EA_8207EE03_0362_4090_A6CC_78C6A437B3B0__INCLUDED_)

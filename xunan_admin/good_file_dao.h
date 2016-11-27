@@ -25,12 +25,12 @@ class good_file_dao
 
 private:good_file_dao();
 public:virtual ~good_file_dao();
-private:std::auto_ptr<odb::database> db;
+//private:std::auto_ptr<odb::database> db;
 public:static good_file_dao* get_good_file_dao(){
 	static good_file_dao dao;
 	return &dao;
 }
-public:void add_good_file(good_file&gf);
-public:void findFileByGoodId(long goodId, long type_id_, std::list<file*> *fs);
+public:void add_good_file(good_file&gf, std::auto_ptr<odb::database> &db);
+public:void findFileByGoodId(long goodId, long type_id_, std::list<file*> *fs, std::auto_ptr<odb::database> &db);
 };
 #endif // !defined(EA_33C8784F_4A1E_4073_8EA1_3621CFE523DA__INCLUDED_)

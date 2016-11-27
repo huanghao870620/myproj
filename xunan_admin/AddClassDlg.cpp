@@ -118,8 +118,9 @@ void AddClassDlg::AddClass(){
 	//f->set_uri_path(file_path);
 	long fileTypeId = 11;
 	f->set_type_id(fileTypeId);
-	file_dao*fd = file_dao::get_file_dao();
-	fd->add_file(*f);
+	//file_dao*fd = file_dao::get_file_dao();
+	file_service*fs = file_service::get_file_service();
+	fs->add_file(*f);
 
 	/*上传文件*/
 	UploadFile *uf = new UploadFile;
@@ -128,9 +129,8 @@ void AddClassDlg::AddClass(){
 	std::string base;
 	uf->upload(this->fileNamePath, base, fileTypeIdStr.c_str(),id_str.c_str());/*上传文件*/
 	f->set_uri_path(base);
-	fd->update_file(*f);
+	fs->update_file(*f);
 	delete uf;
-
 
 	CEdit*class_name_edit = (CEdit*) this->GetDlgItem(IDC_EDIT1); /*分类名称*/
 	CEdit *pid_edit = (CEdit*)this->GetDlgItem(IDC_EDIT2);
@@ -147,7 +147,8 @@ void AddClassDlg::AddClass(){
 	classifi->set_pid(Util::stol(pid));
 	classifi->set_img_id(f->get_id());
 
-	classification_dao::get_classification_dao()->add_classifi(*classifi);
+	classification_service *cs = classification_service::get_classification_service();
+	cs->add_classifi(*classifi);
 }
 
 

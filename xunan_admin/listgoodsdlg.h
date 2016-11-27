@@ -2,7 +2,8 @@
 
 #include"resource.h"
 #include<iostream>
-#include"good_dao.h"
+//#include"good_dao.h"
+#include"good_service.h"
 #include"charset_util.h"
 #include"MyCListCtrl.h"
 #include"Util.h"

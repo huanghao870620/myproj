@@ -9,7 +9,7 @@
 
 
 file_dao::file_dao(){
-	this->db = db_util::get_db_util()->get_db();
+	//this->db = db_util::get_db_util()->get_db();
 }
 
 
@@ -18,16 +18,16 @@ file_dao::~file_dao(){
 
 }
 
-void file_dao::add_file(file&f){
+void file_dao::add_file(file&f, std::auto_ptr<odb::database> &db){
 	odb::core::transaction *t = nullptr;
-	t = new odb::core::transaction(this->db->begin());
-	this->db->persist(f);
+	t = new odb::core::transaction(db->begin());
+	db->persist(f);
 	t->commit();
 }
 
-void file_dao::update_file(file&f){
-	 odb::core::transaction *t = new odb::core::transaction(this->db->begin());
-	 this->db->update(f);
+void file_dao::update_file(file&f, std::auto_ptr<odb::database> &db){
+	 odb::core::transaction *t = new odb::core::transaction(db->begin());
+	 db->update(f);
 	 t->commit();
 }
 
@@ -37,4 +37,5 @@ void file_dao::findById(long id, file*f, std::auto_ptr<odb::database> &db){
 	odb::result<file>::iterator i(r.begin());
 	f->set_type_id(i->get_type_id());
 	f->set_uri_path(i->get_uri_path());
+	f->set_id(i->get_id());
 }

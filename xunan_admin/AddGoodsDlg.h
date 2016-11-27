@@ -2,6 +2,7 @@
 #pragma execution_character_set("utf-8")
 #include<iostream>
 #include<list>
+#include<vector>
 
 #include"resource.h"
 #include<afxdialogex.h>
@@ -10,12 +11,12 @@
 #include"charset_util.h"
 #include"Util.h"
 #include"ShowJpg.h"
-#include"file_dao.h"
-#include"good_file_dao.h"
+#include"good_file_service.h"
 #include"file.h"
 #include"UploadFile.h"
-#include"good_dao.h"
-#include"classification_dao.h"
+#include"good_service.h"
+#include"classification_service.h"
+#include"file_service.h"
 
 //#include"util\"
 
@@ -86,9 +87,28 @@ private:int m_nYPos = 0;
 private:int m_nXPos = 0;
 
 
+private:std::string localPath;
+
+
+private:long thumbFileId; /*缩略图文件id*/
+
+
+private:std::list<file*> bigFileList; /*商品大图*/
+
 private:long getClassId(std::list<long> *ls, int index);
 private:void SetCurSel(CComboBox *box, long id, int i);
-private:HRESULT ShowPic(const char *lpstrImgUrl, CDC*pDC);
+private:HRESULT ShowPic(CDC* pDC, CString strImgUrl, CRect rect);
+private:std::string getPath(std::string&path, std::string&filename);
+private:BOOL CreateMuliteDirectory(CString P);
+private:BOOL FolderExists(CString s);
+private:std::vector<std::string> mySplit(const std::string& str, std::string sp_string);
+private:std::string myReplaceAll(const std::string& str, std::string org_str, std::string rep_str);
+
+private:void init();
+
+private:file_service*fs;
+private:good_file_service*gfs;
+private:classification_service*cs;
 
 private:CStringW ConvertUTF82CStringW(char* instr);/*转换为utf8*/
 protected:virtual BOOL OnInitDialog();
