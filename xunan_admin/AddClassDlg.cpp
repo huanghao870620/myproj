@@ -110,45 +110,43 @@ BOOL AddClassDlg::OnInitDialog(){
 }
 
 void AddClassDlg::AddClass(){
-	file* f = new file;
-	f->set_name("dd");
-	std::string file_path = this->fileNamePath.GetBuffer(0);
-	file_path = charset_util::GBKToUTF8(file_path);
-	f->set_path(file_path);
-	//f->set_uri_path(file_path);
-	long fileTypeId = 11;
-	f->set_type_id(fileTypeId);
-	//file_dao*fd = file_dao::get_file_dao();
-	file_service*fs = file_service::get_file_service();
-	fs->add_file(*f);
+	//file* f = new file;
+	//f->set_name("dd");
+	//std::string file_path = this->fileNamePath.GetBuffer(0);
+	//file_path = charset_util::GBKToUTF8(file_path);
+	//f->set_path(file_path);
+	//long fileTypeId = 11;
+	//f->set_type_id(fileTypeId);
+	//file_service*fs = file_service::get_file_service();
+	//fs->add_file(*f);
 
-	/*上传文件*/
-	UploadFile *uf = new UploadFile;
-	std::string id_str = Util::ltos(f->get_id());
-	std::string fileTypeIdStr = Util::ltos(fileTypeId);
-	std::string base;
-	uf->upload(this->fileNamePath, base, fileTypeIdStr.c_str(),id_str.c_str());/*上传文件*/
-	f->set_uri_path(base);
-	fs->update_file(*f);
-	delete uf;
+	///*上传文件*/
+	//UploadFile *uf = new UploadFile;
+	//std::string id_str = Util::ltos(f->get_id());
+	//std::string fileTypeIdStr = Util::ltos(fileTypeId);
+	//std::string base;
+	//uf->upload(this->fileNamePath, base, fileTypeIdStr.c_str(),id_str.c_str());/*上传文件*/
+	//f->set_uri_path(base);
+	//fs->update_file(*f);
+	//delete uf;
 
-	CEdit*class_name_edit = (CEdit*) this->GetDlgItem(IDC_EDIT1); /*分类名称*/
-	CEdit *pid_edit = (CEdit*)this->GetDlgItem(IDC_EDIT2);
-	classification *classifi = new classification;
-	CString class_name;
-	class_name_edit->GetWindowTextA(class_name);
-	std::string className = class_name.GetBuffer(0);
-	className = charset_util::GBKToUTF8(className);
-	classifi->set_name(className);
+	//CEdit*class_name_edit = (CEdit*) this->GetDlgItem(IDC_EDIT1); /*分类名称*/
+	//CEdit *pid_edit = (CEdit*)this->GetDlgItem(IDC_EDIT2);
+	//classification *classifi = new classification;
+	//CString class_name;
+	//class_name_edit->GetWindowTextA(class_name);
+	//std::string className = class_name.GetBuffer(0);
+	//className = charset_util::GBKToUTF8(className);
+	//classifi->set_name(className);
 
-	CString pid_s;
-	pid_edit->GetWindowTextA(pid_s);
-	std::string pid= pid_s.GetBuffer(0);
-	classifi->set_pid(Util::stol(pid));
-	classifi->set_img_id(f->get_id());
+	//CString pid_s;
+	//pid_edit->GetWindowTextA(pid_s);
+	//std::string pid= pid_s.GetBuffer(0);
+	//classifi->set_pid(Util::stol(pid));
+	//classifi->set_img_id(f->get_id());
 
-	classification_service *cs = classification_service::get_classification_service();
-	cs->add_classifi(*classifi);
+	//classification_service *cs = classification_service::get_classification_service();
+	//cs->add_classifi(*classifi);
 }
 
 

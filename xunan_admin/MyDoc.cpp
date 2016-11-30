@@ -27,19 +27,7 @@ MyDoc::~MyDoc(){
 
 
 /**/
-void MyDoc::addGood(goods&good){
-	try{
-	{
-	odb::core::transaction t(db->begin());
-	db->persist(good);
-	t.commit();
-	}
-	}
-	catch (const odb::exception&e){
-		std::cerr << e.what() << std::endl;
-	}
 
-}
 
 
 /**/

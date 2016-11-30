@@ -1,15 +1,15 @@
-// AddBrandDlg.cpp : 实现文件
+//// AddBrandDlg.cpp : 实现文件
+////
 //
-
 #include "stdafx.h"
 #include "AddBrandDlg.h"
 #include "afxdialogex.h"
-
-
-// AddBrandDlg 对话框
-
+//
+//
+//// AddBrandDlg 对话框
+//
 IMPLEMENT_DYNAMIC(AddBrandDlg, CDialogEx)
-
+//
 AddBrandDlg::AddBrandDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(AddBrandDlg::IDD, pParent)
 {
@@ -60,6 +60,6 @@ BEGIN_MESSAGE_MAP(AddBrandDlg, CDialogEx)
 	ON_BN_CLICKED(IDOK, addBrand)
 	ON_BN_CLICKED(IDC_BUTTON1,selectImg)
 END_MESSAGE_MAP()
-
-
-// AddBrandDlg 消息处理程序
+//
+//
+//// AddBrandDlg 消息处理程序

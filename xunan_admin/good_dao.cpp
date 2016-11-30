@@ -50,3 +50,8 @@ void good_dao::findById(goods*good, long id, std::auto_ptr<odb::database> &db){
 void good_dao::update(goods&good, std::auto_ptr<odb::database> &db){
 	db->update(good);
 }
+
+/*ÃÌº”…Ã∆∑*/
+void good_dao::add(goods&good, std::auto_ptr<odb::database>&db){
+	db->persist(good);
+}

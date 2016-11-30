@@ -16,6 +16,7 @@
 #include"db_util.h"
 #include"goods.h"
 #include"good_dao.h"
+#include"file.h"
 #include"good_file-odb.hxx"
 #include"goods-odb.hxx"
 
@@ -36,6 +37,19 @@ private:good_dao*gd;
 public: void query_list(std::list<goods*>* goods_list);
 public:void findById(goods*good, long id);
 public:void update_good(goods&good);
+public:void  add_good(std::string&name, 
+	int selClass,
+	std::string&info_str,
+	long capl,
+	std::string&dop,
+	long lp,
+	long hp,
+	std::string&purchPostion,
+	std::string&addTime,
+	long goodId,
+	long thumbFileId,
+	std::string&thumbPath,
+	goods&good);
 
 };
 #endif // !defined(EA_959D68BD_06AA_466f_B7A8_557E08D212AF__INCLUDED_)

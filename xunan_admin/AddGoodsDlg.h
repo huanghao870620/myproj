@@ -17,6 +17,7 @@
 #include"good_service.h"
 #include"classification_service.h"
 #include"file_service.h"
+#include"upload_service.h"
 #include"Constants.h"
 
 //#include"util\"
@@ -40,6 +41,7 @@ protected:
 protected:afx_msg void addGood(); /*添加商品*/
 protected:afx_msg void uploadFileGatp(); /*上传商品正面照*/
 protected:afx_msg void uploadFileBgat(); /*上傳商品背面照*/
+protected:afx_msg void uploadAdvPic();/*上传广告图*/
 protected:afx_msg void uploadFileBig1(); /*上傳大圖1*/
 protected:afx_msg void uploadFileBig2(); /*上傳大圖2*/
 protected:afx_msg void uploadCutFigure1(); /*切圖1*/
@@ -57,6 +59,7 @@ private:CString big6Path;
 private:CString big7Path;
 private:CString big8Path;
 private:CString thumbPath;/*縮略圖*/
+private:CString advPath;/*广告图*/
 private:CString cutFigure1Path;/*切圖1*/
 private:CString cutFigure2Path;/*切圖2*/
 private:CString cutFigure3Path;/*切图3*/
@@ -84,6 +87,7 @@ private:long goodId;
 
 private:RECT big1Rect;
 private:RECT thumbRect;/*缩略图*/
+private:RECT advRect;/*广告图*/
 
 private:int selClass; /*选择分类*/
 
@@ -93,6 +97,8 @@ protected:afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar
 protected:afx_msg void OnPaint();
 
 private:CStatic gatp;// 商品縮略圖
+private:CStatic advPic;//商品广告图
+
 private:CStatic big1;//大圖1
 private:CStatic big2;//大图2
 private:CStatic big3;//大图3
@@ -163,6 +169,8 @@ private:void downloadFtpFile(file*f);
 private:file_service*fs;
 private:good_file_service*gfs;
 private:classification_service*cs;
+private:good_service*gs;
+private:upload_service*us;
 
 private:CStringW ConvertUTF82CStringW(char* instr);/*转换为utf8*/
 protected:virtual BOOL OnInitDialog();

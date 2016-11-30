@@ -188,6 +188,10 @@ namespace odb
     //
     t[17UL] = 0;
 
+    // adv_pic_
+    //
+    t[18UL] = 0;
+
     return grew;
   }
 
@@ -361,6 +365,14 @@ namespace odb
     b[n].is_unsigned = 0;
     b[n].buffer = &i.classid_value;
     b[n].is_null = &i.classid_null;
+    n++;
+
+    // adv_pic_
+    //
+    b[n].buffer_type = MYSQL_TYPE_LONGLONG;
+    b[n].is_unsigned = 0;
+    b[n].buffer = &i.adv_pic_value;
+    b[n].is_null = &i.adv_pic_null;
     n++;
   }
 
@@ -690,6 +702,20 @@ namespace odb
       i.classid_null = is_null;
     }
 
+    // adv_pic_
+    //
+    {
+      long int const& v =
+        o.adv_pic_;
+
+      bool is_null (false);
+      mysql::value_traits<
+          long int,
+          mysql::id_longlong >::set_image (
+        i.adv_pic_value, is_null, v);
+      i.adv_pic_null = is_null;
+    }
+
     return grew;
   }
 
@@ -961,6 +987,20 @@ namespace odb
         i.classid_value,
         i.classid_null);
     }
+
+    // adv_pic_
+    //
+    {
+      long int& v =
+        o.adv_pic_;
+
+      mysql::value_traits<
+          long int,
+          mysql::id_longlong >::set_value (
+        v,
+        i.adv_pic_value,
+        i.adv_pic_null);
+    }
   }
 
   void access::object_traits_impl< ::goods, id_mysql >::
@@ -995,9 +1035,10 @@ namespace odb
   "`express_single`, "
   "`state`, "
   "`add_time`, "
-  "`classid`) "
+  "`classid`, "
+  "`adv_pic`) "
   "VALUES "
-  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
   const char access::object_traits_impl< ::goods, id_mysql >::find_statement[] =
   "SELECT "
@@ -1018,7 +1059,8 @@ namespace odb
   "`goods`.`express_single`, "
   "`goods`.`state`, "
   "`goods`.`add_time`, "
-  "`goods`.`classid` "
+  "`goods`.`classid`, "
+  "`goods`.`adv_pic` "
   "FROM `goods` "
   "WHERE `goods`.`id`=?";
 
@@ -1041,7 +1083,8 @@ namespace odb
   "`express_single`=?, "
   "`state`=?, "
   "`add_time`=?, "
-  "`classid`=? "
+  "`classid`=?, "
+  "`adv_pic`=? "
   "WHERE `id`=?";
 
   const char access::object_traits_impl< ::goods, id_mysql >::erase_statement[] =
@@ -1067,7 +1110,8 @@ namespace odb
   "`goods`.`express_single`, "
   "`goods`.`state`, "
   "`goods`.`add_time`, "
-  "`goods`.`classid` "
+  "`goods`.`classid`, "
+  "`goods`.`adv_pic` "
   "FROM `goods`";
 
   const char access::object_traits_impl< ::goods, id_mysql >::erase_query_statement[] =

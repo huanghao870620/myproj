@@ -33,3 +33,47 @@ void good_service::query_list(std::list<goods*>* goods_list){
 void good_service::findById(goods*good, long id){
 	this->gd->findById(good, id, this->db);
 }
+
+
+void  good_service::add_good(std::string&name, 
+	int selClass,
+	std::string&info_str,
+	long capl,
+	std::string&dop,
+	long lp,
+	long hp,
+	std::string&purchPostion,
+	std::string&addTime,
+	long goodId,
+	long thumbFileId,
+	std::string&thumbPath,
+	goods&good){
+	
+	good.set_name(name);
+	good.set_classid(selClass);
+	good.set_info(info_str);//描述
+	good.set_capacity(capl);//容量
+	good.set_date_of_production(dop);//生产日期
+	good.set_lowest_price(lp);//最低价
+	good.set_highestPrice(hp);//最高价
+	good.set_purchasing_position(purchPostion);//采购位置
+	good.set_addTime(addTime);//时间戳
+
+	good.set_left_photo(2);//左侧视图
+	good.set_expressSingle(2);
+	good.set_goodsAccordingToPositive(2);
+	good.set_goodsInvoice(2);
+	good.set_right_photo(2);//右侧视图
+
+	if (goodId > 0){ /*修改商品*/
+		good.set_id(goodId);
+		this->gd->update(good, this->db);
+	}
+	else{ /*添加商品*/
+		this->gd->add(good,this->db);
+	}
+
+
+
+	
+}

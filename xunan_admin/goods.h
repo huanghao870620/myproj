@@ -151,16 +151,16 @@ private:int state; //状态
 public:void set_state(int state){
 	this->state = state;
 }
-	   public:int get_state(){
-		   return this->state;
-	   }
+public:int get_state(){
+	return this->state;
+}
 private:std::string add_time_; //添加时间
-		public:void set_addTime(std::string& addTime){
-			this->add_time_ = addTime;
-		}
-		public:std::string& get_addTime(){
-			return this->add_time_;
-		}
+public:void set_addTime(std::string& addTime){
+	this->add_time_ = addTime;
+}
+public:std::string& get_addTime(){
+	return this->add_time_;
+}
 
 private:long classid_;//分类id
 public: void set_classid(long classid){
@@ -170,6 +170,14 @@ public:long get_classid(){
 	return this->classid_;
 }
 
+//广告图	   
+private:long adv_pic_;
+public:void set_adv_pic(long adv_pic){
+	this->adv_pic_ = adv_pic;
+}
+public:long get_adv_pic(){
+	return this->adv_pic_;
+}
 
 
 };

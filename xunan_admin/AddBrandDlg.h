@@ -21,12 +21,12 @@ public:
 
 // 对话框数据
 	enum { IDD = IDD_DIALOG_ADDBRAND };
-
+//
 private:CEdit brandNameEdit; /*品牌名称*/
 private:CStatic brandImg; /*品牌图片*/
 
 private:CString filePath;
-
+//
 private:brand_service*bs;
 private:file_service*fs;
 private:upload_service*us;

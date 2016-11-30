@@ -21,12 +21,6 @@ class db_util
 private:db_util();
 	virtual ~db_util();
 	 std::auto_ptr<odb::database> *db =nullptr;
-//public:static std::auto_ptr<odb::database>* get_db(){
-//	static std::auto_ptr<odb::database> db(
-//		new odb::mysql::database("root", "xa", "test", "192.168.1.102", 3306, "", "utf8")
-//		);
-//	return &db;
-//}
 public: std::auto_ptr<odb::database> get_db(){
 	return *db;
 }

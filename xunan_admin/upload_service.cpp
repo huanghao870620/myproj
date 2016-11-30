@@ -18,8 +18,8 @@ upload_service::upload_service(){
 upload_service::~upload_service(){
 
 }
-//
-///*上传文件*/
+
+/*上传文件*/
 void upload_service::upload_file(file&f, LPCSTR localFilePath,long file_type){
 	odb::core::transaction tx(db->begin());
 	std::string fileTypeIdStr;
@@ -28,13 +28,12 @@ void upload_service::upload_file(file&f, LPCSTR localFilePath,long file_type){
 	f.set_type_id(file_type);
 	std::string base;
 	f.set_uri_path(base);
-//	
 	fd->add_file(f,this->db);
-	UploadFile *uf = new UploadFile;
+
+	UploadFile uf;
 	fileTypeIdStr = Util::ltos(file_type);
 	std::string id_str = Util::ltos(f.get_id());
-	uf->upload(localFilePath, base, fileTypeIdStr.c_str(), id_str.c_str());
-	delete uf;
+	uf.upload(localFilePath, base, fileTypeIdStr.c_str(), id_str.c_str());
 
 	f.set_uri_path(base);
 	fd->update_file(f,this->db);

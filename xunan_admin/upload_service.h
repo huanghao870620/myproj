@@ -19,12 +19,10 @@ public:
 	virtual ~upload_service();
 private:file_dao*fd;
 private:std::auto_ptr<odb::database> db;
-//
 public:static upload_service* get_upload_service(){
 	static upload_service us;
 	return &us;
 }
-//
 public:void upload_file(file&f, LPCSTR localFilePath,long file_type);
 
 };
