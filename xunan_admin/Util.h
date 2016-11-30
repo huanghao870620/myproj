@@ -9,7 +9,9 @@
 #define EA_2F110B58_39A7_489e_9866_F2AB9E36DC5D__INCLUDED_
 
 #include<iostream>
-#include "stdafx.h"
+
+#include<afxdlgs.h>
+
 #include<sstream>
 /**
  * π§æﬂ¿‡

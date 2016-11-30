@@ -5,6 +5,8 @@
 ////  Original author: admin
 /////////////////////////////////////////////////////////////
 //
+#include"UploadFile.h"
+#include"Util.h"
 #include "file_service.h"
 //
 //
@@ -45,34 +47,36 @@ void file_service::update_file(file&f){
 void file_service::update_and_upload_file(long file_id,
 	std::string&localPath, 
 	long fileTypeId){
-	//std::string base;
-	//std::string id_str;
-	//std::string fileTypeIdStr;
-	//UploadFile uf;
- //   file f;
-	//try{
-	//odb::core::transaction tx(this->db->begin());
-	//this->fd->findById(file_id, &f,this->db);
-	//id_str = Util::ltos(f.get_id());
-	//fileTypeIdStr = Util::ltos(fileTypeId);
-	//uf.upload(localPath.c_str(), base, fileTypeIdStr.c_str(), id_str.c_str());
-	//f.set_uri_path(base);
-	//this->fd->update_file(f, this->db);
-	//tx.commit();
-	//}
-	//catch (odb::exception&e){
-	//	std::cout << e.what() << std::endl;
-	//}
+	std::string base;
+	std::string id_str;
+	std::string fileTypeIdStr;
+	UploadFile uf;
+    file f;
+	try{
+	odb::core::transaction tx(this->db->begin());
+	this->fd->findById(file_id, &f,this->db);
+	id_str = Util::ltos(f.get_id());
+	fileTypeIdStr = Util::ltos(fileTypeId);
+	uf.upload(localPath.c_str(), base, fileTypeIdStr.c_str(), id_str.c_str());
+	f.set_uri_path(base);
+	this->fd->update_file(f, this->db);
+	tx.commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+	}
 }
 
 
 void file_service::add_good_file(std::string&localPath,long good_id,long file_type){
-	/*std::string path = "";
+	std::string path = "";
 	std::string uri_path = "";
 	file f;
 	good_file gf;
 	UploadFile uf;
 	std::string base;
+	try{
+		odb::core::transaction tx(this->db->begin());
 	f.set_name("");
 	f.set_path(path);
 	f.set_type_id(file_type);
@@ -87,5 +91,10 @@ void file_service::add_good_file(std::string&localPath,long good_id,long file_ty
 	
 	gf.set_file_id(f.get_id());
 	gf.set_good_id(good_id);
-	this->gfd->add_good_file(gf, this->db);*/
+	this->gfd->add_good_file(gf, this->db);
+	tx.commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+	}
 }

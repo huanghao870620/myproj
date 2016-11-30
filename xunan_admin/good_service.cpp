@@ -5,6 +5,7 @@
 //  Original author: admin
 ///////////////////////////////////////////////////////////
 
+#include"upload_service.h"
 #include "good_service.h"
 
 
@@ -47,8 +48,16 @@ void  good_service::add_good(std::string&name,
 	long goodId,
 	long thumbFileId,
 	std::string&thumbPath,
+	std::string&advPath,
+	upload_service*us,
 	goods&good){
 	
+	try{
+	odb::core::transaction tx(this->db->begin());
+
+	file adv_file;
+	us->upload_file_no_tran(adv_file, advPath.c_str(), 17);
+
 	good.set_name(name);
 	good.set_classid(selClass);
 	good.set_info(info_str);//描述
@@ -64,6 +73,7 @@ void  good_service::add_good(std::string&name,
 	good.set_goodsAccordingToPositive(2);
 	good.set_goodsInvoice(2);
 	good.set_right_photo(2);//右侧视图
+	good.set_adv_pic(adv_file.get_id());//广告图
 
 	if (goodId > 0){ /*修改商品*/
 		good.set_id(goodId);
@@ -72,7 +82,11 @@ void  good_service::add_good(std::string&name,
 	else{ /*添加商品*/
 		this->gd->add(good,this->db);
 	}
-
+	tx.commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+	}
 
 
 	

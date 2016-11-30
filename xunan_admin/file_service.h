@@ -20,6 +20,9 @@
 //#include"Util.h"
 //#include"UploadFile.h"
 #include"good_file.h"
+
+class UploadFile;
+class Util;
 class file_service
 {
 

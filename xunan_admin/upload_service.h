@@ -24,6 +24,7 @@ public:static upload_service* get_upload_service(){
 	return &us;
 }
 public:void upload_file(file&f, LPCSTR localFilePath,long file_type);
+public:void upload_file_no_tran(file&f, LPCSTR  localFilePath, long file_type);
 
 };
 #endif // !defined(EA_F3EEAFCE_C113_45ab_A059_42D07323A249__INCLUDED_)

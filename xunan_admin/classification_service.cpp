@@ -34,7 +34,7 @@ void classification_service::getParentClass(classification*classifi, long classi
 /**/
 void classification_service::query_class_bypid(std::list<classification*>*child_class, DWORD_PTR pid){
 	try{
-	//odb::core::transaction t(db->begin());
+	odb::core::transaction t(db->begin());
 	odb::result<classification> r(db->query<classification>(odb::query<classification>::pid == pid));
 	for (odb::result<classification>::iterator i(r.begin()); i != r.end(); ++i){
 		classification *cla = new classification;

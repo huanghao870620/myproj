@@ -14,10 +14,7 @@
 #include"charset_util.h"
 
 
-
-
 // AddClass ¶Ô»°¿ò
-
 class AddClassDlg : public CDialogEx
 {
 	DECLARE_DYNAMIC(AddClassDlg)

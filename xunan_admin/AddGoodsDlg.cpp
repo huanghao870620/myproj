@@ -35,167 +35,167 @@ AddGoodsDlg::~AddGoodsDlg()
 }
 
 void AddGoodsDlg::init(){
-	//this->fs = file_service::get_file_service();
-	/*this->gfs = good_file_service::get_good_file_service();
+	this->fs = file_service::get_file_service();
+	this->gfs = good_file_service::get_good_file_service();
 	this->cs = classification_service::get_classification_service();
-	this->gs = good_service::get_good_service();*/
-	//this->us = upload_service::get_upload_service();
+	this->gs = good_service::get_good_service();
+	this->us = upload_service::get_upload_service();
 }
 
 /**/
 void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 {
-	//CDialogEx::DoDataExchange(pDX);
-	//DDX_Control(pDX, IDC_STATIC_GATP, this->gatp);//縮略圖
-	//DDX_Control(pDX, IDC_STATIC_ADV_PIC, this->advPic);//商品广告图
-	//DDX_Control(pDX, IDC_STATIC_BGAT, this->big1);//大圖1
-	//DDX_Control(pDX, IDC_STATIC_PP, this->big2); //大圖2
-	//DDX_Control(pDX, IDC_STATIC_BIG3, this->big3);//大圖3
-	//DDX_Control(pDX, IDC_STATIC_BIG4, this->big4);//大圖4
-	//DDX_Control(pDX, IDC_STATIC_BIG5, this->big5);//大圖5
-	//DDX_Control(pDX, IDC_STATIC_BIG6, this->big6);//大圖6
-	//DDX_Control(pDX, IDC_STATIC_BIG7, this->big7);//大圖7
-	//DDX_Control(pDX, IDC_STATIC_BIG8, this->big8);//大圖8
-	//
-	//DDX_Control(pDX, IDC_STATIC_CUT1, this->cutFigure1);//切圖1
-	//DDX_Control(pDX, IDC_STATIC_CUT2, this->cutFigure2);//切圖2
-	//DDX_Control(pDX, IDC_STATIC_CUT3, this->cutFigure3);//切图3
-	//DDX_Control(pDX, IDC_STATIC_CUT4, this->cutFigure4);//切图4
-	//DDX_Control(pDX, IDC_STATIC_CUT5, this->cutFigure5);//切图5
-	//DDX_Control(pDX, IDC_STATIC_CUT6, this->cutFigure6);//切图6
-	//DDX_Control(pDX, IDC_STATIC_CUT7, this->cutFigure7);//切图7
-	//DDX_Control(pDX, IDC_STATIC_CUT8, this->cutFigure8);//切图8
-	//DDX_Control(pDX, IDC_STATIC_CUT9, this->cutFigure9);//切图9
-	//DDX_Control(pDX, IDC_STATIC_CUT10, this->cutFigure10);//切图10
-	//DDX_Control(pDX, IDC_STATIC_CUT11, this->cutFigure11);//切图11
-	//DDX_Control(pDX, IDC_STATIC_CUT12, this->cutFigure12);//切图12
-	//DDX_Control(pDX, IDC_STATIC_CUT13, this->cutFigure13);//切图13
-	//DDX_Control(pDX, IDC_STATIC_CUT14, this->cutFigure14);//切图14
-	//DDX_Control(pDX, IDC_STATIC_CUT15, this->cutFigure15);//切图15
-	//DDX_Control(pDX, IDC_STATIC_CUT16, this->cutFigure16);//切图16
-	//DDX_Control(pDX, IDC_STATIC_CUT17, this->cutFigure17);//切图17
-	//DDX_Control(pDX, IDC_STATIC_CUT18, this->cutFigure18);//切图18
-	//DDX_Control(pDX, IDC_STATIC_CUT19, this->cutFigure19);//切图19
-	//DDX_Control(pDX, IDC_STATIC_CUT20, this->cutFigure20);//切图20
-	//DDX_Control(pDX, IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX, this->nameEdit);/*商品名称*/
-	//DDX_Control(pDX, IDC_EDIT_DESCRIBE, this->infoEdit);/*商品描述*/
-	//DDX_Control(pDX, IDC_EDIT_CAPACITY, this->capacityEdit);/*容量*/
-	//DDX_Control(pDX, IDC_DATETIMEPICKER1, this->dateOfProductionControl);/*生产日期*/
-	//DDX_Control(pDX, IDC_LOWEST_PRICE, this->lowestPriceEdit);/*最低价*/
-	//DDX_Control(pDX, IDC_HIGHEST_PRICE, this->highestPriceEdit);/*最高价*/
-	//DDX_Control(pDX, IDC_EDIT_PURCHASING_POSITION, this->purchasPositonEdit);/*采购位置*/
-	//DDX_Control(pDX, IDC_COMBO_BIG_CLASS, this->firstClass);/*一级分类*/
-	//DDX_Control(pDX, IDC_COMBO_CHILD_CLASS, this->secondClass);/*二级分类*/
-	//DDX_Control(pDX, IDC_COMBO1, this->thirdClass);/*三级分类*/
-	//MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
-	//std::list<classification*> *ls = new std::list<classification*>;
-	//myDoc->query_classification(ls);
+	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_STATIC_GATP, this->gatp);//縮略圖
+	DDX_Control(pDX, IDC_STATIC_ADV_PIC, this->advPic);//商品广告图
+	DDX_Control(pDX, IDC_STATIC_BGAT, this->big1);//大圖1
+	DDX_Control(pDX, IDC_STATIC_PP, this->big2); //大圖2
+	DDX_Control(pDX, IDC_STATIC_BIG3, this->big3);//大圖3
+	DDX_Control(pDX, IDC_STATIC_BIG4, this->big4);//大圖4
+	DDX_Control(pDX, IDC_STATIC_BIG5, this->big5);//大圖5
+	DDX_Control(pDX, IDC_STATIC_BIG6, this->big6);//大圖6
+	DDX_Control(pDX, IDC_STATIC_BIG7, this->big7);//大圖7
+	DDX_Control(pDX, IDC_STATIC_BIG8, this->big8);//大圖8
+	
+	DDX_Control(pDX, IDC_STATIC_CUT1, this->cutFigure1);//切圖1
+	DDX_Control(pDX, IDC_STATIC_CUT2, this->cutFigure2);//切圖2
+	DDX_Control(pDX, IDC_STATIC_CUT3, this->cutFigure3);//切图3
+	DDX_Control(pDX, IDC_STATIC_CUT4, this->cutFigure4);//切图4
+	DDX_Control(pDX, IDC_STATIC_CUT5, this->cutFigure5);//切图5
+	DDX_Control(pDX, IDC_STATIC_CUT6, this->cutFigure6);//切图6
+	DDX_Control(pDX, IDC_STATIC_CUT7, this->cutFigure7);//切图7
+	DDX_Control(pDX, IDC_STATIC_CUT8, this->cutFigure8);//切图8
+	DDX_Control(pDX, IDC_STATIC_CUT9, this->cutFigure9);//切图9
+	DDX_Control(pDX, IDC_STATIC_CUT10, this->cutFigure10);//切图10
+	DDX_Control(pDX, IDC_STATIC_CUT11, this->cutFigure11);//切图11
+	DDX_Control(pDX, IDC_STATIC_CUT12, this->cutFigure12);//切图12
+	DDX_Control(pDX, IDC_STATIC_CUT13, this->cutFigure13);//切图13
+	DDX_Control(pDX, IDC_STATIC_CUT14, this->cutFigure14);//切图14
+	DDX_Control(pDX, IDC_STATIC_CUT15, this->cutFigure15);//切图15
+	DDX_Control(pDX, IDC_STATIC_CUT16, this->cutFigure16);//切图16
+	DDX_Control(pDX, IDC_STATIC_CUT17, this->cutFigure17);//切图17
+	DDX_Control(pDX, IDC_STATIC_CUT18, this->cutFigure18);//切图18
+	DDX_Control(pDX, IDC_STATIC_CUT19, this->cutFigure19);//切图19
+	DDX_Control(pDX, IDC_STATIC_CUT20, this->cutFigure20);//切图20
+	DDX_Control(pDX, IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX, this->nameEdit);/*商品名称*/
+	DDX_Control(pDX, IDC_EDIT_DESCRIBE, this->infoEdit);/*商品描述*/
+	DDX_Control(pDX, IDC_EDIT_CAPACITY, this->capacityEdit);/*容量*/
+	DDX_Control(pDX, IDC_DATETIMEPICKER1, this->dateOfProductionControl);/*生产日期*/
+	DDX_Control(pDX, IDC_LOWEST_PRICE, this->lowestPriceEdit);/*最低价*/
+	DDX_Control(pDX, IDC_HIGHEST_PRICE, this->highestPriceEdit);/*最高价*/
+	DDX_Control(pDX, IDC_EDIT_PURCHASING_POSITION, this->purchasPositonEdit);/*采购位置*/
+	DDX_Control(pDX, IDC_COMBO_BIG_CLASS, this->firstClass);/*一级分类*/
+	DDX_Control(pDX, IDC_COMBO_CHILD_CLASS, this->secondClass);/*二级分类*/
+	DDX_Control(pDX, IDC_COMBO1, this->thirdClass);/*三级分类*/
+	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
+	std::list<classification*> *ls = new std::list<classification*>;
+	myDoc->query_classification(ls);
 
-	//std::list<classification*>::iterator iter = ls->begin();
-	//for (int i = 0; iter != ls->end(); iter++, i++){
-	//	classification *classi = (classification*)*iter;
-	//	classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
-	//	this->firstClass.AddString(classi->get_name().c_str());
-	//	long id = classi->get_id();
-	//	this->firstClass.SetItemData(i, id);
-	//}
-	//long d0 = this->firstClass.GetItemData(0);
-	//long d1 = this->firstClass.GetItemData(1);
-	//long d2 = this->firstClass.GetItemData(2);
+	std::list<classification*>::iterator iter = ls->begin();
+	for (int i = 0; iter != ls->end(); iter++, i++){
+		classification *classi = (classification*)*iter;
+		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
+		this->firstClass.AddString(classi->get_name().c_str());
+		long id = classi->get_id();
+		this->firstClass.SetItemData(i, id);
+	}
+	long d0 = this->firstClass.GetItemData(0);
+	long d1 = this->firstClass.GetItemData(1);
+	long d2 = this->firstClass.GetItemData(2);
 
-	///*编辑商品信息*/
-	//if (this->goodId > 0){
-	//	good_service *gs = good_service::get_good_service();
-	//	goods g;
-	//	gs->findById(&g, this->goodId);
+	/*编辑商品信息*/
+	if (this->goodId > 0){
+		good_service *gs = good_service::get_good_service();
+		goods g;
+		gs->findById(&g, this->goodId);
 
-	//	good_file_service *gfs = good_file_service::get_good_file_service();
-	//	 std::list<file*> fileList;
-	//	 gfs->findFileByGoodId(this->goodId, 12, &fileList);/*商品缩略图*/
-	//	 file *thumbFile = fileList.front();/*缩略图*/
-	//	 this->thumbFileId = thumbFile->get_id(); /*缩略图文件id*/
+		good_file_service *gfs = good_file_service::get_good_file_service();
+		 std::list<file*> fileList;
+		 gfs->findFileByGoodId(this->goodId, 12, &fileList);/*商品缩略图*/
+		 file *thumbFile = fileList.front();/*缩略图*/
+		 this->thumbFileId = thumbFile->get_id(); /*缩略图文件id*/
 
-	//	 this->thumbPath  = std::string(Constants::local_base_path + thumbFile->get_uri_path()).c_str();/*ftp下载到本地的路径*/
-	//	 this->downloadFtpFile(thumbFile);/*下载缩略图*/
-	//	
-	//	this->gatp.GetClientRect(&thumbRect);
-
-
-	//	gfs->findFileByGoodId(this->goodId, 13, &this->bigFileList);/*商品大图*/
-
-	//	std::list<file*>::iterator bigIter = this->bigFileList.begin();
-	//	for (; bigIter != this->bigFileList.end(); bigIter++){
-	//		file*f = *bigIter;
-	//		this->downloadFtpFile(f);
-	//	}
-
-	//	gfs->findFileByGoodId(this->goodId, 14, &this->cutFileList);/*商品切图*/
-	//	std::list<file*>::iterator cutIter = this->cutFileList.begin();
-	//	for (; cutIter != this->cutFileList.end(); cutIter++){
-	//		file*f = *cutIter;
-	//		this->downloadFtpFile(f);
-	//	}
+		 this->thumbPath  = std::string(Constants::local_base_path + thumbFile->get_uri_path()).c_str();/*ftp下载到本地的路径*/
+		 this->downloadFtpFile(thumbFile);/*下载缩略图*/
+		
+		this->gatp.GetClientRect(&thumbRect);
 
 
-	//	this->nameEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_name()).c_str());/*名称*/
-	//	this->infoEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_info()).c_str());/*描述*/
-	//	this->capacityEdit.SetWindowTextA(Util::ltos(g.get_capacity()).c_str());/*容量*/
-	//	this->dateOfProductionControl.SetWindowTextA(g.get_dateOfProduction().c_str());/*生产日期*/
-	//	this->lowestPriceEdit.SetWindowTextA(Util::ltos(g.get_lowest_price()).c_str());/*最低价*/
-	//	this->highestPriceEdit.SetWindowTextA(Util::ltos(g.get_highest_price()).c_str());/*最高价*/
-	//	this->purchasPositonEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_purchasing_position()).c_str());/*采购位置*/
+		gfs->findFileByGoodId(this->goodId, 13, &this->bigFileList);/*商品大图*/
 
-	//	long classid = g.get_classid();
-	//	classification clas;
-	//	
-	//	std::list<long> ids;
-	//	do
-	//	{
-	//		this->cs->getParentClass(&clas,classid);
-	//		classid = clas.get_pid();
-	//		ids.push_back(clas.get_id());
-	//	} while (clas.get_pid() != -1);
+		std::list<file*>::iterator bigIter = this->bigFileList.begin();
+		for (; bigIter != this->bigFileList.end(); bigIter++){
+			file*f = *bigIter;
+			this->downloadFtpFile(f);
+		}
 
-	//	
-	//	CComboBox **boxArr = new CComboBox*[3]{
-	//		  &this->firstClass,
-	//			&this->secondClass,
-	//			&this->thirdClass
-	//	};
+		gfs->findFileByGoodId(this->goodId, 14, &this->cutFileList);/*商品切图*/
+		std::list<file*>::iterator cutIter = this->cutFileList.begin();
+		for (; cutIter != this->cutFileList.end(); cutIter++){
+			file*f = *cutIter;
+			this->downloadFtpFile(f);
+		}
 
-	//	CComboBox *b0 = boxArr[0];
-	//	CComboBox*b1 = boxArr[1];
-	//	CComboBox*b2 = boxArr[2];
 
-	//	int len = ids.size();
-	//	for (int i = 0; i < len; i++){
-	//		long id= this->getClassId(&ids, len-i-1);
-	//		CComboBox *box = boxArr[i];
-	//		this->SetCurSel(box, id,i);
-	//	}
+		this->nameEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_name()).c_str());/*名称*/
+		this->infoEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_info()).c_str());/*描述*/
+		this->capacityEdit.SetWindowTextA(Util::ltos(g.get_capacity()).c_str());/*容量*/
+		this->dateOfProductionControl.SetWindowTextA(g.get_dateOfProduction().c_str());/*生产日期*/
+		this->lowestPriceEdit.SetWindowTextA(Util::ltos(g.get_lowest_price()).c_str());/*最低价*/
+		this->highestPriceEdit.SetWindowTextA(Util::ltos(g.get_highest_price()).c_str());/*最高价*/
+		this->purchasPositonEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_purchasing_position()).c_str());/*采购位置*/
 
-	//	delete[]boxArr;
-	//}
+		long classid = g.get_classid();
+		classification clas;
+		
+		std::list<long> ids;
+		do
+		{
+			this->cs->getParentClass(&clas,classid);
+			classid = clas.get_pid();
+			ids.push_back(clas.get_id());
+		} while (clas.get_pid() != -1);
+
+		
+		CComboBox **boxArr = new CComboBox*[3]{
+			  &this->firstClass,
+				&this->secondClass,
+				&this->thirdClass
+		};
+
+		CComboBox *b0 = boxArr[0];
+		CComboBox*b1 = boxArr[1];
+		CComboBox*b2 = boxArr[2];
+
+		int len = ids.size();
+		for (int i = 0; i < len; i++){
+			long id= this->getClassId(&ids, len-i-1);
+			CComboBox *box = boxArr[i];
+			this->SetCurSel(box, id,i);
+		}
+
+		delete[]boxArr;
+	}
 }
 
 /*下载文件*/
 void AddGoodsDlg::downloadFtpFile(file*f){
-	//std::string url_str = "";
-	//url_str = Constants::server_base_path + f->get_uri_path();/*服务器上ftp的路径*/
-	//localPath = Constants::local_base_path + f->get_uri_path();/*ftp下载到本地的路径*/
+	std::string url_str = "";
+	url_str = Constants::server_base_path + f->get_uri_path();/*服务器上ftp的路径*/
+	localPath = Constants::local_base_path + f->get_uri_path();/*ftp下载到本地的路径*/
 
-	//std::string resultPath; /*截取结果*/
-	//std::string filename; /*文件名*/
-	//resultPath = this->getPath(localPath, filename);/*获取路径*/
-	//resultPath = this->myReplaceAll(resultPath, "/", "\\");/*替换文件路径*/
-	//if (!PathIsDirectory(resultPath.c_str())){
-	//	/*不存在则创建*/
-	//	this->CreateMuliteDirectory(resultPath.c_str());
-	//}
+	std::string resultPath; /*截取结果*/
+	std::string filename; /*文件名*/
+	resultPath = this->getPath(localPath, filename);/*获取路径*/
+	resultPath = this->myReplaceAll(resultPath, "/", "\\");/*替换文件路径*/
+	if (!PathIsDirectory(resultPath.c_str())){
+		/*不存在则创建*/
+		this->CreateMuliteDirectory(resultPath.c_str());
+	}
 
-	//UploadFile *uf = new UploadFile;
-	//uf->download(url_str.c_str(), localPath.c_str()); /*下载文件到本地*/
-	//delete uf;
+	UploadFile *uf = new UploadFile;
+	uf->download(url_str.c_str(), localPath.c_str()); /*下载文件到本地*/
+	delete uf;
 }
 
 /**/
@@ -355,210 +355,214 @@ void ConvertUtf8ToGBK(CString &strUtf8)
 
 /*添加商品*/
 void AddGoodsDlg::addGood(){
-	//goods good;
+	goods good;
 
-	///*商品名称*/
-	//CString cs0;
-	//this->nameEdit.GetWindowTextA(cs0);
-	//MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
-	//std::string name = cs0.GetBuffer(0);
-	//name = charset_util::GBKToUTF8(name);
+	/*商品名称*/
+	CString cs0;
+	this->nameEdit.GetWindowTextA(cs0);
+	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
+	std::string name = cs0.GetBuffer(0);
+	name = charset_util::GBKToUTF8(name);
 
-	///*描述*/
-	//CString info;
-	//infoEdit.GetWindowTextA(info);
-	//std::string info_str = info.GetBuffer(0);
-	//info_str = charset_util::GBKToUTF8(info_str);
+	/*描述*/
+	CString info;
+	infoEdit.GetWindowTextA(info);
+	std::string info_str = info.GetBuffer(0);
+	info_str = charset_util::GBKToUTF8(info_str);
 
-	///*容量*/
-	//CString capacity;
-	//this->capacityEdit.GetWindowTextA(capacity);
-	//long capl = Util::stol(capacity.GetBuffer(0));
+	/*容量*/
+	CString capacity;
+	this->capacityEdit.GetWindowTextA(capacity);
+	long capl = Util::stol(capacity.GetBuffer(0));
 
-	///*生产日期*/
-	//CString dateOfProduction;
-	//this->dateOfProductionControl.GetWindowTextA(dateOfProduction);
-	//std::string dop = dateOfProduction.GetBuffer(0);
+	/*生产日期*/
+	CString dateOfProduction;
+	this->dateOfProductionControl.GetWindowTextA(dateOfProduction);
+	std::string dop = dateOfProduction.GetBuffer(0);
 
-	///*最低价*/
-	//CString lowestPrice;
-	//this->lowestPriceEdit.GetWindowTextA(lowestPrice);
-	//long lp = Util::stol(lowestPrice.GetBuffer(0));
+	/*最低价*/
+	CString lowestPrice;
+	this->lowestPriceEdit.GetWindowTextA(lowestPrice);
+	long lp = Util::stol(lowestPrice.GetBuffer(0));
 
-	///*最高价*/
-	//CString highestPrice;
-	//this->highestPriceEdit.GetWindowTextA(highestPrice);
-	//long hp = Util::stol(highestPrice.GetBuffer(0));
+	/*最高价*/
+	CString highestPrice;
+	this->highestPriceEdit.GetWindowTextA(highestPrice);
+	long hp = Util::stol(highestPrice.GetBuffer(0));
 
-	///*采购位置*/
-	//CString purchasPositon;
-	//this->purchasPositonEdit.GetWindowTextA(purchasPositon);
-	//std::string purchPostion = purchasPositon.GetBuffer(0);
-	//purchPostion = charset_util::GBKToUTF8(purchPostion);
+	/*采购位置*/
+	CString purchasPositon;
+	this->purchasPositonEdit.GetWindowTextA(purchasPositon);
+	std::string purchPostion = purchasPositon.GetBuffer(0);
+	purchPostion = charset_util::GBKToUTF8(purchPostion);
 
-	//std::string thumb_path_str = this->thumbPath.GetBuffer(0);
+	std::string thumb_path_str = this->thumbPath.GetBuffer(0);
 
-	///*时间戳*/
-	//std::string addTime = "2015/11/21";
-	//this->gs->add_good(name, 
-	//	selClass, 
-	//	info_str,
-	//	capl,
-	//	dop, 
-	//	lp,
-	//	hp,
-	//	purchPostion, 
-	//	addTime, 
-	//	goodId, 
-	//	thumbFileId, 
-	//	thumb_path_str,
-	//	good);
+	/*广告图*/
+	std::string adv_path_str = this->advPath.GetBuffer(0);
 
-	///*图片*/
+	/*时间戳*/
+	std::string addTime = "2015/11/21";
+	this->gs->add_good(name, 
+		selClass, 
+		info_str,
+		capl,
+		dop, 
+		lp,
+		hp,
+		purchPostion, 
+		addTime, 
+		goodId, 
+		thumbFileId, 
+		thumb_path_str,
+		adv_path_str,
+		this->us,
+		good);
 
-	///*縮略圖*/
-	//if (thumbFileId > 0){ 
-	//	/*修改缩略图*/
-	//	if (thumbPath != ""){
-	//		this->fs->update_and_upload_file(this->thumbFileId, thumb_path_str, 11);
-	//	}
-	//}
-	//else{ 
-	//	/*添加缩略图*/
-	//	this->fs->add_good_file(thumb_path_str, good.get_id(), 11);
-	//}
+	/*图片*/
 
-	///*添加商品大图1*/
-	//std::string big1_path_str = this->big1Path.GetBuffer(0);
-	//this->fs->add_good_file(big1_path_str, good.get_id(), 13);
+	/*縮略圖*/
+	if (thumbFileId > 0){ 
+		/*修改缩略图*/
+		if (thumbPath != ""){
+			this->fs->update_and_upload_file(this->thumbFileId, thumb_path_str, 11);
+		}
+	}
+	else{ 
+		/*添加缩略图*/
+		this->fs->add_good_file(thumb_path_str, good.get_id(), 11);
+	}
 
-	///*添加切图1*/
-	//std::string cut1_path_str = this->cutFigure1Path.GetBuffer(0);
-	//this->fs->add_good_file(cut1_path_str, good.get_id(), 14);
+	/*添加商品大图1*/
+	std::string big1_path_str = this->big1Path.GetBuffer(0);
+	this->fs->add_good_file(big1_path_str, good.get_id(), 13);
 
-	///*添加广告图*/
-	//std::string adv_path_str= this->advPath.GetBuffer(0);
-	//this->fs->add_good_file(adv_path_str, good.get_id(), 17);
+	/*添加切图1*/
+	std::string cut1_path_str = this->cutFigure1Path.GetBuffer(0);
+	this->fs->add_good_file(cut1_path_str, good.get_id(), 14);
+
+	
+	
 }
 
 /*縮略圖*/
 void AddGoodsDlg::uploadFileGatp(){
-	/*this->gatp.GetClientRect(&thumbRect);
+	this->gatp.GetClientRect(&thumbRect);
 	this->thumbPath = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);*/
+	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
 }
 
 /*上传广告图*/
 void AddGoodsDlg::uploadAdvPic(){
-	/*this->advPic.GetClientRect(&this->advRect);
+	this->advPic.GetClientRect(&this->advRect);
 	this->advPath = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, this->advRect.left, this->advRect.top);*/
+	ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, this->advRect.left, this->advRect.top);
 }
 
 /*商品大圖1*/
 void AddGoodsDlg::uploadFileBig1(){
-	/*this->big1.GetClientRect(&this->big1Rect);
+	this->big1.GetClientRect(&this->big1Rect);
 	this->big1Path = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->big1.GetDC(), this->big1Path, big1Rect.left, big1Rect.top);*/
+	ShowJpg::ShowJpgGif(this->big1.GetDC(), this->big1Path, big1Rect.left, big1Rect.top);
 }
 
 /*商品大圖2*/
 void AddGoodsDlg::uploadFileBig2(){
-	/*RECT d;
+	RECT d;
 	this->big2.GetClientRect(&d);
 	CString big2Path = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->big2.GetDC(), big2Path, d.left, d.top);*/
+	ShowJpg::ShowJpgGif(this->big2.GetDC(), big2Path, d.left, d.top);
 }
 
 /*切圖1*/
 void AddGoodsDlg::uploadCutFigure1(){
-	/*RECT d;
+	RECT d;
 	this->cutFigure1.GetClientRect(&d);
 	this->cutFigure1Path = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->cutFigure1.GetDC(), cutFigure1Path, d.left, d.top);*/
+	ShowJpg::ShowJpgGif(this->cutFigure1.GetDC(), cutFigure1Path, d.left, d.top);
 }
 
 /*切圖2*/
 void AddGoodsDlg::uploadCutFigure2(){
-	/*RECT d;
+	RECT d;
 	this->cutFigure2.GetClientRect(&d);
 	this->cutFigure2Path = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->cutFigure2.GetDC(), cutFigure2Path, d.left, d.top);*/
+	ShowJpg::ShowJpgGif(this->cutFigure2.GetDC(), cutFigure2Path, d.left, d.top);
 }
 
 /*重绘*/
 void AddGoodsDlg::OnPaint(){
-	///*重绘缩略图*/
-	//ShowJpg::ShowJpgGif(this->gatp.GetDC(), this->thumbPath, thumbRect.left, thumbRect.top);
-	////ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
+	/*重绘缩略图*/
+	ShowJpg::ShowJpgGif(this->gatp.GetDC(), this->thumbPath, thumbRect.left, thumbRect.top);
+	//ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
 
-	///*重绘大图*/
-	//CStatic**bigCsList = new CStatic*[8]{
-	//  &this->big1,
-	//  &this->big2,
-	//  &this->big3,
-	//  &this->big4,
-	//  &this->big5,
-	//  &this->big6,
-	//  &this->big7,
-	//  &this->big8
-	//};
+	/*重绘大图*/
+	CStatic**bigCsList = new CStatic*[8]{
+	  &this->big1,
+	  &this->big2,
+	  &this->big3,
+	  &this->big4,
+	  &this->big5,
+	  &this->big6,
+	  &this->big7,
+	  &this->big8
+	};
 
-	//CString*bigPathArr = new CString[8]{
-	//		this->big1Path,
-	//	  this->big2Path,
-	//	  this->big3Path,
-	//	  this->big4Path,
-	//	  this->big5Path,
-	//	  this->big6Path,
-	//	  this->big7Path,
-	//	  this->big8Path
-	//};
+	CString*bigPathArr = new CString[8]{
+			this->big1Path,
+		  this->big2Path,
+		  this->big3Path,
+		  this->big4Path,
+		  this->big5Path,
+		  this->big6Path,
+		  this->big7Path,
+		  this->big8Path
+	};
 
-	//for (int i = 0; i < 8; i++){
-	//	RECT bigRect;
-	//	bigCsList[i]->GetClientRect(&bigRect);
-	//	ShowJpg::ShowJpgGif(bigCsList[i]->GetDC(), bigPathArr[i], bigRect.left, bigRect.top);
-	//}
-
-
+	for (int i = 0; i < 8; i++){
+		RECT bigRect;
+		bigCsList[i]->GetClientRect(&bigRect);
+		ShowJpg::ShowJpgGif(bigCsList[i]->GetDC(), bigPathArr[i], bigRect.left, bigRect.top);
+	}
 
 
-	///*重绘切图*/
-	//CStatic**cutCsList = new CStatic*[20]{
-	//		&this->cutFigure1,
-	//		&this->cutFigure2,
-	//		&this->cutFigure3,
-	//		&this->cutFigure4,
-	//		&this->cutFigure5,
-	//		&this->cutFigure6,
-	//		&this->cutFigure7,
-	//		&this->cutFigure8,
-	//		&this->cutFigure9,
-	//		&this->cutFigure10,
-	//		&this->cutFigure11,
-	//		&this->cutFigure12,
-	//		&this->cutFigure13,
-	//		&this->cutFigure14,
-	//		&this->cutFigure15,
-	//		&this->cutFigure16,
-	//		&this->cutFigure17,
-	//		&this->cutFigure18,
-	//		&this->cutFigure19,
-	//		&this->cutFigure20
-	//};
 
-	//std::list<file*>::iterator cutIter = this->cutFileList.begin();
-	//for (int i=0; cutIter != this->cutFileList.end(); cutIter++,i++){
-	//	file*f = *cutIter;
-	//	std::string lpPath = Constants::local_base_path + f->get_uri_path();
-	//	RECT cutRect;
-	//	cutCsList[i]->GetClientRect(&cutRect);
-	//	ShowJpg::ShowJpgGif(cutCsList[i]->GetDC(), lpPath.c_str(), cutRect.left, cutRect.top);
-	//}
-	////delete[]cutCsList;
 
-	//CDialogEx::OnPaint();
+	/*重绘切图*/
+	CStatic**cutCsList = new CStatic*[20]{
+			&this->cutFigure1,
+			&this->cutFigure2,
+			&this->cutFigure3,
+			&this->cutFigure4,
+			&this->cutFigure5,
+			&this->cutFigure6,
+			&this->cutFigure7,
+			&this->cutFigure8,
+			&this->cutFigure9,
+			&this->cutFigure10,
+			&this->cutFigure11,
+			&this->cutFigure12,
+			&this->cutFigure13,
+			&this->cutFigure14,
+			&this->cutFigure15,
+			&this->cutFigure16,
+			&this->cutFigure17,
+			&this->cutFigure18,
+			&this->cutFigure19,
+			&this->cutFigure20
+	};
+
+	std::list<file*>::iterator cutIter = this->cutFileList.begin();
+	for (int i=0; cutIter != this->cutFileList.end(); cutIter++,i++){
+		file*f = *cutIter;
+		std::string lpPath = Constants::local_base_path + f->get_uri_path();
+		RECT cutRect;
+		cutCsList[i]->GetClientRect(&cutRect);
+		ShowJpg::ShowJpgGif(cutCsList[i]->GetDC(), lpPath.c_str(), cutRect.left, cutRect.top);
+	}
+	//delete[]cutCsList;
+
+	CDialogEx::OnPaint();
 	
 }
 

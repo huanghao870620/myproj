@@ -56,10 +56,10 @@ void MyView::AddClass(){
 }
 
 /*测试对话框*/
-void MyView::ShowTestDlg(){
-	this->testDlg = new TestDlg;
-	this->testDlg->Create(IDD_DIALOG1, this);
-	this->testDlg->ShowWindow(SW_SHOW);
+void MyView::ShowAddVenueDlg(){
+	this->addVenueDlg = new AddVenue;
+	this->addVenueDlg->Create(IDD_DIALOG_VNEUE, this);
+	this->addVenueDlg->ShowWindow(SW_SHOW);
 }
 
 /*查看商品列表*/
@@ -89,6 +89,6 @@ BEGIN_MESSAGE_MAP(MyView, CView)
 	ON_COMMAND(ID_ADD_COUNTRY, MyView::addCountry)/*添加国家*/
 	ON_COMMAND(ID_WATCH_CLASS, MyView::watchClass)
 	ON_COMMAND(ID_ADD_CLASS, MyView::AddClass)
-	ON_COMMAND(ID_TEST, MyView::ShowTestDlg)
+	ON_COMMAND(ID_ADD_VNEUE, MyView::ShowAddVenueDlg)/*添加会场*/
 	ON_COMMAND(ID_40010, MyView::watchGoods) /*商品列表*/
 END_MESSAGE_MAP()

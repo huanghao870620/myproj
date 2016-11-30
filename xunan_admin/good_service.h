@@ -20,6 +20,7 @@
 #include"good_file-odb.hxx"
 #include"goods-odb.hxx"
 
+class upload_service;
 class good_service
 {
 
@@ -49,6 +50,8 @@ public:void  add_good(std::string&name,
 	long goodId,
 	long thumbFileId,
 	std::string&thumbPath,
+	std::string&advPath,
+	upload_service*us,
 	goods&good);
 
 };
