@@ -223,7 +223,7 @@ namespace odb
 
     static const goods_according_to_positive_type_ goods_according_to_positive;
 
-    // back_goods_according_to
+    // left_photo
     //
     typedef
     mysql::query_column<
@@ -231,11 +231,11 @@ namespace odb
         long int,
         mysql::id_longlong >::query_type,
       mysql::id_longlong >
-    back_goods_according_to_type_;
+    left_photo_type_;
 
-    static const back_goods_according_to_type_ back_goods_according_to;
+    static const left_photo_type_ left_photo;
 
-    // product_profile
+    // right_photo
     //
     typedef
     mysql::query_column<
@@ -243,9 +243,9 @@ namespace odb
         long int,
         mysql::id_longlong >::query_type,
       mysql::id_longlong >
-    product_profile_type_;
+    right_photo_type_;
 
-    static const product_profile_type_ product_profile;
+    static const right_photo_type_ right_photo;
 
     // goods_invoice
     //
@@ -364,14 +364,14 @@ namespace odb
   goods_according_to_positive (A::table_name, "`goods_according_to_positive`", 0);
 
   template <typename A>
-  const typename query_columns< ::goods, id_mysql, A >::back_goods_according_to_type_
+  const typename query_columns< ::goods, id_mysql, A >::left_photo_type_
   query_columns< ::goods, id_mysql, A >::
-  back_goods_according_to (A::table_name, "`back_goods_according_to`", 0);
+  left_photo (A::table_name, "`left_photo`", 0);
 
   template <typename A>
-  const typename query_columns< ::goods, id_mysql, A >::product_profile_type_
+  const typename query_columns< ::goods, id_mysql, A >::right_photo_type_
   query_columns< ::goods, id_mysql, A >::
-  product_profile (A::table_name, "`product_profile`", 0);
+  right_photo (A::table_name, "`right_photo`", 0);
 
   template <typename A>
   const typename query_columns< ::goods, id_mysql, A >::goods_invoice_type_
@@ -480,15 +480,15 @@ namespace odb
       long long goods_according_to_positive_value;
       my_bool goods_according_to_positive_null;
 
-      // back_goods_according_to_
+      // left_photo_
       //
-      long long back_goods_according_to_value;
-      my_bool back_goods_according_to_null;
+      long long left_photo_value;
+      my_bool left_photo_null;
 
-      // product_profile_
+      // right_photo_
       //
-      long long product_profile_value;
-      my_bool product_profile_null;
+      long long right_photo_value;
+      my_bool right_photo_null;
 
       // goods_invoice_
       //

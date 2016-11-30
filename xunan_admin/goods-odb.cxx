@@ -156,11 +156,11 @@ namespace odb
     //
     t[10UL] = 0;
 
-    // back_goods_according_to_
+    // left_photo_
     //
     t[11UL] = 0;
 
-    // product_profile_
+    // right_photo_
     //
     t[12UL] = 0;
 
@@ -305,20 +305,20 @@ namespace odb
     b[n].is_null = &i.goods_according_to_positive_null;
     n++;
 
-    // back_goods_according_to_
+    // left_photo_
     //
     b[n].buffer_type = MYSQL_TYPE_LONGLONG;
     b[n].is_unsigned = 0;
-    b[n].buffer = &i.back_goods_according_to_value;
-    b[n].is_null = &i.back_goods_according_to_null;
+    b[n].buffer = &i.left_photo_value;
+    b[n].is_null = &i.left_photo_null;
     n++;
 
-    // product_profile_
+    // right_photo_
     //
     b[n].buffer_type = MYSQL_TYPE_LONGLONG;
     b[n].is_unsigned = 0;
-    b[n].buffer = &i.product_profile_value;
-    b[n].is_null = &i.product_profile_null;
+    b[n].buffer = &i.right_photo_value;
+    b[n].is_null = &i.right_photo_null;
     n++;
 
     // goods_invoice_
@@ -585,32 +585,32 @@ namespace odb
       i.goods_according_to_positive_null = is_null;
     }
 
-    // back_goods_according_to_
+    // left_photo_
     //
     {
       long int const& v =
-        o.back_goods_according_to_;
+        o.left_photo_;
 
       bool is_null (false);
       mysql::value_traits<
           long int,
           mysql::id_longlong >::set_image (
-        i.back_goods_according_to_value, is_null, v);
-      i.back_goods_according_to_null = is_null;
+        i.left_photo_value, is_null, v);
+      i.left_photo_null = is_null;
     }
 
-    // product_profile_
+    // right_photo_
     //
     {
       long int const& v =
-        o.product_profile_;
+        o.right_photo_;
 
       bool is_null (false);
       mysql::value_traits<
           long int,
           mysql::id_longlong >::set_image (
-        i.product_profile_value, is_null, v);
-      i.product_profile_null = is_null;
+        i.right_photo_value, is_null, v);
+      i.right_photo_null = is_null;
     }
 
     // goods_invoice_
@@ -863,32 +863,32 @@ namespace odb
         i.goods_according_to_positive_null);
     }
 
-    // back_goods_according_to_
+    // left_photo_
     //
     {
       long int& v =
-        o.back_goods_according_to_;
+        o.left_photo_;
 
       mysql::value_traits<
           long int,
           mysql::id_longlong >::set_value (
         v,
-        i.back_goods_according_to_value,
-        i.back_goods_according_to_null);
+        i.left_photo_value,
+        i.left_photo_null);
     }
 
-    // product_profile_
+    // right_photo_
     //
     {
       long int& v =
-        o.product_profile_;
+        o.right_photo_;
 
       mysql::value_traits<
           long int,
           mysql::id_longlong >::set_value (
         v,
-        i.product_profile_value,
-        i.product_profile_null);
+        i.right_photo_value,
+        i.right_photo_null);
     }
 
     // goods_invoice_
@@ -989,8 +989,8 @@ namespace odb
   "`bar_code`, "
   "`speed_awb`, "
   "`goods_according_to_positive`, "
-  "`back_goods_according_to`, "
-  "`product_profile`, "
+  "`left_photo`, "
+  "`right_photo`, "
   "`goods_invoice`, "
   "`express_single`, "
   "`state`, "
@@ -1012,8 +1012,8 @@ namespace odb
   "`goods`.`bar_code`, "
   "`goods`.`speed_awb`, "
   "`goods`.`goods_according_to_positive`, "
-  "`goods`.`back_goods_according_to`, "
-  "`goods`.`product_profile`, "
+  "`goods`.`left_photo`, "
+  "`goods`.`right_photo`, "
   "`goods`.`goods_invoice`, "
   "`goods`.`express_single`, "
   "`goods`.`state`, "
@@ -1035,8 +1035,8 @@ namespace odb
   "`bar_code`=?, "
   "`speed_awb`=?, "
   "`goods_according_to_positive`=?, "
-  "`back_goods_according_to`=?, "
-  "`product_profile`=?, "
+  "`left_photo`=?, "
+  "`right_photo`=?, "
   "`goods_invoice`=?, "
   "`express_single`=?, "
   "`state`=?, "
@@ -1061,8 +1061,8 @@ namespace odb
   "`goods`.`bar_code`, "
   "`goods`.`speed_awb`, "
   "`goods`.`goods_according_to_positive`, "
-  "`goods`.`back_goods_according_to`, "
-  "`goods`.`product_profile`, "
+  "`goods`.`left_photo`, "
+  "`goods`.`right_photo`, "
   "`goods`.`goods_invoice`, "
   "`goods`.`express_single`, "
   "`goods`.`state`, "

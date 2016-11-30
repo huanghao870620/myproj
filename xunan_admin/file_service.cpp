@@ -24,9 +24,18 @@ void file_service::findById(long id,file *f){
 }
 
 void file_service::add_file(file&f){
-	this->fd->add_file(f, this->db);
+	try{
+		odb::core::transaction tx(this->db->begin());
+		this->fd->add_file(f, this->db);
+		tx.commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+	}
 }
 
 void file_service::update_file(file&f){
+	odb::core::transaction tx(this->db->begin());
 	this->fd->update_file(f,this->db);
+	tx.commit();
 }

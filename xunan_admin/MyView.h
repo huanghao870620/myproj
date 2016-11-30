@@ -12,6 +12,8 @@
 #include"resource.h"
 #include<iostream>
 #include"AddGoodsDlg.h"
+#include"AddBrandDlg.h"
+#include"AddCountryDlg.h"
 #include"WatchClassDlg.h"
 #include"AddClassDlg.h"
 #include"TestDlg.h"
@@ -28,12 +30,16 @@ protected:DECLARE_MESSAGE_MAP()
 public:virtual void OnDraw(CDC*pDC);
 protected:virtual BOOL OnCreate(LPCREATESTRUCT lpcs);
 protected:afx_msg void AddGood();/*添加商品*/
+protected:afx_msg void addBrand();/*添加品牌*/
+protected:afx_msg void addCountry();/*添加国家*/
 protected:afx_msg void watchClass();/*查看分类*/
 protected:afx_msg void AddClass();/*添加分类*/
 protected:afx_msg void watchGoods();/*商品列表*/
 protected:afx_msg void ShowTestDlg();
 
 private:AddGoodsDlg*pDlg;/*添加商品对话框*/
+private:AddBrandDlg*brandDlg;/*添加品牌对话框*/
+private:AddCountryDlg*addCountryDlg;/*添加国家对话框*/
 private:WatchClassDlg*watchClassDlg;/*查看分类对话框*/
 private:AddClassDlg*addClassDlg;/*添加分类对话框*/
 private:ListGoodsDlg*listGoodsDlg;

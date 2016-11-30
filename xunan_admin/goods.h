@@ -108,7 +108,8 @@ public:void set_speedAwb(std::string& speedAwb){
 public:std::string& get_speedAwb(){
 	return this->speed_awb_;
 }
-private:long goods_according_to_positive_; //商品正面照
+private:long goods_according_to_positive_; //商品正视图
+
 public:void set_goodsAccordingToPositive(long goodsAccordingToPositive){
 	this->goods_according_to_positive_ = goodsAccordingToPositive;
 }
@@ -116,20 +117,22 @@ public:long get_goodsAccordingToPositive(){
 	return this->goods_according_to_positive_;
 }
 
-private:long back_goods_according_to_; //商品背面照
-public:void set_backGoodsAccordingTo(long backGoodsAccordingTo){
-	this->back_goods_according_to_ = backGoodsAccordingTo;
+private:long left_photo_;//商品左侧视图
+public:void set_left_photo(long left_photo){
+	this->left_photo_ = left_photo;
 }
-public:long get_backGoodsAccording(){
-	return this->back_goods_according_to_;
+public:long get_left_photo(){
+	return this->left_photo_;
 }
-private:long product_profile_; //商品侧面照
-public:void set_productProfile(long productProfile){
-	this->product_profile_ = productProfile;
-}	   
-public:long get_productProfile(){
-	return this->product_profile_;
+
+private:long right_photo_;//商品右侧视图
+public:void set_right_photo(long right_photo){
+	this->right_photo_ = right_photo;
 }
+public:long  get_right_photo(){
+	return this->right_photo_;
+}
+
 private:long goods_invoice_; //商品发票
 public:void set_goodsInvoice(long goodsInvoice){
 	this->goods_invoice_ = goodsInvoice;

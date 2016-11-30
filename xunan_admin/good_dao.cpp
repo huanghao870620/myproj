@@ -48,7 +48,5 @@ void good_dao::findById(goods*good, long id, std::auto_ptr<odb::database> &db){
 
 /*修改商品信息*/
 void good_dao::update(goods&good, std::auto_ptr<odb::database> &db){
-	odb::core::transaction tx(db->begin());
 	db->update(good);
-	tx.commit();
 }

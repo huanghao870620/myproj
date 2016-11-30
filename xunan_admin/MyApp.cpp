@@ -9,7 +9,6 @@
 
 MyApp app;
 MyApp::MyApp(){
-	this->a = new A;
 	
 }
 

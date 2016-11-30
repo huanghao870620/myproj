@@ -20,7 +20,9 @@ good_service::~good_service(){
 }
 
 void good_service::update_good(goods&good){
+	odb::core::transaction tx(db->begin());
 	this->gd->update(good, this->db);
+	tx.commit();
 }
 
 

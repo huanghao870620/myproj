@@ -16,10 +16,11 @@
 #include"db_util.h"
 #include"goods.h"
 #include"file.h"
-//#include"file_dao.h"
+#include"file_dao.h"
 #include"good_file_dao.h"
 #include"good_file-odb.hxx"
 #include"goods-odb.hxx"
+
 
 class good_file_service
 {
@@ -33,6 +34,7 @@ public:static good_file_service* get_good_file_service(){
 	static good_file_service gfs;
 	return &gfs;
 }
+private:file_dao*fd;
 public:void add_good_file(good_file&gf);
 public:void findFileByGoodId(long goodId, long type_id_, std::list<file*> *fs);
 };

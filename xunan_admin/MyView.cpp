@@ -8,13 +8,7 @@
 #include "MyView.h"
 
 IMPLEMENT_DYNCREATE(MyView,CView)
-BEGIN_MESSAGE_MAP(MyView,CView)
-	ON_COMMAND(ID_ADD_GOOD,MyView::AddGood)
-	ON_COMMAND(ID_WATCH_CLASS,MyView::watchClass)
-	ON_COMMAND(ID_ADD_CLASS, MyView::AddClass)
-	ON_COMMAND(ID_TEST,MyView::ShowTestDlg)
-	ON_COMMAND(ID_40010, MyView::watchGoods) /*商品列表*/
-END_MESSAGE_MAP()
+
 MyView::MyView(){
 	std::cout << "视图构造" << std::endl;
 }
@@ -75,3 +69,26 @@ void MyView::watchGoods(){
 	this->listGoodsDlg->ShowWindow(SW_SHOW);
 }
 
+/*添加品牌*/
+void MyView::addBrand(){
+	this->brandDlg = new AddBrandDlg;
+	this->brandDlg->Create(IDD_DIALOG_ADDBRAND, this);
+	this->brandDlg->ShowWindow(SW_SHOW);
+}
+
+/*添加国家*/
+void MyView::addCountry(){
+	this->addCountryDlg = new AddCountryDlg;
+	this->addCountryDlg->Create(IDD_DIALOG_ADD_COUNTRY, this);
+	this->addCountryDlg->ShowWindow(SW_SHOW);
+}
+
+BEGIN_MESSAGE_MAP(MyView, CView)
+	ON_COMMAND(ID_ADD_GOOD, MyView::AddGood)/*添加商品*/
+	ON_COMMAND(ID_40011, MyView::addBrand)/*添加品牌*/
+	ON_COMMAND(ID_ADD_COUNTRY, MyView::addCountry)/*添加国家*/
+	ON_COMMAND(ID_WATCH_CLASS, MyView::watchClass)
+	ON_COMMAND(ID_ADD_CLASS, MyView::AddClass)
+	ON_COMMAND(ID_TEST, MyView::ShowTestDlg)
+	ON_COMMAND(ID_40010, MyView::watchGoods) /*商品列表*/
+END_MESSAGE_MAP()
