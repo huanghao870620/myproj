@@ -50,6 +50,7 @@ void  good_service::add_good(std::string&name,
 	std::string&thumbPath,
 	std::string&advPath,
 	upload_service*us,
+	std::string&is_recom,
 	goods&good){
 	
 	try{
@@ -59,7 +60,7 @@ void  good_service::add_good(std::string&name,
 	us->upload_file_no_tran(adv_file, advPath.c_str(), 17);
 
 	good.set_name(name);
-	good.set_classid(selClass);
+	good.set_classid(selClass);//分类
 	good.set_info(info_str);//描述
 	good.set_capacity(capl);//容量
 	good.set_date_of_production(dop);//生产日期
@@ -74,6 +75,15 @@ void  good_service::add_good(std::string&name,
 	good.set_goodsInvoice(2);
 	good.set_right_photo(2);//右侧视图
 	good.set_adv_pic(adv_file.get_id());//广告图
+
+	int reco = -1;/*推荐*/
+	if ("是" == is_recom){
+		reco = 1;
+	}
+	else if ("" == is_recom){
+		reco = 0;
+	}
+	//good.set_is_recommended(reco);
 
 	if (goodId > 0){ /*修改商品*/
 		good.set_id(goodId);

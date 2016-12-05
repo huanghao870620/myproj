@@ -179,6 +179,15 @@ public:long get_adv_pic(){
 	return this->adv_pic_;
 }
 
+//ÍÆ¼ö	   
+//private:int is_recommended_;
+//public:void set_is_recommended(int recom){
+//	this->is_recommended_ = recom;
+//}
+//public:int get_is_recommended(){
+//	return this->is_recommended_;
+//}
+
 
 };
 #endif // !defined(EA_67AE9961_74CF_4477_83B9_4D93D128056D__INCLUDED_)

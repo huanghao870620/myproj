@@ -87,6 +87,10 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_COMBO_BIG_CLASS, this->firstClass);/*一级分类*/
 	DDX_Control(pDX, IDC_COMBO_CHILD_CLASS, this->secondClass);/*二级分类*/
 	DDX_Control(pDX, IDC_COMBO1, this->thirdClass);/*三级分类*/
+
+	DDX_Control(pDX, IDC_RADIO_RECOMMENDED, this->isRecom);/*推荐*/
+	DDX_Control(pDX, IDC_RADIO_NOT_RECOMMENDED, this->isNotRecom);/*不推荐*/
+	
 	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
 	std::list<classification*> *ls = new std::list<classification*>;
 	myDoc->query_classification(ls);
@@ -242,8 +246,7 @@ BOOL AddGoodsDlg::FolderExists(CString s)
 {
 	DWORD attr;
 	attr = GetFileAttributes(s);
-	return (attr != (DWORD)(-1)) &&
-		(attr & FILE_ATTRIBUTE_DIRECTORY);
+	return (attr != (DWORD)(-1)) && (attr & FILE_ATTRIBUTE_DIRECTORY);
 }
 
 
@@ -401,6 +404,10 @@ void AddGoodsDlg::addGood(){
 	/*广告图*/
 	std::string adv_path_str = this->advPath.GetBuffer(0);
 
+	/*推荐*/
+	CString recom;
+	this->GetRecom(recom);
+	std::string is_recom_str = recom.GetBuffer(0);
 	/*时间戳*/
 	std::string addTime = "2015/11/21";
 	this->gs->add_good(name, 
@@ -417,6 +424,7 @@ void AddGoodsDlg::addGood(){
 		thumb_path_str,
 		adv_path_str,
 		this->us,
+		is_recom_str,
 		good);
 
 	/*图片*/
@@ -425,12 +433,12 @@ void AddGoodsDlg::addGood(){
 	if (thumbFileId > 0){ 
 		/*修改缩略图*/
 		if (thumbPath != ""){
-			this->fs->update_and_upload_file(this->thumbFileId, thumb_path_str, 11);
+			this->fs->update_and_upload_file(this->thumbFileId, thumb_path_str, 12);
 		}
 	}
 	else{ 
 		/*添加缩略图*/
-		this->fs->add_good_file(thumb_path_str, good.get_id(), 11);
+		this->fs->add_good_file(thumb_path_str, good.get_id(), 12);
 	}
 
 	/*添加商品大图1*/
@@ -667,6 +675,7 @@ BOOL AddGoodsDlg::OnEraseBkgnd(CDC*pDC){
 /*初始化数据*/
 BOOL AddGoodsDlg::OnInitDialog(){
 	CDialogEx::OnInitDialog();
+	this->isNotRecom.SetCheck(TRUE);
 	Gdiplus::GdiplusStartupInput gi;
 	ULONG_PTR gdiToken;
 	GdiplusStartup(&gdiToken, &gi, NULL);
@@ -863,6 +872,31 @@ void AddGoodsDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	CDialog::OnHScroll(nSBCode, nPrevPos, pScrollBar);
 }
 
+/*推荐*/
+void AddGoodsDlg::selRecommended(){
+	this->isRecom.SetCheck(TRUE);
+	this->isNotRecom.SetCheck(FALSE);
+}
+
+/*不推荐*/
+void AddGoodsDlg::selNotRecommended(){
+	this->isNotRecom.SetCheck(TRUE);
+	this->isRecom.SetCheck(FALSE);
+}
+
+/*获取推荐状态*/
+void AddGoodsDlg::GetRecom(CString&recom){
+	CButton **recoms = new CButton*[2]{
+		&this->isRecom,
+		&this->isNotRecom
+	};
+	for (int i = 0; i < 2; i++){
+		if (recoms[i]->GetCheck()){
+			recoms[i]->GetWindowTextA(recom);
+			break;
+		}
+	}
+}
 
 BEGIN_MESSAGE_MAP(AddGoodsDlg, CDialogEx)
 	ON_BN_CLICKED(IDOK, addGood)
@@ -872,6 +906,8 @@ BEGIN_MESSAGE_MAP(AddGoodsDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON9, uploadCutFigure1) /*切圖1*/
 	ON_BN_CLICKED(IDC_BUTTON10, uploadCutFigure2) /*切圖2*/
 	ON_BN_CLICKED(IDC_BUTTON_ADV_PIC, uploadAdvPic)/*广告图*/
+	ON_BN_CLICKED(IDC_RADIO_RECOMMENDED, selRecommended) /*推荐*/
+	ON_BN_CLICKED(IDC_RADIO_NOT_RECOMMENDED, selNotRecommended) /*不推荐*/
 	ON_CBN_SELCHANGE(IDC_COMBO_BIG_CLASS, SetSecondClass)
 	ON_CBN_SELCHANGE(IDC_COMBO_CHILD_CLASS, SetThirdClass)
 	ON_CBN_SELCHANGE(IDC_COMBO1, SelThirdClass)/**/

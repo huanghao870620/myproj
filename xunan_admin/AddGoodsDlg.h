@@ -49,6 +49,8 @@ protected:afx_msg void uploadCutFigure2(); /*切圖2*/
 protected:afx_msg void SetSecondClass();/*点击一级分类*/
 protected:afx_msg void SetThirdClass();/*点击二级分类*/
 protected:afx_msg void SelThirdClass();/*点击三级分类*/
+protected:afx_msg void selRecommended();/*选择推荐*/
+protected:afx_msg void selNotRecommended();/*选择不推荐*/
 protected:virtual BOOL OnEraseBkgnd(CDC*pDC);
 private:CString big1Path; /*商品大圖1*/
 private:CString big2Path; /*商品大圖2*/
@@ -140,6 +142,9 @@ private:CComboBox firstClass;/*一级分类*/
 private:CComboBox secondClass;/*二级分类*/
 private:CComboBox thirdClass;/*三级分类*/
 
+private:CButton isRecom; /*推荐*/
+private:CButton isNotRecom;/*不推荐*/
+
 private:int m_nYPos = 0;
 private:int m_nXPos = 0;
 
@@ -174,5 +179,8 @@ private:upload_service*us;
 
 private:CStringW ConvertUTF82CStringW(char* instr);/*转换为utf8*/
 protected:virtual BOOL OnInitDialog();
+
+public:void GetRecom(CString&recom);
+
 	DECLARE_MESSAGE_MAP()
 };

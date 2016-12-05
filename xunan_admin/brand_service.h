@@ -31,5 +31,7 @@ public:static brand_service* get_brand_service(){
 }
 public:void add_brand(brand&b);
 
+public:void get_brands(std::list<brand*> &brand_list);/*获取所有品牌*/
+
 };
 #endif // !defined(EA_4D7ABAE8_A099_454e_AC35_EC386B3C430A__INCLUDED_)

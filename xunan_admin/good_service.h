@@ -52,6 +52,7 @@ public:void  add_good(std::string&name,
 	std::string&thumbPath,
 	std::string&advPath,
 	upload_service*us,
+	std::string&is_recom,
 	goods&good);
 
 };

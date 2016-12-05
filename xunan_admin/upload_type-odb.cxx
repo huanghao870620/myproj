@@ -4,7 +4,7 @@
 
 #include <odb/pre.hxx>
 
-#include "brand-odb.hxx"
+#include "upload_type-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
@@ -24,10 +24,10 @@
 
 namespace odb
 {
-  // brand
+  // upload_type
   //
 
-  struct access::object_traits_impl< ::brand, id_mysql >::extra_statement_cache_type
+  struct access::object_traits_impl< ::upload_type, id_mysql >::extra_statement_cache_type
   {
     extra_statement_cache_type (
       mysql::connection&,
@@ -39,8 +39,8 @@ namespace odb
     }
   };
 
-  access::object_traits_impl< ::brand, id_mysql >::id_type
-  access::object_traits_impl< ::brand, id_mysql >::
+  access::object_traits_impl< ::upload_type, id_mysql >::id_type
+  access::object_traits_impl< ::upload_type, id_mysql >::
   id (const id_image_type& i)
   {
     mysql::database* db (0);
@@ -59,8 +59,8 @@ namespace odb
     return id;
   }
 
-  access::object_traits_impl< ::brand, id_mysql >::id_type
-  access::object_traits_impl< ::brand, id_mysql >::
+  access::object_traits_impl< ::upload_type, id_mysql >::id_type
+  access::object_traits_impl< ::upload_type, id_mysql >::
   id (const image_type& i)
   {
     mysql::database* db (0);
@@ -79,7 +79,7 @@ namespace odb
     return id;
   }
 
-  bool access::object_traits_impl< ::brand, id_mysql >::
+  bool access::object_traits_impl< ::upload_type, id_mysql >::
   grow (image_type& i,
         my_bool* t)
   {
@@ -100,22 +100,10 @@ namespace odb
       grew = true;
     }
 
-    // img_id_
-    //
-    t[2UL] = 0;
-
-    // is_recommended_
-    //
-    t[3UL] = 0;
-
-    // upload_type_id
-    //
-    t[4UL] = 0;
-
     return grew;
   }
 
-  void access::object_traits_impl< ::brand, id_mysql >::
+  void access::object_traits_impl< ::upload_type, id_mysql >::
   bind (MYSQL_BIND* b,
         image_type& i,
         mysql::statement_kind sk)
@@ -146,33 +134,9 @@ namespace odb
     b[n].length = &i.name_size;
     b[n].is_null = &i.name_null;
     n++;
-
-    // img_id_
-    //
-    b[n].buffer_type = MYSQL_TYPE_LONGLONG;
-    b[n].is_unsigned = 0;
-    b[n].buffer = &i.img_id_value;
-    b[n].is_null = &i.img_id_null;
-    n++;
-
-    // is_recommended_
-    //
-    b[n].buffer_type = MYSQL_TYPE_LONG;
-    b[n].is_unsigned = 0;
-    b[n].buffer = &i.is_recommended_value;
-    b[n].is_null = &i.is_recommended_null;
-    n++;
-
-    // upload_type_id
-    //
-    b[n].buffer_type = MYSQL_TYPE_LONGLONG;
-    b[n].is_unsigned = 0;
-    b[n].buffer = &i.upload_type_id_value;
-    b[n].is_null = &i.upload_type_id_null;
-    n++;
   }
 
-  void access::object_traits_impl< ::brand, id_mysql >::
+  void access::object_traits_impl< ::upload_type, id_mysql >::
   bind (MYSQL_BIND* b, id_image_type& i)
   {
     std::size_t n (0);
@@ -182,7 +146,7 @@ namespace odb
     b[n].is_null = &i.id_null;
   }
 
-  bool access::object_traits_impl< ::brand, id_mysql >::
+  bool access::object_traits_impl< ::upload_type, id_mysql >::
   init (image_type& i,
         const object_type& o,
         mysql::statement_kind sk)
@@ -231,52 +195,10 @@ namespace odb
       grew = grew || (cap != i.name_value.capacity ());
     }
 
-    // img_id_
-    //
-    {
-      long int const& v =
-        o.img_id_;
-
-      bool is_null (false);
-      mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_image (
-        i.img_id_value, is_null, v);
-      i.img_id_null = is_null;
-    }
-
-    // is_recommended_
-    //
-    {
-      int const& v =
-        o.is_recommended_;
-
-      bool is_null (false);
-      mysql::value_traits<
-          int,
-          mysql::id_long >::set_image (
-        i.is_recommended_value, is_null, v);
-      i.is_recommended_null = is_null;
-    }
-
-    // upload_type_id
-    //
-    {
-      long int const& v =
-        o.upload_type_id;
-
-      bool is_null (false);
-      mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_image (
-        i.upload_type_id_value, is_null, v);
-      i.upload_type_id_null = is_null;
-    }
-
     return grew;
   }
 
-  void access::object_traits_impl< ::brand, id_mysql >::
+  void access::object_traits_impl< ::upload_type, id_mysql >::
   init (object_type& o,
         const image_type& i,
         database* db)
@@ -313,51 +235,9 @@ namespace odb
         i.name_size,
         i.name_null);
     }
-
-    // img_id_
-    //
-    {
-      long int& v =
-        o.img_id_;
-
-      mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_value (
-        v,
-        i.img_id_value,
-        i.img_id_null);
-    }
-
-    // is_recommended_
-    //
-    {
-      int& v =
-        o.is_recommended_;
-
-      mysql::value_traits<
-          int,
-          mysql::id_long >::set_value (
-        v,
-        i.is_recommended_value,
-        i.is_recommended_null);
-    }
-
-    // upload_type_id
-    //
-    {
-      long int& v =
-        o.upload_type_id;
-
-      mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_value (
-        v,
-        i.upload_type_id_value,
-        i.upload_type_id_null);
-    }
   }
 
-  void access::object_traits_impl< ::brand, id_mysql >::
+  void access::object_traits_impl< ::upload_type, id_mysql >::
   init (id_image_type& i, const id_type& id)
   {
     {
@@ -370,55 +250,43 @@ namespace odb
     }
   }
 
-  const char access::object_traits_impl< ::brand, id_mysql >::persist_statement[] =
-  "INSERT INTO `brand` "
+  const char access::object_traits_impl< ::upload_type, id_mysql >::persist_statement[] =
+  "INSERT INTO `upload_type` "
   "(`id`, "
-  "`name`, "
-  "`img_id`, "
-  "`is_recommended`, "
-  "`upload_type_id`) "
+  "`name`) "
   "VALUES "
-  "(?, ?, ?, ?, ?)";
+  "(?, ?)";
 
-  const char access::object_traits_impl< ::brand, id_mysql >::find_statement[] =
+  const char access::object_traits_impl< ::upload_type, id_mysql >::find_statement[] =
   "SELECT "
-  "`brand`.`id`, "
-  "`brand`.`name`, "
-  "`brand`.`img_id`, "
-  "`brand`.`is_recommended`, "
-  "`brand`.`upload_type_id` "
-  "FROM `brand` "
-  "WHERE `brand`.`id`=?";
+  "`upload_type`.`id`, "
+  "`upload_type`.`name` "
+  "FROM `upload_type` "
+  "WHERE `upload_type`.`id`=?";
 
-  const char access::object_traits_impl< ::brand, id_mysql >::update_statement[] =
-  "UPDATE `brand` "
+  const char access::object_traits_impl< ::upload_type, id_mysql >::update_statement[] =
+  "UPDATE `upload_type` "
   "SET "
-  "`name`=?, "
-  "`img_id`=?, "
-  "`is_recommended`=?, "
-  "`upload_type_id`=? "
+  "`name`=? "
   "WHERE `id`=?";
 
-  const char access::object_traits_impl< ::brand, id_mysql >::erase_statement[] =
-  "DELETE FROM `brand` "
+  const char access::object_traits_impl< ::upload_type, id_mysql >::erase_statement[] =
+  "DELETE FROM `upload_type` "
   "WHERE `id`=?";
 
-  const char access::object_traits_impl< ::brand, id_mysql >::query_statement[] =
+  const char access::object_traits_impl< ::upload_type, id_mysql >::query_statement[] =
   "SELECT "
-  "`brand`.`id`, "
-  "`brand`.`name`, "
-  "`brand`.`img_id`, "
-  "`brand`.`is_recommended`, "
-  "`brand`.`upload_type_id` "
-  "FROM `brand`";
+  "`upload_type`.`id`, "
+  "`upload_type`.`name` "
+  "FROM `upload_type`";
 
-  const char access::object_traits_impl< ::brand, id_mysql >::erase_query_statement[] =
-  "DELETE FROM `brand`";
+  const char access::object_traits_impl< ::upload_type, id_mysql >::erase_query_statement[] =
+  "DELETE FROM `upload_type`";
 
-  const char access::object_traits_impl< ::brand, id_mysql >::table_name[] =
-  "`brand`";
+  const char access::object_traits_impl< ::upload_type, id_mysql >::table_name[] =
+  "`upload_type`";
 
-  void access::object_traits_impl< ::brand, id_mysql >::
+  void access::object_traits_impl< ::upload_type, id_mysql >::
   persist (database& db, object_type& obj)
   {
     ODB_POTENTIALLY_UNUSED (db);
@@ -472,7 +340,7 @@ namespace odb
               callback_event::post_persist);
   }
 
-  void access::object_traits_impl< ::brand, id_mysql >::
+  void access::object_traits_impl< ::upload_type, id_mysql >::
   update (database& db, const object_type& obj)
   {
     ODB_POTENTIALLY_UNUSED (db);
@@ -533,7 +401,7 @@ namespace odb
     pointer_cache_traits::update (db, obj);
   }
 
-  void access::object_traits_impl< ::brand, id_mysql >::
+  void access::object_traits_impl< ::upload_type, id_mysql >::
   erase (database& db, const id_type& id)
   {
     using namespace mysql;
@@ -562,8 +430,8 @@ namespace odb
     pointer_cache_traits::erase (db, id);
   }
 
-  access::object_traits_impl< ::brand, id_mysql >::pointer_type
-  access::object_traits_impl< ::brand, id_mysql >::
+  access::object_traits_impl< ::upload_type, id_mysql >::pointer_type
+  access::object_traits_impl< ::upload_type, id_mysql >::
   find (database& db, const id_type& id)
   {
     using namespace mysql;
@@ -618,7 +486,7 @@ namespace odb
     return p;
   }
 
-  bool access::object_traits_impl< ::brand, id_mysql >::
+  bool access::object_traits_impl< ::upload_type, id_mysql >::
   find (database& db, const id_type& id, object_type& obj)
   {
     using namespace mysql;
@@ -651,7 +519,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::brand, id_mysql >::
+  bool access::object_traits_impl< ::upload_type, id_mysql >::
   reload (database& db, object_type& obj)
   {
     using namespace mysql;
@@ -681,7 +549,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::brand, id_mysql >::
+  bool access::object_traits_impl< ::upload_type, id_mysql >::
   find_ (statements_type& sts,
          const id_type* id)
   {
@@ -732,8 +600,8 @@ namespace odb
     return r != select_statement::no_data;
   }
 
-  result< access::object_traits_impl< ::brand, id_mysql >::object_type >
-  access::object_traits_impl< ::brand, id_mysql >::
+  result< access::object_traits_impl< ::upload_type, id_mysql >::object_type >
+  access::object_traits_impl< ::upload_type, id_mysql >::
   query (database&, const query_base_type& q)
   {
     using namespace mysql;
@@ -783,7 +651,7 @@ namespace odb
     return result<object_type> (r);
   }
 
-  unsigned long long access::object_traits_impl< ::brand, id_mysql >::
+  unsigned long long access::object_traits_impl< ::upload_type, id_mysql >::
   erase_query (database&, const query_base_type& q)
   {
     using namespace mysql;

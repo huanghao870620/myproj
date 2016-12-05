@@ -2,8 +2,8 @@
 // compiler for C++.
 //
 
-#ifndef BRAND_ODB_HXX
-#define BRAND_ODB_HXX
+#ifndef UPLOAD_TYPE_ODB_HXX
+#define UPLOAD_TYPE_ODB_HXX
 
 #include <odb/version.hxx>
 
@@ -13,7 +13,7 @@
 
 #include <odb/pre.hxx>
 
-#include "brand.h"
+#include "upload_type.h"
 
 #include <memory>
 #include <cstddef>
@@ -33,20 +33,20 @@
 
 namespace odb
 {
-  // brand
+  // upload_type
   //
   template <>
-  struct class_traits< ::brand >
+  struct class_traits< ::upload_type >
   {
     static const class_kind kind = class_object;
   };
 
   template <>
-  class access::object_traits< ::brand >
+  class access::object_traits< ::upload_type >
   {
     public:
-    typedef ::brand object_type;
-    typedef ::brand* pointer_type;
+    typedef ::upload_type object_type;
+    typedef ::upload_type* pointer_type;
     typedef odb::pointer_traits<pointer_type> pointer_traits;
 
     static const bool polymorphic = false;
@@ -86,10 +86,10 @@ namespace odb
 
 namespace odb
 {
-  // brand
+  // upload_type
   //
   template <typename A>
-  struct query_columns< ::brand, id_mysql, A >
+  struct query_columns< ::upload_type, id_mysql, A >
   {
     // id
     //
@@ -114,78 +114,27 @@ namespace odb
     name_type_;
 
     static const name_type_ name;
-
-    // img_id
-    //
-    typedef
-    mysql::query_column<
-      mysql::value_traits<
-        long int,
-        mysql::id_longlong >::query_type,
-      mysql::id_longlong >
-    img_id_type_;
-
-    static const img_id_type_ img_id;
-
-    // is_recommended
-    //
-    typedef
-    mysql::query_column<
-      mysql::value_traits<
-        int,
-        mysql::id_long >::query_type,
-      mysql::id_long >
-    is_recommended_type_;
-
-    static const is_recommended_type_ is_recommended;
-
-    // upload_type_id
-    //
-    typedef
-    mysql::query_column<
-      mysql::value_traits<
-        long int,
-        mysql::id_longlong >::query_type,
-      mysql::id_longlong >
-    upload_type_id_type_;
-
-    static const upload_type_id_type_ upload_type_id;
   };
 
   template <typename A>
-  const typename query_columns< ::brand, id_mysql, A >::id_type_
-  query_columns< ::brand, id_mysql, A >::
+  const typename query_columns< ::upload_type, id_mysql, A >::id_type_
+  query_columns< ::upload_type, id_mysql, A >::
   id (A::table_name, "`id`", 0);
 
   template <typename A>
-  const typename query_columns< ::brand, id_mysql, A >::name_type_
-  query_columns< ::brand, id_mysql, A >::
+  const typename query_columns< ::upload_type, id_mysql, A >::name_type_
+  query_columns< ::upload_type, id_mysql, A >::
   name (A::table_name, "`name`", 0);
 
   template <typename A>
-  const typename query_columns< ::brand, id_mysql, A >::img_id_type_
-  query_columns< ::brand, id_mysql, A >::
-  img_id (A::table_name, "`img_id`", 0);
-
-  template <typename A>
-  const typename query_columns< ::brand, id_mysql, A >::is_recommended_type_
-  query_columns< ::brand, id_mysql, A >::
-  is_recommended (A::table_name, "`is_recommended`", 0);
-
-  template <typename A>
-  const typename query_columns< ::brand, id_mysql, A >::upload_type_id_type_
-  query_columns< ::brand, id_mysql, A >::
-  upload_type_id (A::table_name, "`upload_type_id`", 0);
-
-  template <typename A>
-  struct pointer_query_columns< ::brand, id_mysql, A >:
-    query_columns< ::brand, id_mysql, A >
+  struct pointer_query_columns< ::upload_type, id_mysql, A >:
+    query_columns< ::upload_type, id_mysql, A >
   {
   };
 
   template <>
-  class access::object_traits_impl< ::brand, id_mysql >:
-    public access::object_traits< ::brand >
+  class access::object_traits_impl< ::upload_type, id_mysql >:
+    public access::object_traits< ::upload_type >
   {
     public:
     struct id_image_type
@@ -208,21 +157,6 @@ namespace odb
       details::buffer name_value;
       unsigned long name_size;
       my_bool name_null;
-
-      // img_id_
-      //
-      long long img_id_value;
-      my_bool img_id_null;
-
-      // is_recommended_
-      //
-      int is_recommended_value;
-      my_bool is_recommended_null;
-
-      // upload_type_id
-      //
-      long long upload_type_id_value;
-      my_bool upload_type_id_null;
 
       std::size_t version;
     };
@@ -266,7 +200,7 @@ namespace odb
 
     typedef mysql::query_base query_base_type;
 
-    static const std::size_t column_count = 5UL;
+    static const std::size_t column_count = 2UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -325,17 +259,17 @@ namespace odb
   };
 
   template <>
-  class access::object_traits_impl< ::brand, id_common >:
-    public access::object_traits_impl< ::brand, id_mysql >
+  class access::object_traits_impl< ::upload_type, id_common >:
+    public access::object_traits_impl< ::upload_type, id_mysql >
   {
   };
 
-  // brand
+  // upload_type
   //
 }
 
-#include "brand-odb.ixx"
+#include "upload_type-odb.ixx"
 
 #include <odb/post.hxx>
 
-#endif // BRAND_ODB_HXX
+#endif // UPLOAD_TYPE_ODB_HXX
