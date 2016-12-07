@@ -126,6 +126,18 @@ namespace odb
     img_id_type_;
 
     static const img_id_type_ img_id;
+
+    // country_code
+    //
+    typedef
+    mysql::query_column<
+      mysql::value_traits<
+        ::std::string,
+        mysql::id_string >::query_type,
+      mysql::id_string >
+    country_code_type_;
+
+    static const country_code_type_ country_code;
   };
 
   template <typename A>
@@ -142,6 +154,11 @@ namespace odb
   const typename query_columns< ::country, id_mysql, A >::img_id_type_
   query_columns< ::country, id_mysql, A >::
   img_id (A::table_name, "`img_id`", 0);
+
+  template <typename A>
+  const typename query_columns< ::country, id_mysql, A >::country_code_type_
+  query_columns< ::country, id_mysql, A >::
+  country_code (A::table_name, "`country_code`", 0);
 
   template <typename A>
   struct pointer_query_columns< ::country, id_mysql, A >:
@@ -179,6 +196,12 @@ namespace odb
       //
       long long img_id_value;
       my_bool img_id_null;
+
+      // country_code_
+      //
+      details::buffer country_code_value;
+      unsigned long country_code_size;
+      my_bool country_code_null;
 
       std::size_t version;
     };
@@ -222,7 +245,7 @@ namespace odb
 
     typedef mysql::query_base query_base_type;
 
-    static const std::size_t column_count = 3UL;
+    static const std::size_t column_count = 4UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;

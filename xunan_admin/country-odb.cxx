@@ -104,6 +104,14 @@ namespace odb
     //
     t[2UL] = 0;
 
+    // country_code_
+    //
+    if (t[3UL])
+    {
+      i.country_code_value.capacity (i.country_code_size);
+      grew = true;
+    }
+
     return grew;
   }
 
@@ -145,6 +153,16 @@ namespace odb
     b[n].is_unsigned = 0;
     b[n].buffer = &i.img_id_value;
     b[n].is_null = &i.img_id_null;
+    n++;
+
+    // country_code_
+    //
+    b[n].buffer_type = MYSQL_TYPE_STRING;
+    b[n].buffer = i.country_code_value.data ();
+    b[n].buffer_length = static_cast<unsigned long> (
+      i.country_code_value.capacity ());
+    b[n].length = &i.country_code_size;
+    b[n].is_null = &i.country_code_null;
     n++;
   }
 
@@ -221,6 +239,27 @@ namespace odb
       i.img_id_null = is_null;
     }
 
+    // country_code_
+    //
+    {
+      ::std::string const& v =
+        o.country_code_;
+
+      bool is_null (false);
+      std::size_t size (0);
+      std::size_t cap (i.country_code_value.capacity ());
+      mysql::value_traits<
+          ::std::string,
+          mysql::id_string >::set_image (
+        i.country_code_value,
+        size,
+        is_null,
+        v);
+      i.country_code_null = is_null;
+      i.country_code_size = static_cast<unsigned long> (size);
+      grew = grew || (cap != i.country_code_value.capacity ());
+    }
+
     return grew;
   }
 
@@ -275,6 +314,21 @@ namespace odb
         i.img_id_value,
         i.img_id_null);
     }
+
+    // country_code_
+    //
+    {
+      ::std::string& v =
+        o.country_code_;
+
+      mysql::value_traits<
+          ::std::string,
+          mysql::id_string >::set_value (
+        v,
+        i.country_code_value,
+        i.country_code_size,
+        i.country_code_null);
+    }
   }
 
   void access::object_traits_impl< ::country, id_mysql >::
@@ -294,15 +348,17 @@ namespace odb
   "INSERT INTO `country` "
   "(`id`, "
   "`name`, "
-  "`img_id`) "
+  "`img_id`, "
+  "`country_code`) "
   "VALUES "
-  "(?, ?, ?)";
+  "(?, ?, ?, ?)";
 
   const char access::object_traits_impl< ::country, id_mysql >::find_statement[] =
   "SELECT "
   "`country`.`id`, "
   "`country`.`name`, "
-  "`country`.`img_id` "
+  "`country`.`img_id`, "
+  "`country`.`country_code` "
   "FROM `country` "
   "WHERE `country`.`id`=?";
 
@@ -310,7 +366,8 @@ namespace odb
   "UPDATE `country` "
   "SET "
   "`name`=?, "
-  "`img_id`=? "
+  "`img_id`=?, "
+  "`country_code`=? "
   "WHERE `id`=?";
 
   const char access::object_traits_impl< ::country, id_mysql >::erase_statement[] =
@@ -321,7 +378,8 @@ namespace odb
   "SELECT "
   "`country`.`id`, "
   "`country`.`name`, "
-  "`country`.`img_id` "
+  "`country`.`img_id`, "
+  "`country`.`country_code` "
   "FROM `country`";
 
   const char access::object_traits_impl< ::country, id_mysql >::erase_query_statement[] =

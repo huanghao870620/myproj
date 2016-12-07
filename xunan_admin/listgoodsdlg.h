@@ -19,7 +19,7 @@ public:
 	virtual ~ListGoodsDlg();
 	
 // 对话框数据
-	enum { IDD = IDD_DIALOG2 };
+	enum { IDD = IDD_DIALOG_GOOD_LIST };
 
 protected:afx_msg void OnItemChanged(NMHDR*pNMHDR,LRESULT*pResult);
 

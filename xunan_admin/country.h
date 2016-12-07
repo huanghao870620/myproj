@@ -41,12 +41,21 @@ public:void set_name(std::string &name){
 public:std::string&get_name(){
 	return this->name_;
 }
+
 private:long img_id_;
 public:void set_img_id(long img_id){
 	this->img_id_ = img_id;
 }
 public:long get_img_id(){
 	return this->img_id_;
+}
+
+private:std::string country_code_;
+public:void set_country_code(std::string&country_code){
+	this->country_code_ = country_code;
+}
+public:std::string& get_country_code(){
+	return this->country_code_;
 }
 
 };

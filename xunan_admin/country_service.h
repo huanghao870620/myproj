@@ -17,6 +17,7 @@
 #include"country.h"
 #include"country_dao.h"
 
+
 class country_service
 {
 
@@ -32,6 +33,7 @@ public:static country_service* get_country_service(){
 
 private:country_dao*cd;
 public:void add_country(country&c);
+public:void query(std::list<country*>&c_list);
 
 };
 #endif // !defined(EA_2F103C4D_B3CB_4d8b_B811_FA5CFEA165C1__INCLUDED_)

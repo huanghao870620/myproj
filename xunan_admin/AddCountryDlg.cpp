@@ -26,6 +26,7 @@ void AddCountryDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT_COUNTRY_NAME, this->nameEdit);
 	DDX_Control(pDX, IDC_STATIC_COUNTRY_PIC, this->imgControl);
+	DDX_Control(pDX, IDC_EDIT_COUNTRY_CODE, this->countryCodeEdit);
 }
 
 
@@ -35,6 +36,10 @@ BOOL AddCountryDlg::OnInitDialog(){
 }
 
 void AddCountryDlg::AddCountry(){
+	CString countryCode;
+	this->countryCodeEdit.GetWindowTextA(countryCode);
+	std::string country_code = countryCode.GetBuffer(0);
+
 	CString csName;
 	this->nameEdit.GetWindowTextA(csName);
 	country c;
@@ -44,6 +49,7 @@ void AddCountryDlg::AddCountry(){
 
 	std::string name = csName.GetBuffer(0);
 	c.set_name(name);
+	c.set_country_code(country_code);
 	this->cs->add_country(c);
 }
 
@@ -52,7 +58,18 @@ VOID AddCountryDlg::SelPic(){
 	RECT rect;
 	this->imgControl.GetClientRect(&rect);
 	ShowJpg::ShowJpgGif(this->imgControl.GetDC(), this->localPath, rect.left, rect.top);
+
+
+
+	/*Gdiplus::Graphics graphics(this->imgControl.GetDC()->m_hDC);
+	Gdiplus::ImageAttributes imAtt;
+	imAtt.SetColorKey(Gdiplus::Color(0, 0, 0), Gdiplus::Color(10, 10, 10), Gdiplus::ColorAdjustTypeDefault);
+	graphics.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
+	Gdiplus::Image imageBlue(L"");
+	graphics.DrawImage(&imageYear, Rect(cx, 0, iYearWidth, iYearHeight), 0, iYearHeight, iYearWidth, iYearHeight, Gdiplus::UnitPixel, &imAtt);*/
 }
+
+
 
 
 BEGIN_MESSAGE_MAP(AddCountryDlg, CDialogEx)

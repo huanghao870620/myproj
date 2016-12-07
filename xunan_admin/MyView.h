@@ -14,6 +14,7 @@
 #include"AddGoodsDlg.h"
 #include"AddBrandDlg.h"
 #include"AddCountryDlg.h"
+#include"CountryShow.h"
 #include"WatchClassDlg.h"
 #include"AddClassDlg.h"
 #include"AddVenue.h"
@@ -32,6 +33,7 @@ protected:virtual BOOL OnCreate(LPCREATESTRUCT lpcs);
 protected:afx_msg void AddGood();/*添加商品*/
 protected:afx_msg void addBrand();/*添加品牌*/
 protected:afx_msg void addCountry();/*添加国家*/
+protected:afx_msg void watchCountry();/*查看国家*/
 protected:afx_msg void watchClass();/*查看分类*/
 protected:afx_msg void AddClass();/*添加分类*/
 protected:afx_msg void watchGoods();/*商品列表*/
@@ -43,6 +45,7 @@ private:AddCountryDlg*addCountryDlg;/*添加国家对话框*/
 private:WatchClassDlg*watchClassDlg;/*查看分类对话框*/
 private:AddClassDlg*addClassDlg;/*添加分类对话框*/
 private:ListGoodsDlg*listGoodsDlg;
+private:CountryShow*countryShowDlg;
 
 public: AddGoodsDlg*getAddGoodDlg();
 

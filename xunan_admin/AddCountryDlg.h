@@ -18,6 +18,7 @@ public:
 
 private:CEdit nameEdit;
 private:CStatic imgControl;
+private:CEdit countryCodeEdit;
 
 private:CString localPath;
 private:country_service*cs;
@@ -29,6 +30,7 @@ protected:virtual BOOL OnInitDialog();
 
 private:void AddCountry();
 private:void SelPic();
+//private:void t();
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö

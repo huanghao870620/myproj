@@ -21,6 +21,7 @@ public:static country_dao* get_country_dao(){
 }
 
 public:void add_country(country&c, std::auto_ptr<odb::database> &db);
+public:void query(std::list<country*>&country_list, std::auto_ptr<odb::database>&db);
 
 };
 #endif // !defined(EA_5ED24531_09DB_42da_A55E_F3481F1DA5C0__INCLUDED_)

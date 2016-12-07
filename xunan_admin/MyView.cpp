@@ -83,10 +83,18 @@ void MyView::addCountry(){
 	this->addCountryDlg->ShowWindow(SW_SHOW);
 }
 
+/*查看国家*/
+void MyView::watchCountry(){
+	this->countryShowDlg = new CountryShow;
+	this->countryShowDlg->Create(IDD_DIALOG_COUNTRY_LIST, this);
+	this->countryShowDlg->ShowWindow(SW_SHOW);
+}
+
 BEGIN_MESSAGE_MAP(MyView, CView)
 	ON_COMMAND(ID_ADD_GOOD, MyView::AddGood)/*添加商品*/
 	ON_COMMAND(ID_40011, MyView::addBrand)/*添加品牌*/
 	ON_COMMAND(ID_ADD_COUNTRY, MyView::addCountry)/*添加国家*/
+	ON_COMMAND(ID_SHOW_COUNTRY, MyView::watchCountry)/*查看国家*/
 	ON_COMMAND(ID_WATCH_CLASS, MyView::watchClass)
 	ON_COMMAND(ID_ADD_CLASS, MyView::AddClass)
 	ON_COMMAND(ID_ADD_VNEUE, MyView::ShowAddVenueDlg)/*添加会场*/
