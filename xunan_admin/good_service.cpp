@@ -41,8 +41,9 @@ void  good_service::add_good(std::string&name,
 	std::string&info_str,
 	long capl,
 	std::string&dop,
-	long lp,
-	long hp,
+	float lp,
+	float hp,
+	float real_price,
 	std::string&purchPostion,
 	std::string&addTime,
 	long goodId,
@@ -66,6 +67,7 @@ void  good_service::add_good(std::string&name,
 	good.set_date_of_production(dop);//生产日期
 	good.set_lowest_price(lp);//最低价
 	good.set_highestPrice(hp);//最高价
+	good.set_price(real_price);//实际价格
 	good.set_purchasing_position(purchPostion);//采购位置
 	good.set_addTime(addTime);//时间戳
 

@@ -83,6 +83,7 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_DATETIMEPICKER1, this->dateOfProductionControl);/*生产日期*/
 	DDX_Control(pDX, IDC_LOWEST_PRICE, this->lowestPriceEdit);/*最低价*/
 	DDX_Control(pDX, IDC_HIGHEST_PRICE, this->highestPriceEdit);/*最高价*/
+	DDX_Control(pDX, IDC_EDIT_REAL_PRICE, this->priceEdit);/*商品实际价格*/
 	DDX_Control(pDX, IDC_EDIT_PURCHASING_POSITION, this->purchasPositonEdit);/*采购位置*/
 	DDX_Control(pDX, IDC_COMBO_BIG_CLASS, this->firstClass);/*一级分类*/
 	DDX_Control(pDX, IDC_COMBO_CHILD_CLASS, this->secondClass);/*二级分类*/
@@ -386,12 +387,18 @@ void AddGoodsDlg::addGood(){
 	/*最低价*/
 	CString lowestPrice;
 	this->lowestPriceEdit.GetWindowTextA(lowestPrice);
-	long lp = Util::stol(lowestPrice.GetBuffer(0));
+	float lp = Util::stof(lowestPrice.GetBuffer(0));
 
 	/*最高价*/
 	CString highestPrice;
 	this->highestPriceEdit.GetWindowTextA(highestPrice);
-	long hp = Util::stol(highestPrice.GetBuffer(0));
+	float hp = Util::stof(highestPrice.GetBuffer(0));
+
+	/*实际价格*/
+	CString realPrice;
+	this->priceEdit.GetWindowTextA(realPrice);
+	float price = Util::stof(realPrice.GetBuffer(0));
+
 
 	/*采购位置*/
 	CString purchasPositon;
@@ -417,6 +424,7 @@ void AddGoodsDlg::addGood(){
 		dop, 
 		lp,
 		hp,
+		price,
 		purchPostion, 
 		addTime, 
 		goodId, 

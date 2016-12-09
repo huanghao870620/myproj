@@ -25,6 +25,10 @@ long Util::stol(std::string str){
 	return result;
 }
 
+float Util::stof(std::string str){
+	return atof(str.c_str());
+}
+
 std::string Util::ltos(long l){
 	std::stringstream stream;
 	std::string result;

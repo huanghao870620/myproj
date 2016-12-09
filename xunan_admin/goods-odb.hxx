@@ -144,9 +144,9 @@ namespace odb
     typedef
     mysql::query_column<
       mysql::value_traits<
-        long int,
-        mysql::id_longlong >::query_type,
-      mysql::id_longlong >
+        float,
+        mysql::id_float >::query_type,
+      mysql::id_float >
     lowest_price_type_;
 
     static const lowest_price_type_ lowest_price;
@@ -156,12 +156,24 @@ namespace odb
     typedef
     mysql::query_column<
       mysql::value_traits<
-        long int,
-        mysql::id_longlong >::query_type,
-      mysql::id_longlong >
+        float,
+        mysql::id_float >::query_type,
+      mysql::id_float >
     highest_price_type_;
 
     static const highest_price_type_ highest_price;
+
+    // price
+    //
+    typedef
+    mysql::query_column<
+      mysql::value_traits<
+        float,
+        mysql::id_float >::query_type,
+      mysql::id_float >
+    price_type_;
+
+    static const price_type_ price;
 
     // purchasing_position
     //
@@ -351,6 +363,11 @@ namespace odb
   highest_price (A::table_name, "`highest_price`", 0);
 
   template <typename A>
+  const typename query_columns< ::goods, id_mysql, A >::price_type_
+  query_columns< ::goods, id_mysql, A >::
+  price (A::table_name, "`price`", 0);
+
+  template <typename A>
   const typename query_columns< ::goods, id_mysql, A >::purchasing_position_type_
   query_columns< ::goods, id_mysql, A >::
   purchasing_position (A::table_name, "`purchasing_position`", 0);
@@ -460,13 +477,18 @@ namespace odb
 
       // lowest_price_
       //
-      long long lowest_price_value;
+      float lowest_price_value;
       my_bool lowest_price_null;
 
       // highest_price_
       //
-      long long highest_price_value;
+      float highest_price_value;
       my_bool highest_price_null;
+
+      // price_
+      //
+      float price_value;
+      my_bool price_null;
 
       // purchasing_position_
       //
@@ -580,7 +602,7 @@ namespace odb
 
     typedef mysql::query_base query_base_type;
 
-    static const std::size_t column_count = 19UL;
+    static const std::size_t column_count = 20UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;

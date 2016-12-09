@@ -24,6 +24,7 @@ public:
 	virtual ~Util();
 public:static long stol(std::string str);
 public:static std::string Util::ltos(long l);
+public:static float stof(std::string str);
 
 public:static CString GetFilePathName(){
 	CFileDialog filedlg(true);

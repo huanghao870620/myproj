@@ -65,21 +65,29 @@ public:long get_capacity(){
 	return this->capacity_;
 }
 
-private:long lowest_price_; //最低价
-public:void set_lowest_price(long lowest_price){
+private:float lowest_price_; //最低价
+public:void set_lowest_price(float lowest_price){
 	this->lowest_price_ = lowest_price;
 }
-public:long get_lowest_price(){
+public:float get_lowest_price(){
 	return this->lowest_price_;
 }
 
-private:long highest_price_; //最高价
-public:void set_highestPrice(long highest_price){
+private:float highest_price_; //最高价
+public:void set_highestPrice(float highest_price){
 	this->highest_price_ = highest_price;
 }
-public:long get_highest_price(){
+public:float get_highest_price(){
 	return this->highest_price_;
 }
+private:float price_; /*商品实际价格*/
+public:void set_price(float price){
+	this->price_ = price;
+}
+public:float get_price(){
+	return this->price_;
+}
+
 private:std::string purchasing_position_; //采购位置
 public:void set_purchasing_position(std::string& purchasing_position){
 	this->purchasing_position_ = purchasing_position;

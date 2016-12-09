@@ -120,9 +120,13 @@ namespace odb
     //
     t[5UL] = 0;
 
+    // price_
+    //
+    t[6UL] = 0;
+
     // purchasing_position_
     //
-    if (t[6UL])
+    if (t[7UL])
     {
       i.purchasing_position_value.capacity (i.purchasing_position_size);
       grew = true;
@@ -130,7 +134,7 @@ namespace odb
 
     // date_of_production_
     //
-    if (t[7UL])
+    if (t[8UL])
     {
       i.date_of_production_value.capacity (i.date_of_production_size);
       grew = true;
@@ -138,7 +142,7 @@ namespace odb
 
     // bar_code_
     //
-    if (t[8UL])
+    if (t[9UL])
     {
       i.bar_code_value.capacity (i.bar_code_size);
       grew = true;
@@ -146,7 +150,7 @@ namespace odb
 
     // speed_awb_
     //
-    if (t[9UL])
+    if (t[10UL])
     {
       i.speed_awb_value.capacity (i.speed_awb_size);
       grew = true;
@@ -154,31 +158,31 @@ namespace odb
 
     // goods_according_to_positive_
     //
-    t[10UL] = 0;
+    t[11UL] = 0;
 
     // left_photo_
     //
-    t[11UL] = 0;
+    t[12UL] = 0;
 
     // right_photo_
     //
-    t[12UL] = 0;
+    t[13UL] = 0;
 
     // goods_invoice_
     //
-    t[13UL] = 0;
+    t[14UL] = 0;
 
     // express_single_
     //
-    t[14UL] = 0;
+    t[15UL] = 0;
 
     // state
     //
-    t[15UL] = 0;
+    t[16UL] = 0;
 
     // add_time_
     //
-    if (t[16UL])
+    if (t[17UL])
     {
       i.add_time_value.capacity (i.add_time_size);
       grew = true;
@@ -186,11 +190,11 @@ namespace odb
 
     // classid_
     //
-    t[17UL] = 0;
+    t[18UL] = 0;
 
     // adv_pic_
     //
-    t[18UL] = 0;
+    t[19UL] = 0;
 
     return grew;
   }
@@ -247,18 +251,23 @@ namespace odb
 
     // lowest_price_
     //
-    b[n].buffer_type = MYSQL_TYPE_LONGLONG;
-    b[n].is_unsigned = 0;
+    b[n].buffer_type = MYSQL_TYPE_FLOAT;
     b[n].buffer = &i.lowest_price_value;
     b[n].is_null = &i.lowest_price_null;
     n++;
 
     // highest_price_
     //
-    b[n].buffer_type = MYSQL_TYPE_LONGLONG;
-    b[n].is_unsigned = 0;
+    b[n].buffer_type = MYSQL_TYPE_FLOAT;
     b[n].buffer = &i.highest_price_value;
     b[n].is_null = &i.highest_price_null;
+    n++;
+
+    // price_
+    //
+    b[n].buffer_type = MYSQL_TYPE_FLOAT;
+    b[n].buffer = &i.price_value;
+    b[n].is_null = &i.price_null;
     n++;
 
     // purchasing_position_
@@ -474,13 +483,13 @@ namespace odb
     // lowest_price_
     //
     {
-      long int const& v =
+      float const& v =
         o.lowest_price_;
 
       bool is_null (false);
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_image (
+          float,
+          mysql::id_float >::set_image (
         i.lowest_price_value, is_null, v);
       i.lowest_price_null = is_null;
     }
@@ -488,15 +497,29 @@ namespace odb
     // highest_price_
     //
     {
-      long int const& v =
+      float const& v =
         o.highest_price_;
 
       bool is_null (false);
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_image (
+          float,
+          mysql::id_float >::set_image (
         i.highest_price_value, is_null, v);
       i.highest_price_null = is_null;
+    }
+
+    // price_
+    //
+    {
+      float const& v =
+        o.price_;
+
+      bool is_null (false);
+      mysql::value_traits<
+          float,
+          mysql::id_float >::set_image (
+        i.price_value, is_null, v);
+      i.price_null = is_null;
     }
 
     // purchasing_position_
@@ -790,12 +813,12 @@ namespace odb
     // lowest_price_
     //
     {
-      long int& v =
+      float& v =
         o.lowest_price_;
 
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_value (
+          float,
+          mysql::id_float >::set_value (
         v,
         i.lowest_price_value,
         i.lowest_price_null);
@@ -804,15 +827,29 @@ namespace odb
     // highest_price_
     //
     {
-      long int& v =
+      float& v =
         o.highest_price_;
 
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_value (
+          float,
+          mysql::id_float >::set_value (
         v,
         i.highest_price_value,
         i.highest_price_null);
+    }
+
+    // price_
+    //
+    {
+      float& v =
+        o.price_;
+
+      mysql::value_traits<
+          float,
+          mysql::id_float >::set_value (
+        v,
+        i.price_value,
+        i.price_null);
     }
 
     // purchasing_position_
@@ -1024,6 +1061,7 @@ namespace odb
   "`capacity`, "
   "`lowest_price`, "
   "`highest_price`, "
+  "`price`, "
   "`purchasing_position`, "
   "`date_of_production`, "
   "`bar_code`, "
@@ -1038,7 +1076,7 @@ namespace odb
   "`classid`, "
   "`adv_pic`) "
   "VALUES "
-  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
   const char access::object_traits_impl< ::goods, id_mysql >::find_statement[] =
   "SELECT "
@@ -1048,6 +1086,7 @@ namespace odb
   "`goods`.`capacity`, "
   "`goods`.`lowest_price`, "
   "`goods`.`highest_price`, "
+  "`goods`.`price`, "
   "`goods`.`purchasing_position`, "
   "`goods`.`date_of_production`, "
   "`goods`.`bar_code`, "
@@ -1072,6 +1111,7 @@ namespace odb
   "`capacity`=?, "
   "`lowest_price`=?, "
   "`highest_price`=?, "
+  "`price`=?, "
   "`purchasing_position`=?, "
   "`date_of_production`=?, "
   "`bar_code`=?, "
@@ -1099,6 +1139,7 @@ namespace odb
   "`goods`.`capacity`, "
   "`goods`.`lowest_price`, "
   "`goods`.`highest_price`, "
+  "`goods`.`price`, "
   "`goods`.`purchasing_position`, "
   "`goods`.`date_of_production`, "
   "`goods`.`bar_code`, "

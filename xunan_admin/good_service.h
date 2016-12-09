@@ -38,13 +38,14 @@ private:good_dao*gd;
 public: void query_list(std::list<goods*>* goods_list);
 public:void findById(goods*good, long id);
 public:void update_good(goods&good);
-public:void  add_good(std::string&name, 
+public:void  add_good(std::string&name,
 	int selClass,
 	std::string&info_str,
 	long capl,
 	std::string&dop,
-	long lp,
-	long hp,
+	float lp,
+	float hp,
+	float real_price,
 	std::string&purchPostion,
 	std::string&addTime,
 	long goodId,

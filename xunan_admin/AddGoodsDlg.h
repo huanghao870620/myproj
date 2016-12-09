@@ -137,6 +137,7 @@ private:CEdit capacityEdit;/*容量*/
 private:CWnd dateOfProductionControl;/*生产日期*/
 private:CEdit lowestPriceEdit;/*最低价*/
 private:CEdit highestPriceEdit;/*最高价*/
+private:CEdit priceEdit;/*商品实际价格*/
 private:CEdit purchasPositonEdit;/*采购位置*/
 private:CComboBox firstClass;/*一级分类*/
 private:CComboBox secondClass;/*二级分类*/
