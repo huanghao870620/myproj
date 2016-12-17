@@ -14,6 +14,7 @@ class MyView : public CView
 public:
 	MyView();
 	virtual ~MyView();
+
 protected:afx_msg void OnDraw(CDC *pDC);
 	DECLARE_MESSAGE_MAP()
 };
