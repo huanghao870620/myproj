@@ -1,6 +1,8 @@
 #pragma once
 #include"resource.h"
 #include<afxdialogex.h>
+#include<iostream>
+#include<afxinet.h>
 // MyDlg 对话框
 
 class MyDlg : public CDialogEx
@@ -13,6 +15,11 @@ public:
 
 // 对话框数据
 	enum { IDD = IDD_DIALOG1 };
+
+private:CStatic pic;
+
+protected:virtual BOOL OnInitDialog();
+private:HRESULT ShowPic(char *lpstrImgUrl, CDC*pDC);
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
