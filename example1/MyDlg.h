@@ -3,6 +3,7 @@
 #include<afxdialogex.h>
 #include<iostream>
 #include<afxinet.h>
+#include"GetHttp.h"
 // MyDlg ¶Ô»°¿ò
 
 class MyDlg : public CDialogEx

@@ -22,7 +22,10 @@ MyDlg::~MyDlg()
 
 BOOL MyDlg::OnInitDialog(){
 	CDialogEx::OnInitDialog();
-	this->ShowPic("http://47.88.105.195/12/454/2011825132301329511229904127423500507232517.png", this->pic.GetDC());
+	//this->ShowPic("http://47.88.105.195/12/454/2011825132301329511229904127423500507232517.png", this->pic.GetDC());
+	GetHttp *gh = new GetHttp;
+	gh->download();
+	delete gh;
 	return TRUE;
 }
 
