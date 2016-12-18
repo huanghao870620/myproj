@@ -16,5 +16,6 @@ public:
 	GetHttp();
 	virtual ~GetHttp();
 public:void download();
+public:LRESULT OnRender(WPARAM wParam, LPARAM lParam);
 };
 #endif // !defined(EA_96EB68C6_9428_41ac_8654_B86ED2F14482__INCLUDED_)

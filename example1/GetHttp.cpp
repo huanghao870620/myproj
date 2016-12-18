@@ -54,3 +54,26 @@ void GetHttp::download(){
 	pHttpFile = NULL;
 	delete[]lpBuf;
 }
+
+
+LRESULT GetHttp::OnRender(WPARAM wParam, LPARAM lParam)
+{
+	/*DWORD    dwLen = m_pComRec->m_nFrameSize;
+	BYTE*    lpFrame = m_pComRec->m_buffFrame;
+
+	HGLOBAL    hMem = GlobalAlloc(GMEM_FIXED, dwLen);
+	BYTE*    pMem = (BYTE*)GlobalLock(hMem);
+	memcpy(pMem, lpFrame, dwLen);
+	IStream* pIStm;
+	CreateStreamOnHGlobal(hMem, FALSE, &pIStm);
+
+	m_picFrame.Load(pIStm);
+
+	GlobalUnlock(hMem);
+	pIStm->Release();
+
+	Invalidate();
+	m_pComRec->Send("go on", 5);*/
+
+	return    1;
+}
