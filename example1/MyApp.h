@@ -13,6 +13,8 @@
 #include"MyView.h"
 #include"MyMainFrame.h"
 #include<afxwin.h>
+#include"MyDlg.h"
+//#include"GetHttp.h"
 class MyApp : public CWinApp
 {
 public:
