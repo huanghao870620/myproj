@@ -2,6 +2,7 @@
 
 #include"resource.h"
 #include"MyCTreeCtrl.h"
+#include"classification_service.h"
 
 // WatchClassDlg ¶Ô»°¿ò
 
@@ -22,7 +23,7 @@ protected:
 //protected:  void memberFxn(NMHDR * pNotifyStruct, LRESULT * result);
 protected:virtual BOOL OnInitDialog();
 
-
+private:classification_service *cs;
 
 private:CImageList m_imageList;
 

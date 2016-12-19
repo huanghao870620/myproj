@@ -62,5 +62,12 @@ public:void set_upload_type_id(long upload_type_id){
 public:long get_upload_type_id(){
 	return this->upload_type_id;
 }
+private:std::string info_;
+public:void set_info(std::string&info){
+	this->info_ = info;
+}
+public:std::string&get_info(){
+	return this->info_;
+}
 };
 #endif // !defined(EA_CD242B00_54EA_4b71_9F64_E34AFDA4EF5F__INCLUDED_)

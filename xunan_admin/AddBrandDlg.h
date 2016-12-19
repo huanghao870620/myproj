@@ -24,6 +24,7 @@ public:
 	enum { IDD = IDD_DIALOG_ADDBRAND };
 //
 private:CEdit brandNameEdit; /*品牌名称*/
+private:CEdit brandInfo;/*品牌描述*/
 private:CStatic brandImg; /*品牌图片*/
 private:CComboBox uploadTypeComboBox; /*上传类型 1-买手 2-寻安  3-商家*/
 

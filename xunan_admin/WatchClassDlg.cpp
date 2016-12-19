@@ -51,13 +51,13 @@ BOOL WatchClassDlg::OnInitDialog(){
 	this->m_webTree.SetItemData(hArtItem, 2);
 	hArtItem = this->m_webTree.InsertItem("谷歌文章2", 2, 2, hCataItem, TVI_LAST);
 	this->m_webTree.SetItemData(hArtItem, 3);
-	hCataItem = m_webTree.InsertItem("数码生活", 1, 1, hRoot, TVI_LAST);
+	/*hCataItem = m_webTree.InsertItem("数码生活", 1, 1, hRoot, TVI_LAST);
 	this->m_webTree.SetItemData(hCataItem, 4);
 	hArtItem = this->m_webTree.InsertItem("智能手机文章1", 2, 2, hCataItem, TVI_LAST);
-	this->m_webTree.SetItemData(hArtItem, 5);
+	this->m_webTree.SetItemData(hArtItem, 5);*/
 	/*hCataItem = this->m_webTree.InsertItem("软件开发", 1, 1, hRoot, TVI_LAST);
 	this->m_webTree.SetItemData()*/
-	hArtItem = this->m_webTree.InsertItem("平板电脑文章2", 2, 2, hCataItem, TVI_LAST);
+	/*hArtItem = this->m_webTree.InsertItem("平板电脑文章2", 2, 2, hCataItem, TVI_LAST);
 	this->m_webTree.SetItemData(hArtItem, 6);
 
 	hCataItem = this->m_webTree.InsertItem("软件开发", 1, 1, hRoot, TVI_LAST);
@@ -76,7 +76,7 @@ BOOL WatchClassDlg::OnInitDialog(){
 	this->m_webTree.SetItemData(hArtItem, 11);
 
 	hArtItem = this->m_webTree.InsertItem("IT笑话2", 2, 2, hCataItem, TVI_LAST);
-	this->m_webTree.SetItemData(hArtItem, 12);
+	this->m_webTree.SetItemData(hArtItem, 12);*/
 	//
 	return TRUE;
 }

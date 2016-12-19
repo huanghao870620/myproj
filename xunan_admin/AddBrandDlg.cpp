@@ -28,6 +28,7 @@ void AddBrandDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT1, this->brandNameEdit);//品牌名称
 	DDX_Control(pDX, IDC_STATIC_BRAND_IMG, this->brandImg);//品牌名称
+	DDX_Control(pDX, IDC_EDIT_BRAND_INFO, this->brandInfo);//品牌描述
 	DDX_Control(pDX, IDC_COMBO_UPLOAD_TYPE, this->uploadTypeComboBox);//上传者类型
 }
 
@@ -48,6 +49,7 @@ BOOL AddBrandDlg::OnInitDialog(){
 	return TRUE;
 }
 
+
 void AddBrandDlg::addBrand(){
 	CString brandName;
 	this->brandNameEdit.GetWindowTextA(brandName);
@@ -60,6 +62,11 @@ void AddBrandDlg::addBrand(){
 	b.set_img_id(f.get_id());
 
 	b.set_upload_type_id(this->uploadType);
+
+	CString brandInfoText;
+	this->brandInfo.GetWindowTextA(brandInfoText);
+	std::string info = brandInfoText.GetBuffer(0);
+	b.set_info(info);
 	this->bs->add_brand(b);
 }
 

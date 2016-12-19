@@ -150,6 +150,18 @@ namespace odb
     upload_type_id_type_;
 
     static const upload_type_id_type_ upload_type_id;
+
+    // info
+    //
+    typedef
+    mysql::query_column<
+      mysql::value_traits<
+        ::std::string,
+        mysql::id_string >::query_type,
+      mysql::id_string >
+    info_type_;
+
+    static const info_type_ info;
   };
 
   template <typename A>
@@ -176,6 +188,11 @@ namespace odb
   const typename query_columns< ::brand, id_mysql, A >::upload_type_id_type_
   query_columns< ::brand, id_mysql, A >::
   upload_type_id (A::table_name, "`upload_type_id`", 0);
+
+  template <typename A>
+  const typename query_columns< ::brand, id_mysql, A >::info_type_
+  query_columns< ::brand, id_mysql, A >::
+  info (A::table_name, "`info`", 0);
 
   template <typename A>
   struct pointer_query_columns< ::brand, id_mysql, A >:
@@ -224,6 +241,12 @@ namespace odb
       long long upload_type_id_value;
       my_bool upload_type_id_null;
 
+      // info_
+      //
+      details::buffer info_value;
+      unsigned long info_size;
+      my_bool info_null;
+
       std::size_t version;
     };
 
@@ -266,7 +289,7 @@ namespace odb
 
     typedef mysql::query_base query_base_type;
 
-    static const std::size_t column_count = 5UL;
+    static const std::size_t column_count = 6UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;

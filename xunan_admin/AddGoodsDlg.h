@@ -18,6 +18,7 @@
 #include"classification_service.h"
 #include"file_service.h"
 #include"upload_service.h"
+#include"brand_service.h"
 #include"Constants.h"
 
 //#include"util\"
@@ -143,6 +144,8 @@ private:CComboBox firstClass;/*一级分类*/
 private:CComboBox secondClass;/*二级分类*/
 private:CComboBox thirdClass;/*三级分类*/
 
+private:CComboBox brandSel; /*品牌*/
+
 private:CButton isRecom; /*推荐*/
 private:CButton isNotRecom;/*不推荐*/
 
@@ -177,6 +180,7 @@ private:good_file_service*gfs;
 private:classification_service*cs;
 private:good_service*gs;
 private:upload_service*us;
+private:brand_service*bs;
 
 private:CStringW ConvertUTF82CStringW(char* instr);/*转换为utf8*/
 protected:virtual BOOL OnInitDialog();

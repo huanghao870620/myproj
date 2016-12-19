@@ -40,6 +40,7 @@ void AddGoodsDlg::init(){
 	this->cs = classification_service::get_classification_service();
 	this->gs = good_service::get_good_service();
 	this->us = upload_service::get_upload_service();
+	this->bs = brand_service::get_brand_service();
 }
 
 /**/
@@ -91,6 +92,8 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 
 	DDX_Control(pDX, IDC_RADIO_RECOMMENDED, this->isRecom);/*推荐*/
 	DDX_Control(pDX, IDC_RADIO_NOT_RECOMMENDED, this->isNotRecom);/*不推荐*/
+
+	DDX_Control(pDX, IDC_COMBO_BRAND, this->brandSel); /*品牌*/
 	
 	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
 	std::list<classification*> *ls = new std::list<classification*>;
@@ -98,12 +101,21 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 
 	std::list<classification*>::iterator iter = ls->begin();
 	for (int i = 0; iter != ls->end(); iter++, i++){
-		classification *classi = (classification*)*iter;
+		classification *classi = *iter;
 		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
 		this->firstClass.AddString(classi->get_name().c_str());
 		long id = classi->get_id();
 		this->firstClass.SetItemData(i, id);
 	}
+
+	std::list<brand*> brand_list;
+	this->bs->get_brands(brand_list);
+	std::list<brand*>::iterator brand_iter = brand_list.begin();
+	for (int i = 0; brand_iter != brand_list.end(); brand_iter++, i++){
+		brand*b = *brand_iter;
+	}
+
+
 	long d0 = this->firstClass.GetItemData(0);
 	long d1 = this->firstClass.GetItemData(1);
 	long d2 = this->firstClass.GetItemData(2);

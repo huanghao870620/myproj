@@ -112,6 +112,14 @@ namespace odb
     //
     t[4UL] = 0;
 
+    // info_
+    //
+    if (t[5UL])
+    {
+      i.info_value.capacity (i.info_size);
+      grew = true;
+    }
+
     return grew;
   }
 
@@ -169,6 +177,16 @@ namespace odb
     b[n].is_unsigned = 0;
     b[n].buffer = &i.upload_type_id_value;
     b[n].is_null = &i.upload_type_id_null;
+    n++;
+
+    // info_
+    //
+    b[n].buffer_type = MYSQL_TYPE_STRING;
+    b[n].buffer = i.info_value.data ();
+    b[n].buffer_length = static_cast<unsigned long> (
+      i.info_value.capacity ());
+    b[n].length = &i.info_size;
+    b[n].is_null = &i.info_null;
     n++;
   }
 
@@ -273,6 +291,27 @@ namespace odb
       i.upload_type_id_null = is_null;
     }
 
+    // info_
+    //
+    {
+      ::std::string const& v =
+        o.info_;
+
+      bool is_null (false);
+      std::size_t size (0);
+      std::size_t cap (i.info_value.capacity ());
+      mysql::value_traits<
+          ::std::string,
+          mysql::id_string >::set_image (
+        i.info_value,
+        size,
+        is_null,
+        v);
+      i.info_null = is_null;
+      i.info_size = static_cast<unsigned long> (size);
+      grew = grew || (cap != i.info_value.capacity ());
+    }
+
     return grew;
   }
 
@@ -355,6 +394,21 @@ namespace odb
         i.upload_type_id_value,
         i.upload_type_id_null);
     }
+
+    // info_
+    //
+    {
+      ::std::string& v =
+        o.info_;
+
+      mysql::value_traits<
+          ::std::string,
+          mysql::id_string >::set_value (
+        v,
+        i.info_value,
+        i.info_size,
+        i.info_null);
+    }
   }
 
   void access::object_traits_impl< ::brand, id_mysql >::
@@ -376,9 +430,10 @@ namespace odb
   "`name`, "
   "`img_id`, "
   "`is_recommended`, "
-  "`upload_type_id`) "
+  "`upload_type_id`, "
+  "`info`) "
   "VALUES "
-  "(?, ?, ?, ?, ?)";
+  "(?, ?, ?, ?, ?, ?)";
 
   const char access::object_traits_impl< ::brand, id_mysql >::find_statement[] =
   "SELECT "
@@ -386,7 +441,8 @@ namespace odb
   "`brand`.`name`, "
   "`brand`.`img_id`, "
   "`brand`.`is_recommended`, "
-  "`brand`.`upload_type_id` "
+  "`brand`.`upload_type_id`, "
+  "`brand`.`info` "
   "FROM `brand` "
   "WHERE `brand`.`id`=?";
 
@@ -396,7 +452,8 @@ namespace odb
   "`name`=?, "
   "`img_id`=?, "
   "`is_recommended`=?, "
-  "`upload_type_id`=? "
+  "`upload_type_id`=?, "
+  "`info`=? "
   "WHERE `id`=?";
 
   const char access::object_traits_impl< ::brand, id_mysql >::erase_statement[] =
@@ -409,7 +466,8 @@ namespace odb
   "`brand`.`name`, "
   "`brand`.`img_id`, "
   "`brand`.`is_recommended`, "
-  "`brand`.`upload_type_id` "
+  "`brand`.`upload_type_id`, "
+  "`brand`.`info` "
   "FROM `brand`";
 
   const char access::object_traits_impl< ::brand, id_mysql >::erase_query_statement[] =
