@@ -16,6 +16,7 @@
 #include"db_util.h"
 #include"classification.h"
 #include"classification_dao.h"
+#include"file_dao.h"
 
 class classification_service
 {
@@ -25,6 +26,7 @@ public:
 	virtual ~classification_service();
 	private:std::auto_ptr<odb::database> db;
 private:classification_dao*cd;
+private:file_dao*fd;
 public:void add_classifi(classification&classifi);
 public:void getParentClass(classification*classifi, long classid);
 public:void query_class_bypid(std::list<classification*>*child_class, DWORD_PTR pid);

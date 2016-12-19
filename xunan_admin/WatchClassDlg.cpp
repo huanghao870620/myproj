@@ -13,6 +13,7 @@ IMPLEMENT_DYNAMIC(WatchClassDlg, CDialogEx)
 WatchClassDlg::WatchClassDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(WatchClassDlg::IDD, pParent)
 {
+	this->cs = classification_service::get_classification_service();
 }
 
 WatchClassDlg::~WatchClassDlg()
@@ -29,7 +30,7 @@ BOOL WatchClassDlg::OnInitDialog(){
 	CDialogEx::OnInitDialog();
 
 	HICON hIcon[3];
-	HTREEITEM hRoot;
+	//HTREEITEM hRoot;
 	HTREEITEM hCataItem;
 	HTREEITEM hArtItem;
 
@@ -44,13 +45,32 @@ BOOL WatchClassDlg::OnInitDialog(){
 	}
 	this->m_webTree.SetImageList(&m_imageList, TVSIL_NORMAL);
 
-	hRoot = this->m_webTree.InsertItem("鸡啄米", 0, 0);
+	/*hRoot = this->m_webTree.InsertItem("鸡啄米", 0, 0);
 	hCataItem = this->m_webTree.InsertItem("IT互联网", 1, 1, hRoot, TVI_LAST);
 	this->m_webTree.SetItemData(hCataItem, 1);
 	hArtItem = this->m_webTree.InsertItem("百度文章1", 2, 2, hCataItem, TVI_LAST);
 	this->m_webTree.SetItemData(hArtItem, 2);
 	hArtItem = this->m_webTree.InsertItem("谷歌文章2", 2, 2, hCataItem, TVI_LAST);
-	this->m_webTree.SetItemData(hArtItem, 3);
+	this->m_webTree.SetItemData(hArtItem, 3);*/
+
+
+
+	std::list<classification*> class_list; 
+	int len= class_list.size();
+	HTREEITEM *roots = new HTREEITEM[len];
+	this->cs->query_class_bypid(&class_list,-1);
+	std::list<classification*>::iterator iter = class_list.begin();
+	for (int i=0; iter != class_list.end(); iter++,i++){
+		classification *clas = *iter;
+		std::string name= clas->get_name();
+		name= charset_util::UTF8ToGBK(name);
+		std::cout << "" << std::endl;
+		roots[i] = this->m_webTree.InsertItem(name.c_str(), 0, 0);
+	}
+
+
+
+
 	/*hCataItem = m_webTree.InsertItem("数码生活", 1, 1, hRoot, TVI_LAST);
 	this->m_webTree.SetItemData(hCataItem, 4);
 	hArtItem = this->m_webTree.InsertItem("智能手机文章1", 2, 2, hCataItem, TVI_LAST);

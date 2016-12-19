@@ -29,3 +29,16 @@ void classification_dao::getParentClass(classification*classifi, long classid, s
 	classifi->set_pid(i->get_pid());
 	classifi->set_id(classid);
 }
+
+void query_class_bypid(std::list<classification*>*child_class, DWORD_PTR pid, std::auto_ptr<odb::database> &db){
+odb::result<classification> r(db->query<classification>(odb::query<classification>::pid == pid));
+for (odb::result<classification>::iterator i(r.begin()); i != r.end(); ++i){
+	classification *cla = new classification;
+	cla->set_id(i->get_id());
+	cla->set_name(i->get_name());
+	cla->set_pid(i->get_pid());
+	cla->set_img_id(i->get_img_id());
+	child_class->push_back(cla);
+}
+}
+

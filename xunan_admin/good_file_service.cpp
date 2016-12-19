@@ -33,8 +33,7 @@ void good_file_service::findFileByGoodId(long goodId, long type_id_, std::list<f
 	odb::result<good_file> r(db->query<good_file>(odb::query<good_file>::good_id == goodId));
 	for (odb::result<good_file>::iterator i(r.begin()); i != r.end(); ++i){
 		long file_id = i->get_file_id();
-		file *f = new file;
-		fd->findById(file_id, f, db);
+		 file *f=fd->findById(file_id, db);
 		long type_id = f->get_type_id();
 		if (type_id == type_id_){
 			fs->push_back(f);

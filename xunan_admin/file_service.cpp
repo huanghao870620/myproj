@@ -22,8 +22,8 @@ file_service::~file_service(){
 
 }
 
-void file_service::findById(long id,file *f){
-	this->fd->findById(id, f, this->db);
+file* file_service::findById(long id){
+	return this->fd->findById(id,  this->db);
 }
 
 void file_service::add_file(file&f){
@@ -51,15 +51,14 @@ void file_service::update_and_upload_file(long file_id,
 	std::string id_str;
 	std::string fileTypeIdStr;
 	UploadFile uf;
-    file f;
 	try{
 	odb::core::transaction tx(this->db->begin());
-	this->fd->findById(file_id, &f,this->db);
-	id_str = Util::ltos(f.get_id());
+	file*f= this->fd->findById(file_id, this->db);
+	id_str = Util::ltos(f->get_id());
 	fileTypeIdStr = Util::ltos(fileTypeId);
 	uf.upload(localPath.c_str(), base, fileTypeIdStr.c_str(), id_str.c_str());
-	f.set_uri_path(base);
-	this->fd->update_file(f, this->db);
+	f->set_uri_path(base);
+	this->fd->update_file(*f, this->db);
 	tx.commit();
 	}
 	catch (odb::exception&e){

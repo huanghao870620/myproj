@@ -3,6 +3,7 @@
 #include"resource.h"
 #include"MyCTreeCtrl.h"
 #include"classification_service.h"
+#include"charset_util.h"
 
 // WatchClassDlg ¶Ô»°¿ò
 

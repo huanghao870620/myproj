@@ -40,7 +40,7 @@ public:static file_service* get_file_service(){
 private: file_dao *fd;
 private:good_file_dao*gfd;
 
-public:void findById(long id,file*f);
+public:file* findById(long id);
 public:void add_file(file&f);
 public:void update_file(file&f);
 public:void update_and_upload_file(long file_id, std::string&localPath, long fileTypeId);

@@ -28,6 +28,6 @@ public:static file_dao* get_file_dao(){
 	return &f_dao;
 }
 public:void file_dao::update_file(file&f, std::auto_ptr<odb::database> &db);
-public:void findById(long id, file*f, std::auto_ptr<odb::database> &db);
+public:file* findById(long id,  std::auto_ptr<odb::database> &db);
 };
 #endif // !defined(EA_8CF62838_CD30_47ce_8653_68FC11C745C5__INCLUDED_)

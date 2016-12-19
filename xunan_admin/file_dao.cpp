@@ -26,10 +26,12 @@ void file_dao::update_file(file&f, std::auto_ptr<odb::database> &db){
 	 db->update(f);
 }
 
-void file_dao::findById(long id, file*f, std::auto_ptr<odb::database> &db){
+file* file_dao::findById(long id,  std::auto_ptr<odb::database> &db){
 	odb::result<file> r(db->query<file>(odb::query<file>::id == id));
 	odb::result<file>::iterator i(r.begin());
+	file *f = new file;
 	f->set_type_id(i->get_type_id());
 	f->set_uri_path(i->get_uri_path());
 	f->set_id(i->get_id());
+	return f;
 }

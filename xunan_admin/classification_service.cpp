@@ -11,6 +11,7 @@
 classification_service::classification_service(){
 	this->db = db_util::get_db_util()->get_db();
 	this->cd = classification_dao::get_classification_dao();
+	this->fd = file_dao::get_file_dao();
 }
 
 
@@ -35,15 +36,14 @@ void classification_service::getParentClass(classification*classifi, long classi
 void classification_service::query_class_bypid(std::list<classification*>*child_class, DWORD_PTR pid){
 	try{
 	odb::core::transaction t(db->begin());
-	odb::result<classification> r(db->query<classification>(odb::query<classification>::pid == pid));
-	for (odb::result<classification>::iterator i(r.begin()); i != r.end(); ++i){
-		classification *cla = new classification;
-		cla->set_id(i->get_id());
-		cla->set_name(i->get_name());
-		cla->set_pid(i->get_pid());
-		child_class->push_back(cla);
+	this->cd->query_class_bypid(child_class, pid, this->db);
+	std::list<classification*>::iterator iter= child_class->begin();
+	for (; iter != child_class->end(); iter++){
+		classification *c = *iter;
+		long img_id= c->get_img_id();
+		file*f=this->fd->findById(img_id,this->db);
+
 	}
-	//t.commit();
 	}
 	catch (odb::exception&e){
 		std::cout << e.what() << std::endl;

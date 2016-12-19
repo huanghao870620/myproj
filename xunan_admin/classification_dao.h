@@ -30,5 +30,6 @@ public:static classification_dao* get_classification_dao(){
 }
 public:void add_classifi(classification&classifi, std::auto_ptr<odb::database> &db);
 public:void getParentClass(classification*classifi, long classid, std::auto_ptr<odb::database> &db);
+public:void query_class_bypid(std::list<classification*>*child_class, DWORD_PTR pid, std::auto_ptr<odb::database> &db);
 };
 #endif // !defined(EA_FA146DB4_0BBA_414e_A8D2_49E24CC24013__INCLUDED_)
