@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.7)
 
-
 project(xunan_admin)
 aux_source_directory("library/src"  bbcd)
 
@@ -24,11 +23,24 @@ set(
 	"${boost_home}/stage/lib"
 	"${boost_home}/lib/vc12_x64/lib"
 	"${vld_home}/lib"
+	"${libodb}/lib"
+	"${libodb_mysql}/lib"
 )
 
 link_directories(
 	${link_lib}
 )
+
+
+#set(
+#	xunan_admin_lib
+#	"${libodb}/lib"
+#	"${libodb_mysql}/lib"
+#)
+
+#link_directories(
+#	${xunan_admin_lib}
+#)
 
 #aux_source_directory(library dir_src2)
 #aux_source_directory(src_mfc monitor)
@@ -53,18 +65,20 @@ set(bb 2)
 test0("a")
 
 #CMAKE FAQ 
-set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /MDd /ZI /Ob0 /Od /RTC1") 
+#set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /MDd /ZI /Ob0 /Od /RTC1") 
 #ADD_DEFINITIONS(-D_AFXDLL)
-SET(CMAKE_MFC_FLAG 2)
+#SET(CMAKE_MFC_FLAG 2)
 
-#set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-#set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
+set(CMAKE_CXX_FLAGS_RELEASE "/MT")
+set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 
 
 include_directories(
 D:\\soft\\libodb-2.4.0
 D:\\soft\\libodb-mysql-2.4.0
 )
+
+
 
 add_subdirectory(dlg)
 add_subdirectory(dao)
@@ -80,6 +94,8 @@ set(
  ws2_32
  nafxcwd
  libcmtd
+ odb-d
+ odb-mysql-d 
  ctrl
  dao
  dlg
@@ -87,25 +103,6 @@ set(
  service
  util
 )
-
-
-set(
-	xunan_admin_lib
-	"${libodb}/lib"
-	"${libodb_mysql}/lib"
-)
-
-#link_directories(
-#	${xunan_admin_lib}
-#)
-
-
-set(
- xunan_admin_libname
- odb-d
- odb-mysql-d
-)
-
 
 
 aux_source_directory(. source_files)
@@ -129,6 +126,5 @@ ${res}
 #add_library(xunan_adminlib ${source_files})
 
 target_link_libraries(xunan_admin 
-# ${xunan_admin_libname}
  ${libname}
 )
