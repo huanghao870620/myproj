@@ -277,3 +277,10 @@ example31/example31.aps
 xunan_admin/Release/
 xunan_admin/xunan_admin.rar
 xunan_admin/MinSizeRel/
+xunan_admin/util/util.dir/
+xunan_admin/util/util.vcxproj
+xunan_admin/util/util.vcxproj.filters
+xunan_admin/Project.opensdf
+xunan_admin/Project.sdf
+xunan_admin/Project.sln
+xunan_admin/Project.v12.suo

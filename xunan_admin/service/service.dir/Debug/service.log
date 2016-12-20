@@ -1,0 +1,31 @@
+﻿生成启动时间为 2016/12/20 10:56:42。
+     1>项目“D:\cppwork\myproj\xunan_admin\service\service.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\soft\boost_1_60_0 /I"D:\soft\mysql-connector-c-6.1.6-win32\include" /I"C:\Program Files (x86)\Visual Leak Detector\include" /I"D:\soft\libodb-2.4.0" /I"D:\soft\libodb-mysql-2.4.0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /D _AFXDLL /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"service.dir\Debug\\" /Fd"service.dir\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt D:\cppwork\myproj\xunan_admin\service\country_service.cpp D:\cppwork\myproj\xunan_admin\service\file_service.cpp
+         country_service.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : 参见“MBCS_Support_Deprecated_In_MFC”的声明
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         file_service.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : 参见“MBCS_Support_Deprecated_In_MFC”的声明
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+     1>d:\cppwork\myproj\xunan_admin\entity\file.h(22): warning C4068: 未知的杂注
+     1>d:\cppwork\myproj\xunan_admin\entity\file.h(41): warning C4068: 未知的杂注
+         正在生成代码...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"D:\cppwork\myproj\xunan_admin\service\Debug\service.lib" /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" /NOLOGO  /machine:X86 service.dir\Debug\brand_service.obj
+         service.dir\Debug\classification_service.obj
+         service.dir\Debug\country_service.obj
+         service.dir\Debug\file_service.obj
+         service.dir\Debug\good_file_service.obj
+         service.dir\Debug\good_service.obj
+         service.dir\Debug\upload_service.obj
+         service.dir\Debug\upload_type_service.obj
+         service.dir\Debug\venue_service.obj
+         service.vcxproj -> D:\cppwork\myproj\xunan_admin\service\Debug\service.lib
+     1>已完成生成项目“D:\cppwork\myproj\xunan_admin\service\service.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.39

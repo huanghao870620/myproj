@@ -1,0 +1,44 @@
+﻿生成启动时间为 2016/12/20 10:55:31。
+     1>项目“D:\cppwork\myproj\xunan_admin\dao\dao.vcxproj”在节点 2 上(Build 个目标)。
+     1>CustomBuild:
+         Building Custom Rule D:/cppwork/myproj/xunan_admin/dao/CMakeLists.txt
+         CMake does not need to re-run because D:\cppwork\myproj\xunan_admin\dao\CMakeFiles\generate.stamp is up-to-date.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\soft\boost_1_60_0 /I"D:\soft\mysql-connector-c-6.1.6-win32\include" /I"C:\Program Files (x86)\Visual Leak Detector\include" /I"D:\soft\libodb-2.4.0" /I"D:\soft\libodb-mysql-2.4.0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /D _AFXDLL /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"dao.dir\Debug\\" /Fd"dao.dir\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt D:\cppwork\myproj\xunan_admin\dao\brand_dao.cpp D:\cppwork\myproj\xunan_admin\dao\classification_dao.cpp D:\cppwork\myproj\xunan_admin\dao\country_dao.cpp D:\cppwork\myproj\xunan_admin\dao\file_dao.cpp D:\cppwork\myproj\xunan_admin\dao\good_dao.cpp D:\cppwork\myproj\xunan_admin\dao\good_file_dao.cpp D:\cppwork\myproj\xunan_admin\dao\upload_dao.cpp D:\cppwork\myproj\xunan_admin\dao\upload_type_dao.cpp D:\cppwork\myproj\xunan_admin\dao\venue_dao.cpp
+         brand_dao.cpp
+         classification_dao.cpp
+         country_dao.cpp
+     1>d:\cppwork\myproj\xunan_admin\entity\country.h(21): warning C4068: 未知的杂注
+     1>d:\cppwork\myproj\xunan_admin\entity\country.h(29): warning C4068: 未知的杂注
+         file_dao.cpp
+     1>d:\cppwork\myproj\xunan_admin\entity\file.h(22): warning C4068: 未知的杂注
+     1>d:\cppwork\myproj\xunan_admin\entity\file.h(41): warning C4068: 未知的杂注
+         good_dao.cpp
+     1>d:\cppwork\myproj\xunan_admin\entity\goods.h(21): warning C4068: 未知的杂注
+     1>d:\cppwork\myproj\xunan_admin\entity\goods.h(34): warning C4068: 未知的杂注
+     1>d:\cppwork\myproj\xunan_admin\entity\goods.h(43): warning C4068: 未知的杂注
+         good_file_dao.cpp
+     1>d:\cppwork\myproj\xunan_admin\entity\file.h(22): warning C4068: 未知的杂注
+     1>d:\cppwork\myproj\xunan_admin\entity\file.h(41): warning C4068: 未知的杂注
+         upload_dao.cpp
+         upload_type_dao.cpp
+     1>d:\cppwork\myproj\xunan_admin\entity\upload_type.h(18): warning C4068: 未知的杂注
+     1>d:\cppwork\myproj\xunan_admin\entity\upload_type.h(26): warning C4068: 未知的杂注
+         venue_dao.cpp
+         正在生成代码...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"D:\cppwork\myproj\xunan_admin\dao\Debug\dao.lib" /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" /NOLOGO  /machine:X86 dao.dir\Debug\brand_dao.obj
+         dao.dir\Debug\classification_dao.obj
+         dao.dir\Debug\country_dao.obj
+         dao.dir\Debug\file_dao.obj
+         dao.dir\Debug\good_dao.obj
+         dao.dir\Debug\good_file_dao.obj
+         dao.dir\Debug\upload_dao.obj
+         dao.dir\Debug\upload_type_dao.obj
+         dao.dir\Debug\venue_dao.obj
+         dao.vcxproj -> D:\cppwork\myproj\xunan_admin\dao\Debug\dao.lib
+     1>已完成生成项目“D:\cppwork\myproj\xunan_admin\dao\dao.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:04.68
