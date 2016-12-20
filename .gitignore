@@ -300,3 +300,15 @@ xunan_admin/entity/entity.vcxproj.filters
 xunan_admin/service/service.vcxproj
 xunan_admin/service/service.vcxproj.filters
 xunan_admin/xunan_admin.v12.suo
+xunan_admin/ctrl/Debug/
+xunan_admin/ctrl/ctrl.dir/
+xunan_admin/ctrl/ctrl.vcxproj.user
+xunan_admin/dao/Debug/
+xunan_admin/dao/dao.dir/
+xunan_admin/dlg/Debug/
+xunan_admin/dlg/dlg.dir/
+xunan_admin/entity/Debug/
+xunan_admin/entity/entity.dir/
+xunan_admin/service/Debug/
+xunan_admin/service/service.dir/
+xunan_admin/util/Debug/
