@@ -8,9 +8,9 @@
 #if !defined(EA_F9C0FC87_150C_45f1_8A53_42921EA228E0__INCLUDED_)
 #define EA_F9C0FC87_150C_45f1_8A53_42921EA228E0__INCLUDED_
 #include"resource.h"
-#include"MyDoc.h"
-#include"MyFrame.h"
-#include"MyView.h"
+#include"dlg\MyDoc.h"
+#include"dlg\MyFrame.h"
+#include"dlg\MyView.h"
 #include<afxwin.h>
 #include<iostream>
 #include<afxmt.h>
