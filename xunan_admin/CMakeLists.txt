@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 
 
-project(proj2222)
+project(xunan_admin)
 aux_source_directory("library/src"  bbcd)
 
 file(STRINGS path_company.txt variables)
