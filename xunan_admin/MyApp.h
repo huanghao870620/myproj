@@ -14,6 +14,13 @@
 #include<afxwin.h>
 #include<iostream>
 #include<afxmt.h>
+
+#include<memory>
+#include<odb\database.hxx>
+#include<odb\mysql\database.hxx>
+#include<odb\core.hxx>
+#include"entity\good_file.h"
+
 class MyApp : public CWinApp
 {
 

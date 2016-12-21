@@ -98,7 +98,7 @@ protected:afx_msg void f1();
 protected:afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 protected:afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 protected:afx_msg void OnPaint();
-
+//
 private:CStatic gatp;// 商品縮略圖
 private:CStatic advPic;//商品广告图
 
@@ -154,7 +154,7 @@ private:int m_nXPos = 0;
 
 
 private:std::string localPath;
-//private:std::string thubmLocalPath;/*缩略图本地存储路径*/
+private:std::string thubmLocalPath;/*缩略图本地存储路径*/
 
 
 private:long thumbFileId; /*缩略图文件id*/

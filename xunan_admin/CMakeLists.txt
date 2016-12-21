@@ -65,12 +65,12 @@ set(bb 2)
 test0("a")
 
 #CMAKE FAQ 
-#set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /MDd /ZI /Ob0 /Od /RTC1") 
-#ADD_DEFINITIONS(-D_AFXDLL)
-#SET(CMAKE_MFC_FLAG 2)
+set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /MDd /ZI /Ob0 /Od /RTC1") 
+ADD_DEFINITIONS(-D_AFXDLL)
+SET(CMAKE_MFC_FLAG 2)
 
-set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
+#set(CMAKE_CXX_FLAGS_RELEASE "/MT")
+#set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi /Ob0 /Od /RTC1")
 
 
 include_directories(
@@ -82,7 +82,6 @@ D:\\soft\\libodb-mysql-2.4.0
 
 add_subdirectory(dlg)
 add_subdirectory(dao)
-#add_subdirectory(dto)
 add_subdirectory(service)
 add_subdirectory(entity)
 add_subdirectory(util)
@@ -91,17 +90,15 @@ add_subdirectory(ctrl)
 set(
  libname
  libmysql
- ws2_32
- nafxcwd
- libcmtd
- odb-d
- odb-mysql-d 
+ ws2_32 
+ dlg
  ctrl
  dao
- dlg
  entity
  service
  util
+# nafxcwd
+# libcmtd
 )
 
 
@@ -125,6 +122,14 @@ ${res}
 
 #add_library(xunan_adminlib ${source_files})
 
+set(
+ odb
+ odb-d
+ odb-mysql-d 
+)
+
+
 target_link_libraries(xunan_admin 
  ${libname}
+ ${odb}
 )

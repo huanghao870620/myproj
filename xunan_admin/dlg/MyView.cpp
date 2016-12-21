@@ -20,11 +20,12 @@ MyView::~MyView(){
 }
 
 void MyView::OnDraw(CDC*pDC){
+	std::cout << "" << std::endl;
 	/*CWnd *d0= AfxGetApp()->GetMainWnd()->GetDlgItem(IDD_DIALOG1);
 	std::cout << "fsfd" << std::endl;*/
 }
 
-//
+
 AddGoodsDlg* MyView::getAddGoodDlg(){
 	return  this->pDlg;
 }
@@ -40,7 +41,7 @@ void MyView::AddGood(){
 	this->pDlg->Create(IDD_DIALOG_ADD_GOODS, this);
 	this->pDlg->ShowWindow(SW_SHOW);	
 }
-
+//
 /*查看分类对话框*/
 void MyView::watchClass(){
 	this->watchClassDlg = new WatchClassDlg;

@@ -12,7 +12,7 @@
 #include<iostream>
 #include<odb\database.hxx>
 #include<odb\transaction.hxx>
-#include<odb\mysql\database.hxx>
+//#include<odb\mysql\database.hxx>
 #include<odb\core.hxx>
 
 /**

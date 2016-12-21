@@ -20,20 +20,22 @@ good_dao::~good_dao(){
 
 void good_dao::query_list(std::list<goods*>* goods_list, std::auto_ptr<odb::database> &db){
 	odb::core::transaction tx(db->begin());
-	odb::result<goods> r(db->query<goods>(odb::query<goods>::id>1));
-	for (odb::result<goods>::iterator i(r.begin()); i != r.end(); ++i){
+	//odb::query<goods>::id > 1;
+	db->query<goods>(odb::query<goods>::id > 1);
+	odb::result<goods> r(/*db->query<goods>(odb::query<goods>::id>1)*/);
+	/*for (odb::result<goods>::iterator i(r.begin()); i != r.end(); ++i){
 		goods *g = new goods;
 		g->set_id(i->get_id());
 		g->set_name(i->get_name());
 		g->set_info(i->get_info());
 		goods_list->push_back(g);
-	}
+	}*/
 	
 }
 
 /*通过id获取商品*/
 void good_dao::findById(goods*good, long id, std::auto_ptr<odb::database> &db){
-	odb::core::transaction tx(db->begin());
+	/*odb::core::transaction tx(db->begin());
 	odb::result<goods> r(db->query<goods>(odb::query<goods>::id == id));
 	odb::result<goods>::iterator i(r.begin());
 	good->set_id(i->get_id());
@@ -43,15 +45,15 @@ void good_dao::findById(goods*good, long id, std::auto_ptr<odb::database> &db){
 	good->set_lowest_price(i->get_lowest_price());
 	good->set_highestPrice(i->get_highest_price());
 	good->set_purchasing_position(i->get_purchasing_position());
-	good->set_classid(i->get_classid());
+	good->set_classid(i->get_classid());*/
 }
 
 /*修改商品信息*/
 void good_dao::update(goods&good, std::auto_ptr<odb::database> &db){
-	db->update(good);
+	//db->update(good);
 }
 
 /*添加商品*/
 void good_dao::add(goods&good, std::auto_ptr<odb::database>&db){
-	db->persist(good);
+	//db->persist(good);
 }

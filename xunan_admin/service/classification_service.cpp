@@ -33,7 +33,7 @@ void classification_service::getParentClass(classification*classifi, long classi
 
 
 /**/
-void classification_service::query_class_bypid(std::list<classification*>*child_class, DWORD_PTR pid){
+void classification_service::query_class_bypid(std::list<classification*>*child_class, long pid){
 	try{
 	odb::core::transaction t(db->begin());
 	this->cd->query_class_bypid(child_class, pid, this->db);

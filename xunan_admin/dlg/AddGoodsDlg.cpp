@@ -429,7 +429,7 @@ void AddGoodsDlg::addGood(){
 	std::string is_recom_str = recom.GetBuffer(0);
 	/*时间戳*/
 	std::string addTime = "2015/11/21";
-	this->gs->add_good(name, 
+	this->gs->add_good(name,
 		selClass, 
 		info_str,
 		capl,

@@ -27,8 +27,8 @@ class good_service
 public:
 	good_service();
 	virtual ~good_service();
-private:std::auto_ptr<odb::database> db;
-public:static good_service* get_good_service(){
+	private:std::auto_ptr<odb::database> db;
+			public:static good_service* get_good_service(){
 	static good_service gs;
 	return &gs;
 }
@@ -38,6 +38,7 @@ private:good_dao*gd;
 public: void query_list(std::list<goods*>* goods_list);
 public:void findById(goods*good, long id);
 public:void update_good(goods&good);
+
 public:void  add_good(std::string&name,
 	int selClass,
 	std::string&info_str,

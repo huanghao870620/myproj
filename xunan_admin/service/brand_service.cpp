@@ -26,4 +26,5 @@ void brand_service::add_brand(brand&b){
 void brand_service::get_brands(std::list<brand*> &brand_list){
 	odb::core::transaction tx(this->db->begin());
 	this->bd->query(brand_list, this->db);
+	tx.commit();
 }

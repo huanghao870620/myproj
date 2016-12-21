@@ -29,7 +29,7 @@ private:classification_dao*cd;
 private:file_dao*fd;
 public:void add_classifi(classification&classifi);
 public:void getParentClass(classification*classifi, long classid);
-public:void query_class_bypid(std::list<classification*>*child_class, DWORD_PTR pid);
+public:void query_class_bypid(std::list<classification*>*child_class, long pid);
 
 public:static classification_service*get_classification_service(){
 	static classification_service cs;
