@@ -8,8 +8,8 @@
 #include"../util/Util.h"
 #include<gdiplus.h>
 
-// CountryShow 对话框
 
+// CountryShow 对话框
 class CountryShow : public CDialogEx
 {
 	DECLARE_DYNAMIC(CountryShow)
@@ -32,7 +32,7 @@ protected:virtual BOOL OnInitDialog(); //
 			  UINT ulNewWidth);
 
 		  bool GetEncoderClsid(const WCHAR* pszFormat, CLSID* pClsid);
-
+		  void OnCustomDraw(NMHDR* pNMHDR, LRESULT* pResult);
 		  CBitmap Bitmap[4];
 		  CImageList m_Imagelist;
 		  WCHAR m_char16ImgName[MAX_PATH];

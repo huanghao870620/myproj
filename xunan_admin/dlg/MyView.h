@@ -19,6 +19,7 @@
 #include"AddClassDlg.h"
 #include"AddVenue.h"
 #include"ListGoodsDlg.h"
+#include"TestDlg.h"
 
 class MyView : public CView
 {
@@ -38,6 +39,7 @@ protected:afx_msg void watchClass();/*查看分类*/
 protected:afx_msg void AddClass();/*添加分类*/
 protected:afx_msg void watchGoods();/*商品列表*/
 protected:afx_msg void ShowAddVenueDlg();/*添加会场*/
+		  afx_msg void ShowTest();
 //
 private:AddGoodsDlg*pDlg;/*添加商品对话框*/
 private:AddBrandDlg*brandDlg;/*添加品牌对话框*/
@@ -46,6 +48,7 @@ private:WatchClassDlg*watchClassDlg;/*查看分类对话框*/
 private:AddClassDlg*addClassDlg;/*添加分类对话框*/
 private:ListGoodsDlg*listGoodsDlg;
 private:CountryShow*countryShowDlg;
+		TestDlg*testDlg;
 //
 public: AddGoodsDlg*getAddGoodDlg();
 //

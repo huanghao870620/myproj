@@ -88,6 +88,13 @@ void MyView::addCountry(){
 	this->addCountryDlg->ShowWindow(SW_SHOW);
 }
 
+/**/
+void MyView::ShowTest(){
+	this->testDlg = new TestDlg;
+	this->testDlg->Create(IDD_DIALOG1, this);
+	this->testDlg->ShowWindow(SW_SHOW);
+}
+
 /*查看国家*/
 void MyView::watchCountry(){
 	this->countryShowDlg = new CountryShow;
@@ -105,4 +112,5 @@ BEGIN_MESSAGE_MAP(MyView, CView)
 	ON_COMMAND(ID_ADD_CLASS, MyView::AddClass)
 	ON_COMMAND(ID_ADD_VNEUE, MyView::ShowAddVenueDlg)/*添加会场*/
 	ON_COMMAND(ID_40010, MyView::watchGoods) /*商品列表*/
+	ON_COMMAND(ID_40018, ShowTest)
 END_MESSAGE_MAP()

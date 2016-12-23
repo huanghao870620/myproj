@@ -9,11 +9,13 @@ list(GET variables 1 mysql_sdk_home)
 list(GET variables 2 vld_home)
 list(GET variables 3 libodb)
 list(GET variables 4 libodb_mysql)
+list(GET variables 5 cximage_home)
 
 include_directories(
  "${boost_home}"
  "${mysql_sdk_home}/include"
  "${vld_home}/include"
+ "${cximage_home}"
 )
 
 set(

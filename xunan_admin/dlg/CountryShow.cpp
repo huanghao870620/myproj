@@ -2,9 +2,9 @@
 //
 
 #include "../stdafx.h"
+
 #include "CountryShow.h"
 #include "afxdialogex.h"
-
 
 // CountryShow 对话框
 IMPLEMENT_DYNAMIC(CountryShow, CDialogEx)
@@ -36,81 +36,53 @@ BOOL CountryShow::OnInitDialog(){
 
 
 
-	CImage img;
-	img.Load("d:\\test\\Chrysanthemum.jpg");//读取JPG图片
-	img.Save("d:\\test\\Chrysanthemum.bmp");//保存成BMP格式
-	
-	this->CompressImagePixel(L"d:\\test\\Chrysanthemum.bmp", L"d:\\test\\ChrysanthemumB.bmp", 100, 100);
-
-	pBmp = new CBitmap();
-	pBmp->LoadBitmap(IDB_BITMAP3);
-	//pBmp->LoadBitmap("d:\\test\\Chrysanthemum.bmp");
-	
-	
-	//pBmp->Detach();
-	////从文件路径加载图片  
-	//bitmap = (HBITMAP)::LoadImage(NULL, "d:\\test\\ChrysanthemumB.bmp", IMAGE_BITMAP, 0, 0,
-	//	LR_CREATEDIBSECTION | LR_LOADFROMFILE | LR_DEFAULTSIZE);
-	//pBmp->DeleteObject();
-
-	//if (pBmp->Attach(bitmap)){
-		this->m_Imagelist.Add(pBmp, RGB(0, 0, 0));
-		//this->AddImage("d:\\test\\Chrysanthemum.jpg");
-	//}
-
-
-	//delete pBmp;
-
-	/*pBmp = new CBitmap();
-	pBmp->LoadBitmap(IDB_BITMAP1);
-	m_Imagelist.Add(pBmp, RGB(0, 0, 0));
-	delete pBmp;*/
-
-	//ICON模式（方便一点）  
-	/*HICON hIcon;
-
-	m_Imagelist.Create(32, 32, ILC_COLOR, 2, 20);
-
-	hIcon = AfxGetApp()->LoadIconW(IDI_ICON_GREE);
-	m_Imagelist.Add(hIcon);
-
-	hIcon = AfxGetApp()->LoadIconW(IDI_ICON_READ);
-	m_Imagelist.Add(hIcon);*/
-
-
-
-	this->clistCtrl.SetImageList(&this->m_Imagelist, LVSIL_SMALL); //这里要使用，LVSIL_SMALL风格  
-
-	//四、给CListCtrl控件添加二列
-	this->clistCtrl.InsertColumn(0, _T("图形列"), LVCFMT_CENTER, 100);
-	clistCtrl.InsertColumn(1, _T("列名"), LVCFMT_CENTER, 100);
-
-	//五、添加数据
-
-		int nRow;  //记录行号  
-	LVITEM lvItem = { 0 };
-
-	//第一行数据  
-	lvItem.mask = LVIF_IMAGE | LVIF_TEXT | LVIF_STATE;  //文字、图片、状态  
-	lvItem.iItem = 0;       //行号(第一行)  
-	lvItem.iImage = 0;  //图片索引号(第一幅图片)  
-	lvItem.iSubItem = 0;    //子列号  
-
-	nRow = clistCtrl.InsertItem(&lvItem);     //第一列为图片  
-	clistCtrl.SetItemText(nRow, 1, _T("PPP"));  //第二列为文字  
-
-	//第二行数据  
-	lvItem.mask = LVIF_IMAGE | LVIF_TEXT | LVIF_STATE;  //文字、图片、状态  
-	lvItem.iItem = 1;       //行号(第二行)  
-	lvItem.iImage = 1;  //图片索引号(第二幅图片)  
-	lvItem.iSubItem = 0;    //子列号  
-
-	nRow = clistCtrl.InsertItem(&lvItem);     //第一列为图片  
-	clistCtrl.SetItemText(nRow, 1, _T("PPP2"));  //第二列为文字  
-
+	this->clistCtrl.InsertColumn(1, "ID", LVCFMT_CENTER, 40);
+	this->clistCtrl.InsertColumn(2,"国家", LVCFMT_CENTER, 40);
+	this->clistCtrl.InsertColumn(3, "国家代码", LVCFMT_CENTER, 50);
+	std::list<country*> c_list;
+	this->cs->query(c_list);
+	std::list<country*>::iterator iter = c_list.begin();
+	for (int i = 0; iter != c_list.end(); iter++, i++){
+		country *c = *iter;
+		long id = c->get_id();
+		std::string id_str = Util::ltos(id);
+		std::string &name = charset_util::UTF8ToGBK(c->get_name());
+		std::string&info = charset_util::UTF8ToGBK(c->get_country_code());
+		int nRow = this->clistCtrl.InsertItem(i + 1, id_str.c_str());
+		this->clistCtrl.SetItemText(nRow, 1, name.c_str());
+		this->clistCtrl.SetItemText(nRow, 2, info.c_str());
+	}
 	return TRUE;
 }
 
+void CountryShow::OnCustomDraw(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	// TODO: Add your control notification handler code here 
+	LPNMLVCUSTOMDRAW	pnmCustDraw = (LPNMLVCUSTOMDRAW)pNMHDR;
+	switch (pnmCustDraw->nmcd.dwDrawStage){
+	case CDDS_PREPAINT:
+		*pResult = CDRF_NOTIFYITEMDRAW; break;
+	case CDDS_ITEMPREPAINT:
+		*pResult = CDRF_NOTIFYPOSTPAINT; break;
+	case CDDS_ITEMPOSTPAINT:{
+		int	iItem = pnmCustDraw->nmcd.dwItemSpec;
+		CDC	dc;
+		dc.Attach(pnmCustDraw->nmcd.hdc);
+		/*HICON hi = GetIconFromFile(m_strImageFile, iItem);
+		m_pic.CreateFromIcon(hi); DestroyIcon(hi);
+		CRect	rectDest;
+		m_wndImgPrvwList.GetItemRect(iItem, rectDest, LVIR_ICON);
+		dc.DPtoLP(rectDest);
+		m_pic.Render(&dc, &rectDest);
+		dc.Detach();
+		*pResult = CDRF_DODEFAULT;*/
+		break;
+	}
+	default:
+		*pResult = CDRF_DODEFAULT;
+		break;
+	}
+}
 
 
 int CountryShow::AddImage(CString imgPath)
@@ -430,3 +402,103 @@ this->clistCtrl.SetImageList(&m_ImageList, LVSIL_SMALL);
 this->clistCtrl.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_SUBITEMIMAGES);
 this->clistCtrl.SetItem(nRow, 1, LVIF_IMAGE, NULL, 2, 0, 0, 0);*/
 //}
+
+//CImage img;
+//img.Load("d:\\test\\Chrysanthemum.jpg");//读取JPG图片
+//img.Save("d:\\test\\Chrysanthemum.bmp");//保存成BMP格式
+//
+//this->CompressImagePixel(L"d:\\test\\Chrysanthemum.bmp", L"d:\\test\\ChrysanthemumB.bmp", 100, 100);
+
+//pBmp = new CBitmap();
+//pBmp->LoadBitmap(IDB_BITMAP3);
+////pBmp->LoadBitmap("d:\\test\\Chrysanthemum.bmp");
+//
+
+
+////CString fileName = "";
+
+//SHFILEINFO info;
+//HIMAGELIST hImageList = NULL;
+//memset((char*)&info, 0, sizeof(info));
+//hImageList = (HIMAGELIST)SHGetFileInfo("d:\\test\\Chrysanthemum.bmp", FILE_ATTRIBUTE_NORMAL, &info, sizeof(&info), SHGFI_ICON | SHGFI_SMALLICON | SHGFI_OPENICON | SHGFI_DISPLAYNAME);//关键所在   
+//m_Imagelist.Add(info.hIcon);
+////int indexIcon = m_Imagelist.Add(info.hIcon);
+//
+////pBmp->Detach();
+//////从文件路径加载图片  
+////bitmap = (HBITMAP)::LoadImage(NULL, "d:\\test\\ChrysanthemumB.bmp", IMAGE_BITMAP, 0, 0,
+////	LR_CREATEDIBSECTION | LR_LOADFROMFILE | LR_DEFAULTSIZE);
+////pBmp->DeleteObject();
+
+//
+////CxImage image;
+//////应用CXImage载入图像，本程序是相对路径
+////image.Load("d:\\test\\Chrysanthemum.jpg");
+////if (image.IsValid() == false)
+////{
+////	return 0;
+////}
+
+////image.Resample(m_nX, m_nY, 2);
+////CDC *pDC = GetDC();//应用CXImage在内存中生产位图
+////HBITMAP hBit = image.MakeBitmap(pDC->GetSafeHdc());
+////CBitmap bmp;
+////bmp.Attach(hBit);
+////int nResult = m_Imagelist.Add(&bmp, RGB(255, 255, 255));
+////bmp.Detach();
+////ReleaseDC(pDC);
+
+////if (pBmp->Attach(bitmap)){
+//	//this->m_Imagelist.Add(pBmp, RGB(0, 0, 0));
+//	//this->AddImage("d:\\test\\Chrysanthemum.jpg");
+////}
+
+
+////delete pBmp;
+
+///*pBmp = new CBitmap();
+//pBmp->LoadBitmap(IDB_BITMAP1);
+//m_Imagelist.Add(pBmp, RGB(0, 0, 0));
+//delete pBmp;*/
+
+////ICON模式（方便一点）  
+///*HICON hIcon;
+
+//m_Imagelist.Create(32, 32, ILC_COLOR, 2, 20);
+
+//hIcon = AfxGetApp()->LoadIconW(IDI_ICON_GREE);
+//m_Imagelist.Add(hIcon);
+
+//hIcon = AfxGetApp()->LoadIconW(IDI_ICON_READ);
+//m_Imagelist.Add(hIcon);*/
+
+
+
+//this->clistCtrl.SetImageList(&this->m_Imagelist, LVSIL_SMALL); //这里要使用，LVSIL_SMALL风格  
+
+////四、给CListCtrl控件添加二列
+//this->clistCtrl.InsertColumn(0, _T("图形列"), LVCFMT_CENTER, 100);
+//clistCtrl.InsertColumn(1, _T("列名"), LVCFMT_CENTER, 100);
+
+////五、添加数据
+
+//	int nRow;  //记录行号  
+//LVITEM lvItem = { 0 };
+
+////第一行数据  
+//lvItem.mask = LVIF_IMAGE | LVIF_TEXT | LVIF_STATE;  //文字、图片、状态  
+//lvItem.iItem = 0;       //行号(第一行)  
+//lvItem.iImage = 0;  //图片索引号(第一幅图片)  
+//lvItem.iSubItem = 0;    //子列号  
+
+//nRow = clistCtrl.InsertItem(&lvItem);     //第一列为图片  
+//clistCtrl.SetItemText(nRow, 1, _T("PPP"));  //第二列为文字  
+
+////第二行数据  
+//lvItem.mask = LVIF_IMAGE | LVIF_TEXT | LVIF_STATE;  //文字、图片、状态  
+//lvItem.iItem = 1;       //行号(第二行)  
+//lvItem.iImage = 1;  //图片索引号(第二幅图片)  
+//lvItem.iSubItem = 0;    //子列号  
+
+//nRow = clistCtrl.InsertItem(&lvItem);     //第一列为图片  
+//clistCtrl.SetItemText(nRow, 1, _T("PPP2"));  //第二列为文字  
