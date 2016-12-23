@@ -14,6 +14,8 @@
 #include<odb\mysql\database.hxx>
 #include<string.h>
 #include<iostream>
+
+
 class db_util
 {
 

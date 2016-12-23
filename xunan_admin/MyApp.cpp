@@ -26,6 +26,17 @@ BOOL MyApp::InitInstance(){
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "w+t", stdout);
 
+	/*AddGoodsDlg dlg;
+	this->m_pMainWnd = &dlg;
+
+	INT_PTR nResponse = dlg.DoModal();
+	if (nResponse == IDOK)
+	{
+	}
+	else if (nResponse == IDCANCEL)
+	{
+	}*/
+
 	CSingleDocTemplate *temp;
 	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));
 	AddDocTemplate(temp);

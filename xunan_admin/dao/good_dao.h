@@ -25,7 +25,7 @@ public:
 	good_dao();
 	virtual ~good_dao();
 
-//private:std::auto_ptr<odb::database> db;
+private:std::auto_ptr<odb::database> db;
 public:static good_dao* get_good_dao(){
 	static good_dao dao;
 	return &dao;

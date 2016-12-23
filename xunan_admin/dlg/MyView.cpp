@@ -11,6 +11,7 @@ IMPLEMENT_DYNCREATE(MyView,CView)
 
 MyView::MyView(){
 	std::cout << "视图构造" << std::endl;
+	this->pDlg = NULL;
 }
 
 
@@ -23,6 +24,8 @@ void MyView::OnDraw(CDC*pDC){
 	std::cout << "" << std::endl;
 	/*CWnd *d0= AfxGetApp()->GetMainWnd()->GetDlgItem(IDD_DIALOG1);
 	std::cout << "fsfd" << std::endl;*/
+
+	GetClientRect(&this->rc);
 }
 
 
@@ -40,6 +43,7 @@ void MyView::AddGood(){
 	this->pDlg = new AddGoodsDlg;
 	this->pDlg->Create(IDD_DIALOG_ADD_GOODS, this);
 	this->pDlg->ShowWindow(SW_SHOW);	
+	this->pDlg->MoveWindow(&rc);
 }
 //
 /*查看分类对话框*/
@@ -89,6 +93,7 @@ void MyView::watchCountry(){
 	this->countryShowDlg = new CountryShow;
 	this->countryShowDlg->Create(IDD_DIALOG_COUNTRY_LIST, this);
 	this->countryShowDlg->ShowWindow(SW_SHOW);
+	this->countryShowDlg->MoveWindow(&rc);
 }
 
 BEGIN_MESSAGE_MAP(MyView, CView)

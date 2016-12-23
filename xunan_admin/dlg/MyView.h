@@ -51,6 +51,6 @@ public: AddGoodsDlg*getAddGoodDlg();
 //
 private:AddVenue*addVenueDlg;/*添加会场对话框*/
 
-		
+private:CRect rc;
 };
 #endif // !defined(EA_143BC8A0_EB2F_4c29_BB43_DF562A7B9E1E__INCLUDED_)

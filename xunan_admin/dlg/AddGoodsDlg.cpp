@@ -25,7 +25,6 @@ AddGoodsDlg::AddGoodsDlg(long goodId)
 	EnableActiveAccessibility();
 #endif
 
-	std::cout << "1" << std::endl;
 	this->goodId = goodId;
 	this->init();
 }
@@ -95,9 +94,8 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 
 	DDX_Control(pDX, IDC_COMBO_BRAND, this->brandSel); /*品牌*/
 	
-	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
 	std::list<classification*> *ls = new std::list<classification*>;
-	myDoc->query_classification(ls);
+	this->cs->query_classification(ls);
 
 	std::list<classification*>::iterator iter = ls->begin();
 	for (int i = 0; iter != ls->end(); iter++, i++){

@@ -33,7 +33,7 @@ protected:DECLARE_MESSAGE_MAP()
 protected:afx_msg void f0();
 public:void addGood(goods&good);
 public:void query();
-public:void query_classification(std::list<classification*>*class_list);/*获取一级分类*/
+
 public:void query_class_bypid(std::list<classification*>*child_class,DWORD_PTR pid);/*根据父节点获取子分类*/
 private:std::auto_ptr<odb::database> db;
 };

@@ -11,6 +11,7 @@
 #include"dlg\MyDoc.h"
 #include"dlg\MyFrame.h"
 #include"dlg\MyView.h"
+#include"dlg\AddGoodsDlg.h"
 #include<afxwin.h>
 #include<iostream>
 #include<afxmt.h>
