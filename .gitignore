@@ -347,3 +347,5 @@ xunan_admin/entity/venue-odb.ixx
 xunan_admin/service/Release/
 xunan_admin/util/Release/
 xunan_admin/x64/
+example0/Project.sdf
+example0/Project.v12.suo

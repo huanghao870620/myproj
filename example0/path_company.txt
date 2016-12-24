@@ -1,0 +1,5 @@
+D:/soft/boost_1_60_0
+D:/soft/mysql-connector-c-6.1.6-win32
+C:/Program Files (x86)/Visual Leak Detector
+d:/soft/libodb-2.4.0
+d:/soft/libodb-mysql-2.4.0
