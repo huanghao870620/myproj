@@ -5,7 +5,7 @@
 #include"../util/ShowJpg.h"
 #include"../service/country_service.h"
 #include"../service/upload_service.h"
-
+#include "afxdialogex.h"
 // AddCountryDlg ¶Ô»°¿ò
 
 class AddCountryDlg : public CDialogEx

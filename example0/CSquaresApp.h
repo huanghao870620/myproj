@@ -8,6 +8,7 @@
 #if !defined(EA_A573E559_5E48_479c_8055_85AE500DA2E8__INCLUDED_)
 #define EA_A573E559_5E48_479c_8055_85AE500DA2E8__INCLUDED_
 #include<afxwin.h>
+#include"A.h"
 class CSquaresApp : public CWinApp
 {
 

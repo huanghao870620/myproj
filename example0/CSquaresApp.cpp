@@ -11,6 +11,7 @@
 #include"CSquaresView.h"
 #include "CSquaresApp.h"
 #include"CAboutDlg.h"
+#include"E.h"
 
 BEGIN_MESSAGE_MAP(CSquaresApp, CWinApp)
 	ON_COMMAND(ID_APP_ABOUT,/*CSquaresApp::*/OnAppAbout)
@@ -35,23 +36,26 @@ BOOL CSquaresApp::InitInstance(){
 	freopen("CONIN$", "r+t", stdin);
 	std::cout << "dddddddddd" << std::endl;
 
+	//A*a = new A;
+	E e;
+	B b;
+	e.t(&b);
+	//SetRegistryKey("bbcdd");
+	//LoadStdProfileSettings();
+	//CSingleDocTemplate *pDocTemplate;
+	//pDocTemplate = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(CSquaresDoc), RUNTIME_CLASS(CMainFrame), RUNTIME_CLASS(CSquaresView));
+	//this->AddDocTemplate(pDocTemplate);
 
-	SetRegistryKey("bbcdd");
-	LoadStdProfileSettings();
-	CSingleDocTemplate *pDocTemplate;
-	pDocTemplate = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(CSquaresDoc), RUNTIME_CLASS(CMainFrame), RUNTIME_CLASS(CSquaresView));
-	this->AddDocTemplate(pDocTemplate);
+	//EnableShellOpen();
+	//RegisterShellFileTypes(TRUE);
+	//CCommandLineInfo cmdInfo;
+	//ParseCommandLine(cmdInfo);
+	//if (!ProcessShellCommand(cmdInfo)){
+	//	return FALSE;
+	//}
 
-	EnableShellOpen();
-	RegisterShellFileTypes(TRUE);
-	CCommandLineInfo cmdInfo;
-	ParseCommandLine(cmdInfo);
-	if (!ProcessShellCommand(cmdInfo)){
-		return FALSE;
-	}
-
-	this->m_pMainWnd->ShowWindow(SW_SHOW);
-	this->m_pMainWnd->UpdateWindow();
+	//this->m_pMainWnd->ShowWindow(SW_SHOW);
+	//this->m_pMainWnd->UpdateWindow();
 	return TRUE;
 }
 

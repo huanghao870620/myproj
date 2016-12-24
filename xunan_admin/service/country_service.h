@@ -24,7 +24,7 @@ class country_service
 public:
 	country_service();
 	virtual ~country_service();
-//
+
 private:std::auto_ptr<odb::database> db;
 public:static country_service* get_country_service(){
 	static country_service cs;
