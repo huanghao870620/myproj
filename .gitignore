@@ -349,3 +349,11 @@ xunan_admin/util/Release/
 xunan_admin/x64/
 example0/Project.sdf
 example0/Project.v12.suo
+xunan_admin/dto/Debug/
+xunan_admin/dto/dto.dir/
+xunan_admin/dto/dto.vcxproj
+xunan_admin/dto/dto.vcxproj.filters
+xunan_admin/base_dlg/Debug/
+xunan_admin/base_dlg/base_dlg.dir/
+xunan_admin/base_dlg/base_dlg.vcxproj
+xunan_admin/base_dlg/base_dlg.vcxproj.filters
