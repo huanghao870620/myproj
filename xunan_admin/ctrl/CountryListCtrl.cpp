@@ -3,6 +3,7 @@
 
 CountryListCtrl::CountryListCtrl()
 {
+	std::cout << "" << std::endl;
 }
 
 
@@ -34,10 +35,8 @@ void CountryListCtrl::OnDbClick(NMHDR*pNMHDR, LRESULT*pResult){
 
 		std::cout << name << std::endl;
 		long lid= Util::stol(id.GetBuffer(0));
-		std::cout << "id : " << lid << std::endl;
 
-
-		EditCountryDlg*editCountryDlg = new EditCountryDlg;
+		EditCountryDlg*editCountryDlg = new EditCountryDlg(lid);
 		editCountryDlg->Create(IDD_DIALOG_ADD_COUNTRY, this);
 		editCountryDlg->ShowWindow(SW_SHOW);
 	}

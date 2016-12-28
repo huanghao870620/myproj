@@ -26,7 +26,8 @@ void venue_service::add_venue(std::string&name,std::string&adv_pic_path, upload_
 	try{
 	odb::transaction tx(this->db->begin());
 	v.set_name(name);
-	us->upload_file_no_tran(f, adv_pic_path.c_str(),18);
+	//us->upload_file_no_tran(f, adv_pic_path.c_str(),18);
+	us->upload_file(f, adv_pic_path.c_str(), 18);
 	v.set_adv_pic(f.get_id());
 	this->vd->add_venue(v,this->db);
 	tx.commit();

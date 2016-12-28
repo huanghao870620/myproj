@@ -15,7 +15,9 @@ UploadFile::UploadFile(){
 		return;
 	}
 
-	hConnect = InternetConnect(hInternet, "192.168.1.102", INTERNET_DEFAULT_FTP_PORT, "xa", "xa", INTERNET_SERVICE_FTP, INTERNET_FLAG_EXISTING_CONNECT || INTERNET_FLAG_PASSIVE, 0);
+	Config *config= Config::getConfig();
+
+	hConnect = InternetConnect(hInternet, config->get_ftp_ip(), INTERNET_DEFAULT_FTP_PORT, config->get_ftp_user(), config->get_ftp_pass(), INTERNET_SERVICE_FTP, INTERNET_FLAG_EXISTING_CONNECT || INTERNET_FLAG_PASSIVE, 0);
 	if (NULL == hConnect){
 		std::cout << GetLastError() << std::endl;
 		InternetCloseHandle(hInternet);
@@ -34,7 +36,8 @@ BOOL UploadFile::upload(LPCSTR lpszLocalFile, std::string &buf,LPCSTR fileTypeId
 	CHAR b[100];
 	FtpGetCurrentDirectory(this->hConnect,b,&size);
 	
-	LPSTR basePath = "/home/xa/www";
+	LPSTR basePath =Config::getConfig()->get_remote_path();
+	
 	FtpSetCurrentDirectory(this->hConnect, basePath);
 	FtpCreateDirectory(this->hConnect, fileTypeId);
 	

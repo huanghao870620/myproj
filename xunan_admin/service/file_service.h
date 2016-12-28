@@ -17,33 +17,33 @@
 #include"../odb/file-odb.hxx"
 #include"../dao/file_dao.h"
 #include"../dao/good_file_dao.h"
-//#include"Util.h"
-//#include"UploadFile.h"
 #include"../entity/good_file.h"
+#include"base_service.h"
+#include"../util/Constants.h"
 
 class UploadFile;
 class Util;
-class file_service
+class file_service : public base_service<file,file_dao>
 {
 
 public:
-	file_service();
-	virtual ~file_service();
-//
-private:std::auto_ptr<odb::database> db;
-//
-public:static file_service* get_file_service(){
-	static file_service fs;
-	return &fs;
-}
-//
-private: file_dao *fd;
-private:good_file_dao*gfd;
-
-public:file* findById(long id);
-public:void add_file(file&f);
-public:void update_file(file&f);
-public:void update_and_upload_file(long file_id, std::string&localPath, long fileTypeId);
-public:void add_good_file(std::string&localPath, long good_id, long file_type);/*添加商品文件*/
+		file_service();
+		virtual ~file_service();
+		static file_service* get_file_service(){
+			static file_service fs;
+			return &fs;
+		}
+		void add_file(file&f);
+		void update_file(file&f);
+		void update_and_upload_file(long file_id, std::string&localPath, long fileTypeId);
+		void add_good_file(std::string&localPath, long good_id, long file_type);/*添加商品文件*/
+		std::string& downloadFtpFile(std::string&uriPath);
+private:
+		good_file_dao*gfd;
+		std::string getPath(std::string&path, std::string&filename);
+		std::string myReplaceAll(const std::string& str, std::string org_str, std::string rep_str);
+		std::vector<std::string> mySplit(const std::string& str, std::string sp_string);
+		BOOL CreateMuliteDirectory(CString P);
+		BOOL FolderExists(CString s);
 };
 #endif // !defined(EA_FFC473C9_FFCF_4478_B7B8_3CE0DA4B2214__INCLUDED_)

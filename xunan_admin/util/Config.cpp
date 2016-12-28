@@ -70,3 +70,22 @@ char* Config::get_ftp_user(){
 	return user;
 }
 
+/**/
+char* Config::get_img_ip(){
+	char*ip = new char[20];
+	GetPrivateProfileString("img", "ip", NULL, ip, 20, iniFile.c_str());
+	return ip;
+}
+
+char* Config::get_local_path(){
+	char*local = new char[20];
+	GetPrivateProfileString("img", "local_path", NULL, local, 20, iniFile.c_str());
+	return local;
+}
+
+char* Config::get_remote_path(){
+	char*remote = new char[20];
+	GetPrivateProfileString("img", "remote_base_path", NULL, remote, 20, iniFile.c_str());
+	return remote;
+}
+

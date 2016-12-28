@@ -60,7 +60,6 @@ VOID AddCountryDlg::SelPic(){
 	ShowJpg::ShowJpgGif(this->imgControl.GetDC(), this->localPath, rect.left, rect.top);
 
 
-
 	/*Gdiplus::Graphics graphics(this->imgControl.GetDC()->m_hDC);
 	Gdiplus::ImageAttributes imAtt;
 	imAtt.SetColorKey(Gdiplus::Color(0, 0, 0), Gdiplus::Color(10, 10, 10), Gdiplus::ColorAdjustTypeDefault);

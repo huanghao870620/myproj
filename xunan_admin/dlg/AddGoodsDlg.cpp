@@ -8,10 +8,10 @@
 
 // AddGoodsDlg 对话框
 
-IMPLEMENT_DYNAMIC(AddGoodsDlg, CDialogEx)
+IMPLEMENT_DYNAMIC(AddGoodsDlg, BaseGoodDlg)
 
 AddGoodsDlg::AddGoodsDlg(CWnd* pParent /*=NULL*/)
-	: CDialogEx(AddGoodsDlg::IDD, pParent)
+	: BaseGoodDlg(pParent)
 {
 #ifndef _WIN32_WCE
 	EnableActiveAccessibility();
@@ -20,7 +20,7 @@ AddGoodsDlg::AddGoodsDlg(CWnd* pParent /*=NULL*/)
 }
 
 AddGoodsDlg::AddGoodsDlg(long goodId)
-: CDialogEx(){
+: BaseGoodDlg(){
 #ifndef _WIN32_WCE
 	EnableActiveAccessibility();
 #endif
@@ -32,51 +32,25 @@ AddGoodsDlg::AddGoodsDlg(long goodId)
 AddGoodsDlg::~AddGoodsDlg()
 {
 }
-
-void AddGoodsDlg::init(){
-	this->fs = file_service::get_file_service();
-	this->gfs = good_file_service::get_good_file_service();
-	this->cs = classification_service::get_classification_service();
-	this->gs = good_service::get_good_service();
-	this->us = upload_service::get_upload_service();
-	this->bs = brand_service::get_brand_service();
-}
+//
+//void AddGoodsDlg::init(){
+//	this->fs = file_service::get_file_service();
+//	this->gfs = good_file_service::get_good_file_service();
+//	this->cs = classification_service::get_classification_service();
+//	this->gs = good_service::get_good_service();
+//	this->us = upload_service::get_upload_service();
+//	this->bs = brand_service::get_brand_service();
+//}
 
 /**/
 void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
+	BaseGoodDlg::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_STATIC_GATP, this->gatp);//縮略圖
 	DDX_Control(pDX, IDC_STATIC_ADV_PIC, this->advPic);//商品广告图
 	DDX_Control(pDX, IDC_STATIC_BGAT, this->big1);//大圖1
-	DDX_Control(pDX, IDC_STATIC_PP, this->big2); //大圖2
-	DDX_Control(pDX, IDC_STATIC_BIG3, this->big3);//大圖3
-	DDX_Control(pDX, IDC_STATIC_BIG4, this->big4);//大圖4
-	DDX_Control(pDX, IDC_STATIC_BIG5, this->big5);//大圖5
-	DDX_Control(pDX, IDC_STATIC_BIG6, this->big6);//大圖6
-	DDX_Control(pDX, IDC_STATIC_BIG7, this->big7);//大圖7
-	DDX_Control(pDX, IDC_STATIC_BIG8, this->big8);//大圖8
 	
 	DDX_Control(pDX, IDC_STATIC_CUT1, this->cutFigure1);//切圖1
-	DDX_Control(pDX, IDC_STATIC_CUT2, this->cutFigure2);//切圖2
-	DDX_Control(pDX, IDC_STATIC_CUT3, this->cutFigure3);//切图3
-	DDX_Control(pDX, IDC_STATIC_CUT4, this->cutFigure4);//切图4
-	DDX_Control(pDX, IDC_STATIC_CUT5, this->cutFigure5);//切图5
-	DDX_Control(pDX, IDC_STATIC_CUT6, this->cutFigure6);//切图6
-	DDX_Control(pDX, IDC_STATIC_CUT7, this->cutFigure7);//切图7
-	DDX_Control(pDX, IDC_STATIC_CUT8, this->cutFigure8);//切图8
-	DDX_Control(pDX, IDC_STATIC_CUT9, this->cutFigure9);//切图9
-	DDX_Control(pDX, IDC_STATIC_CUT10, this->cutFigure10);//切图10
-	DDX_Control(pDX, IDC_STATIC_CUT11, this->cutFigure11);//切图11
-	DDX_Control(pDX, IDC_STATIC_CUT12, this->cutFigure12);//切图12
-	DDX_Control(pDX, IDC_STATIC_CUT13, this->cutFigure13);//切图13
-	DDX_Control(pDX, IDC_STATIC_CUT14, this->cutFigure14);//切图14
-	DDX_Control(pDX, IDC_STATIC_CUT15, this->cutFigure15);//切图15
-	DDX_Control(pDX, IDC_STATIC_CUT16, this->cutFigure16);//切图16
-	DDX_Control(pDX, IDC_STATIC_CUT17, this->cutFigure17);//切图17
-	DDX_Control(pDX, IDC_STATIC_CUT18, this->cutFigure18);//切图18
-	DDX_Control(pDX, IDC_STATIC_CUT19, this->cutFigure19);//切图19
-	DDX_Control(pDX, IDC_STATIC_CUT20, this->cutFigure20);//切图20
 	DDX_Control(pDX, IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX, this->nameEdit);/*商品名称*/
 	DDX_Control(pDX, IDC_EDIT_DESCRIBE, this->infoEdit);/*商品描述*/
 	DDX_Control(pDX, IDC_EDIT_CAPACITY, this->capacityEdit);/*容量*/
@@ -114,262 +88,13 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 	}
 
 
-	long d0 = this->firstClass.GetItemData(0);
-	long d1 = this->firstClass.GetItemData(1);
-	long d2 = this->firstClass.GetItemData(2);
-
-	/*编辑商品信息*/
-	if (this->goodId > 0){
-		good_service *gs = good_service::get_good_service();
-		goods g;
-		gs->findById(&g, this->goodId);
-
-		good_file_service *gfs = good_file_service::get_good_file_service();
-		 std::list<file*> fileList;
-		 gfs->findFileByGoodId(this->goodId, 12, &fileList);/*商品缩略图*/
-		 file *thumbFile = fileList.front();/*缩略图*/
-		 this->thumbFileId = thumbFile->get_id(); /*缩略图文件id*/
-
-		 this->thumbPath  = std::string(Constants::local_base_path + thumbFile->get_uri_path()).c_str();/*ftp下载到本地的路径*/
-		 this->downloadFtpFile(thumbFile);/*下载缩略图*/
-		
-		this->gatp.GetClientRect(&thumbRect);
-
-
-		gfs->findFileByGoodId(this->goodId, 13, &this->bigFileList);/*商品大图*/
-
-		std::list<file*>::iterator bigIter = this->bigFileList.begin();
-		for (; bigIter != this->bigFileList.end(); bigIter++){
-			file*f = *bigIter;
-			this->downloadFtpFile(f);
-		}
-
-		gfs->findFileByGoodId(this->goodId, 14, &this->cutFileList);/*商品切图*/
-		std::list<file*>::iterator cutIter = this->cutFileList.begin();
-		for (; cutIter != this->cutFileList.end(); cutIter++){
-			file*f = *cutIter;
-			this->downloadFtpFile(f);
-		}
-
-
-		this->nameEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_name()).c_str());/*名称*/
-		this->infoEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_info()).c_str());/*描述*/
-		this->capacityEdit.SetWindowTextA(Util::ltos(g.get_capacity()).c_str());/*容量*/
-		this->dateOfProductionControl.SetWindowTextA(g.get_dateOfProduction().c_str());/*生产日期*/
-		this->lowestPriceEdit.SetWindowTextA(Util::ltos(g.get_lowest_price()).c_str());/*最低价*/
-		this->highestPriceEdit.SetWindowTextA(Util::ltos(g.get_highest_price()).c_str());/*最高价*/
-		this->purchasPositonEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_purchasing_position()).c_str());/*采购位置*/
-
-		long classid = g.get_classid();
-		classification clas;
-		
-		std::list<long> ids;
-		do
-		{
-			this->cs->getParentClass(&clas,classid);
-			classid = clas.get_pid();
-			ids.push_back(clas.get_id());
-		} while (clas.get_pid() != -1);
-
-		
-		CComboBox **boxArr = new CComboBox*[3]{
-			  &this->firstClass,
-				&this->secondClass,
-				&this->thirdClass
-		};
-
-		CComboBox *b0 = boxArr[0];
-		CComboBox*b1 = boxArr[1];
-		CComboBox*b2 = boxArr[2];
-
-		int len = ids.size();
-		for (int i = 0; i < len; i++){
-			long id= this->getClassId(&ids, len-i-1);
-			CComboBox *box = boxArr[i];
-			this->SetCurSel(box, id,i);
-		}
-
-		delete[]boxArr;
-	}
-}
-
-/*下载文件*/
-void AddGoodsDlg::downloadFtpFile(file*f){
-	std::string url_str = "";
-	url_str = Constants::server_base_path + f->get_uri_path();/*服务器上ftp的路径*/
-	localPath = Constants::local_base_path + f->get_uri_path();/*ftp下载到本地的路径*/
-
-	std::string resultPath; /*截取结果*/
-	std::string filename; /*文件名*/
-	resultPath = this->getPath(localPath, filename);/*获取路径*/
-	resultPath = this->myReplaceAll(resultPath, "/", "\\");/*替换文件路径*/
-	if (!PathIsDirectory(resultPath.c_str())){
-		/*不存在则创建*/
-		this->CreateMuliteDirectory(resultPath.c_str());
-	}
-
-	UploadFile *uf = new UploadFile;
-	uf->download(url_str.c_str(), localPath.c_str()); /*下载文件到本地*/
-	delete uf;
-}
-
-/**/
-std::string AddGoodsDlg::myReplaceAll(const std::string& str, std::string org_str, std::string rep_str) // 把org_str 替换为rep_str; 
-{
-	std::vector<std::string>  delimVec = mySplit(str, org_str);
-	if (delimVec.size() <= 0)
-	{
-		std::cout << "can not find" << std::endl;
-		return str;
-	}
-	std::string target("");
-	std::vector<std::string>::iterator it = delimVec.begin();
-	for (; it != delimVec.end(); ++it)
-	{
-		target = target + (*it) + rep_str;
-	}
-	//target = target +(*it); 
-	return target;
 }
 
 
-
-std::vector<std::string> AddGoodsDlg::mySplit(const std::string& str, std::string sp_string)  // split(), str 是要分割的string
-{
-	std::vector<std::string> vecString;
-	int sp_stringLen = sp_string.size();
-	int lastPosition = 0;
-	int index = -1;
-	while (-1 != (index = str.find(sp_string, lastPosition)))
-	{
-		vecString.push_back(str.substr(lastPosition, index - lastPosition));
-		lastPosition = index + sp_stringLen;
-	}
-	std::string lastStr = str.substr(lastPosition);
-	if (!lastStr.empty())
-	{
-		vecString.push_back(lastStr);
-	}
-	return vecString;
-}
-
-BOOL AddGoodsDlg::FolderExists(CString s)
-{
-	DWORD attr;
-	attr = GetFileAttributes(s);
-	return (attr != (DWORD)(-1)) && (attr & FILE_ATTRIBUTE_DIRECTORY);
-}
-
-
-BOOL AddGoodsDlg::CreateMuliteDirectory(CString P)
-{
-	int len = P.GetLength();
-	if (len <2) return false;
-	if ('\\' == P[len - 1])
-	{
-		P = P.Left(len - 1);
-		len = P.GetLength();
-	}
-	if (len <= 0) return false;
-	if (len <= 3)
-	{
-		if (FolderExists(P))return true;
-		else return false;
-	}
-	if (FolderExists(P))return true;
-	CString Parent;
-	Parent = P.Left(P.ReverseFind('\\'));
-	if (Parent.GetLength() <= 0)return false;
-	BOOL Ret = CreateMuliteDirectory(Parent);
-	if (Ret)
-	{
-		SECURITY_ATTRIBUTES sa;
-		sa.nLength = sizeof(SECURITY_ATTRIBUTES);
-		sa.lpSecurityDescriptor = NULL;
-		sa.bInheritHandle = 0;
-		Ret = (CreateDirectory(P, &sa) == TRUE);
-		return Ret;
-	}
-	else
-		return FALSE;
-}
-
-/*截取文件名*/
-std::string AddGoodsDlg::getPath(std::string&path,std::string&filename){
-	int lastp = path.find_last_of("/");
-	std::string b = path.substr(0, lastp);
-	filename =path.substr(lastp+1);
-	return b;
-}
-
-
-
-void AddGoodsDlg::SetCurSel(CComboBox *box, long id, int k){
-	int count = box->GetCount();
-	for (int i = 0; i < count; i++){
-		DWORD_PTR data = box->GetItemData(i);
-		std::cout << "" << std::endl;
-		if (data == id){
-			box->SetCurSel(i);
-			//box->SendMessage(CBN_SELCHANGE);
-			if (k == 0){
-				this->SetSecondClass();
-			}
-			else if (k == 1){
-				this->SetThirdClass();
-			}
-			else if (k == 2){
-				this->SelThirdClass();
-			}
-			break;
-		}
-	}
-}
-
-long AddGoodsDlg::getClassId(std::list<long> *ls, int index){
-	std::list<long>::iterator iter = ls->begin();
-	for (int i=0; iter != ls->end(); iter++,i++){
-		if (i == index){
-			return *iter;
-		}
-	}
-}
-
-/**/
-CStringW AddGoodsDlg::ConvertUTF82CStringW(char* instr)
-{
-	CStringW wstr;
-	int wlen = MultiByteToWideChar(CP_UTF8, NULL, instr, strlen(instr), NULL, NULL);
-	wchar_t* wstrnew = new wchar_t[wlen + 1];
-	memset(wstrnew, 0, sizeof(wchar_t)*(wlen + 1));
-	MultiByteToWideChar(CP_UTF8, NULL, instr, -1, wstrnew, wlen);
-	wstrnew[wlen + 1] = '\0';
-	wstr.SetString(wstrnew);
-	return wstr;
-}
-
-
-//UTF8转化为GBK格式
-void ConvertUtf8ToGBK(CString &strUtf8)
-{
-	int len = MultiByteToWideChar(CP_UTF8, 0, (LPCTSTR)strUtf8, -1, NULL, 0);
-	wchar_t * wszGBK = new wchar_t[len];
-	memset(wszGBK, 0, len);
-	MultiByteToWideChar(CP_UTF8, 0, (LPCTSTR)strUtf8, -1, wszGBK, len);
-
-	len = WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, NULL, 0, NULL, NULL);
-	char *szGBK = new char[len + 1];
-	memset(szGBK, 0, len + 1);
-	WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, szGBK, len, NULL, NULL);
-
-	strUtf8 = szGBK;
-	delete[] szGBK;
-	delete[] wszGBK;
-}
 
 /*添加商品*/
 void AddGoodsDlg::addGood(){
-	goods good;
+	//goods good;
 
 	/*商品名称*/
 	CString cs0;
@@ -377,12 +102,20 @@ void AddGoodsDlg::addGood(){
 	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
 	std::string name = cs0.GetBuffer(0);
 	name = charset_util::GBKToUTF8(name);
+	if (name.compare("") == 0){
+		this->MessageBox("未填写商品名称");
+		return;
+	}
 
 	/*描述*/
 	CString info;
 	infoEdit.GetWindowTextA(info);
 	std::string info_str = info.GetBuffer(0);
 	info_str = charset_util::GBKToUTF8(info_str);
+	if (info_str.compare("") == 0){
+		this->MessageBox("未填写商品描述");
+		return;
+	}
 
 	/*容量*/
 	CString capacity;
@@ -417,57 +150,55 @@ void AddGoodsDlg::addGood(){
 	purchPostion = charset_util::GBKToUTF8(purchPostion);
 
 	std::string thumb_path_str = this->thumbPath.GetBuffer(0);
+	if (thumb_path_str.compare("") == 0){
+		this->MessageBox(charset_util::UTF8ToGBK("請選擇缩略图").c_str());
+		return;
+	}
+
 
 	/*广告图*/
 	std::string adv_path_str = this->advPath.GetBuffer(0);
-
+	std::cout << "" << std::endl;
+		if (adv_path_str.compare("")==0)
+		{
+			this->MessageBox(charset_util::UTF8ToGBK("請選擇廣告圖").c_str());
+			return;
+		}
 	/*推荐*/
 	CString recom;
 	this->GetRecom(recom);
 	std::string is_recom_str = recom.GetBuffer(0);
 	/*时间戳*/
 	std::string addTime = "2015/11/21";
-	this->gs->add_good(name,
-		selClass, 
-		info_str,
-		capl,
-		dop, 
-		lp,
-		hp,
-		price,
-		purchPostion, 
-		addTime, 
-		goodId, 
-		thumbFileId, 
-		thumb_path_str,
-		adv_path_str,
-		this->us,
-		is_recom_str,
-		good);
 
-	/*图片*/
 
-	/*縮略圖*/
-	if (thumbFileId > 0){ 
-		/*修改缩略图*/
-		if (thumbPath != ""){
-			this->fs->update_and_upload_file(this->thumbFileId, thumb_path_str, 12);
-		}
-	}
-	else{ 
-		/*添加缩略图*/
-		this->fs->add_good_file(thumb_path_str, good.get_id(), 12);
-	}
 
-	/*添加商品大图1*/
-	std::string big1_path_str = this->big1Path.GetBuffer(0);
-	this->fs->add_good_file(big1_path_str, good.get_id(), 13);
+	std::string big1_path = this->big1Path.GetBuffer(0);//大图1
 
-	/*添加切图1*/
-	std::string cut1_path_str = this->cutFigure1Path.GetBuffer(0);
-	this->fs->add_good_file(cut1_path_str, good.get_id(), 14);
 
-	
+	std::string cut1_path = this->cutFigure1Path.GetBuffer(0);//切图1
+
+
+	this->gs->add_good(
+		name, //商品名称 
+		selClass,   //商品分类 
+		info_str, // 商品描述
+		capl,  // 容量 规格
+		dop,  // 生产日期
+		lp,  // 最低价
+		hp,  // 最高价
+		price,  //实际价格
+		purchPostion,   //
+		addTime,   // 添加时间
+		thumb_path_str,  // 缩略图路径
+		adv_path_str, // 广告图路径
+		this->us,   // upload_service
+		is_recom_str, // 是否推荐
+		*this->fs,    //file_service
+		big1_path,
+		cut1_path
+	);
+
 	
 }
 
@@ -495,9 +226,9 @@ void AddGoodsDlg::uploadFileBig1(){
 /*商品大圖2*/
 void AddGoodsDlg::uploadFileBig2(){
 	RECT d;
-	this->big2.GetClientRect(&d);
+	/*this->big2.GetClientRect(&d);
 	CString big2Path = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->big2.GetDC(), big2Path, d.left, d.top);
+	ShowJpg::ShowJpgGif(this->big2.GetDC(), big2Path, d.left, d.top);*/
 }
 
 /*切圖1*/
@@ -511,38 +242,25 @@ void AddGoodsDlg::uploadCutFigure1(){
 /*切圖2*/
 void AddGoodsDlg::uploadCutFigure2(){
 	RECT d;
-	this->cutFigure2.GetClientRect(&d);
+	/*this->cutFigure2.GetClientRect(&d);
 	this->cutFigure2Path = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->cutFigure2.GetDC(), cutFigure2Path, d.left, d.top);
+	ShowJpg::ShowJpgGif(this->cutFigure2.GetDC(), cutFigure2Path, d.left, d.top);*/
 }
 
 /*重绘*/
 void AddGoodsDlg::OnPaint(){
+	BaseGoodDlg::OnPaint();
 	/*重绘缩略图*/
 	ShowJpg::ShowJpgGif(this->gatp.GetDC(), this->thumbPath, thumbRect.left, thumbRect.top);
 	//ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
 
 	/*重绘大图*/
 	CStatic**bigCsList = new CStatic*[8]{
-	  &this->big1,
-	  &this->big2,
-	  &this->big3,
-	  &this->big4,
-	  &this->big5,
-	  &this->big6,
-	  &this->big7,
-	  &this->big8
+	  &this->big1
 	};
 
 	CString*bigPathArr = new CString[8]{
-			this->big1Path,
-		  this->big2Path,
-		  this->big3Path,
-		  this->big4Path,
-		  this->big5Path,
-		  this->big6Path,
-		  this->big7Path,
-		  this->big8Path
+			this->big1Path
 	};
 
 	for (int i = 0; i < 8; i++){
@@ -556,143 +274,32 @@ void AddGoodsDlg::OnPaint(){
 
 	/*重绘切图*/
 	CStatic**cutCsList = new CStatic*[20]{
-			&this->cutFigure1,
-			&this->cutFigure2,
-			&this->cutFigure3,
-			&this->cutFigure4,
-			&this->cutFigure5,
-			&this->cutFigure6,
-			&this->cutFigure7,
-			&this->cutFigure8,
-			&this->cutFigure9,
-			&this->cutFigure10,
-			&this->cutFigure11,
-			&this->cutFigure12,
-			&this->cutFigure13,
-			&this->cutFigure14,
-			&this->cutFigure15,
-			&this->cutFigure16,
-			&this->cutFigure17,
-			&this->cutFigure18,
-			&this->cutFigure19,
-			&this->cutFigure20
+			&this->cutFigure1
 	};
 
+	Config*config= Config::getConfig();
 	std::list<file*>::iterator cutIter = this->cutFileList.begin();
 	for (int i=0; cutIter != this->cutFileList.end(); cutIter++,i++){
 		file*f = *cutIter;
-		std::string lpPath = Constants::local_base_path + f->get_uri_path();
+		std::string lpPath = config->get_local_path() + f->get_uri_path();
 		RECT cutRect;
 		cutCsList[i]->GetClientRect(&cutRect);
 		ShowJpg::ShowJpgGif(cutCsList[i]->GetDC(), lpPath.c_str(), cutRect.left, cutRect.top);
 	}
 	//delete[]cutCsList;
 
-	CDialogEx::OnPaint();
+	
 	
 }
 
 
-HRESULT AddGoodsDlg::ShowPic(CDC* pDC, CString strImgUrl, CRect rect)
-{
-	HDC hDC_Temp = pDC->GetSafeHdc();
-
-	IPicture *pPic;
-	IStream *pStm;
-
-	HRESULT bResult;// = FALSE;        
-
-	DWORD dwFileSize, dwByteRead;
-
-	//读取网页上图片文件，实际是个CHttpFile指针    
-	CInternetSession session("HttpClient");
-	CFile* httpFile = (CFile*)session.OpenURL(strImgUrl);
-
-	if (httpFile != INVALID_HANDLE_VALUE)
-	{
-		dwFileSize = httpFile->GetLength();//获取文件字节数        
-
-		if (dwFileSize == 0xFFFFFFFF)
-			return E_FAIL;
-	}
-	else
-	{
-		return E_FAIL;
-	}
-
-
-	//分配全局存储空间        
-	HGLOBAL hGlobal = GlobalAlloc(GMEM_MOVEABLE, dwFileSize);
-	LPVOID pvData = NULL;
-
-	if (hGlobal == NULL)
-		return E_FAIL;
-
-	if ((pvData = GlobalLock(hGlobal)) == NULL)//锁定分配内存块        
-		return E_FAIL;
-
-	//把文件读入内存缓冲区        
-	dwByteRead = httpFile->Read(pvData, dwFileSize);
-
-	GlobalUnlock(hGlobal);
-
-	CreateStreamOnHGlobal(hGlobal, TRUE, &pStm);
-
-	//装入图形文件        
-	bResult = OleLoadPicture(pStm, dwFileSize, TRUE, IID_IPicture, (LPVOID*)&pPic);
-
-	if (FAILED(bResult))
-		return E_FAIL;
-
-	OLE_XSIZE_HIMETRIC hmWidth; //图片的真实宽度, 单位为英寸       
-	OLE_YSIZE_HIMETRIC hmHeight; //图片的真实高度, 单位为英寸       
-	pPic->get_Width(&hmWidth);
-	pPic->get_Height(&hmHeight);
-
-	//转换hmWidth和hmHeight为pixels距离，1英寸=25.4毫米       
-	int nWidth = MulDiv(hmWidth, GetDeviceCaps(hDC_Temp, LOGPIXELSX), 2540);
-	int nHeight = MulDiv(hmHeight, GetDeviceCaps(hDC_Temp, LOGPIXELSY), 2540);
-
-	//缩放图片
-	int nWZoom = nWidth / rect.Width();
-	int nHZoom = nHeight / rect.Height();
-	int nZoom = 1;
-	nZoom = (nWZoom > nHZoom) ? nWZoom : nHZoom;
-	nWidth /= nZoom;
-	nHeight /= nZoom;
-	int midW = (rect.left + rect.right) / 2;
-	int midH = (rect.top + rect.bottom) / 2;
-	rect.left = midW - nWidth / 2;
-	rect.right = midW + nWidth / 2;
-	rect.top = midH - nHeight / 2;
-	rect.bottom = midH + nHeight / 2;
-
-	//将图形输出到屏幕上（有点像BitBlt）        
-	bResult = pPic->Render(hDC_Temp, rect.left, rect.top, rect.Width(), rect.Height(),
-		0, hmHeight, hmWidth, -hmHeight, NULL);
-
-	pPic->Release();
-
-	httpFile->Close();//关闭打开的文件        
-
-	if (SUCCEEDED(bResult))
-	{
-		return S_OK;
-	}
-	else
-	{
-		return E_FAIL;
-	}
-}
-
-
 BOOL AddGoodsDlg::OnEraseBkgnd(CDC*pDC){
-	return CDialogEx::OnEraseBkgnd(pDC);
+	return BaseGoodDlg::OnEraseBkgnd(pDC);
 }
 
 /*初始化数据*/
 BOOL AddGoodsDlg::OnInitDialog(){
-	CDialogEx::OnInitDialog();
+	BaseGoodDlg::OnInitDialog();
 	this->isNotRecom.SetCheck(TRUE);
 	Gdiplus::GdiplusStartupInput gi;
 	ULONG_PTR gdiToken;
@@ -707,6 +314,7 @@ void AddGoodsDlg::SetSecondClass(){
 	
 	index = this->firstClass.GetCurSel();
 	DWORD_PTR id = this->firstClass.GetItemData(index);
+	this->selClass = id;
 	CString content;
 	this->firstClass.GetWindowTextA(content);
 
@@ -761,13 +369,6 @@ void AddGoodsDlg::SelThirdClass(){
 }
 
 void AddGoodsDlg::f1(){
-	//std::cout << "" << std::endl;
-	//CComboBox *box = (CComboBox*) this->GetDlgItem(IDC_COMBO_BIG_CLASS);
-	////box->GetCurSel();
-	//DWORD_PTR id = box->GetItemData(box->GetCurSel());
-	//CString content;
-	//box->GetWindowTextA(content);
-	//std::cout << "" << std::endl;
 }
 
 void AddGoodsDlg::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar){
@@ -916,7 +517,7 @@ void AddGoodsDlg::GetRecom(CString&recom){
 	}
 }
 
-BEGIN_MESSAGE_MAP(AddGoodsDlg, CDialogEx)
+BEGIN_MESSAGE_MAP(AddGoodsDlg, BaseGoodDlg)
 	ON_BN_CLICKED(IDOK, addGood)
 	ON_BN_CLICKED(IDC_BUTTON_UPLOAD_GOODS_IMG, uploadFileGatp)/*缩略图*/
 	ON_BN_CLICKED(IDC_BUTTON1, uploadFileBig1)/*大图1*/
@@ -936,16 +537,3 @@ BEGIN_MESSAGE_MAP(AddGoodsDlg, CDialogEx)
 	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
-
-// AddGoodsDlg 消息处理程序
-/*CString gatpFileNamePath = Util::GetFilePathName();
-Gdiplus::Image *gatpImage = nullptr;
-LPWSTR path = gatpFileNamePath.AllocSysString();
-gatpImage = Gdiplus::Image::FromFile(path);
-CDC *pDC = this->GetDC();
-Gdiplus::Graphics graphics(pDC->m_hDC);
-RECT d;
-this->gatp.GetWindowRect(&d);
-this->ScreenToClient(&d);
-Gdiplus::Rect rect(d.left, d.top, d.right - d.left, d.bottom - d.top);
-graphics.DrawImage(gatpImage, rect);*/

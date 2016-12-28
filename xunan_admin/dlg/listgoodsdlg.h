@@ -27,6 +27,7 @@ private:MyCListCtrl listCtrl; /*列表控件*/
 protected:BOOL OnInitDialog();
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
+	void OnPaint();
 
 	DECLARE_MESSAGE_MAP()
 };

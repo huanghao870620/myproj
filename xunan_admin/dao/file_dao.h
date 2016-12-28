@@ -7,7 +7,6 @@
 
 #if !defined(EA_8CF62838_CD30_47ce_8653_68FC11C745C5__INCLUDED_)
 #define EA_8CF62838_CD30_47ce_8653_68FC11C745C5__INCLUDED_
-
 #include<memory>
 #include<odb\database.hxx>
 #include<odb\transaction.hxx>
@@ -15,19 +14,19 @@
 #include"../util/db_util.h"
 #include"../entity/file.h"
 #include"../odb/file-odb.hxx"
-class file_dao
+#include"base_dao.h"
+class file_dao : public base_dao<file>
 {
 
-
-private:	file_dao();
-public:virtual ~file_dao();
-//private:std::auto_ptr<odb::database> db;
-public:void add_file(file&f, std::auto_ptr<odb::database> &db);
-public:static file_dao* get_file_dao(){
-	static file_dao f_dao;
-	return &f_dao;
-}
-public:void file_dao::update_file(file&f, std::auto_ptr<odb::database> &db);
-public:file* findById(long id,  std::auto_ptr<odb::database> &db);
+private:	
+		file_dao();
+public:
+		virtual ~file_dao();
+		void add_file(file&f, std::auto_ptr<odb::database> &db);
+		static file_dao* get_file_dao(){
+			static file_dao f_dao;
+			return &f_dao;
+		}
+		void file_dao::update_file(file&f, std::auto_ptr<odb::database> &db);
 };
-#endif // !defined(EA_8CF62838_CD30_47ce_8653_68FC11C745C5__INCLUDED_)
+#endif

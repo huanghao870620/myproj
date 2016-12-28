@@ -16,8 +16,9 @@
 #include"../odb/classification-odb.hxx"
 #include"../util/db_util.h"
 #include"../entity/classification.h"
+#include"base_dao.h"
 
-class classification_dao
+class classification_dao : public base_dao<classification>
 {
 
 

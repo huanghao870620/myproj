@@ -17,15 +17,14 @@
 #include"../entity/classification.h"
 #include"../dao/classification_dao.h"
 #include"../dao/file_dao.h"
+#include"base_service.h"
 
-class classification_service
+class classification_service : public base_service<classification,classification_dao>
 {
 
 public:
 	classification_service();
 	virtual ~classification_service();
-	private:std::auto_ptr<odb::database> db;
-private:classification_dao*cd;
 private:file_dao*fd;
 public:void add_classifi(classification&classifi);
 public:void getParentClass(classification*classifi, long classid);

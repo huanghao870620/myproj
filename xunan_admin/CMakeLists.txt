@@ -84,6 +84,8 @@ D:\\soft\\libodb-mysql-2.4.0
 
 add_subdirectory(dlg)
 add_subdirectory(dao)
+add_subdirectory(dto)
+add_subdirectory(base_dlg)
 add_subdirectory(service)
 add_subdirectory(entity)
 add_subdirectory(util)
@@ -94,6 +96,7 @@ set(
  libmysql
  ws2_32 
  dlg
+ base_dlg
  ctrl
  dao
  entity

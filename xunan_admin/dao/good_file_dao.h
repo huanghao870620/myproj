@@ -17,20 +17,22 @@
 #include"../odb/good_file-odb.hxx"
 #include"../util/db_util.h"
 #include"../entity/good_file.h"
-#include"../dao/file_dao.h"
+#include"file_dao.h"
+#include"base_dao.h"
 
-
-class good_file_dao
+class good_file_dao : public base_dao<good_file>
 {
 
-private:good_file_dao();
-public:virtual ~good_file_dao();
-//private:std::auto_ptr<odb::database> db;
-public:static good_file_dao* get_good_file_dao(){
-	static good_file_dao dao;
-	return &dao;
-}
-public:void add_good_file(good_file&gf, std::auto_ptr<odb::database> &db);
-public:void findFileByGoodId(long goodId, long type_id_, std::list<file*> *fs, std::auto_ptr<odb::database> &db);
+private:
+	good_file_dao();
+public:
+	virtual ~good_file_dao();
+	static good_file_dao* get_good_file_dao(){
+		static good_file_dao dao;
+		return &dao;
+	}
+	void add_good_file(good_file&gf, std::auto_ptr<odb::database> &db);
+	void findFileByGoodId(long goodId, long type_id_, std::list<file*> *fs, std::auto_ptr<odb::database> &db);
+	good_file findGfByImgId(long img_id, std::auto_ptr<odb::database> &db);
 };
 #endif // !defined(EA_33C8784F_4A1E_4073_8EA1_3621CFE523DA__INCLUDED_)

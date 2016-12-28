@@ -16,15 +16,14 @@
 #include"../util/db_util.h"
 #include"../entity/brand.h"
 #include"../dao/brand_dao.h"
+#include"base_service.h"
 
-class brand_service
+class brand_service : public base_service<brand,brand_dao>
 {
 
 public:
 	brand_service();
 	virtual ~brand_service();
-private:std::auto_ptr<odb::database> db;
-private:brand_dao*bd;
 public:static brand_service* get_brand_service(){
 	static brand_service bs;
 	return &bs;
@@ -32,6 +31,6 @@ public:static brand_service* get_brand_service(){
 public:void add_brand(brand&b);
 
 public:void get_brands(std::list<brand*> &brand_list);/*获取所有品牌*/
-
+	   typedef odb::core::transaction tran;
 };
 #endif // !defined(EA_4D7ABAE8_A099_454e_AC35_EC386B3C430A__INCLUDED_)

@@ -39,7 +39,7 @@ public:file(std::string &name,
 	virtual ~file();
 private:friend class odb::access;
 #pragma db id auto
-private:unsigned long id_;
+private:unsigned long id_ = 0;
 public:void set_id(unsigned long id){
 	this->id_ = id;
 }
@@ -54,14 +54,14 @@ public:std::string&get_name(){
 	return this->name_;
 }
 private:std::string path_;
-public:void set_path(std::string&path){
+public:void set_path(std::string path){
 	this->path_ = path;
 }
 public:std::string&get_path(){
 	return this->path_;
 }
 private:std::string uri_path_;
-public:void set_uri_path(std::string&uri_path){
+public:void set_uri_path(std::string uri_path){
 	this->uri_path_ = uri_path;
 }
 public:std::string&get_uri_path(){

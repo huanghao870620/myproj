@@ -10,7 +10,7 @@
 
 brand_service::brand_service(){
 	this->db = db_util::get_db_util()->get_db();
-	this->bd = brand_dao::get_brand_dao();
+	this->d = brand_dao::get_brand_dao();
 }
 
 brand_service::~brand_service(){
@@ -19,12 +19,19 @@ brand_service::~brand_service(){
 
 void brand_service::add_brand(brand&b){
 	odb::core::transaction*t = new odb::core::transaction(db->begin());
-	this->bd->add_brand(b,this->db);
+	this->d->add_brand(b,this->db);
 	t->commit();
 }
 
 void brand_service::get_brands(std::list<brand*> &brand_list){
-	odb::core::transaction tx(this->db->begin());
-	this->bd->query(brand_list, this->db);
-	tx.commit();
+	//tran *tx = NULL;
+	try{
+	//tx = new tran(this->db->begin());
+	this->d->query(brand_list, this->db);
+	//tx->commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		//tx->rollback();
+	}
 }

@@ -151,3 +151,18 @@ BOOL ShowJpg::ShowImage(CDC* pDC, CString strPath, int x, int y)
 	return true;
 }
 
+void ShowJpg::ShowPng(CDC*pDC, CString strPath,CRect&rect){
+	CImage img;
+	HRESULT ret = img.Load(strPath); //wuziqi.png是我要加载的图片名称，包含路径
+	HBITMAP hbitmap = img.Detach();
+
+	//像操作 BMP 图片一样处理图片 ,下面是显示图片的操作
+	CBitmap cBitmap;
+	BITMAP bitmap;
+	CDC memdc;
+	cBitmap.Attach(hbitmap);
+	memdc.CreateCompatibleDC(pDC);
+	memdc.SelectObject(hbitmap);
+	cBitmap.GetBitmap(&bitmap);
+	pDC->StretchBlt(rect.left, rect.top, rect.Width(), rect.Height(), &memdc, rect.left, rect.top, rect.Width(), rect.Height(), SRCCOPY);
+}

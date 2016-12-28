@@ -15,25 +15,34 @@
 #include"../odb/country-odb.hxx"
 #include"../util/db_util.h"
 #include"../entity/country.h"
+#include"../entity/file.h"
 #include"../dao/country_dao.h"
+#include"base_service.h"
+#include"upload_service.h"
 
 
-class country_service
+class country_service : public base_service<country, country_dao>
 {
-
 public:
-	country_service();
-	virtual ~country_service();
+		typedef  odb::core::transaction tran;
+		typedef odb::transaction t;
+		country_service();
+		virtual ~country_service();
 
-private:std::auto_ptr<odb::database> db;
-public:static country_service* get_country_service(){
-	static country_service cs;
-	return &cs;
-}
+		static country_service* get_country_service(){
+			static country_service cs;
+			return &cs;
+		}
 
-private:country_dao*cd;
-public:void add_country(country&c);
-public:void query(std::list<country*>&c_list);
+		void add_country(country&c);
+		void edit_country(long id,
+			std::string&name, 
+			std::string&country_code,
+			std::string&img_path,
+			upload_service&us);
+		void query(std::list<country*>&c_list);
 
+private:
+		//country_dao*cd;
 };
 #endif // !defined(EA_2F103C4D_B3CB_4d8b_B811_FA5CFEA165C1__INCLUDED_)

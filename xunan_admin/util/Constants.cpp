@@ -18,5 +18,5 @@ Constants::~Constants(){
 
 }
 
-const std::string Constants::server_base_path("/home/xa/www");
-const std::string Constants::local_base_path("d:/temp");
+//const std::string Constants::server_base_path("/home/xa/www");
+//const std::string Constants::local_base_path("d:/temp");

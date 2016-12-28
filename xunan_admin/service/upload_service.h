@@ -17,14 +17,15 @@ class upload_service
 public:
 	upload_service();
 	virtual ~upload_service();
-private:file_dao*fd;
-private:std::auto_ptr<odb::database> db;
-public:static upload_service* get_upload_service(){
+	file_dao*fd;
+	std::auto_ptr<odb::database> db;
+	static upload_service* get_upload_service(){
 	static upload_service us;
 	return &us;
 }
-public:void upload_file(file&f, LPCSTR localFilePath,long file_type);
-public:void upload_file_no_tran(file&f, LPCSTR  localFilePath, long file_type);
+	void upload_file(file&f, LPCSTR localFilePath,long file_type);
+private:
+	void upload_file_no_tran(file&f, LPCSTR  localFilePath, long file_type);
 
 };
 #endif // !defined(EA_F3EEAFCE_C113_45ab_A059_42D07323A249__INCLUDED_)

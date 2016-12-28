@@ -17,8 +17,9 @@
 #include"../entity/goods.h"
 #include"../odb/good_file-odb.hxx"
 #include"../odb/goods-odb.hxx"
+#include"base_dao.h"
 
-class good_dao
+class good_dao : public base_dao<goods>
 {
 
 public:
@@ -32,9 +33,8 @@ public:static good_dao* get_good_dao(){
 }
 
 public: void query_list(std::list<goods*>* goods_list, std::auto_ptr<odb::database> &db);
-public:void findById(goods*good, long id, std::auto_ptr<odb::database> &db);
 public:void update(goods&good, std::auto_ptr<odb::database> &db);
 public:void add(goods&good, std::auto_ptr<odb::database>&db);
-
+	   typedef odb::core::transaction tran;
 };
 #endif // !defined(EA_8269055E_2BD2_4918_BC9F_3229ACE9CDFB__INCLUDED_)

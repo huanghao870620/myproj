@@ -8,13 +8,12 @@
 #if !defined(EA_88FD5E0E_6120_4bac_B100_DA61ADD05B5B__INCLUDED_)
 #define EA_88FD5E0E_6120_4bac_B100_DA61ADD05B5B__INCLUDED_
 
-//#ifndef _WINDOWS_
 #include<afxinet.h>
-//#endif
-
-//#include<afxwin.h>
 #include<iostream>
 #include"generate_random.h"
+#include"Config.h"
+
+
 class UploadFile
 {
 

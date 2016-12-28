@@ -41,7 +41,7 @@ void MyCListCtrl::OnDbClick(NMHDR*pNMHDR, LRESULT*pResult){
 		std::cout << name << std::endl;
 		long lid= Util::stol(id.GetBuffer(0));
 		std::cout << "id : " << lid << std::endl;
-		AddGoodsDlg* pDlg = new AddGoodsDlg(lid);
+		this->pDlg = new EditGoodDlg(lid);
 		pDlg->Create(IDD_DIALOG_ADD_GOODS, this);
 		pDlg->ShowWindow(SW_SHOW);
 	}

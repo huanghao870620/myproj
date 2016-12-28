@@ -25,8 +25,8 @@ BOOL ListGoodsDlg::OnInitDialog(){
 	std::cout << "" << std::endl;
 	this->listCtrl.InsertColumn(1, "ID", LVCFMT_CENTER, 40);
 	
-	this->listCtrl.InsertColumn(2, charset_util::UTF8ToGBK("商品名称").c_str(), LVCFMT_CENTER, 40);
-	this->listCtrl.InsertColumn(3, charset_util::UTF8ToGBK("商品描述").c_str(), LVCFMT_CENTER, 50);
+	this->listCtrl.InsertColumn(2, charset_util::UTF8ToGBK("商品名称").c_str(), LVCFMT_LEFT, 300);
+	this->listCtrl.InsertColumn(3, charset_util::UTF8ToGBK("商品描述").c_str(), LVCFMT_LEFT, 400);
 	//int nRow = this->listCtrl.InsertItem(1, "asddas");
 	//this->listCtrl.SetItemText(nRow, 1, "fddfdf");
 	
@@ -55,6 +55,10 @@ void ListGoodsDlg::DoDataExchange(CDataExchange* pDX)
 	std::cout << "" << std::endl;
 }
 
+
+void ListGoodsDlg::OnPaint(){
+	std::cout << "" << std::endl;
+}
 
 
 

@@ -15,5 +15,5 @@ file::file(){
 
 
 file::~file(){
-
+	std::cout << "" << std::endl;
 }

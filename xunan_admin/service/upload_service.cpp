@@ -21,9 +21,14 @@ upload_service::~upload_service(){
 
 /*上传文件*/
 void upload_service::upload_file(file&f, LPCSTR localFilePath,long file_type){
-	odb::core::transaction tx(db->begin());
+	typedef odb::core::transaction tran;
+	typedef odb::transaction t;
+	tran *tx = NULL;
+	if (!t::has_current()){
+		tx=new tran(db->begin());
+	}
 	this->upload_file_no_tran(f, localFilePath, file_type);
-	tx.commit();
+	//tx->commit();
 }
 
 void upload_service::upload_file_no_tran(file&f, LPCSTR localFilePath, long file_type){
@@ -33,7 +38,14 @@ void upload_service::upload_file_no_tran(file&f, LPCSTR localFilePath, long file
 	f.set_type_id(file_type);
 	std::string base;
 	f.set_uri_path(base);
+	if (f.get_id() > 0){
+		//修改
+		fd->update(f, this->db);
+	}
+	else{
+		//添加
 	fd->add_file(f, this->db);
+	}
 
 	UploadFile uf;
 	fileTypeIdStr = Util::ltos(file_type);

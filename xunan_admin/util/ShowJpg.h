@@ -10,6 +10,7 @@
 
 #include<afxwin.h>
 #include<afxdlgs.h>
+#include<atlimage.h>
 #include"charset_util.h"
 
 class ShowJpg
@@ -18,7 +19,8 @@ class ShowJpg
 public:
 	ShowJpg();
 	virtual ~ShowJpg();
-public:static BOOL ShowJpg::ShowJpgGif(CDC* pDC, CString strPath, int x, int y);
-public:static BOOL ShowJpg::ShowImage(CDC* pDC, CString strPath, int x, int y);
+	static BOOL ShowJpgGif(CDC* pDC, CString strPath, int x, int y);
+	static BOOL ShowImage(CDC* pDC, CString strPath, int x, int y);
+	static void ShowPng(CDC*pDC, CString strPath, CRect&rect);
 };
 #endif // !defined(EA_8207EE03_0362_4090_A6CC_78C6A437B3B0__INCLUDED_)

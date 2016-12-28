@@ -14,8 +14,8 @@ class Constants
 public:
 	Constants();
 	virtual ~Constants();
-public: const static std::string server_base_path;/*服务端ftp路径*/
-public:const static std::string local_base_path;/*本地存放路径*/
+	//const static std::string server_base_path;/*服务端ftp路径*/
+	//const static std::string local_base_path;/*本地存放路径*/
 };
 
 

@@ -20,22 +20,53 @@
 #include"../dao/good_file_dao.h"
 #include"../odb/good_file-odb.hxx"
 #include"../odb/goods-odb.hxx"
+#include"base_service.h"
 
 
-class good_file_service
+typedef odb::core::transaction tran;
+typedef odb::transaction t;
+
+class upload_service;
+class good_file_service : public  base_service<good_file,good_file_dao>
 {
 
 public:
-	good_file_service();
-	virtual ~good_file_service();
-private:std::auto_ptr<odb::database> db;
-private:good_file_dao*gfd;
-public:static good_file_service* get_good_file_service(){
-	static good_file_service gfs;
-	return &gfs;
-}
-private:file_dao*fd;
-public:void add_good_file(good_file&gf);
-public:void findFileByGoodId(long goodId, long type_id_, std::list<file*> *fs);
+		good_file_service();
+
+		virtual ~good_file_service();
+
+		static good_file_service* get_good_file_service(){
+			static good_file_service gfs;
+			return &gfs;
+		}
+
+		void add_good_file(good_file&gf);
+
+		void add_good_file(
+			std::string& local_path, 
+			long type_id,
+			long goodId,
+			upload_service*us
+			);
+
+		void findFileByGoodId(long goodId, long type_id_, std::list<file> *fs);
+
+		file getThumbFile4GoodId(long goodId);
+
+		std::list<file*>*  queryBigPic4Goods(long goodId, long type_id);
+
+		void update_good_file(
+			std::string& local_path,
+			long type_id,
+			long goodId,
+			long file_id,
+			upload_service*us
+			);
+
+		void deleteGoodFile( long file_id);
+
+private:
+		file_dao*fd;
+		
 };
 #endif // !defined(EA_29993B0C_5AB6_49d6_9E60_6AF332447A15__INCLUDED_)
