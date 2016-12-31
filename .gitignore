@@ -360,3 +360,7 @@ xunan_admin/base_dlg/base_dlg.vcxproj
 xunan_admin/base_dlg/base_dlg.vcxproj.filters
 xunan_admin/Debug.rar
 xunan_admin/base_dlg/Release/
+xunan_admin/base_ctrl/Debug/
+xunan_admin/base_ctrl/base_ctrl.dir/
+xunan_admin/base_ctrl/base_ctrl.vcxproj
+xunan_admin/base_ctrl/base_ctrl.vcxproj.filters
