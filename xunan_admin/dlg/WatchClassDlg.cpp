@@ -35,8 +35,8 @@ BOOL WatchClassDlg::OnInitDialog(){
 	HTREEITEM hArtItem;
 
 	hIcon[0] = AfxGetApp()->LoadIconA(IDI_ICON1);
-	hIcon[1] = AfxGetApp()->LoadIconA(IDI_ICON2);
-	hIcon[2] = AfxGetApp()->LoadIconA(IDI_ICON3);
+	hIcon[1] = AfxGetApp()->LoadIconA(IDI_ICON1);
+	hIcon[2] = AfxGetApp()->LoadIconA(IDI_ICON1);
 
 	this->m_imageList.Create(32, 32, ILC_COLOR32, 3, 3);
 	for (int i = 0; i < 3; i++)

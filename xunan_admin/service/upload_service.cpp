@@ -24,16 +24,6 @@ void upload_service::upload_file(file&f, LPCSTR localFilePath,long file_type){
 	typedef odb::core::transaction tran;
 	typedef odb::transaction t;
 	tran *tx = NULL;
-	try{
-
-	
-	if (!t::has_current()){
-		tx=new tran(db->begin());
-	}
-	else
-	{
-		tx = &(t::current());
-	}
 	std::string fileTypeIdStr;
 	std::string b1Path = "";
 	f.set_path(b1Path);
@@ -60,11 +50,5 @@ void upload_service::upload_file(file&f, LPCSTR localFilePath,long file_type){
 
 	f.set_uri_path(base);
 	fd->update(f, this->db);
-	t::current().commit();
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-		t::current().rollback();
-	}
 }
 

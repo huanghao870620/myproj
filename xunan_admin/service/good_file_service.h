@@ -53,7 +53,7 @@ public:
 
 		file getThumbFile4GoodId(long goodId);
 
-		std::list<file*>*  queryBigPic4Goods(long goodId, long type_id);
+		std::list<file*>*  getFilesByTypeAndGoodId(long goodId, long type_id);
 
 		void update_good_file(
 			std::string& local_path,

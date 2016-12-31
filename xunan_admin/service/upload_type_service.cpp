@@ -20,11 +20,5 @@ upload_type_service::~upload_type_service(){
 }
 
 void upload_type_service::query(std::list<upload_type*>&ut_list){
-	try{
-	odb::core::transaction tx(this->db->begin());
 	this->utd->query(ut_list, this->db);
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-	}
 }

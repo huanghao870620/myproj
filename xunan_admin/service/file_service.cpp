@@ -24,20 +24,11 @@ file_service::~file_service(){
 
 
 void file_service::add_file(file&f){
-	try{
-		odb::core::transaction tx(this->db->begin());
 		this->d->add(f, this->db);
-		tx.commit();
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-	}
 }
 
 void file_service::update_file(file&f){
-	odb::core::transaction tx(this->db->begin());
 	this->d->update(f,this->db);
-	tx.commit();
 }
 
 /*修改和上传文件*/
@@ -51,26 +42,12 @@ void file_service::update_and_upload_file(long file_id,
 	typedef odb::core::transaction tran;
 	typedef odb::transaction t;
 	tran *tx = NULL;
-	try{
-		if (!t::has_current()){
-		 tx = new  tran(this->db->begin());
-		}
-		else
-		{
-			tx = &(t::current());
-		}
 	file&f= this->d->findById(file_id, this->db);
 	id_str = Util::ltos(f.get_id());
 	fileTypeIdStr = Util::ltos(fileTypeId);
 	uf.upload(localPath.c_str(), base, fileTypeIdStr.c_str(), id_str.c_str());
 	f.set_uri_path(base);
 	this->d->update(f, this->db);
-	t::current().commit();
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-		t::current().rollback();
-	}
 }
 
 
@@ -85,14 +62,6 @@ void file_service::add_good_file(std::string&localPath,long good_id,long file_ty
 	UploadFile uf;
 	std::string base;
 	tran *tx = NULL;
-	try{
-		if (!t::has_current()){
-			tx = new tran(this->db->begin());
-		}
-		else
-		{
-			tx = &(t::current());
-		}
 	f.set_name("");
 	f.set_path(path);
 	f.set_type_id(file_type);
@@ -109,12 +78,6 @@ void file_service::add_good_file(std::string&localPath,long good_id,long file_ty
 	gf.set_file_id(f.get_id());
 	gf.set_good_id(good_id);
 	this->gfd->add_good_file(gf, this->db);
-	tx->commit();
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-		tx->rollback();
-	}
 }
 
 

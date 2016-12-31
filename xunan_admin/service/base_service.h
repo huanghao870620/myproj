@@ -14,26 +14,12 @@ class base_service
 
 public:
 		E findById(long id){
-			typedef odb::core::transaction tran;
-			typedef odb::transaction t;
-			
-			tran *tx = NULL;
-			try{
-				if (!t::has_current()){
-				tx=new tran(this->db->begin());
-				}
-				else
-				{
-					tx = &(t::current());
-				}
 				E &e=this->d->findById(id, this->db);
-				//tx->commit();
 				return e;
-			}
-			catch (odb::exception&e){
-				std::cerr << e.what() << std::endl;
-				tx->rollback();
-			}
+		}
+
+		void deleteById(long id){
+			this->d->erase(this->d->findById(id, this->db), this->db);
 		}
 
 protected:

@@ -8,12 +8,16 @@
 #include "MyFrame.h"
 
 IMPLEMENT_DYNCREATE(MyFrame,CFrameWnd)
-BEGIN_MESSAGE_MAP(MyFrame,CFrameWnd)
-END_MESSAGE_MAP()
+
 MyFrame::MyFrame(){
-	/*this->MessageBox("看看发生的");
-	::MessageBox(NULL, "所发生的2", "粉色发多少2", MB_OK);*/
 	std::cout << "框架构造" << std::endl;
+}
+
+BOOL  MyFrame::OnCreate(LPCREATESTRUCT lpStruct){
+	CFrameWnd::OnCreate(lpStruct);
+	HICON ico = AfxGetApp()->LoadIcon(IDI_ICON1);
+	SetIcon(ico, true);
+	return TRUE;
 }
 
 
@@ -21,3 +25,7 @@ MyFrame::MyFrame(){
 MyFrame::~MyFrame(){
 	
 }
+
+BEGIN_MESSAGE_MAP(MyFrame, CFrameWnd)
+	ON_WM_CREATE()
+END_MESSAGE_MAP()

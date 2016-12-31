@@ -29,6 +29,12 @@ float Util::stof(std::string str){
 	return atof(str.c_str());
 }
 
+std::string Util::ftos(float f){
+	char buffer[50];
+	_gcvt(f, 7, buffer);
+	return std::string(buffer);
+}
+
 std::string Util::ltos(long l){
 	std::stringstream stream;
 	std::string result;

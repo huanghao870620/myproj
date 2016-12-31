@@ -18,27 +18,12 @@ brand_service::~brand_service(){
 }
 
 void brand_service::add_brand(brand&b){
-	odb::core::transaction*t = new odb::core::transaction(db->begin());
 	this->d->add_brand(b,this->db);
-	t->commit();
 }
 
 std::list<brand>  brand_service::get_brands(){
 	std::list<brand> brand_list;
 	tran *tx = NULL;
-	try{
-		if (!t::has_current()){
-			tx = new tran(this->db->begin());
-		}
-		else
-		{
-			tx = &(t::current());
-		}
-		brand_list = this->d->query(this->db);
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-		t::current().rollback();
-	}
+	brand_list = this->d->query(this->db);
 	return brand_list;
 }

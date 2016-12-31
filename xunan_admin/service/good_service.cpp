@@ -20,14 +20,12 @@ good_service::~good_service(){
 }
 
 void good_service::update_good(goods&good){
-	odb::core::transaction tx(db->begin());
 	this->d->update(good, this->db);
-	tx.commit();
 }
 
 
-void good_service::query_list(std::list<goods*>* goods_list){
-	this->d->query_list(goods_list, this->db);
+std::list<goods> good_service::query_list(){
+	return this->d->query_list(this->db);
 }
 
 
@@ -51,29 +49,9 @@ void  good_service::add_good(
 		std::string& big1Path, // 大图1
 		std::string& cut1_path // 切图1
 	){
-
-	
-
 	goods good;
-	tran *tx = NULL;
-	try{
-		if (!t::has_current()){
-		  tx = new tran(this->db->begin());
-		}
-		else{
-			tx = &(t::current());
-		}
-
 	file adv_file;
 	us->upload_file(adv_file, advPath.c_str(), 17);
-
-	if (!t::has_current()){
-		tx = new tran(this->db->begin());
-	}
-	else{
-		tx = &(t::current());
-	}
-
 	good.set_name(name);
 	good.set_classid(selClass);//分类
 	good.set_info(info_str);//描述
@@ -103,22 +81,6 @@ void  good_service::add_good(
 
 	/*添加商品缩略图*/
 	fs.add_good_file(thumbPath, good.get_id(), COMMODITY_THUMBNAIL);
-	
-	if (!t::has_current()){
-		tx = new tran(this->db->begin());
-	}
-	else{
-		tx = &(t::current());
-	}
-	t::current().commit();
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-		if (t::has_current()){
-			t::current().rollback();
-		}
-	}
-	
 }
 
 
@@ -150,14 +112,6 @@ void  good_service::edit_good(std::string&name,
 	typedef odb::transaction t;
 	goods good;
 	tran *tx = NULL;
-	try{
-		if (!t::has_current()){
-		 tx = new tran(this->db->begin());
-		}
-		else
-		{
-			tx = &(t::current());
-		}
 
 		file adv_file;
 		//us->upload_file_no_tran(adv_file, advPath.c_str(), GOOD_ADV_PHOTO); //商品广告图
@@ -169,13 +123,6 @@ void  good_service::edit_good(std::string&name,
 		else{
 			//添加
 		us->upload_file(adv_file, advPath.c_str(), GOOD_ADV_PHOTO);
-		}
-		if (!t::has_current()){
-			tx = new tran(this->db->begin());
-		}
-		else
-		{
-			tx = &(t::current());
 		}
 
 		good.set_name(name);
@@ -216,13 +163,5 @@ void  good_service::edit_good(std::string&name,
 			}
 		good.set_id(goodId);
 		this->d->update(good, this->db);
-		t::current().commit();
-	}
-	catch (odb::exception&e){
-		std::cout << e.what() << std::endl;
-		t::current().rollback();
-	}
-
-
 
 }

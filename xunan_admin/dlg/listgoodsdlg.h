@@ -7,6 +7,8 @@
 #include"../util/charset_util.h"
 #include"../ctrl/MyCListCtrl.h"
 #include"../util/Util.h"
+#include"../service/good_file_service.h"
+#include"AddGoodsDlg.h"
 
 // ListGoodsDlg 对话框
 
@@ -21,13 +23,25 @@ public:
 // 对话框数据
 	enum { IDD = IDD_DIALOG_GOOD_LIST };
 
-protected:afx_msg void OnItemChanged(NMHDR*pNMHDR,LRESULT*pResult);
 
-private:MyCListCtrl listCtrl; /*列表控件*/
-protected:BOOL OnInitDialog();
+private:
+	MyCListCtrl listCtrl; /*列表控件*/
+	AddGoodsDlg addGoodDlg;
+
+	good_file_service *gfs;
+	good_service *gs;
+	file_service *fs;
+
+
 protected:
+	afx_msg void OnItemChanged(NMHDR*pNMHDR,LRESULT*pResult);
+	BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 	void OnPaint();
 
 	DECLARE_MESSAGE_MAP()
+
+	afx_msg void delGood();
+	afx_msg void Refresh();
+	afx_msg void AddGood();
 };

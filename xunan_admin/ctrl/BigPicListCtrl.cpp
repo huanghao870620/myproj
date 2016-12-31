@@ -70,14 +70,6 @@ void BigPicListCtrl::OnItemChanged(NMHDR*pNMHDR, LRESULT*pResult){
 	{
 		TRACE("Item %d does't change the check-status\n", pNMLV->iItem);
 	}
-
-
-
-
-
-
-
-
 	*pResult = 0;
 }
 

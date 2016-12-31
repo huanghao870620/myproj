@@ -18,22 +18,13 @@ good_dao::~good_dao(){
 
 }
 
-void good_dao::query_list(std::list<goods*>* goods_list, std::auto_ptr<odb::database> &db){
-	typedef odb::core::transaction tran;
-	typedef odb::transaction t;
-	tran *tx = NULL;
-	if (!t::has_current()){
-	 	tx = new tran(db->begin());
-	}
+std::list<goods>  good_dao::query_list(std::auto_ptr<odb::database> &db){
+	std::list<goods> goods_list;
 	odb::result<goods> r(db->query<goods>(odb::query<goods>::id>1));
 	for (odb::result<goods>::iterator i(r.begin()); i != r.end(); ++i){
-		goods *g = new goods;
-		g->set_id(i->get_id());
-		g->set_name(i->get_name());
-		g->set_info(i->get_info());
-		goods_list->push_back(g);
+		goods_list.push_back(*i);
 	}
-	
+	return goods_list;
 }
 
 

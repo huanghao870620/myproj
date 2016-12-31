@@ -22,19 +22,20 @@ class Util
 public:
 	Util();
 	virtual ~Util();
-public:static long stol(std::string str);
-public:static std::string Util::ltos(long l);
-public:static float stof(std::string str);
+	static long stol(std::string str);
+	static std::string ltos(long l);
+	static float stof(std::string str);
+	static std::string ftos(float f);
 
-public:static CString GetFilePathName(){
-	CFileDialog filedlg(true);
-	CString FilePathName;
-	filedlg.m_ofn.lpstrTitle = "打开";
-	filedlg.m_ofn.lpstrFilter = "Text Files(*.txt)/0*.txt/0All Files(*.*)/0*.*/0/0";
-	if (IDOK == filedlg.DoModal()){
-		FilePathName = filedlg.GetPathName();
+	static CString GetFilePathName(){
+		CFileDialog filedlg(true);
+		CString FilePathName;
+		filedlg.m_ofn.lpstrTitle = "打开";
+		filedlg.m_ofn.lpstrFilter = "Text Files(*.txt)/0*.txt/0All Files(*.*)/0*.*/0/0";
+		if (IDOK == filedlg.DoModal()){
+			FilePathName = filedlg.GetPathName();
+		}
+		return CString(FilePathName);
 	}
-	return CString(FilePathName);
-}
 };
 #endif // !defined(EA_2F110B58_39A7_489e_9866_F2AB9E36DC5D__INCLUDED_)

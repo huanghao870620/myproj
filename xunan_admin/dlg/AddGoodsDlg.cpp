@@ -32,71 +32,31 @@ AddGoodsDlg::AddGoodsDlg(long goodId)
 AddGoodsDlg::~AddGoodsDlg()
 {
 }
-//
-//void AddGoodsDlg::init(){
-//	this->fs = file_service::get_file_service();
-//	this->gfs = good_file_service::get_good_file_service();
-//	this->cs = classification_service::get_classification_service();
-//	this->gs = good_service::get_good_service();
-//	this->us = upload_service::get_upload_service();
-//	this->bs = brand_service::get_brand_service();
-//}
 
 /**/
 void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 {
 	BaseGoodDlg::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_STATIC_GATP, this->gatp);//縮略圖
-	DDX_Control(pDX, IDC_STATIC_ADV_PIC, this->advPic);//商品广告图
-	DDX_Control(pDX, IDC_STATIC_BGAT, this->big1);//大圖1
-	
-	DDX_Control(pDX, IDC_STATIC_CUT1, this->cutFigure1);//切圖1
-	DDX_Control(pDX, IDC_EDIT_DEPARTMENT_NAME_EDIT_BOX, this->nameEdit);/*商品名称*/
-	DDX_Control(pDX, IDC_EDIT_DESCRIBE, this->infoEdit);/*商品描述*/
-	DDX_Control(pDX, IDC_EDIT_CAPACITY, this->capacityEdit);/*容量*/
-	DDX_Control(pDX, IDC_DATETIMEPICKER1, this->dateOfProductionControl);/*生产日期*/
-	DDX_Control(pDX, IDC_LOWEST_PRICE, this->lowestPriceEdit);/*最低价*/
-	DDX_Control(pDX, IDC_HIGHEST_PRICE, this->highestPriceEdit);/*最高价*/
-	DDX_Control(pDX, IDC_EDIT_REAL_PRICE, this->priceEdit);/*商品实际价格*/
-	DDX_Control(pDX, IDC_EDIT_PURCHASING_POSITION, this->purchasPositonEdit);/*采购位置*/
-	DDX_Control(pDX, IDC_COMBO_BIG_CLASS, this->firstClass);/*一级分类*/
-	DDX_Control(pDX, IDC_COMBO_CHILD_CLASS, this->secondClass);/*二级分类*/
-	DDX_Control(pDX, IDC_COMBO1, this->thirdClass);/*三级分类*/
-
-	DDX_Control(pDX, IDC_RADIO_RECOMMENDED, this->isRecom);/*推荐*/
-	DDX_Control(pDX, IDC_RADIO_NOT_RECOMMENDED, this->isNotRecom);/*不推荐*/
-
-	DDX_Control(pDX, IDC_COMBO_BRAND, this->brandSel); /*品牌*/
-	
-	std::list<classification*> *ls = new std::list<classification*>;
-	this->cs->query_classification(ls);
-
-	std::list<classification*>::iterator iter = ls->begin();
-	for (int i = 0; iter != ls->end(); iter++, i++){
-		classification *classi = *iter;
-		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
-		this->firstClass.AddString(classi->get_name().c_str());
-		long id = classi->get_id();
-		this->firstClass.SetItemData(i, id);
-	}
-
-	
-	std::list<brand> brand_list=this->bs->get_brands();
-	std::list<brand>::iterator brand_iter = brand_list.begin();
-	for (int i = 0; brand_iter != brand_list.end(); brand_iter++, i++){
-		brand&b = *brand_iter;
-	}
-
-
 }
 
 
 
 /*添加商品*/
 void AddGoodsDlg::addGood(){
-	//goods good;
+	typedef std::auto_ptr<odb::database> data;
+	typedef odb::core::transaction tran;
+	typedef odb::transaction t;
+	tran *tx = NULL;
+	try{
+	data db= db_util::get_db_util()->get_db();
+	if (!t::has_current()){
+		tx = new tran(db->begin());
+	}
+	else
+	{
+		tx = &(t::current());
+	}
 
-	/*商品名称*/
 	CString cs0;
 	this->nameEdit.GetWindowTextA(cs0);
 	MyDoc * myDoc = (MyDoc*)((MyFrame*)AfxGetApp()->GetMainWnd())->GetActiveDocument();
@@ -198,25 +158,14 @@ void AddGoodsDlg::addGood(){
 		big1_path,
 		cut1_path
 	);
-
-	
+	t::current().commit();
+	this->MessageBox("添加成功");
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
+	}
 }
-//
-///*縮略圖*/
-//void AddGoodsDlg::uploadFileGatp(){
-//	this->gatp.GetClientRect(&thumbRect);
-//	this->thumbPath = Util::GetFilePathName();
-//	//ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
-//	ShowJpg::ShowPng(this->gatp.GetDC(), thumbPath, thumbRect);
-//}
-//
-///*上传广告图*/
-//void AddGoodsDlg::uploadAdvPic(){
-//	this->advPic.GetClientRect(&this->advRect);
-//	this->advPath = Util::GetFilePathName();
-//	//ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, this->advRect.left, this->advRect.top);
-//	ShowJpg::ShowPng(this->advPic.GetDC(), advPath, advRect);
-//}
 
 /*商品大圖1*/
 void AddGoodsDlg::uploadFileBig1(){
@@ -228,9 +177,6 @@ void AddGoodsDlg::uploadFileBig1(){
 /*商品大圖2*/
 void AddGoodsDlg::uploadFileBig2(){
 	RECT d;
-	/*this->big2.GetClientRect(&d);
-	CString big2Path = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->big2.GetDC(), big2Path, d.left, d.top);*/
 }
 
 /*切圖1*/
@@ -301,16 +247,47 @@ BOOL AddGoodsDlg::OnEraseBkgnd(CDC*pDC){
 
 /*初始化数据*/
 BOOL AddGoodsDlg::OnInitDialog(){
+	
+	tran *tx = NULL;
+	data db= db_util::get_db_util()->get_db();
+	try{
+	
+	if (!t::has_current()){
+		tx = new tran(db->begin());
+	}
+	else
+	{
+		tx = &(t::current());
+	}
+
 	BaseGoodDlg::OnInitDialog();
 	this->isNotRecom.SetCheck(TRUE);
 	Gdiplus::GdiplusStartupInput gi;
 	ULONG_PTR gdiToken;
 	GdiplusStartup(&gdiToken, &gi, NULL);
+	t::current().commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
+	}
 	return TRUE;
 }
 
 /*点击一级分类*/
 void AddGoodsDlg::SetSecondClass(){
+
+	tran *tx = NULL;
+	data db = db_util::get_db_util()->get_db();
+
+	try{
+		if (!t::has_current()){
+			tx = new tran(db->begin());
+		}
+		else
+		{
+			tx = &(t::current());
+		}
 	int index = this->firstClass.GetCurSel();
 	this->firstClass.SetCurSel(index);
 	
@@ -333,6 +310,12 @@ void AddGoodsDlg::SetSecondClass(){
 		secondClass->AddString(classi->get_name().c_str());
 		long id_second = classi->get_id();
 		secondClass->SetItemData(i, id_second);
+	}
+	t::current().commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
 	}
 }
 

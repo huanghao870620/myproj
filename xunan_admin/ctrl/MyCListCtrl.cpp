@@ -8,7 +8,7 @@
 #include "MyCListCtrl.h"
 
 
-MyCListCtrl::MyCListCtrl(){
+MyCListCtrl::MyCListCtrl() : BaseCtrl(){
 
 }
 
@@ -19,6 +19,7 @@ MyCListCtrl::~MyCListCtrl(){
 }
 
 void MyCListCtrl::OnItemChanged(NMHDR*pNMHDR, LRESULT*pResult){
+	BaseCtrl::OnItemChanged(pNMHDR, pResult);
 	int nItem = this->GetNextItem(-1, LVNI_SELECTED);
 	CString id = this->GetItemText(nItem, 0);
 	CString name = this->GetItemText(nItem, 1);
@@ -40,7 +41,6 @@ void MyCListCtrl::OnDbClick(NMHDR*pNMHDR, LRESULT*pResult){
 
 		std::cout << name << std::endl;
 		long lid= Util::stol(id.GetBuffer(0));
-		std::cout << "id : " << lid << std::endl;
 		this->pDlg = new EditGoodDlg(lid);
 		pDlg->Create(IDD_DIALOG_ADD_GOODS, this);
 		pDlg->ShowWindow(SW_SHOW);

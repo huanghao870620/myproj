@@ -33,10 +33,11 @@ public:
 
 
 private:
-	BOOL m_bItemCheckState[MAX_LISTITEM];
-
+	BOOL m_bItemCheckState[MAX_LISTITEM] ;
+	
 protected:
 	afx_msg void OnDbClick(NMHDR*pNMHDR, LRESULT*pResult);
 	afx_msg void OnItemChanged(NMHDR*pNMHDR, LRESULT*pResult);
 	DECLARE_MESSAGE_MAP()
+
 };

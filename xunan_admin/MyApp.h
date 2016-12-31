@@ -26,7 +26,7 @@ class MyApp : public CWinApp
 {
 
 public:
-	MyApp();
+	MyApp(); 
 	virtual ~MyApp();
 public:virtual BOOL InitInstance();
 };

@@ -39,7 +39,7 @@ public:
 		return &gs;
 	}
 
-	void query_list(std::list<goods*>* goods_list);
+	std::list<goods> query_list();
 	void update_good(goods&good);
 
 	void  add_good(

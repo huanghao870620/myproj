@@ -9,13 +9,17 @@
 #define EA_1E093D91_8212_495e_A61A_4FAE230D9A40__INCLUDED_
 #include<afxwin.h>
 #include<iostream>
+#include"../resource.h"
 class MyFrame : public CFrameWnd
 {
 
 public:
 	MyFrame();
 	virtual ~MyFrame();
-protected:DECLARE_DYNCREATE(MyFrame,CFrameWnd)
-protected:DECLARE_MESSAGE_MAP()
+
+	BOOL  OnCreate(LPCREATESTRUCT lpStruct);
+protected:
+	DECLARE_DYNCREATE(MyFrame,CFrameWnd)
+	DECLARE_MESSAGE_MAP()
 };
 #endif // !defined(EA_1E093D91_8212_495e_A61A_4FAE230D9A40__INCLUDED_)

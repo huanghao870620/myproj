@@ -35,4 +35,8 @@ private:
 	long goodId;
 	CButton add;
 
+	typedef odb::core::transaction tran;
+	typedef odb::transaction t;
+	typedef std::auto_ptr<odb::database> data;
+
 };

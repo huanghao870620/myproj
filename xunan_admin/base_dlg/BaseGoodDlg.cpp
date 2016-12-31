@@ -40,6 +40,8 @@ void BaseGoodDlg::init(){
 	this->gs = good_service::get_good_service();
 	this->us = upload_service::get_upload_service();
 	this->bs = brand_service::get_brand_service();
+
+	
 }
 
 /**/
@@ -68,24 +70,7 @@ void BaseGoodDlg::DoDataExchange(CDataExchange* pDX)
 
 	DDX_Control(pDX, IDC_COMBO_BRAND, this->brandSel); /*品牌*/
 
-	std::list<classification*> *ls = new std::list<classification*>;
-	this->cs->query_classification(ls);
 
-	std::list<classification*>::iterator iter = ls->begin();
-	for (int i = 0; iter != ls->end(); iter++, i++){
-		classification *classi = *iter;
-		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
-		this->firstClass.AddString(classi->get_name().c_str());
-		long id = classi->get_id();
-		this->firstClass.SetItemData(i, id);
-	}
-
-	
-	std::list<brand> &brand_list=this->bs->get_brands();
-	std::list<brand>::iterator brand_iter = brand_list.begin();
-	for (int i = 0; brand_iter != brand_list.end(); brand_iter++, i++){
-		brand b = *brand_iter;
-	}
 
 
 }
@@ -416,6 +401,24 @@ BOOL BaseGoodDlg::OnEraseBkgnd(CDC*pDC){
 /*初始化数据*/
 BOOL BaseGoodDlg::OnInitDialog(){
 	CDialogEx::OnInitDialog();
+	std::list<classification*> *ls = new std::list<classification*>;
+	this->cs->query_classification(ls);
+
+	std::list<classification*>::iterator iter = ls->begin();
+	for (int i = 0; iter != ls->end(); iter++, i++){
+		classification *classi = *iter;
+		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
+		this->firstClass.AddString(classi->get_name().c_str());
+		long id = classi->get_id();
+		this->firstClass.SetItemData(i, id);
+	}
+
+
+	std::list<brand> &brand_list = this->bs->get_brands();
+	std::list<brand>::iterator brand_iter = brand_list.begin();
+	for (int i = 0; brand_iter != brand_list.end(); brand_iter++, i++){
+		brand b = *brand_iter;
+	}
 	this->isNotRecom.SetCheck(TRUE);
 	Gdiplus::GdiplusStartupInput gi;
 	ULONG_PTR gdiToken;

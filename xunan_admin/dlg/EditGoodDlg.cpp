@@ -263,117 +263,32 @@ BOOL EditGoodDlg::OnEraseBkgnd(CDC*pDC){
 
 /*初始化数据*/
 BOOL EditGoodDlg::OnInitDialog(){
+	typedef std::auto_ptr<odb::database> data;
+	typedef odb::core::transaction tran;
+	typedef odb::transaction t;
+	tran *tx = NULL;
+	data db= db_util::get_db_util()->get_db();
+	try{
+	if (!t::has_current()){
+		tx = new tran(db->begin());
+	}
+	else
+	{
+		tx = &(t::current());
+	}
+
 	BaseGoodDlg::OnInitDialog();
 	this->SetWindowTextA(charset_util::UTF8ToGBK("编辑商品").c_str());
 	this->isNotRecom.SetCheck(TRUE);
 	Gdiplus::GdiplusStartupInput gi;
 	ULONG_PTR gdiToken;
 	GdiplusStartup(&gdiToken, &gi, NULL);
-
-	std::list<classification*> *ls = new std::list<classification*>;
-	this->cs->query_classification(ls);
-
-	std::list<classification*>::iterator iter = ls->begin();
-	for (int i = 0; iter != ls->end(); iter++, i++){
-		classification *classi = *iter;
-		classi->set_name(charset_util::UTF8ToGBK(classi->get_name()));
-		this->firstClass.AddString(classi->get_name().c_str());
-		long id = classi->get_id();
-		this->firstClass.SetItemData(i, id);
+	t::current().commit();
 	}
-
-	
-	std::list<brand>& brand_list=this->bs->get_brands();
-	std::list<brand>::iterator brand_iter = brand_list.begin();
-	for (int i = 0; brand_iter != brand_list.end(); brand_iter++, i++){
-		brand&b = *brand_iter;
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
 	}
-
-
-	long d0 = this->firstClass.GetItemData(0);
-	long d1 = this->firstClass.GetItemData(1);
-	long d2 = this->firstClass.GetItemData(2);
-
-
-
-	good_service *gs = good_service::get_good_service();
-	goods&g = gs->findById(this->goodId);
-	
-	this->adv_pic_id = g.get_adv_pic();
-	file adv_file= fs->findById(adv_pic_id);
-
-	Config *config= Config::getConfig();
-
-	this->advPath = std::string(config->get_local_path() + adv_file.get_uri_path()).c_str();/*ftp下载到本地的路径*/
-	this->fs->downloadFtpFile(adv_file.get_uri_path());/*下载缩略图*/
-	advPic.GetClientRect(&advRect);
-	ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, advRect.left, advRect.top);
-
-
-	good_file_service *gfs = good_file_service::get_good_file_service();
-	std::list<file*> fileList;
-	file &thumbFile = gfs->getThumbFile4GoodId(this->goodId);/*缩略图*/
-	this->thumbFileId = thumbFile.get_id(); /*缩略图文件id*/
-
-	this->thumbPath = std::string(config->get_local_path() + thumbFile.get_uri_path()).c_str();/*ftp下载到本地的路径*/
-
-	this->fs->downloadFtpFile(thumbFile.get_uri_path());/*下载缩略图*/
-
-	this->gatp.GetClientRect(&thumbRect);
-
-	this->bigCsList = new CStatic*[8]{
-		&this->big1
-	};
-
-	gfs->findFileByGoodId(this->goodId, GOOD_BIG_PHOTO, &this->bigFileList);/*商品大图*/
-	std::list<file>::iterator bigIter = this->bigFileList.begin();
-
-
-	gfs->findFileByGoodId(this->goodId, GOOD_CUT_PHOTO, &this->cutFileList);/*商品切图*/
-	std::list<file>::iterator cutIter = this->cutFileList.begin();
-
-
-	this->nameEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_name()).c_str());/*名称*/
-	this->infoEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_info()).c_str());/*描述*/
-	this->capacityEdit.SetWindowTextA(Util::ltos(g.get_capacity()).c_str());/*容量*/
-	this->dateOfProductionControl.SetWindowTextA(g.get_dateOfProduction().c_str());/*生产日期*/
-	this->lowestPriceEdit.SetWindowTextA(Util::ltos(g.get_lowest_price()).c_str());/*最低价*/
-	this->highestPriceEdit.SetWindowTextA(Util::ltos(g.get_highest_price()).c_str());/*最高价*/
-	this->purchasPositonEdit.SetWindowTextA(charset_util::UTF8ToGBK(g.get_purchasing_position()).c_str());/*采购位置*/
-
-	long classid = g.get_classid();
-	classification clas;
-
-	std::list<long> ids;
-	do
-	{
-		this->cs->getParentClass(&clas, classid);
-		classid = clas.get_pid();
-		ids.push_back(clas.get_id());
-	} while (clas.get_pid() != -1);
-
-
-	CComboBox **boxArr = new CComboBox*[3]{
-		&this->firstClass,
-			&this->secondClass,
-			&this->thirdClass
-	};
-
-	CComboBox *b0 = boxArr[0];
-	CComboBox*b1 = boxArr[1];
-	CComboBox*b2 = boxArr[2];
-
-	int len = ids.size();
-	for (int i = 0; i < len; i++){
-		long id = this->getClassId(&ids, len - i - 1);
-		CComboBox *box = boxArr[i];
-		this->SetCurSel(box, id, i);
-	}
-
-	delete[]boxArr;
-
-
-
 	return TRUE;
 }
 
@@ -612,10 +527,13 @@ BEGIN_MESSAGE_MAP(EditGoodDlg, BaseGoodDlg)
 	ON_BN_CLICKED(IDC_BUTTON_ADV_PIC, uploadAdvPic)/*广告图*/
 	ON_BN_CLICKED(IDC_RADIO_RECOMMENDED, selRecommended) /*推荐*/
 	ON_BN_CLICKED(IDC_RADIO_NOT_RECOMMENDED, selNotRecommended) /*不推荐*/
+
+
 	ON_CBN_SELCHANGE(IDC_COMBO_BIG_CLASS, SetSecondClass)
 	ON_CBN_SELCHANGE(IDC_COMBO_CHILD_CLASS, SetThirdClass)
 	ON_CBN_SELCHANGE(IDC_COMBO1, SelThirdClass)/**/
 	ON_CBN_SETFOCUS(IDC_COMBO_BIG_CLASS, f1)
+	
 	ON_WM_VSCROLL()
 	ON_WM_HSCROLL()
 	ON_WM_PAINT()

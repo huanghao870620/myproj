@@ -30,6 +30,17 @@ void BigPicDlg::DoDataExchange(CDataExchange* pDX)
 
 
 BOOL BigPicDlg::OnInitDialog(){
+	data db=db_util::get_db_util()->get_db();
+	tran *tx = NULL;
+	try{
+	if (!t::has_current()){
+		tx = new tran(db->begin());
+	}
+	else
+	{
+		tx = &(t::current()); 
+	}
+
 	CDialogEx::OnInitDialog();
 	ListView_SetExtendedListViewStyle(this->clistCtrl.GetSafeHwnd(), this->clistCtrl.GetExStyle() | LVS_EX_CHECKBOXES);
 	DWORD dwStyle;
@@ -38,6 +49,12 @@ BOOL BigPicDlg::OnInitDialog(){
 	clistCtrl.SetExtendedStyle(dwStyle);
 	this->clistCtrl.InsertColumn(1, "ID", LVCFMT_CENTER, 200);
 	this->clistCtrl.InsertColumn(2, "uri_path", LVCFMT_CENTER, 200);
+	t::current().commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
+	}
 	this->refresh();
 	return TRUE;
 }
@@ -50,21 +67,37 @@ void BigPicDlg::addBigPic(){
 
 /*Ë¢ÐÂ*/
 void BigPicDlg::refresh(){
-	std::list<file> ls;
-	gfs->findFileByGoodId(this->goodId, GOOD_BIG_PHOTO, &ls);
-	clistCtrl.DeleteAllItems();
-	std::list<file>::iterator iter = ls.begin();
-	for (int i = 0; iter != ls.end(); iter++, i++){
-		file f = *iter;
-		long id = f.get_id();
-		std::string & uri_path = f.get_uri_path();
-		std::cout << "" << std::endl;
-		std::string id_str = Util::ltos(id);
-		/*std::string &name = charset_util::UTF8ToGBK(c->get_name());
-		std::string&info = charset_util::UTF8ToGBK(c->get_country_code());*/
-		int nRow = this->clistCtrl.InsertItem(i + 1, id_str.c_str());
-		this->clistCtrl.SetItemText(nRow, 1, uri_path.c_str());
-		//this->clistCtrl.SetItemText(nRow, 2, uri_path);
+	data db = db_util::get_db_util()->get_db();
+	tran *tx = NULL;
+	try{
+		if (!t::has_current()){
+			tx = new tran(db->begin());
+		}
+		else
+		{
+			tx = &(t::current());
+		}
+		std::list<file> ls;
+		gfs->findFileByGoodId(this->goodId, GOOD_BIG_PHOTO, &ls);
+		clistCtrl.DeleteAllItems();
+		std::list<file>::iterator iter = ls.begin();
+		for (int i = 0; iter != ls.end(); iter++, i++){
+			file f = *iter;
+			long id = f.get_id();
+			std::string & uri_path = f.get_uri_path();
+			std::cout << "" << std::endl;
+			std::string id_str = Util::ltos(id);
+			/*std::string &name = charset_util::UTF8ToGBK(c->get_name());
+			std::string&info = charset_util::UTF8ToGBK(c->get_country_code());*/
+			int nRow = this->clistCtrl.InsertItem(i + 1, id_str.c_str());
+			this->clistCtrl.SetItemText(nRow, 1, uri_path.c_str());
+			//this->clistCtrl.SetItemText(nRow, 2, uri_path);
+		}
+		t::current().commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
 	}
 }
 

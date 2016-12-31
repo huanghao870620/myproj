@@ -59,55 +59,9 @@ protected:
 	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	afx_msg void OnPaint(); 
 	virtual BOOL OnInitDialog();
-//
-//private:
-//	CString big1Path; /*商品大圖1*/
-//	CString thumbPath;/*縮略圖*/
-//	CString advPath;/*广告图*/
-//	CString cutFigure1Path;/*切圖1*/
-//	long goodId;
-//	RECT big1Rect;
-//	RECT thumbRect;/*缩略图*/
-//	RECT advRect;/*广告图*/
-//	int selClass; /*选择分类*/
-//
-//	CStatic gatp;// 商品縮略圖
-//	CStatic advPic;//商品广告图
-//	CStatic big1;//大圖1
-//	CStatic cutFigure1; //切圖1
-//
-//	CEdit nameEdit; /*商品名称编辑控件*/
-//	CEdit infoEdit;/*描述*/
-//	CEdit capacityEdit;/*容量*/
-//	CWnd dateOfProductionControl;/*生产日期*/
-//	CEdit lowestPriceEdit;/*最低价*/
-//	CEdit highestPriceEdit;/*最高价*/
-//	CEdit priceEdit;/*商品实际价格*/
-//	CEdit purchasPositonEdit;/*采购位置*/
-//	CComboBox firstClass;/*一级分类*/
-//	CComboBox secondClass;/*二级分类*/
-//	CComboBox thirdClass;/*三级分类*/
-//	CComboBox brandSel; /*品牌*/
-//	CButton isRecom; /*推荐*/
-//	CButton isNotRecom;/*不推荐*/
-//	int m_nYPos = 0;
-//	int m_nXPos = 0;
-//	std::string localPath;
-//	std::string thubmLocalPath;/*缩略图本地存储路径*/
-//	long thumbFileId; /*缩略图文件id*/
-//	std::list<file*> bigFileList; /*商品大图*/
-//	std::list<file*> cutFileList; /*商品切图*/
-//	long getClassId(std::list<long> *ls, int index);
-//	void SetCurSel(CComboBox *box, long id, int i);
-//	HRESULT ShowPic(CDC* pDC, CString strImgUrl, CRect rect);
-//	void init();
-//	file_service*fs;
-//	good_file_service*gfs;
-//	classification_service*cs;
-//	good_service*gs;
-//	upload_service*us;
-//	brand_service*bs;
-//	CStringW ConvertUTF82CStringW(char* instr);/*转换为utf8*/
-//	void ConvertUtf8ToGBK(CString &strUtf8);
+
+	typedef std::auto_ptr<odb::database> data;
+	typedef odb::core::transaction tran;
+	typedef odb::transaction t;
 	
 };

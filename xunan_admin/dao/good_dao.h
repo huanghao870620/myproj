@@ -26,15 +26,17 @@ public:
 	good_dao();
 	virtual ~good_dao();
 
-private:std::auto_ptr<odb::database> db;
-public:static good_dao* get_good_dao(){
-	static good_dao dao;
-	return &dao;
-}
+	static good_dao* get_good_dao(){
+		static good_dao dao;
+		return &dao;
+	}
 
-public: void query_list(std::list<goods*>* goods_list, std::auto_ptr<odb::database> &db);
-public:void update(goods&good, std::auto_ptr<odb::database> &db);
-public:void add(goods&good, std::auto_ptr<odb::database>&db);
-	   typedef odb::core::transaction tran;
+	std::list<goods> query_list(std::auto_ptr<odb::database> &db);
+	void update(goods&good, std::auto_ptr<odb::database> &db);
+	void add(goods&good, std::auto_ptr<odb::database>&db);
+	typedef odb::core::transaction tran;
+
+private:
+	std::auto_ptr<odb::database> db;
 };
 #endif // !defined(EA_8269055E_2BD2_4918_BC9F_3229ACE9CDFB__INCLUDED_)

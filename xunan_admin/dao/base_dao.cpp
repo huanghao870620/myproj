@@ -7,13 +7,3 @@
 
 #include "base_dao.h"
 
-//
-//base_dao::base_dao(){
-//
-//}
-//
-//
-//
-//base_dao::~base_dao(){
-//
-//}
