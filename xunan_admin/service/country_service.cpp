@@ -40,8 +40,15 @@ void country_service::edit_country(long id,
 	std::string&img_path,
 	upload_service&us){
 	tran *tx = NULL;
+	try{
+
+	
 	if (!t::has_current()){
 		tx = new tran(this->db->begin());
+	}
+	else
+	{
+		tx = &(t::current());
 	}
 
 	country c;
@@ -49,11 +56,25 @@ void country_service::edit_country(long id,
 	
 	us.upload_file(f, img_path.c_str(), COUNTRY_PHOTO);
 
+	if (!t::has_current()){
+		tx = new tran(this->db->begin());
+	}
+	else
+	{
+		tx = &(t::current());
+	}
+
 	c.set_id(id);
 	c.set_img_id(f.get_id());
 	c.set_country_code(country_code);
 	c.set_name(name);
-	this->d->edit(c,this->db);
+	this->d->edit(c, this->db);
+	t::current().commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
+	}
 }
 
 

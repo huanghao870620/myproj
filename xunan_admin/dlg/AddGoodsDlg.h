@@ -43,9 +43,7 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 	afx_msg void addGood(); /*添加商品*/
-	afx_msg void uploadFileGatp(); /*上传商品正面照*/
 	afx_msg void uploadFileBgat(); /*上傳商品背面照*/
-	afx_msg void uploadAdvPic();/*上传广告图*/
 	afx_msg void uploadFileBig1(); /*上傳大圖1*/
 	afx_msg void uploadFileBig2(); /*上傳大圖2*/
 	afx_msg void uploadCutFigure1(); /*切圖1*/

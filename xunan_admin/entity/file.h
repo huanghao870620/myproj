@@ -39,7 +39,7 @@ public:file(std::string &name,
 	virtual ~file();
 private:friend class odb::access;
 #pragma db id auto
-private:unsigned long id_ = 0;
+private:unsigned long id_ =0;
 public:void set_id(unsigned long id){
 	this->id_ = id;
 }

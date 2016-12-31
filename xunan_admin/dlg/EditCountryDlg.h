@@ -8,10 +8,9 @@
 #include"../util/Config.h"
 #include"../util/ShowJpg.h"
 #include"../util/Util.h"
-//#include"../util/file_type_enum.h"
-// EditCountryDlg 对话框
+#include"../base_dlg/BaseCountryDlg.h"
 
-class EditCountryDlg : public CDialogEx
+class EditCountryDlg : public BaseCountryDlg
 {
 	DECLARE_DYNAMIC(EditCountryDlg)
 
@@ -24,19 +23,18 @@ public:
 
 	BOOL OnInitDialog();
 private:
-		country_service*cs;
 		file_service*fs;
+		/*country_service*cs;
 		upload_service*us;
 
 		CEdit nameEdit;
 		CStatic imgControl;
 		CEdit countryCodeEdit;
-		CString localPath;
+		CString localPath;*/
 		LONG id;
 protected:
 		virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 		void OnPaint();
-		VOID SelPic();
 		void EditCountry();
 		void t();
 		DECLARE_MESSAGE_MAP()

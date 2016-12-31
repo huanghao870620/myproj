@@ -67,8 +67,8 @@ protected:
 	CString cutFigure1Path;/*切圖1*/
 	long goodId;
 	RECT big1Rect;
-	RECT thumbRect;/*缩略图*/
-	RECT advRect;/*广告图*/
+	CRect thumbRect;/*缩略图*/
+	CRect advRect;/*广告图*/
 	int selClass; /*选择分类*/
 
 	CStatic gatp;// 商品縮略圖

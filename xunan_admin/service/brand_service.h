@@ -24,13 +24,14 @@ class brand_service : public base_service<brand,brand_dao>
 public:
 	brand_service();
 	virtual ~brand_service();
-public:static brand_service* get_brand_service(){
-	static brand_service bs;
-	return &bs;
-}
-public:void add_brand(brand&b);
+	static brand_service* get_brand_service(){
+		static brand_service bs;
+		return &bs;
+	}
+	void add_brand(brand&b);
 
-public:void get_brands(std::list<brand*> &brand_list);/*获取所有品牌*/
-	   typedef odb::core::transaction tran;
+	std::list<brand>   get_brands();/*获取所有品牌*/
+	 typedef odb::core::transaction tran;
+	 typedef odb::transaction t;
 };
 #endif // !defined(EA_4D7ABAE8_A099_454e_AC35_EC386B3C430A__INCLUDED_)

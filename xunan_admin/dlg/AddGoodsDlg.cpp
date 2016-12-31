@@ -80,11 +80,11 @@ void AddGoodsDlg::DoDataExchange(CDataExchange* pDX)
 		this->firstClass.SetItemData(i, id);
 	}
 
-	std::list<brand*> brand_list;
-	this->bs->get_brands(brand_list);
-	std::list<brand*>::iterator brand_iter = brand_list.begin();
+	
+	std::list<brand> brand_list=this->bs->get_brands();
+	std::list<brand>::iterator brand_iter = brand_list.begin();
 	for (int i = 0; brand_iter != brand_list.end(); brand_iter++, i++){
-		brand*b = *brand_iter;
+		brand&b = *brand_iter;
 	}
 
 
@@ -201,20 +201,22 @@ void AddGoodsDlg::addGood(){
 
 	
 }
-
-/*縮略圖*/
-void AddGoodsDlg::uploadFileGatp(){
-	this->gatp.GetClientRect(&thumbRect);
-	this->thumbPath = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
-}
-
-/*上传广告图*/
-void AddGoodsDlg::uploadAdvPic(){
-	this->advPic.GetClientRect(&this->advRect);
-	this->advPath = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, this->advRect.left, this->advRect.top);
-}
+//
+///*縮略圖*/
+//void AddGoodsDlg::uploadFileGatp(){
+//	this->gatp.GetClientRect(&thumbRect);
+//	this->thumbPath = Util::GetFilePathName();
+//	//ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
+//	ShowJpg::ShowPng(this->gatp.GetDC(), thumbPath, thumbRect);
+//}
+//
+///*上传广告图*/
+//void AddGoodsDlg::uploadAdvPic(){
+//	this->advPic.GetClientRect(&this->advRect);
+//	this->advPath = Util::GetFilePathName();
+//	//ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, this->advRect.left, this->advRect.top);
+//	ShowJpg::ShowPng(this->advPic.GetDC(), advPath, advRect);
+//}
 
 /*商品大圖1*/
 void AddGoodsDlg::uploadFileBig1(){

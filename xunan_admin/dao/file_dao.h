@@ -22,11 +22,9 @@ private:
 		file_dao();
 public:
 		virtual ~file_dao();
-		void add_file(file&f, std::auto_ptr<odb::database> &db);
 		static file_dao* get_file_dao(){
 			static file_dao f_dao;
 			return &f_dao;
 		}
-		void file_dao::update_file(file&f, std::auto_ptr<odb::database> &db);
 };
 #endif

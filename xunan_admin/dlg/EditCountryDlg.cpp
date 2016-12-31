@@ -6,10 +6,10 @@
 
 
 // EditCountryDlg 对话框
-IMPLEMENT_DYNAMIC(EditCountryDlg, CDialogEx)
+IMPLEMENT_DYNAMIC(EditCountryDlg, BaseCountryDlg)
 
 EditCountryDlg::EditCountryDlg(LONG id, CWnd* pParent /*=NULL*/)
-	: CDialogEx(EditCountryDlg::IDD, pParent)
+	: BaseCountryDlg(pParent)
 {
 	this->cs = country_service::get_country_service();
 	this->fs = file_service::get_file_service();
@@ -22,7 +22,7 @@ EditCountryDlg::~EditCountryDlg()
 }
 
 BOOL EditCountryDlg::OnInitDialog(){
-	CDialogEx::OnInitDialog();
+	BaseCountryDlg::OnInitDialog();
 	this->SetWindowTextA("编辑国家");
 	country &c= this->cs->findById(this->id);
 
@@ -33,9 +33,6 @@ BOOL EditCountryDlg::OnInitDialog(){
 
 	char *local_path = Config::getConfig()->get_local_path();
 	this->localPath = std::string(local_path).append(this->fs->downloadFtpFile(f.get_uri_path())).c_str();
-	/*RECT rect;
-	this->imgControl.GetClientRect(&rect);
-	ShowJpg::ShowJpgGif(this->imgControl.GetDC(), this->localPath, rect.left, rect.top);*/
 
 	CRect rect;
 	this->imgControl.GetClientRect(&rect);
@@ -45,10 +42,7 @@ BOOL EditCountryDlg::OnInitDialog(){
 
 
 void EditCountryDlg::OnPaint(){
-	CDialogEx::OnPaint();
-	/*RECT rect;
-	this->imgControl.GetClientRect(&rect);
-	ShowJpg::ShowJpgGif(this->imgControl.GetDC(), this->localPath, rect.left, rect.top);*/
+	BaseCountryDlg::OnPaint();
 
 	CRect rect;
 	this->imgControl.GetClientRect(&rect);
@@ -57,7 +51,7 @@ void EditCountryDlg::OnPaint(){
 
 void EditCountryDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
+	BaseCountryDlg::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT_COUNTRY_NAME, this->nameEdit);
 	DDX_Control(pDX, IDC_STATIC_COUNTRY_PIC, this->imgControl);
 	DDX_Control(pDX, IDC_EDIT_COUNTRY_CODE, this->countryCodeEdit);
@@ -121,18 +115,18 @@ BOOL LoadImageFromIDResource(CImage *pImage, UINT nResID, LPCTSTR lpTyp)
 	::FreeResource(hImgData);
 	return true;
 }
+//
+//VOID EditCountryDlg::SelPic(){
+//	this->localPath = Util::GetFilePathName();
+//	CRect rect;
+//	this->imgControl.GetClientRect(&rect);
+//	/*ShowJpg::ShowJpgGif(this->imgControl.GetDC(), this->localPath, rect.left, rect.top);*/
+//	ShowJpg::ShowPng(this->imgControl.GetDC(), this->localPath, rect);
+//}
 
-VOID EditCountryDlg::SelPic(){
-	this->localPath = Util::GetFilePathName();
-	CRect rect;
-	this->imgControl.GetClientRect(&rect);
-	/*ShowJpg::ShowJpgGif(this->imgControl.GetDC(), this->localPath, rect.left, rect.top);*/
-	ShowJpg::ShowPng(this->imgControl.GetDC(), this->localPath, rect);
-}
 
 
-
-BEGIN_MESSAGE_MAP(EditCountryDlg, CDialogEx)
+BEGIN_MESSAGE_MAP(EditCountryDlg, BaseCountryDlg)
 	ON_BN_CLICKED(IDC_BUTTON_SELCOUNTRYPIC, SelPic)
 	ON_BN_CLICKED(IDOK, EditCountry)
 	ON_WM_PAINT()

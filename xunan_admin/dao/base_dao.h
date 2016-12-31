@@ -28,8 +28,8 @@ public:
 		db->update(e);
 	}
 
-	void add(T e, std::auto_ptr<odb::database>&db){
-		db->persist(e);
+	unsigned long add(T e, std::auto_ptr<odb::database>&db){
+		return db->persist(e);
 	}
 
 	void update(T e, std::auto_ptr<odb::database>&db){

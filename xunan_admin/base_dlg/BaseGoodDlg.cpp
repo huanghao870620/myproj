@@ -80,11 +80,11 @@ void BaseGoodDlg::DoDataExchange(CDataExchange* pDX)
 		this->firstClass.SetItemData(i, id);
 	}
 
-	std::list<brand*> brand_list;
-	this->bs->get_brands(brand_list);
-	std::list<brand*>::iterator brand_iter = brand_list.begin();
+	
+	std::list<brand> &brand_list=this->bs->get_brands();
+	std::list<brand>::iterator brand_iter = brand_list.begin();
 	for (int i = 0; brand_iter != brand_list.end(); brand_iter++, i++){
-		brand*b = *brand_iter;
+		brand b = *brand_iter;
 	}
 
 
@@ -267,14 +267,16 @@ void BaseGoodDlg::addGood(){
 void BaseGoodDlg::uploadFileGatp(){
 	this->gatp.GetClientRect(&thumbRect);
 	this->thumbPath = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
+	//ShowJpg::ShowJpgGif(this->gatp.GetDC(), thumbPath, thumbRect.left, thumbRect.top);
+	ShowJpg::ShowPng(this->gatp.GetDC(), thumbPath, thumbRect);
 }
 
 /*上传广告图*/
 void BaseGoodDlg::uploadAdvPic(){
 	this->advPic.GetClientRect(&this->advRect);
 	this->advPath = Util::GetFilePathName();
-	ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, this->advRect.left, this->advRect.top);
+	//ShowJpg::ShowJpgGif(this->advPic.GetDC(), this->advPath, this->advRect.left, this->advRect.top);
+	ShowJpg::ShowPng(this->advPic.GetDC(), this->advPath, this->advRect);
 }
 
 /*商品大圖1*/

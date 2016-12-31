@@ -23,15 +23,22 @@ void brand_service::add_brand(brand&b){
 	t->commit();
 }
 
-void brand_service::get_brands(std::list<brand*> &brand_list){
-	//tran *tx = NULL;
+std::list<brand>  brand_service::get_brands(){
+	std::list<brand> brand_list;
+	tran *tx = NULL;
 	try{
-	//tx = new tran(this->db->begin());
-	this->d->query(brand_list, this->db);
-	//tx->commit();
+		if (!t::has_current()){
+			tx = new tran(this->db->begin());
+		}
+		else
+		{
+			tx = &(t::current());
+		}
+		brand_list = this->d->query(this->db);
 	}
 	catch (odb::exception&e){
 		std::cout << e.what() << std::endl;
-		//tx->rollback();
+		t::current().rollback();
 	}
+	return brand_list;
 }

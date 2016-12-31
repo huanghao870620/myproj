@@ -34,15 +34,40 @@ void good_file_service::add_good_file(
 	long goodId,
 	 upload_service*us
 	){
+	
+	typedef odb::core::transaction tran;
+	typedef odb::transaction t;
 
 	good_file gf;
 	file f;
-	
+	tran *tx = NULL;
+	try{
+	if (!t::has_current()){
+		tx = new tran(this->db->begin());
+	}
+	else
+	{
+		tx = &(t::current());
+	}
+
 	us->upload_file(f, local_path.c_str(), type_id);
+	if (!t::has_current()){
+		tx = new tran(this->db->begin());
+	}
+	else
+	{
+		tx = &(t::current());
+	}
+
 	gf.set_file_id(f.get_id());
 	gf.set_good_id(goodId);
 	this->d->add(gf,this->db);
 	t::current().commit();
+	}
+	catch (odb::exception&e){
+		std::cout << e.what() << std::endl;
+		t::current().rollback();
+	}
 }
 
 

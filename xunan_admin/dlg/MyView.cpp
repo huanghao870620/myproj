@@ -98,9 +98,16 @@ void MyView::ShowTest(){
 /*查看国家*/
 void MyView::watchCountry(){
 	this->countryShowDlg = new CountryShow;
-	this->countryShowDlg->Create(IDD_DIALOG_COUNTRY_LIST, this);
+	this->countryShowDlg->Create(CountryShow::IDD, this);
 	this->countryShowDlg->ShowWindow(SW_SHOW);
 	this->countryShowDlg->MoveWindow(&rc);
+}
+
+/*添加优惠券*/
+void MyView::addCouponsDlg_(){
+	this->addCouponsDlg = new AddCouponsDlg;
+	this->addCouponsDlg->Create(AddCouponsDlg::IDD, this);
+	this->addCouponsDlg->ShowWindow(SW_SHOW);
 }
 
 BEGIN_MESSAGE_MAP(MyView, CView)
@@ -113,4 +120,5 @@ BEGIN_MESSAGE_MAP(MyView, CView)
 	ON_COMMAND(ID_ADD_VNEUE, MyView::ShowAddVenueDlg)/*添加会场*/
 	ON_COMMAND(ID_40010, MyView::watchGoods) /*商品列表*/
 	ON_COMMAND(ID_40018, ShowTest)
+	ON_COMMAND(ID_40019, addCouponsDlg_)
 END_MESSAGE_MAP()

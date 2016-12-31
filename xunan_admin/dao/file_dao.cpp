@@ -17,11 +17,4 @@ file_dao::~file_dao(){
 
 }
 
-void file_dao::add_file(file&f, std::auto_ptr<odb::database> &db){
-	db->persist(f);
-}
-
-void file_dao::update_file(file&f, std::auto_ptr<odb::database> &db){
-	 db->update(f);
-}
 

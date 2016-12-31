@@ -56,7 +56,6 @@ void  good_service::add_good(
 
 	goods good;
 	tran *tx = NULL;
-	tx = &(t::current());
 	try{
 		if (!t::has_current()){
 		  tx = new tran(this->db->begin());
@@ -66,8 +65,14 @@ void  good_service::add_good(
 		}
 
 	file adv_file;
-	//us->upload_file_no_tran(adv_file, advPath.c_str(), 17);
 	us->upload_file(adv_file, advPath.c_str(), 17);
+
+	if (!t::has_current()){
+		tx = new tran(this->db->begin());
+	}
+	else{
+		tx = &(t::current());
+	}
 
 	good.set_name(name);
 	good.set_classid(selClass);//分类
@@ -94,27 +99,24 @@ void  good_service::add_good(
 	else if ("" == is_recom){
 		reco = 0;
 	}
-	//good.set_is_recommended(reco);
 	this->d->add(good,this->db);
-
-
-	
 
 	/*添加商品缩略图*/
 	fs.add_good_file(thumbPath, good.get_id(), COMMODITY_THUMBNAIL);
-
-
-	/*添加商品大图1*/
-	//fs.add_good_file(big1Path, good.get_id(), GOOD_BIG_PHOTO);
-
-	///*添加切图1*/
-	//fs.add_good_file(cut1_path, good.get_id(), GOOD_CUT_PHOTO);
-	/*if (t::)
-	tx->commit();*/
+	
+	if (!t::has_current()){
+		tx = new tran(this->db->begin());
+	}
+	else{
+		tx = &(t::current());
+	}
+	t::current().commit();
 	}
 	catch (odb::exception&e){
 		std::cout << e.what() << std::endl;
-		tx->rollback();
+		if (t::has_current()){
+			t::current().rollback();
+		}
 	}
 	
 }
@@ -168,7 +170,13 @@ void  good_service::edit_good(std::string&name,
 			//添加
 		us->upload_file(adv_file, advPath.c_str(), GOOD_ADV_PHOTO);
 		}
-		
+		if (!t::has_current()){
+			tx = new tran(this->db->begin());
+		}
+		else
+		{
+			tx = &(t::current());
+		}
 
 		good.set_name(name);
 		good.set_classid(selClass);//分类
@@ -199,7 +207,13 @@ void  good_service::edit_good(std::string&name,
 
 		/*修改缩略图*/
 		fs.update_and_upload_file(thumbFileId, thumbPath, COMMODITY_THUMBNAIL);
-
+			if (!t::has_current()){
+				tx = new tran(this->db->begin());
+			}
+			else
+			{
+				tx = &(t::current());
+			}
 		good.set_id(goodId);
 		this->d->update(good, this->db);
 		t::current().commit();

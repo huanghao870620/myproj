@@ -14,7 +14,8 @@
 #include<odb\transaction.hxx>
 #include"../odb/brand-odb.hxx"
 #include"../entity/brand.h"
-class brand_dao
+#include"base_dao.h"
+class brand_dao : public base_dao<brand>
 {
 
 public:
@@ -26,7 +27,7 @@ public:static brand_dao* get_brand_dao(){
 	return &bd;
 }
 
-public:void query(std::list<brand*> &brand_list, std::auto_ptr<odb::database>&db);
+public:std::list<brand> query( std::auto_ptr<odb::database>&db);
 
 };
 #endif // !defined(EA_D6E7D6BF_5EF3_4c40_B449_7649CDE8268B__INCLUDED_)

@@ -6,9 +6,10 @@
 #include"../service/country_service.h"
 #include"../service/upload_service.h"
 #include "afxdialogex.h"
+#include"../base_dlg/BaseCountryDlg.h"
 // AddCountryDlg 对话框
 
-class AddCountryDlg : public CDialogEx
+class AddCountryDlg : public BaseCountryDlg
 {
 	DECLARE_DYNAMIC(AddCountryDlg)
 
@@ -17,15 +18,8 @@ public:
 		virtual ~AddCountryDlg();
 
 private:
-		CEdit nameEdit;
-		CStatic imgControl;
-		CEdit countryCodeEdit;
-		CString localPath;
-		country_service*cs;
-		upload_service*us;
 
 		void AddCountry();
-		void SelPic();
 
 // 对话框数据
 		enum { IDD = IDD_DIALOG_ADD_COUNTRY };

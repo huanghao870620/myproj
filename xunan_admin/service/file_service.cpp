@@ -26,7 +26,7 @@ file_service::~file_service(){
 void file_service::add_file(file&f){
 	try{
 		odb::core::transaction tx(this->db->begin());
-		this->d->add_file(f, this->db);
+		this->d->add(f, this->db);
 		tx.commit();
 	}
 	catch (odb::exception&e){
@@ -36,7 +36,7 @@ void file_service::add_file(file&f){
 
 void file_service::update_file(file&f){
 	odb::core::transaction tx(this->db->begin());
-	this->d->update_file(f,this->db);
+	this->d->update(f,this->db);
 	tx.commit();
 }
 
@@ -48,18 +48,28 @@ void file_service::update_and_upload_file(long file_id,
 	std::string id_str;
 	std::string fileTypeIdStr;
 	UploadFile uf;
+	typedef odb::core::transaction tran;
+	typedef odb::transaction t;
+	tran *tx = NULL;
 	try{
-	odb::core::transaction tx(this->db->begin());
+		if (!t::has_current()){
+		 tx = new  tran(this->db->begin());
+		}
+		else
+		{
+			tx = &(t::current());
+		}
 	file&f= this->d->findById(file_id, this->db);
 	id_str = Util::ltos(f.get_id());
 	fileTypeIdStr = Util::ltos(fileTypeId);
 	uf.upload(localPath.c_str(), base, fileTypeIdStr.c_str(), id_str.c_str());
 	f.set_uri_path(base);
-	this->d->update_file(f, this->db);
-	tx.commit();
+	this->d->update(f, this->db);
+	t::current().commit();
 	}
 	catch (odb::exception&e){
 		std::cout << e.what() << std::endl;
+		t::current().rollback();
 	}
 }
 
@@ -87,13 +97,14 @@ void file_service::add_good_file(std::string&localPath,long good_id,long file_ty
 	f.set_path(path);
 	f.set_type_id(file_type);
 	f.set_uri_path(uri_path);
-	this->d->add_file(f, this->db);
-
+	long file_id=0;
+	file_id= this->d->add(f, this->db);
+	f.set_id(file_id);
 	std::string id_str = Util::ltos(f.get_id());
 	std::string fileTypeIdStr = Util::ltos(file_type);
 	uf.upload(localPath.c_str(), base, fileTypeIdStr.c_str(), id_str.c_str());
 	f.set_uri_path(base);
-	this->d->update_file(f, this->db);
+	this->d->update(f, this->db);
 	
 	gf.set_file_id(f.get_id());
 	gf.set_good_id(good_id);
