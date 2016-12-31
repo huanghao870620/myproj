@@ -22,7 +22,13 @@ ListGoodsDlg::~ListGoodsDlg()
 
 BOOL ListGoodsDlg::OnInitDialog(){
 	CDialogEx::OnInitDialog();
-	std::cout << "" << std::endl;
+
+	ListView_SetExtendedListViewStyle(this->listCtrl.GetSafeHwnd(), this->listCtrl.GetExStyle() | LVS_EX_CHECKBOXES);
+	DWORD dwStyle;
+	dwStyle = listCtrl.GetExtendedStyle();
+	dwStyle = dwStyle | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES | LVS_EX_SUBITEMIMAGES;
+	listCtrl.SetExtendedStyle(dwStyle);
+
 	this->listCtrl.InsertColumn(1, "ID", LVCFMT_CENTER, 40);
 	
 	this->listCtrl.InsertColumn(2, charset_util::UTF8ToGBK("ÉÌÆ·Ãû³Æ").c_str(), LVCFMT_LEFT, 300);

@@ -11,7 +11,8 @@
 #include<afxcmn.h>
 #include<iostream>
 #include"../dlg/EditGoodDlg.h"
-class MyCListCtrl : public CListCtrl
+#include"../base_ctrl/BaseCtrl.h"
+class MyCListCtrl : public BaseCtrl
 {
 
 public:
