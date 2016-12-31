@@ -86,6 +86,7 @@ add_subdirectory(dlg)
 add_subdirectory(dao)
 add_subdirectory(dto)
 add_subdirectory(base_dlg)
+add_subdirectory(base_ctrl)
 add_subdirectory(service)
 add_subdirectory(entity)
 add_subdirectory(util)
@@ -97,6 +98,7 @@ set(
  ws2_32 
  dlg
  base_dlg
+ base_ctrl
  ctrl
  dao
  entity
