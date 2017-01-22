@@ -15,7 +15,7 @@ MyView::MyView(){
 	CBrush brush(RGB(0, 0, 0));
 	brush.DeleteObject();
 	Queue *queue = Queue::getInstance();
-	//this->com = queue->get();
+	this->com = queue->get();
 }
 
 

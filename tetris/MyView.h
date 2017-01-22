@@ -25,7 +25,7 @@ class MyView : public CView
 public:
 	MyView();
 	 ~MyView();
-//private: Combination *com;
+private: Combination *com;
 protected:DECLARE_DYNCREATE(MyView)
 protected:DECLARE_MESSAGE_MAP()
 protected:virtual void OnDraw(CDC*pDC);
