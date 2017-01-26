@@ -34,6 +34,8 @@ void addCom(LPVOID lParam){
 	{
 		Queue *queue = Queue::getInstance();
 		queue->add();
+		//std::cout << "=======================" << std::endl;
+		std::cout << "size : " << queue->getSize() << std::endl;
 		Sleep(5000);
 	}
 }
@@ -47,7 +49,7 @@ void TestProcessGetThreadNumber(){
 
 	HANDLE hProcessSnap= CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (hProcessSnap == INVALID_HANDLE_VALUE){
-		std::cout << "CreateToolhelp32Snapshot 调用失败." << std::endl;
+		//std::cout << "CreateToolhelp32Snapshot 调用失败." << std::endl;
 		return;
 	}
 
@@ -56,10 +58,10 @@ void TestProcessGetThreadNumber(){
 	std::cout << "" << std::endl;
 	while (bMore)
 	{
-		std::cout << pe32.szExeFile << std::endl;
+		/*std::cout << pe32.szExeFile << std::endl;
 		std::cout << pe32.th32ProcessID << std::endl;
 		std::cout << pe32.th32ParentProcessID << std::endl;
-		std::cout << pe32.cntThreads << std::endl;
+		std::cout << pe32.cntThreads << std::endl;*/
 		bMore= Process32Next(hProcessSnap, &pe32);
 		i++;
 	}
@@ -116,14 +118,6 @@ BOOL MyApp::InitInstance(){
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "w+t", stdout);
 
-	A*a = new A;
-	a->init();
-
-	Queue *queue = Queue::getInstance();
-	queue->add();
-
-	CWinThread *cwin0 = AfxBeginThread((AFX_THREADPROC)addCom, (LPVOID)0, THREAD_PRIORITY_NORMAL, CREATE_SUSPENDED, 0, 0);
-	cwin0->ResumeThread();
 
 	CSingleDocTemplate *temp;
 	temp = new CSingleDocTemplate(IDR_MAINFRAME, RUNTIME_CLASS(MyDoc), RUNTIME_CLASS(MyFrame), RUNTIME_CLASS(MyView));

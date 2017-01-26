@@ -6,7 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "Combination.h"
-
+#include"Queue.h"
 
 
 Combination::Combination(){
@@ -191,7 +191,7 @@ void Combination::init(int pat){
 	this->last = this->scre->getBottomCoor();
 }
 
-
+/**/
 void Combination::DrawCom(CDC*pDC,CBrush*brush){
 	std::list<Tile*>::iterator itor =  this->tileList.begin();
 	while (itor != this->tileList.end()){
@@ -202,6 +202,15 @@ void Combination::DrawCom(CDC*pDC,CBrush*brush){
 	if (!this->isStop){
 		this->landing();
 	}
+	else
+	{
+		//Queue::getInstance()->remove();
+	}
+	
+}
+
+bool Combination::getIsStop(){
+	return this->isStop;
 }
 
 
@@ -212,7 +221,6 @@ void Combination::landing(){
 		Tile *tile = *iter;
 		tile->setY1(tile->getY1() + Constants::sideLength + Constants::gap);
 		tile->setY2(tile->getY2() + Constants::sideLength + Constants::gap);
-		std::cout << " bottom : " << tile->getY1() << std::endl;
 		if (tile->getY1() == this->last->getY()){
 			this->isStop = true;
 		}
@@ -225,4 +233,22 @@ Coordinates* Combination::getFirstCoor(){
 	std::list<Coordinates*>::iterator iter2 = inst->getCoors()->begin();
 	return *iter2;
 }
+
+Coordinates Combination::getBottomCoor(){
+	Singleton *inst= Singleton::getSingleton();
+	std::list<Coordinates*>::iterator iter = inst->getCoors()->begin();
+	int maxHeight = -1;
+	Coordinates cd;
+	for (; iter != inst->getCoors()->end(); iter++){
+		Coordinates *coor = *iter;
+		if (coor->getY() > -1){
+			maxHeight = coor->getY();
+			cd = *coor;
+		}
+	}
+	return cd;
+}
+
+
+
 

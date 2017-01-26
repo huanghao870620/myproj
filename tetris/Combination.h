@@ -14,28 +14,33 @@
 #include"Singleton.h"
 #include"Constants.h"
 #include"Screen.h"
+
 /**
  * ×éºÏ
  */
 class Combination
 {
 
-public:Combination();
-public:Combination(int pat);
-public:~Combination();
+public:
+	Combination();
+	Combination(int pat);
+	~Combination();
+	Coordinates* getFirstCoor();
+	void DrawCom(CDC*pDC,CBrush*brush);
+	bool getIsStop();
+	Coordinates getBottomCoor();
 
-public:Coordinates* getFirstCoor();
-public:void DrawCom(CDC*pDC,CBrush*brush);
-private:Tile *c0;
-private:Tile *c1;
-private:Tile *c2;
-private:Tile *c3;
-private:bool isStop = false;
-private:Screen *scre;
-private:std::list<Tile*> tileList;
-private:Coordinates *last;
-private:void landing(); // ½µÂä
-private:void init(int pat);
+private:
+	Tile *c0;
+	Tile *c1;
+	Tile *c2;
+	Tile *c3;
+	bool isStop = false;
+	Screen *scre;
+	std::list<Tile*> tileList;
+	Coordinates *last;
+	void landing(); // ½µÂä
+	void init(int pat);
 
 };
 #endif // !defined(EA_32DFF089_B8A4_40b1_86E8_36519606DDFB__INCLUDED_)

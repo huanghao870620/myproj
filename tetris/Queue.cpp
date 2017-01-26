@@ -32,4 +32,13 @@ void Queue::add(){
 
 Combination* Queue::get(){
 	return this->comQueue.back();
+	//return this->comQueue.pop();
+}
+
+int Queue::getSize(){
+	return this->comQueue.size();
+}
+
+void Queue::remove(){
+	this->comQueue.pop();
 }

@@ -19,22 +19,24 @@
 #include "Combination.h"
 #include"Random.h"
 #include"Queue.h"
+#include"StopQueue.h"
+
 class MyView : public CView
 {
 
 public:
 	MyView();
-	 ~MyView();
-private: Combination *com;
-protected:DECLARE_DYNCREATE(MyView)
-protected:DECLARE_MESSAGE_MAP()
-protected:virtual void OnDraw(CDC*pDC);
-private:ArrayDto *arrayDto;
-private:Adto *adto;
-private:CRect *c0;
-private:CRect *c1;
-private:CRect *c2;
-private:CRect *rect2;
+	~MyView();
+	void OnMouseMove(UINT nFlags, CPoint point);
+
+protected:
+	DECLARE_DYNCREATE(MyView)
+	DECLARE_MESSAGE_MAP()
+	virtual void OnDraw(CDC*pDC);
+
+private:
+	int r = 15;
+	int x = 0, y = 0;
 
 };
 #endif // !defined(EA_043DDCAC_9485_4585_8D96_AE7288822F71__INCLUDED_)
