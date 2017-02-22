@@ -16,6 +16,14 @@
 #include"Random.h"
 #include"Queue.h"
 #include"A.h"
+#include"A0.h"
+#define HAVE_REMOTE
+#include"pcap.h"
+
+
+//#include"remote-ext.h"
+#define LINE_LEN 16
+
 class MyApp : public CWinApp
 {
 

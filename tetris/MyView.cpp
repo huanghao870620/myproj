@@ -26,9 +26,9 @@ void MyView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	
 	//std::cout << "222" << std::endl;
-	std::cout << "x : " << point.x << "\ty: " << point.y << std::endl;
+	/*std::cout << "x : " << point.x << "\ty: " << point.y << std::endl;
 	this->x = point.x;
-	this->y = point.y;
+	this->y = point.y;*/
 
 
 	// TODO: 在此添加消息处理程序代码和/或调用默认值  
@@ -51,5 +51,5 @@ MyView::~MyView(){
 //ON_WM_MOUSEMOVE
 /**/
 void MyView::OnDraw(CDC*pDC){
-	pDC->Ellipse(this->x - r, this->y - r, this->x+100 + r, this->y+100 + r);
+	//pDC->Ellipse(this->x - r, this->y - r, this->x+10 + r, this->y+10 + r);
 } 
