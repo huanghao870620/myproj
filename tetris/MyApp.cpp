@@ -24,12 +24,6 @@ MyApp::~MyApp(){
 
 void f(LPVOID lParam){
 	A0*a = new A0;
-	//a->test1();
-	//a->test3();
-
-	//char **c = new char*[2]{"aaa","bbb"};
-	//a->test4(2, c);
-
 	char **c = new char*[2]{"aaa0", "d:/test/bbb0"};
 	a->test6(2, c);
 	
